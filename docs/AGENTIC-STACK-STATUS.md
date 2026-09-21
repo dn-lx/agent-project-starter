@@ -11,6 +11,8 @@ Update this file after bootstrapping a real project.
 | Agent Skills | ✅ Starter | Add project-specific skill |
 | MCP capability policy | ✅ Starter | Select/connect project capabilities |
 | Graphify | ✅ Repo-ready | Install local tool when useful |
+| Code hygiene / dead-code analysis | ✅ Skill-ready | Use stack-specific analyzer; Knip is preferred candidate for compatible JS/TS projects |
+| Headroom | 🧪 Optional pilot | Enable only after measuring a real context bottleneck and compare quality before/after |
 | Context7 | ⚠️ Host-dependent | Connect/verify in agent host |
 | CI checks | ⏳ Project-specific | Add actual build/test commands |
 | Security CI | ✅ Generic starter | Verify/adapt scanners |
