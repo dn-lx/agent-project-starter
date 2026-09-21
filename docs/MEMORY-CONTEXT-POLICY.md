@@ -72,6 +72,14 @@ Independent reviewers normally need:
 
 They normally do not need the implementer's full transcript.
 
+## Optional context compression
+
+Headroom or equivalent compression tooling is optional. Use it only after targeted retrieval, compact memory and Graphify/source narrowing are insufficient.
+
+Any pilot must compare context/usage savings against correctness, review findings, repair rounds and task success. Compression must never become the sole evidence for security, authorization, migrations or exact API/schema behavior.
+
+See `.agents/skills/headroom-pilot/SKILL.md` and `docs/CODE-HEALTH-AND-CONTEXT.md`.
+
 ## Semantic/long-term memory tools
 
 External memory services are optional. They must never become more authoritative than Git/source/docs. Prefer local/repository-owned memory for durable engineering facts.

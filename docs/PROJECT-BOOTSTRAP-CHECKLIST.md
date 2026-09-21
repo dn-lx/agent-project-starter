@@ -50,6 +50,14 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 - [ ] Confirm secrets are stored outside Git.
 - [ ] Record destructive/sensitive operations that require review.
 
+## Code health and context efficiency
+
+- [ ] For JS/TS projects, decide whether Knip or another dead-code analyzer is useful.
+- [ ] Run dead-code analysis in report-only mode before enabling automatic fixes.
+- [ ] Pair static cleanup findings with Graphify/source/runtime verification.
+- [ ] Keep Headroom optional until baseline measurements show a real context bottleneck.
+- [ ] If piloting Headroom, record before/after quality and usage metrics.
+
 ## Memory/context
 
 - [ ] Keep Project Memory compact.
