@@ -113,3 +113,10 @@ A fresh agent should be able to answer, without asking the project owner:
 - If there is a frontend, what design/taste/motion rules apply?
 
 If not, the bootstrap is incomplete.
+
+## Version and branch setup
+
+- [ ] Read VERSIONING and BRANCH-LIFECYCLE; preserve an existing app version.
+- [ ] Protect main/develop and require production guard plus version validation.
+- [ ] Verify a merged test branch is cleaned up.
+- [ ] Address applicable gaps in `docs/COVERAGE-REVIEW.md`.

@@ -31,3 +31,10 @@ TODO
 - Independent reviewer (if required):
 - MCP/external writes performed:
 - Remaining limitations:
+
+## Version and branch lifecycle
+
+- Release impact: none / patch / minor / major (explain).
+- Changelog entry or reason none is needed:
+- Compatibility/migration impact:
+- After merge: verify temporary branch cleanup; preserve main/develop.

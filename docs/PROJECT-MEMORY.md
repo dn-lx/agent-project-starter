@@ -89,3 +89,10 @@ Link accepted ADRs rather than duplicating them.
 ## Context freshness
 
 Update this file when architecture, commands, core product invariants, security boundaries or external-system topology materially changes. Source/tests/accepted ADRs override stale memory.
+
+## Starter lifecycle tooling
+
+- Planned initial starter version: VERSION; policy: `docs/VERSIONING.md`.
+- Starter checks: `node scripts/validate-agent-stack.mjs`, `node scripts/validate-version.mjs`, `node --test tests/*.test.mjs`.
+- Branch lifecycle: `docs/BRANCH-LIFECYCLE.md`.
+- These checks do not replace the consuming application commands above.

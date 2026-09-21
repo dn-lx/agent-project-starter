@@ -1,6 +1,12 @@
 import { readFile, access } from 'node:fs/promises'
 
 const required = [
+  'VERSION',
+  'CHANGELOG.md',
+  'docs/VERSIONING.md',
+  'docs/BRANCH-LIFECYCLE.md',
+  '.github/workflows/branch-cleanup.yml',
+  '.github/workflows/version-validation.yml',
   'AGENTS.md',
   'CLAUDE.md',
   'GEMINI.md',
@@ -55,7 +61,7 @@ for (const adapter of ['CLAUDE.md', 'GEMINI.md', '.github/copilot-instructions.m
 }
 
 const agents = await readFile('AGENTS.md', 'utf8')
-for (const phrase of ['develop', 'main', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot']) {
+for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'develop', 'main', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot']) {
   if (!agents.includes(phrase)) {
     console.error(`AGENTS.md is missing required reference: ${phrase}`)
     process.exit(1)
