@@ -13,10 +13,14 @@ const required = [
   'docs/MODEL-ROUTING-POLICY.md',
   'docs/MEMORY-CONTEXT-POLICY.md',
   'docs/DOCUMENTATION_POLICY.md',
+  'docs/FRONTEND-QUALITY-STANDARD.md',
   '.agents/skills/mcp-usage/SKILL.md',
   '.agents/skills/context7/SKILL.md',
   '.agents/skills/graphify/SKILL.md',
   '.agents/skills/memory-context/SKILL.md',
+  '.agents/skills/frontend-design/SKILL.md',
+  '.agents/skills/design-taste/SKILL.md',
+  '.agents/skills/motion-design/SKILL.md',
   '.agents/skills/quality-gates/SKILL.md',
   '.agents/skills/security-boundary-review/SKILL.md',
   '.agents/skills/release-workflow/SKILL.md',
@@ -42,7 +46,7 @@ for (const adapter of ['CLAUDE.md', 'GEMINI.md', '.github/copilot-instructions.m
 }
 
 const agents = await readFile('AGENTS.md', 'utf8')
-for (const phrase of ['develop', 'main', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md']) {
+for (const phrase of ['develop', 'main', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design']) {
   if (!agents.includes(phrase)) {
     console.error(`AGENTS.md is missing required reference: ${phrase}`)
     process.exit(1)
