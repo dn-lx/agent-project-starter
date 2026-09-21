@@ -26,6 +26,20 @@ Use this immediately after creating a repository from Agent Project Starter.
 - [ ] Add Playwright/browser checks if the project has important UI workflows.
 - [ ] Verify generic security workflow is compatible with the stack.
 
+## Frontend quality
+
+For projects with a frontend:
+
+- [ ] Record the design system/component library and brand assets.
+- [ ] Record default visual variance, motion level and information density.
+- [ ] Keep `frontend-design` as the foundation UI skill.
+- [ ] Use `design-taste` for substantial visual design/redesign work.
+- [ ] Use `motion-design` only when animation/transition behavior is material.
+- [ ] Document critical mobile/desktop breakpoints and accessibility constraints.
+- [ ] Add screenshot/browser verification for important visual changes.
+
+For non-frontend projects, mark this section Not applicable rather than inventing UI requirements.
+
 ## MCP/connectors
 
 - [ ] Complete the Project MCP profile in `docs/MCP-SETUP.md`.
@@ -78,5 +92,6 @@ A fresh agent should be able to answer, without asking the project owner:
 - Which external writes are sensitive?
 - How do I release safely?
 - Where do I record unfinished work?
+- If there is a frontend, what design/taste/motion rules apply?
 
 If not, the bootstrap is incomplete.
