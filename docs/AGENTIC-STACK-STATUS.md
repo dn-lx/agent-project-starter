@@ -16,8 +16,10 @@ Update this file after bootstrapping a real project.
 | Context7 | ⚠️ Host-dependent | Connect/verify in agent host |
 | CI checks | ⏳ Project-specific | Add actual build/test commands |
 | Security CI | ✅ Generic starter | Verify/adapt scanners |
-| Independent review | ⏳ Configure | Choose agent/reviewer mechanism |
+| Dependency maintenance | ✅ Starter automation | GitHub Actions updates enabled; add the real project package ecosystems during bootstrap |
+| Independent review | ✅ Workflow-ready / activation project-specific | Review packet and independence rules are documented; choose the actual reviewer/agent per project |
 | Browser/E2E | ⏳ Project-specific | Add when UI critical paths exist |
+| Accessibility / visual regression | ✅ Skill-ready | Add project-specific axe/Playwright checks and stable baselines for critical UI flows |
 | Observability | Optional | Configure if needed |
 | Documentation drift | ✅ Starter | Verify schedule/workflow |
 | Release guard | ✅ Starter | Configure label/ruleset as needed |
