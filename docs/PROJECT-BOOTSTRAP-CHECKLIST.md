@@ -25,6 +25,8 @@ Use this immediately after creating a repository from Agent Project Starter.
 - [ ] Add unit/integration tests for critical logic.
 - [ ] Add Playwright/browser checks if the project has important UI workflows.
 - [ ] Verify generic security workflow is compatible with the stack.
+- [ ] Configure dependency update automation for the actual package ecosystems used by the project.
+- [ ] Keep dependency update PRs reviewable; do not enable blanket auto-merge by default.
 
 ## Frontend quality
 
@@ -37,6 +39,8 @@ For projects with a frontend:
 - [ ] Use `motion-design` only when animation/transition behavior is material.
 - [ ] Document critical mobile/desktop breakpoints and accessibility constraints.
 - [ ] Add screenshot/browser verification for important visual changes.
+- [ ] Add accessibility automation/manual keyboard checks for critical UI flows.
+- [ ] Use stable screenshot baselines for critical states instead of snapshotting every page.
 
 For non-frontend projects, mark this section Not applicable rather than inventing UI requirements.
 
@@ -73,6 +77,12 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 - [ ] Document secret storage.
 - [ ] Document sensitive logging/data rules.
 - [ ] Add project-specific security checks for auth/payments/storage/data.
+
+## Review and release evidence
+
+- [ ] Decide which changes require independent review.
+- [ ] Use `docs/templates/REVIEW-PACKET-TEMPLATE.md` for sensitive/high-impact review handoffs.
+- [ ] Use `docs/templates/RELEASE-SUMMARY-TEMPLATE.md` for develop→main releases.
 
 ## Deployment/operations
 
