@@ -48,6 +48,19 @@ branch + PR
 human release approval
 ```
 
+## Independent review contract
+
+For sensitive/high-impact work, prefer a reviewer that is independent of the implementation pass. When possible use a different capable provider or at least a fresh session that receives the requirement and evidence rather than the implementer's reasoning transcript.
+
+Use `docs/templates/REVIEW-PACKET-TEMPLATE.md` for a compact review handoff.
+
+A valid independent review should:
+- inspect the requirement and final diff,
+- verify concrete evidence,
+- identify real failure modes rather than stylistic preferences,
+- classify material findings by severity,
+- avoid manufacturing findings when none exist.
+
 ## Review rules
 
 Require independent review when practical for:

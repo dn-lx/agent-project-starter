@@ -14,6 +14,7 @@ Use fast deterministic checks relevant to changed behavior:
 - unit/integration tests,
 - build/compile,
 - targeted browser smoke test for UI changes,
+- accessibility and targeted visual-regression checks for material UI changes when configured,
 - secret scanning,
 - dependency/security checks relevant to the stack.
 
@@ -34,6 +35,7 @@ Follow Release Workflow and Release Readiness:
 - required checks green,
 - migrations/env/external-service changes reviewed,
 - critical user flows verified,
+- accessibility/visual evidence reviewed for material frontend releases,
 - rollback/compatibility documented.
 
 ## Efficiency

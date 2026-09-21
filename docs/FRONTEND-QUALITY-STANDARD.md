@@ -38,6 +38,18 @@ Use when:
 
 Do not add animation just because the skill exists.
 
+## 4. Accessibility + Visual Regression — verification evidence
+
+`.agents/skills/accessibility-visual-regression/SKILL.md`
+
+Use when:
+- substantial UI changed,
+- critical user journeys need regression protection,
+- responsive/layout regressions are plausible,
+- design-system or release-level frontend verification is required.
+
+It verifies the result; it does not choose the visual direction.
+
 ## Recommended execution order
 
 ```text
@@ -51,7 +63,9 @@ motion-design (only when motion is material)
       ↓
 implementation
       ↓
-browser + responsive + accessibility verification
+accessibility + visual regression verification (when material)
+      ↓
+browser + responsive verification
 ```
 
 ## Project-specific frontend profile

@@ -10,12 +10,13 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 - Thin bootstrap files for Claude Code, Gemini CLI and GitHub Copilot.
 - Durable project memory and current-task handoff.
 - Capability-based MCP/connector documentation.
-- Agent Skills for MCP use, Context7, Graphify, context efficiency, quality gates, security review, frontend work and releases.
+- Agent Skills for MCP use, Context7, Graphify, code hygiene, dependency maintenance, context efficiency, frontend quality, accessibility/visual regression, security review and releases.
 - Planner → Executor → Independent Reviewer orchestration.
 - Quality-first model routing guidance.
 - A strict `feature/fix/chore → develop → main` release path.
-- Generic security and documentation-drift automation.
+- Generic security, dependency-update and documentation-drift automation.
 - A bootstrap checklist for adapting the starter to a real project.
+- A stack-responsibility map that prevents overlapping tools/skills from accumulating without a clear gap.
 
 ## Start a new project
 

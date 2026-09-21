@@ -13,6 +13,7 @@ Before a production release:
 4. Review migrations, environment variables, redirects/headers and external-service changes.
 5. Confirm observability/release verification is ready when configured.
 6. Record rollback path and irreversible operations.
-7. Report exact evidence and unresolved risks.
+7. Prepare a concise release summary using `docs/templates/RELEASE-SUMMARY-TEMPLATE.md` for material releases.
+8. Report exact evidence and unresolved risks.
 
 This skill reviews readiness; it does not authorize production deployment.
