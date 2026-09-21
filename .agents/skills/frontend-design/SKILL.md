@@ -7,6 +7,8 @@ description: Guide intentional, accessible, production-quality UI work while pre
 
 Use for new screens, substantial UI changes, component redesigns or visual-system work.
 
+This is the **foundation skill**. For substantial visual redesigns also read `../design-taste/SKILL.md`. For animation/transition/gesture work also read `../motion-design/SKILL.md`. See `docs/FRONTEND-QUALITY-STANDARD.md`.
+
 Before coding:
 1. inspect active components/styles,
 2. state user goal, hierarchy, primary action and responsive behavior,
@@ -21,5 +23,10 @@ Rules:
 - verify business-critical interaction before and after visual changes,
 - prefer semantic accessible controls,
 - check narrow mobile and ordinary desktop plus project-specific breakpoints.
+
+Specialist routing:
+- **Design Taste:** new visual direction, major page/component redesign, weak hierarchy, generic/template-looking UI.
+- **Motion Design:** animation, transitions, hover/press/loading motion, gestures, drawers/modals, scroll-linked behavior.
+- For a tiny copy/layout fix, do not load extra design skills unless the change materially affects those areas.
 
 For branded projects, create a project-specific brand/assets skill rather than hard-coding branding into this generic starter.
