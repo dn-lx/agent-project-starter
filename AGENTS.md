@@ -26,6 +26,10 @@ Current source code, tests and accepted ADRs override stale documentation, gener
 
 Read `.agents/skills/release-workflow/SKILL.md` before creating/merging a production PR or changing production deployment policy.
 
+## Branch cleanup and versioning
+
+Read `docs/BRANCH-LIFECYCLE.md` and `docs/VERSIONING.md` for lifecycle work. Only main and develop are permanent. Verify completed temporary branches are deleted after merge; preserve active/unmerged work. Every material change must identify version impact and update CHANGELOG.md when user-visible. Release preparation updates VERSION and dated notes; publish immutable tags only after approved develop → main release. All host adapters inherit these rules.
+
 ## Engineering principles
 
 - Trace the active code path and data flow before editing.

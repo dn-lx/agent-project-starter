@@ -93,3 +93,7 @@ feature/fix/chore → develop → main
 ```
 
 Keep the starter generic. Project-specific business rules belong in the generated project's Project Memory and project skill, not here.
+
+## Versioning and branch lifecycle
+
+The starter now carries a planned version in `VERSION` and release notes in `CHANGELOG.md`. Read [Versioning](docs/VERSIONING.md), [Branch lifecycle](docs/BRANCH-LIFECYCLE.md), and [Coverage review](docs/COVERAGE-REVIEW.md). Only main/develop are permanent; merged temporary branches are cleaned on develop pushes. Protect permanent branches and require CI checks when configuring a new repository.
