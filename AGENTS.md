@@ -85,6 +85,8 @@ Read the relevant skill before specialized work:
 - `.agents/skills/context7/SKILL.md` — current third-party API/SDK docs.
 - `.agents/skills/graphify/SKILL.md` — local code relationships/change impact.
 - `.agents/skills/memory-context/SKILL.md` — context/token efficiency and durable memory.
+- `.agents/skills/code-hygiene/SKILL.md` — dead-code, unused exports/dependencies and cleanup.
+- `.agents/skills/headroom-pilot/SKILL.md` — measured optional context compression pilot.
 - `.agents/skills/frontend-design/SKILL.md` — foundation for substantial UI/design work.
 - `.agents/skills/design-taste/SKILL.md` — visual quality, hierarchy, typography and anti-generic design.
 - `.agents/skills/motion-design/SKILL.md` — purposeful animation, transitions and interaction feedback.
@@ -94,6 +96,8 @@ Read the relevant skill before specialized work:
 - `.agents/skills/release-workflow/SKILL.md` — branch/release contract.
 
 For frontend work, use `docs/FRONTEND-QUALITY-STANDARD.md` to decide when Taste and Motion should be loaded. Do not force those specialist skills onto tiny or unrelated changes.
+
+For repository cleanup/context optimization, follow `docs/CODE-HEALTH-AND-CONTEXT.md`. Code Hygiene and Headroom solve different problems: dead code vs model context.
 
 Add a project-specific skill at `.agents/skills/<project-name>/SKILL.md`.
 
