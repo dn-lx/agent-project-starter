@@ -121,6 +121,10 @@ For every material change:
 
 For auth, permissions, secrets, payments, data models, worker command execution, external writes or production changes, perform an independent security/review pass and negative-path checks where practical.
 
+## Host adapters
+
+For Claude Code or Gemini CLI setup, use `docs/CLAUDE-GEMINI-SETUP.md`. Keep `.agents/skills/` canonical. When changing skill metadata or inventory, regenerate Claude discovery adapters with `node scripts/sync-claude-skills.mjs --write` and validate them. Gemini reads the canonical directory directly. Do not copy credentials or blanket permission overrides between hosts.
+
 ## Universal continuity
 
 At the beginning of a new coding-agent session, read Project Memory and Current Handoff. Before ending unfinished work, or after a material architectural decision/external side effect, update `docs/CURRENT-HANDOFF.md`.
