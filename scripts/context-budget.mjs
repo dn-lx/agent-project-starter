@@ -38,13 +38,14 @@ export async function measureStartupContext(root = process.cwd()) {
     if (spec.explicit) paths.push(...spec.explicit)
 
     const uniquePaths = [...new Set(paths)]
-    let chars = 0
-    for (const path of uniquePaths) chars += (await read(root, path)).length
+    const texts = await Promise.all(uniquePaths.map(path => read(root, path)))
+    const combined = texts.join('\n')
 
     results[host] = {
       paths: uniquePaths,
-      characters: chars,
-      estimated_tokens: estimateTokens('x'.repeat(chars)),
+      characters: combined.length,
+      utf8_bytes: Buffer.byteLength(combined, 'utf8'),
+      estimated_tokens: estimateTokens(combined),
     }
   }
   return results
@@ -61,7 +62,7 @@ export async function checkStartupContext({
 
   for (const [host, info] of Object.entries(results)) {
     const status = info.estimated_tokens <= budget ? 'OK' : 'OVER'
-    console.log(`${host}: ~${info.estimated_tokens} tokens, ${info.characters} characters, ${info.paths.length} startup files [${status}]`)
+    console.log(`${host}: ~${info.estimated_tokens} tokens, ${info.utf8_bytes} UTF-8 bytes, ${info.paths.length} startup files [${status}]`)
     if (info.estimated_tokens > budget) ok = false
   }
 
