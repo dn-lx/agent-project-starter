@@ -12,7 +12,8 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Graphify | Static code relationships/change-impact navigation | Runtime truth, dead-code deletion, external services |
 | Code Hygiene | Confirmed dead code/unused exports/dependencies | Dependency upgrades or context compression |
 | Dependency Maintenance | Upgrades, advisories, lockfiles/update bots | Removing unused code |
-| Task Routing | Select one primary outcome workflow and minimal skill set | Implementing specialist procedures |
+| Task Routing | Select one primary outcome workflow and minimal skill set | Choosing provider/model execution details |
+| Execution Routing | Assign agent/host, model class and justified parallelism | Task decomposition logic inside a Superpower |
 | Superpowers | End-to-end sequencing around resume/deliver/repair/verify/release/audit outcomes | Duplicating specialist skill instructions |
 | Memory Context | Retrieval/context discipline and durable memory rules | Compression proxy implementation |
 | Headroom Pilot | Optional measured context compression | Project memory or dead-code cleanup |
@@ -29,9 +30,10 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 
 ## Intentional overlaps
 
-### Task Routing + Superpowers + Skills
+### Task Routing + Execution Routing + Superpowers + Skills
 
 - Task Routing selects one outcome workflow.
+- Execution Routing decides where it runs, which model class is used and whether extra agents are justified.
 - A Superpower sequences the work.
 - Skills supply specialist procedures only when triggered.
 

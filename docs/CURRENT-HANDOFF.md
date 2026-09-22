@@ -4,26 +4,25 @@
 
 ## Current task
 
-Improve Agent Project Starter Superpowers, skills and context/token efficiency on `feature/superpowers-context-efficiency`, targeting `develop`.
+Add agentwise + modelwise responsibility routing on `feature/agent-model-execution-routing`, targeting `develop`.
 
 ## Previous work verified
 
-`develop` was six commits ahead of `main` when this task started. Existing Claude/Gemini portability, lifecycle, frontend-quality and context-efficiency work was preserved. Production `main` remains unchanged.
+The Superpowers/progressive-context upgrade is merged into `develop`. Static startup context is guarded by CI. Production `main` remains unchanged.
 
 ## Changes
 
-- Added compact outcome-oriented Superpowers for resume, feature delivery, CI repair, full QA, release and project health.
-- Added `task-routing` so broad tasks select one primary workflow instead of loading the whole capability catalog.
-- Changed Claude, Gemini and Copilot startup guidance to progressive loading; Platform Workflows are no longer static startup context.
-- Added `scripts/context-budget.mjs` plus tests to estimate and guard startup context growth.
-- Updated orchestration, memory/context policy, responsibility map and host setup docs.
+- Added `execution-routing` skill separating agent/host assignment from model-class assignment.
+- Added `docs/EXECUTION-ROUTING-POLICY.md` covering single-agent and multi-agent operation.
+- Added a provider-neutral routing profile template for concrete model mappings.
+- Updated Task Routing, Agent Orchestration, Model Routing and the responsibility map.
+- Default remains one lead agent; parallel workers require separable work, isolated ownership and a concrete benefit.
+- Reviewers receive compact evidence packets rather than implementation transcripts.
 
 ## Verification / limits
 
-Run agent-stack validation, context-budget check, version validation and all Node tests. Remote GitHub Actions and final diff review must be green before merge.
-The context estimate uses an approximate bytes-per-token heuristic; it is a regression guard, not a provider billing meter.
-No OmniRoute dependency was added. Model routing remains optional/provider-independent.
+Run agent-stack validation, context-budget guard, version/lifecycle tests and security CI. Concrete model IDs remain runtime/project configuration and are intentionally not hard-coded into repository rules.
 
 ## Next safe step
 
-Open/update the PR from `feature/superpowers-context-efficiency` into `develop`, inspect GitHub Actions, repair any confirmed failures, and merge only after checks/review are green. Production promotion remains a separate explicitly approved `develop → main` release.
+Open a PR into `develop`, inspect all CI/review evidence, repair confirmed findings if any, and merge only after green checks. Production promotion remains a separate approved `develop → main` release.

@@ -52,10 +52,11 @@ Use stable capability roles, not permanent vendor winners:
 - Multimodal / Long-context Specialist
 - Fast Utility Worker
 
-Provider/model mappings may change over time. Route by capability and verified project outcomes. Cost is telemetry/tie-breaker, not a reason to silently downgrade required capability.
+Agent/host assignment and model assignment are separate decisions. Provider/model mappings may change over time. Route by verified capability, tool/data locality and project outcomes. Default to one lead agent; add parallel workers only when work is genuinely separable. Cost is telemetry/tie-breaker, not a reason to silently downgrade required capability.
 
 See:
 - `docs/AGENT-ORCHESTRATION.md`
+- `docs/EXECUTION-ROUTING-POLICY.md`
 - `docs/MODEL-ROUTING-POLICY.md`
 
 ## MCP and connector policy
@@ -98,6 +99,7 @@ Skills are atomic capabilities; superpowers orchestrate them. Select one primary
 Read the relevant skill before specialized work:
 
 - `.agents/skills/task-routing/SKILL.md` — choose the smallest applicable superpower/skill set.
+- `.agents/skills/execution-routing/SKILL.md` — assign agent/host, model class and justified parallelism.
 
 - `.agents/skills/project-bootstrap/SKILL.md` — adapt this starter to a new project.
 - `.agents/skills/mcp-usage/SKILL.md` — external MCP/connector use.
