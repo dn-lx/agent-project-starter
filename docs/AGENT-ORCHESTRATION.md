@@ -31,6 +31,8 @@ classify outcome + capability + risk
   ↓
 select one primary Superpower or direct skill
   ↓
+assign agent/host + model class + justified parallelism
+  ↓
 retrieve minimal relevant project context
   ↓
 plan if complexity/risk justifies it
@@ -80,7 +82,7 @@ Automated deterministic checks are stronger evidence than a model reviewing its 
 
 Superpowers live under `.agents/superpowers/` and sequence existing skills around an outcome. They must stay compact, reference specialist skills instead of copying them, and avoid loading unrelated guidance.
 
-Use `.agents/skills/task-routing/SKILL.md` when the request is broad, stalled or naturally end-to-end.
+Use `.agents/skills/task-routing/SKILL.md` when the request is broad, stalled or naturally end-to-end. If the environment exposes multiple agents/hosts or model choices, use `.agents/skills/execution-routing/SKILL.md` after task routing.
 
 ## Context efficiency
 
