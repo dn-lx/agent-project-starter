@@ -27,7 +27,9 @@ Used only for low-risk mechanical tasks where the capability is clearly sufficie
 ```text
 request
   ↓
-classify capability + risk
+classify outcome + capability + risk
+  ↓
+select one primary Superpower or direct skill
   ↓
 retrieve minimal relevant project context
   ↓
@@ -73,6 +75,12 @@ Require independent review when practical for:
 - critical high-impact code.
 
 Automated deterministic checks are stronger evidence than a model reviewing its own work.
+
+## Superpower orchestration
+
+Superpowers live under `.agents/superpowers/` and sequence existing skills around an outcome. They must stay compact, reference specialist skills instead of copying them, and avoid loading unrelated guidance.
+
+Use `.agents/skills/task-routing/SKILL.md` when the request is broad, stalled or naturally end-to-end.
 
 ## Context efficiency
 
