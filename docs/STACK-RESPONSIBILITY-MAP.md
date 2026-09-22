@@ -12,6 +12,8 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Graphify | Static code relationships/change-impact navigation | Runtime truth, dead-code deletion, external services |
 | Code Hygiene | Confirmed dead code/unused exports/dependencies | Dependency upgrades or context compression |
 | Dependency Maintenance | Upgrades, advisories, lockfiles/update bots | Removing unused code |
+| Task Routing | Select one primary outcome workflow and minimal skill set | Implementing specialist procedures |
+| Superpowers | End-to-end sequencing around resume/deliver/repair/verify/release/audit outcomes | Duplicating specialist skill instructions |
 | Memory Context | Retrieval/context discipline and durable memory rules | Compression proxy implementation |
 | Headroom Pilot | Optional measured context compression | Project memory or dead-code cleanup |
 | Frontend Design | UI foundation: semantics, responsive states, accessibility baseline | Visual experimentation or animation specialization |
@@ -26,6 +28,15 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Documentation Drift | Signal that maintained docs may be stale | Proving docs are semantically correct |
 
 ## Intentional overlaps
+
+### Task Routing + Superpowers + Skills
+
+- Task Routing selects one outcome workflow.
+- A Superpower sequences the work.
+- Skills supply specialist procedures only when triggered.
+
+Do not preload all three layers in full; progressive loading is the point.
+
 
 Some overlap is useful and deliberate:
 
