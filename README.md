@@ -97,3 +97,7 @@ Keep the starter generic. Project-specific business rules belong in the generate
 ## Versioning and branch lifecycle
 
 The starter now carries a planned version in `VERSION` and release notes in `CHANGELOG.md`. Read [Versioning](docs/VERSIONING.md), [Branch lifecycle](docs/BRANCH-LIFECYCLE.md), and [Coverage review](docs/COVERAGE-REVIEW.md). Only main/develop are permanent; merged temporary branches are cleaned on develop pushes. Protect permanent branches and require CI checks when configuring a new repository.
+
+## Claude and Gemini
+
+[Host setup and acceptance checks](docs/CLAUDE-GEMINI-SETUP.md) cover Claude Code, Gemini CLI and the distinction from routed models inside Cline. Shared context is explicitly imported; Claude discovery adapters are committed and validated for drift.

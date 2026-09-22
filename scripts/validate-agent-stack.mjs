@@ -1,6 +1,8 @@
 import { readFile, access } from 'node:fs/promises'
 
 const required = [
+  'docs/CLAUDE-GEMINI-SETUP.md',
+  'scripts/sync-claude-skills.mjs',
   'VERSION',
   'CHANGELOG.md',
   'docs/VERSIONING.md',
@@ -69,3 +71,14 @@ for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'develop
 }
 
 console.log(`Agent stack valid: ${required.length} required files present and adapters point to AGENTS.md.`)
+
+for (const file of ['CLAUDE.md', 'GEMINI.md']) {
+  const content = await readFile(file, 'utf8')
+  for (const path of ['AGENTS.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'docs/AGENT-PLATFORM-WORKFLOWS.md']) {
+    const imports = content.split(/\r?\n/).filter(line => line.startsWith('@')).map(line => line.slice(1).replace(/^\.\//, ''))
+    if (!imports.includes(path)) throw new Error(`${file} must explicitly import ${path}`)
+    await access(path)
+  }
+}
+const { sync } = await import('./sync-claude-skills.mjs')
+console.log(`Claude adapters verified: ${await sync(process.cwd())}`)

@@ -38,7 +38,8 @@ If an adapter conflicts with `AGENTS.md`, follow `AGENTS.md`.
 
 ## Claude Code
 
-- `CLAUDE.md` points back to the shared workflow.
+- `CLAUDE.md` imports shared context; `.claude/skills/` adapters load canonical skills.
+- Follow `docs/CLAUDE-GEMINI-SETUP.md` and verify loaded context/skill discovery.
 - Verify active repository/branch at session start.
 - Inspect MCP configuration before external-system work.
 - Keep credentials out of Git.
@@ -46,7 +47,8 @@ If an adapter conflicts with `AGENTS.md`, follow `AGENTS.md`.
 
 ## Gemini CLI
 
-- `GEMINI.md` points back to shared context.
+- `GEMINI.md` imports shared context; `.agents/skills/` supplies skills directly.
+- Follow `docs/CLAUDE-GEMINI-SETUP.md` and verify loaded context/skill discovery.
 - Confirm loaded project memory/instructions when needed.
 - Inspect MCP status before external actions.
 - Durable decisions belong in repository docs, not session history.

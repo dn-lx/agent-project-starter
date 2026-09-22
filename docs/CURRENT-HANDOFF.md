@@ -1,36 +1,28 @@
 # Current Handoff
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-22
 
-## Outcome
+## Current task
 
-Implement branch cleanup, versioning and a practical coverage audit in the starter.
+Improve Claude Code and Gemini CLI portability on `feat/claude-gemini-portability`, targeting develop.
 
-## Branch / PR
+## Previous work verified
 
-- Branch: `fix/branch-cleanup-versioning`, targeting develop.
-- Production main is unchanged; production promotion requires explicit approval.
+PR #5 merged into develop. The live cleanup run deleted its temporary branch. main remained unchanged. Version 0.1.0 is planned, not published.
 
-## Completed
+## Changes
 
-- Added merged-branch sweep on develop pushes, protected/permanent/open/unmerged/changed-head safeguards and dry-run support.
-- Added VERSION 0.1.0 (planned initial release, not published), CHANGELOG, version CI, agent/PR/bootstrap instructions and lifecycle docs.
-- Added coverage review identifying governance and application-specific verification/operations gaps.
+- Explicit shared context imports in CLAUDE.md and GEMINI.md.
+- Thin generated Claude discovery adapters referring to canonical `.agents/skills/`; Gemini discovers canonical skills directly.
+- Deterministic drift validation integrated into existing CI, tests and setup/acceptance instructions.
+- Private machine settings ignored. No host authentication, permission overrides or model routing config changed.
 
-## Verification
+## Verification / limits
 
-- Local agent-stack validation and version validation pass.
-- Seven lifecycle tests pass, covering deletion denial, dry-run, head/open-PR rechecks, atomic deletion lease rejection, pagination, version syntax/order and release gates.
-- Independent review and remote CI results are recorded in the PR.
+Run agent-stack/version checks and all tests; remote CI and final review are recorded in the PR.
+Claude and Gemini CLI binaries are not installed in this environment, so live host login/discovery/MCP activation is unverified. Follow the setup document on the actual host.
+Branch protection remains an owner setup requirement; adapters cannot grant repository administration permissions.
 
-## External state / next steps
+## Next safe step
 
-- Initial GitHub read showed only main/develop; no stale branches were present to delete.
-- Both branches reported unprotected. Administration settings cannot be changed using the available GitHub connector; owner must configure rulesets/required checks per BRANCH-LIFECYCLE.
-- Merge this work into develop after checks/review; verify cleanup workflow removes the implementation branch.
-- Manual workflow dispatch discovery requires the workflow on the default branch; develop push trigger works after develop integration. Do not bypass production policy to install on main.
-- No production release/tag/deployment or external service configuration performed.
-
-## Do not repeat
-
-Do not delete active/unmerged work, change main, or claim v0.1.0 is already released.
+After green CI, merge into develop and verify cleanup. Verify the first-session acceptance prompt in the user's chosen host. Production promotion still requires explicit approval.

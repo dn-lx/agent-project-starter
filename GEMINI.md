@@ -1,13 +1,14 @@
-# Gemini CLI bootstrap
+# GEMINI bootstrap
 
-`AGENTS.md` is the canonical project instruction source.
+@./AGENTS.md
+@./docs/PROJECT-MEMORY.md
+@./docs/CURRENT-HANDOFF.md
+@./docs/AGENT-PLATFORM-WORKFLOWS.md
 
-At session start:
-1. read `AGENTS.md`,
-2. read `docs/PROJECT-MEMORY.md`,
-3. read `docs/CURRENT-HANDOFF.md`,
-4. read `docs/AGENT-PLATFORM-WORKFLOWS.md`,
-5. read the relevant `.agents/skills/` instructions,
-6. use Gemini's MCP status/list command before relying on external MCPs.
+The imports supply shared rules and current context. Do not redefine them here.
 
-Do not duplicate universal rules here. Keep durable context in the repository rather than relying on Gemini session memory.
+Discover on-demand skills directly from `.agents/skills/`. Do not maintain a second copy in `.gemini/skills/`. Inspect `/memory show` and `/skills list` before relying on context or skills.
+
+For setup or missing context/skills, read `docs/CLAUDE-GEMINI-SETUP.md`. Inspect `/mcp` and verify connections before external work. Host settings and permissions still apply.
+
+After a context reset or agent switch, re-read Current Handoff and inspect current Git state. Keep durable decisions in repository docs, not private session memory.

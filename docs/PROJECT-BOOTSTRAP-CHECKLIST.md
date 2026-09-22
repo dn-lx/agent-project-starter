@@ -120,3 +120,6 @@ If not, the bootstrap is incomplete.
 - [ ] Protect main/develop and require production guard plus version validation.
 - [ ] Verify a merged test branch is cleaned up.
 - [ ] Address applicable gaps in `docs/COVERAGE-REVIEW.md`.
+
+- [ ] Follow `docs/CLAUDE-GEMINI-SETUP.md` for the chosen host; verify context, skills and actual MCP connections.
+- [ ] Regenerate Claude adapters after adding a project skill: `node scripts/sync-claude-skills.mjs --write`.
