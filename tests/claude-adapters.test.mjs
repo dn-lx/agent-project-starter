@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { mkdtemp, mkdir, writeFile, readFile, rm } from 'node:fs/promises'
+import { mkdtemp, mkdir, writeFile, readFile, rm, symlink } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { sync, adapter } from '../scripts/sync-claude-skills.mjs'
@@ -34,4 +34,27 @@ test('sync checks drift, refreshes generated metadata and preserves custom skill
     await mkdir(join(root, '.claude/skills/obsolete'))
     await assert.rejects(sync(root, true), /Unmapped Claude skill/)
   } finally { await rm(root, { recursive: true, force: true }) }
+})
+
+test('sync rejects linked target ancestors and files without external writes', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'adapter-links-'))
+  const outside = await mkdtemp(join(tmpdir(), 'adapter-outside-'))
+  try {
+    await mkdir(join(root, '.agents/skills/example'), { recursive: true })
+    await writeFile(join(root, '.agents/skills/example/SKILL.md'), source)
+    await symlink(outside, join(root, '.claude'), 'dir')
+    await assert.rejects(sync(root, true), /non-regular adapter path/)
+    await rm(join(root, '.claude'))
+    await sync(root, true)
+    const target = join(root, '.claude/skills/example/SKILL.md')
+    await rm(target)
+    const external = join(outside, 'external.md')
+    await writeFile(external, 'unchanged')
+    await symlink(external, target, 'file')
+    await assert.rejects(sync(root, true), /non-regular adapter path/)
+    assert.equal(await readFile(external, 'utf8'), 'unchanged')
+  } finally {
+    await rm(root, { recursive: true, force: true })
+    await rm(outside, { recursive: true, force: true })
+  }
 })
