@@ -19,6 +19,7 @@ const required = [
   'docs/MCP-SETUP.md',
   'docs/AGENT-PLATFORM-WORKFLOWS.md',
   'docs/AGENT-ORCHESTRATION.md',
+  'docs/EXECUTION-ROUTING-POLICY.md',
   'docs/MODEL-ROUTING-POLICY.md',
   'docs/MEMORY-CONTEXT-POLICY.md',
   'docs/DOCUMENTATION_POLICY.md',
@@ -27,8 +28,10 @@ const required = [
   'docs/STACK-RESPONSIBILITY-MAP.md',
   'docs/templates/REVIEW-PACKET-TEMPLATE.md',
   'docs/templates/RELEASE-SUMMARY-TEMPLATE.md',
+  'docs/templates/ROUTING-PROFILE-EXAMPLE.md',
   '.github/dependabot.yml',
   '.agents/skills/task-routing/SKILL.md',
+  '.agents/skills/execution-routing/SKILL.md',
   '.agents/superpowers/README.md',
   '.agents/superpowers/resume-project/SUPERPOWER.md',
   '.agents/superpowers/finish-feature/SUPERPOWER.md',
@@ -72,7 +75,7 @@ for (const adapter of ['CLAUDE.md', 'GEMINI.md', '.github/copilot-instructions.m
 }
 
 const agents = await readFile('AGENTS.md', 'utf8')
-for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'develop', 'main', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot', 'task-routing', '.agents/superpowers/']) {
+for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'develop', 'main', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot', 'task-routing', 'execution-routing', 'docs/EXECUTION-ROUTING-POLICY.md', '.agents/superpowers/']) {
   if (!agents.includes(phrase)) {
     console.error(`AGENTS.md is missing required reference: ${phrase}`)
     process.exit(1)
