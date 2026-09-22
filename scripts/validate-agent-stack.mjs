@@ -3,6 +3,7 @@ import { readFile, access } from 'node:fs/promises'
 const required = [
   'docs/CLAUDE-GEMINI-SETUP.md',
   'scripts/sync-claude-skills.mjs',
+  'scripts/context-budget.mjs',
   'VERSION',
   'CHANGELOG.md',
   'docs/VERSIONING.md',
@@ -27,6 +28,14 @@ const required = [
   'docs/templates/REVIEW-PACKET-TEMPLATE.md',
   'docs/templates/RELEASE-SUMMARY-TEMPLATE.md',
   '.github/dependabot.yml',
+  '.agents/skills/task-routing/SKILL.md',
+  '.agents/superpowers/README.md',
+  '.agents/superpowers/resume-project/SUPERPOWER.md',
+  '.agents/superpowers/finish-feature/SUPERPOWER.md',
+  '.agents/superpowers/fix-until-green/SUPERPOWER.md',
+  '.agents/superpowers/full-qa/SUPERPOWER.md',
+  '.agents/superpowers/ship-release/SUPERPOWER.md',
+  '.agents/superpowers/project-doctor/SUPERPOWER.md',
   '.agents/skills/mcp-usage/SKILL.md',
   '.agents/skills/context7/SKILL.md',
   '.agents/skills/graphify/SKILL.md',
@@ -63,7 +72,7 @@ for (const adapter of ['CLAUDE.md', 'GEMINI.md', '.github/copilot-instructions.m
 }
 
 const agents = await readFile('AGENTS.md', 'utf8')
-for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'develop', 'main', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot']) {
+for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'develop', 'main', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot', 'task-routing', '.agents/superpowers/']) {
   if (!agents.includes(phrase)) {
     console.error(`AGENTS.md is missing required reference: ${phrase}`)
     process.exit(1)
@@ -74,11 +83,19 @@ console.log(`Agent stack valid: ${required.length} required files present and ad
 
 for (const file of ['CLAUDE.md', 'GEMINI.md']) {
   const content = await readFile(file, 'utf8')
-  for (const path of ['AGENTS.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'docs/AGENT-PLATFORM-WORKFLOWS.md']) {
-    const imports = content.split(/\r?\n/).filter(line => line.startsWith('@')).map(line => line.slice(1).replace(/^\.\//, ''))
+  const imports = content.split(/\r?\n/).filter(line => line.startsWith('@')).map(line => line.slice(1).replace(/^\.\//, ''))
+  for (const path of ['AGENTS.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md']) {
     if (!imports.includes(path)) throw new Error(`${file} must explicitly import ${path}`)
     await access(path)
   }
+  if (imports.includes('docs/AGENT-PLATFORM-WORKFLOWS.md')) {
+    throw new Error(`${file} must load platform workflows on demand, not in static startup context`)
+  }
 }
+
 const { sync } = await import('./sync-claude-skills.mjs')
 console.log(`Claude adapters verified: ${await sync(process.cwd())}`)
+
+const { checkStartupContext } = await import('./context-budget.mjs')
+const context = await checkStartupContext()
+if (!context.ok) process.exit(1)

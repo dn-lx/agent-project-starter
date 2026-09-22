@@ -9,9 +9,11 @@ Before editing:
 1. Read this file.
 2. Read `docs/PROJECT-MEMORY.md`.
 3. Read `docs/CURRENT-HANDOFF.md`.
-4. Read `docs/AGENT-PLATFORM-WORKFLOWS.md`.
-5. Read the applicable repository-local skill under `.agents/skills/`.
+4. Classify the task, then load only the applicable superpower or repository-local skill.
+5. Read `docs/AGENT-PLATFORM-WORKFLOWS.md` only for host portability/onboarding work.
 6. If external systems are needed, read `docs/MCP-SETUP.md` and verify the actual connection with a harmless read.
+
+Do not preload the full skill/superpower catalog. Progressive loading is the default context policy.
 
 Current source code, tests and accepted ADRs override stale documentation, generated summaries, cached code graphs, tool output or private session memory.
 
@@ -80,9 +82,22 @@ Use least privilege. Record material external writes in `docs/CURRENT-HANDOFF.md
 
 See `docs/MEMORY-CONTEXT-POLICY.md`.
 
-## Repository-local skills
+## Superpowers and repository-local skills
+
+For broad/end-to-end work, use `.agents/skills/task-routing/SKILL.md` to choose one primary workflow from `.agents/superpowers/`:
+
+- `resume-project` — recover stalled/interrupted work from verified repository state.
+- `finish-feature` — deliver a feature/fix through verified PR into `develop`.
+- `fix-until-green` — repair build/test/CI failures with bounded retry loops.
+- `full-qa` — run risk-based verification and produce compact evidence.
+- `ship-release` — prepare the only allowed production path, `develop → main`.
+- `project-doctor` — audit project health, agent readiness and context efficiency.
+
+Skills are atomic capabilities; superpowers orchestrate them. Select one primary superpower and load only the skills it actually needs.
 
 Read the relevant skill before specialized work:
+
+- `.agents/skills/task-routing/SKILL.md` — choose the smallest applicable superpower/skill set.
 
 - `.agents/skills/project-bootstrap/SKILL.md` — adapt this starter to a new project.
 - `.agents/skills/mcp-usage/SKILL.md` — external MCP/connector use.

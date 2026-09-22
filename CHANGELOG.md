@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Added
+- Progressive context loading, outcome-oriented Superpowers, task routing and a startup-context budget guard to reduce repeated token/context expenditure.
 - Explicit Claude/Gemini context imports, Claude skill discovery adapters, drift checks and host setup/acceptance instructions.
 - Initial versioned starter baseline: shared agent instructions, quality and security workflows, context and design skills.
 - Safe merged-branch cleanup and semantic version validation.

@@ -3,11 +3,10 @@
 @./AGENTS.md
 @./docs/PROJECT-MEMORY.md
 @./docs/CURRENT-HANDOFF.md
-@./docs/AGENT-PLATFORM-WORKFLOWS.md
 
-The imports supply shared rules and current context. Do not redefine them here.
+The imports supply only the compact startup context. Do not redefine it here; load platform workflows, MCP guidance, Superpowers and specialist skills only when the task requires them.
 
-Discover on-demand skills directly from `.agents/skills/`. Do not maintain a second copy in `.gemini/skills/`. Inspect `/memory show` and `/skills list` before relying on context or skills.
+For broad/stalled/end-to-end work, use `task-routing` to select one primary `.agents/superpowers/` workflow. Discover on-demand skills directly from `.agents/skills/`. Do not maintain a second copy in `.gemini/skills/`. Inspect `/memory show` and `/skills list` before relying on context or skills.
 
 For setup or missing context/skills, read `docs/CLAUDE-GEMINI-SETUP.md`. Inspect `/mcp` and verify connections before external work. Host settings and permissions still apply.
 

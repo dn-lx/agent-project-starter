@@ -11,6 +11,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 - Durable project memory and current-task handoff.
 - Capability-based MCP/connector documentation.
 - Agent Skills for MCP use, Context7, Graphify, code hygiene, dependency maintenance, context efficiency, frontend quality, accessibility/visual regression, security review and releases.
+- Outcome-oriented Superpowers for resume, feature delivery, CI repair, QA, release and project-health workflows.
 - Planner → Executor → Independent Reviewer orchestration.
 - Quality-first model routing guidance.
 - A strict `feature/fix/chore → develop → main` release path.
@@ -33,16 +34,15 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 
 ## Agent startup order
 
-Every agent should begin with:
+Every agent should begin with only:
 
 1. `AGENTS.md`
 2. `docs/PROJECT-MEMORY.md`
 3. `docs/CURRENT-HANDOFF.md`
-4. `docs/AGENT-PLATFORM-WORKFLOWS.md`
-5. the relevant skill under `.agents/skills/`
-6. `docs/MCP-SETUP.md` when external systems are required
 
-Current source code, tests and accepted ADRs override stale documentation, session memory, cached code graphs or model assumptions.
+Then classify the task and load one applicable Superpower or skill. Load platform/MCP/design/security/release documents only when the task requires them. This progressive-loading rule keeps startup context predictable and reduces token/usage waste.
+
+Use `node scripts/context-budget.mjs --check` to guard against static-context creep. Current source code, tests and accepted ADRs override stale documentation, session memory, cached code graphs or model assumptions.
 
 ## MCP philosophy
 

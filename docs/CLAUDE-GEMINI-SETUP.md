@@ -8,11 +8,11 @@ These adapters target Claude Code and Gemini CLI. Selecting a Claude or Gemini *
 2. Install/sign in using the chosen CLI's official setup. Run `claude --version` or `gemini --version` when diagnosing compatibility.
 3. Review the workspace before accepting the host trust prompt. Keep normal permissions enabled; do not use blanket auto-approval to make setup pass.
 4. Fill the consuming project's Project Memory commands and MCP profile. TODO entries are unconfigured, not passing checks.
-5. Run `node scripts/validate-agent-stack.mjs`, `node scripts/sync-claude-skills.mjs`, `node scripts/validate-version.mjs` and `node --test tests/*.test.mjs`.
+5. Run `node scripts/validate-agent-stack.mjs`, `node scripts/context-budget.mjs --check`, `node scripts/sync-claude-skills.mjs`, `node scripts/validate-version.mjs` and `node --test tests/*.test.mjs`.
 
 ## Claude Code
 
-- Start `claude` in the repo root. CLAUDE.md explicitly imports shared instructions, memory, handoff and platform workflow, including for sessions without native AGENTS.md loading.
+- Start `claude` in the repo root. CLAUDE.md explicitly imports only shared instructions, memory and handoff, including for sessions without native AGENTS.md loading. Platform workflow and specialist guidance are loaded on demand.
 - Use `/memory` or `/context` to inspect loaded context. Confirm the actual branch/version rules and current handoff.
 - Skills are discovered through `.claude/skills/<name>/SKILL.md`. Try `/quality-gates` and confirm Claude reads `.agents/skills/quality-gates/SKILL.md`. Committed adapters avoid Windows symlink requirements and contain no copied procedures.
 - Use `/mcp` to inspect connections; configure credentials privately in the host. Complete a harmless read against the intended account/project before writing.
@@ -20,7 +20,7 @@ These adapters target Claude Code and Gemini CLI. Selecting a Claude or Gemini *
 
 ## Gemini CLI
 
-- Start `gemini` in the repo root. GEMINI.md imports the same shared context.
+- Start `gemini` in the repo root. GEMINI.md imports the same compact shared context; platform workflow and specialist guidance are loaded on demand.
 - Use `/memory show` to inspect instructions; `/memory reload` refreshes them.
 - Use `/skills list` to confirm shared `.agents/skills/` discovery, and `/skills reload` after edits. No duplicate Gemini skill tree is needed. If skills are missing, check workspace trust and the installed CLI's skill settings.
 - Use `/mcp` and perform the same harmless account/project verification.
@@ -33,7 +33,7 @@ The answer must reflect current VERSION, feature → develop → approved main f
 
 ## Boundaries and troubleshooting
 
-- If imports are ignored, explicitly open AGENTS.md, Project Memory, Current Handoff and Platform Workflows before editing; check CLI version/configuration against official docs.
+- If imports are ignored, explicitly open AGENTS.md, Project Memory and Current Handoff before editing; load Platform Workflows only when the task concerns host behavior/onboarding; check CLI version/configuration against official docs.
 - Repository instructions guide behavior; GitHub rulesets enforce branch protections. Adapters do not grant repository-settings access.
 - Login, local CLI installation, MCP authentication and live skill activation must be verified on the machine running that host. Static CI cannot prove them.
 - Keep local preferences, settings and machine MCP configuration out of Git. Share reviewed credential-free examples separately if needed.

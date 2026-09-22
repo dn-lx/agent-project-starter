@@ -4,25 +4,26 @@
 
 ## Current task
 
-Improve Claude Code and Gemini CLI portability on `feat/claude-gemini-portability`, targeting develop.
+Improve Agent Project Starter Superpowers, skills and context/token efficiency on `feature/superpowers-context-efficiency`, targeting `develop`.
 
 ## Previous work verified
 
-PR #5 merged into develop. The live cleanup run deleted its temporary branch. main remained unchanged. Version 0.1.0 is planned, not published.
+`develop` was six commits ahead of `main` when this task started. Existing Claude/Gemini portability, lifecycle, frontend-quality and context-efficiency work was preserved. Production `main` remains unchanged.
 
 ## Changes
 
-- Explicit shared context imports in CLAUDE.md and GEMINI.md.
-- Thin generated Claude discovery adapters referring to canonical `.agents/skills/`; Gemini discovers canonical skills directly.
-- Deterministic drift validation integrated into existing CI, tests and setup/acceptance instructions.
-- Private machine settings ignored. No host authentication, permission overrides or model routing config changed.
+- Added compact outcome-oriented Superpowers for resume, feature delivery, CI repair, full QA, release and project health.
+- Added `task-routing` so broad tasks select one primary workflow instead of loading the whole capability catalog.
+- Changed Claude, Gemini and Copilot startup guidance to progressive loading; Platform Workflows are no longer static startup context.
+- Added `scripts/context-budget.mjs` plus tests to estimate and guard startup context growth.
+- Updated orchestration, memory/context policy, responsibility map and host setup docs.
 
 ## Verification / limits
 
-Run agent-stack/version checks and all tests; remote CI and final review are recorded in the PR.
-Claude and Gemini CLI binaries are not installed in this environment, so live host login/discovery/MCP activation is unverified. Follow the setup document on the actual host.
-Branch protection remains an owner setup requirement; adapters cannot grant repository administration permissions.
+Run agent-stack validation, context-budget check, version validation and all Node tests. Remote GitHub Actions and final diff review must be green before merge.
+The context estimate uses an approximate bytes-per-token heuristic; it is a regression guard, not a provider billing meter.
+No OmniRoute dependency was added. Model routing remains optional/provider-independent.
 
 ## Next safe step
 
-After green CI, merge into develop and verify cleanup. Verify the first-session acceptance prompt in the user's chosen host. Production promotion still requires explicit approval.
+Open/update the PR from `feature/superpowers-context-efficiency` into `develop`, inspect GitHub Actions, repair any confirmed failures, and merge only after checks/review are green. Production promotion remains a separate explicitly approved `develop → main` release.

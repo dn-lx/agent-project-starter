@@ -13,16 +13,19 @@ Store current branch/task state, blockers, checks and next step in `docs/CURRENT
 ### Episodic engineering memory
 Past fixes should be recoverable from Git history, PRs/issues, tests and concise source-linked notes. Do not duplicate full chat transcripts into permanent memory.
 
-## Context retrieval order
+## Progressive context loading
 
-Before loading broad code context:
+Startup context should be limited to the canonical working agreement, compact Project Memory and Current Handoff. Do not automatically load platform workflows, MCP policy, every skill or every superpower.
 
-1. read canonical instructions and compact memory,
-2. inspect Git status/diff/history,
-3. use exact source search,
-4. use Graphify for code relationships/change impact,
-5. open only relevant files,
+After startup:
+1. classify the task,
+2. select one primary Superpower or the smallest directly relevant skill,
+3. inspect Git status/diff/history,
+4. use exact source search or Graphify before broad reads,
+5. open only relevant source/tests and conditional specialist guidance,
 6. broaden only when evidence requires it.
+
+Use `scripts/context-budget.mjs` to estimate and guard static startup context. The estimate is deliberately approximate; its purpose is regression control, not billing reconciliation.
 
 ## Freshness
 
@@ -46,12 +49,15 @@ Avoid:
 - entire prior agent transcripts.
 
 Prefer:
-- repository summary,
-- module summary,
+- compact startup memory,
+- one selected superpower or skill,
+- repository/module summaries only when needed,
 - relevant source,
 - current diff,
 - failing test/error,
 - specific project rules.
+
+Do not spend context describing tools/skills that are not being used for the current task.
 
 ## Retry guard
 
