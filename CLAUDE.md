@@ -3,11 +3,10 @@
 @AGENTS.md
 @docs/PROJECT-MEMORY.md
 @docs/CURRENT-HANDOFF.md
-@docs/AGENT-PLATFORM-WORKFLOWS.md
 
-The imports supply shared rules and current context. Do not redefine them here.
+The imports supply only the compact startup context. Do not redefine it here; load platform workflows, MCP guidance, Superpowers and specialist skills only when the task requires them.
 
-Load applicable skills from `.claude/skills/`; these adapters point to canonical `.agents/skills/` sources. Read the canonical file before acting and resolve bundled resources from its directory. Inspect loaded context with `/memory` or `/context`.
+For broad/stalled/end-to-end work, use `task-routing` to select one primary `.agents/superpowers/` workflow. Load applicable skills from `.claude/skills/`; these adapters point to canonical `.agents/skills/` sources. Read the canonical file before acting and resolve bundled resources from its directory. Inspect loaded context with `/memory` or `/context`.
 
 For setup or missing context/skills, read `docs/CLAUDE-GEMINI-SETUP.md`. Inspect `/mcp` and verify connections before external work. Host settings and permissions still apply.
 
