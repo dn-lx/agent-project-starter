@@ -83,12 +83,16 @@ console.log(`Agent stack valid: ${required.length} required files present and ad
 
 for (const file of ['CLAUDE.md', 'GEMINI.md']) {
   const content = await readFile(file, 'utf8')
-  for (const path of ['AGENTS.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'docs/AGENT-PLATFORM-WORKFLOWS.md']) {
-    const imports = content.split(/\r?\n/).filter(line => line.startsWith('@')).map(line => line.slice(1).replace(/^\.\//, ''))
+  const imports = content.split(/\r?\n/).filter(line => line.startsWith('@')).map(line => line.slice(1).replace(/^\.\//, ''))
+  for (const path of ['AGENTS.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md']) {
     if (!imports.includes(path)) throw new Error(`${file} must explicitly import ${path}`)
     await access(path)
   }
+  if (imports.includes('docs/AGENT-PLATFORM-WORKFLOWS.md')) {
+    throw new Error(`${file} must load platform workflows on demand, not in static startup context`)
+  }
 }
+
 const { sync } = await import('./sync-claude-skills.mjs')
 console.log(`Claude adapters verified: ${await sync(process.cwd())}`)
 
