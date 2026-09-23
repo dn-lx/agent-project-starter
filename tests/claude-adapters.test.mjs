@@ -24,6 +24,8 @@ test('sync checks drift, refreshes generated metadata and preserves custom skill
     await assert.rejects(sync(root), /Missing\/stale/)
     assert.equal(await sync(root, true), 1)
     assert.equal(await sync(root), 1)
+    await writeFile(target, (await readFile(target, 'utf8')).replaceAll('\n', '\r\n'))
+    assert.equal(await sync(root), 1)
     await writeFile(join(canonical, 'SKILL.md'), source.replace('example task', 'changed task'))
     await assert.rejects(sync(root), /Missing\/stale/)
     await sync(root, true)
