@@ -21,18 +21,18 @@ Current source code, tests and accepted ADRs override stale documentation, gener
 
 ## Branch and release rules
 
-- `develop` is the development integration branch.
-- Ordinary work starts from current `develop` on a focused `feature/*`, `fix/*` or `chore/*` branch.
-- Feature/fix/chore branches merge into `develop`, never directly into `prod`.
+- `dev` is the development integration branch.
+- Ordinary work starts from current `dev` on a focused `feature/*`, `fix/*` or `chore/*` branch.
+- Feature/fix/chore branches merge into `dev`, never directly into `prod`.
 - `prod` is production/release.
-- Only this repository's `develop` branch may merge into `prod`, through the release workflow and explicit production approval.
+- Only this repository's `dev` branch may merge into `prod`, through the release workflow and explicit production approval.
 - Never push directly to `prod`, force-push it, or bypass Git history with an ad-hoc production deployment.
 
 Read `.agents/skills/release-workflow/SKILL.md` before creating/merging a production PR or changing production deployment policy.
 
 ## Branch cleanup and versioning
 
-Read `docs/BRANCH-LIFECYCLE.md` and `docs/VERSIONING.md` for lifecycle work. Only `prod` and `develop` are permanent. Verify completed temporary branches are deleted after merge; preserve active/unmerged work. Every material change must identify version impact and update CHANGELOG.md when user-visible. Release preparation updates VERSION and dated notes; publish immutable tags only after approved develop → prod release. All host adapters inherit these rules.
+Read `docs/BRANCH-LIFECYCLE.md` and `docs/VERSIONING.md` for lifecycle work. Only `prod` and `dev` are permanent. Verify completed temporary branches are deleted after merge; preserve active/unmerged work. Every material change must identify version impact and update CHANGELOG.md when user-visible. Release preparation updates VERSION and dated notes; publish immutable tags only after approved dev → prod release. All host adapters inherit these rules.
 
 ## Engineering principles
 
@@ -97,10 +97,10 @@ See `docs/MEMORY-CONTEXT-POLICY.md`.
 For broad/end-to-end work, use `.agents/skills/task-routing/SKILL.md` to choose one primary workflow from `.agents/superpowers/`:
 
 - `resume-project` — recover stalled/interrupted work from verified repository state.
-- `finish-feature` — deliver a feature/fix through verified PR into `develop`.
+- `finish-feature` — deliver a feature/fix through verified PR into `dev`.
 - `fix-until-green` — repair build/test/CI failures with bounded retry loops.
 - `full-qa` — run risk-based verification and produce compact evidence.
-- `ship-release` — prepare the only allowed production path, `develop → main`.
+- `ship-release` — prepare the only allowed production path, `dev → prod`.
 - `project-doctor` — audit project health, agent readiness and context efficiency.
 
 Skills are atomic capabilities; superpowers orchestrate them. Select one primary superpower and load only the skills it actually needs.
@@ -125,7 +125,7 @@ Read the relevant skill before specialized work:
 - `.agents/skills/accessibility-visual-regression/SKILL.md` — accessibility evidence and stable visual regression checks.
 - `.agents/skills/security-boundary-review/SKILL.md` — auth/secrets/data/external trust boundaries.
 - `.agents/skills/quality-gates/SKILL.md` — risk-based verification.
-- `.agents/skills/release-readiness/SKILL.md` — develop→prod review.
+- `.agents/skills/release-readiness/SKILL.md` — dev→prod review.
 - `.agents/skills/release-workflow/SKILL.md` — branch/release contract.
 
 For frontend work, use `docs/FRONTEND-QUALITY-STANDARD.md` to decide when Taste and Motion should be loaded. Do not force those specialist skills onto tiny or unrelated changes.
