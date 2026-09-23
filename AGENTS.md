@@ -59,7 +59,6 @@ Agent/host assignment and model assignment are separate decisions. Provider/mode
 See:
 - `docs/AGENT-ORCHESTRATION.md`
 - `docs/EXECUTION-ROUTING-POLICY.md`
-- `docs/MODEL-ROUTING-POLICY.md`
 - `docs/CLI-AGENT-STACK.md` — curated Claude/Codex/Gemini/OpenCode host baseline and Claude efficiency add-ons.
 
 ## Curated CLI host baseline
