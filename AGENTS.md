@@ -58,6 +58,13 @@ See:
 - `docs/AGENT-ORCHESTRATION.md`
 - `docs/EXECUTION-ROUTING-POLICY.md`
 - `docs/MODEL-ROUTING-POLICY.md`
+- `docs/CLI-AGENT-STACK.md` — curated Claude/Codex/Gemini/OpenCode host baseline and Claude efficiency add-ons.
+
+## Curated CLI host baseline
+
+Default coding hosts are intentionally limited to Claude Code, Codex CLI, Gemini CLI and OpenCode. Use `docs/CLI-AGENT-STACK.md` for responsibilities, isolation, plugin setup and verification. Do not add another coding-agent host unless a project documents a concrete uncovered capability gap.
+
+Claude efficiency plugins may improve implementation/review, but they never override this file. Ponytail may simplify solutions; Superpowers may structure implementation; Code Review may add an independent review pass; claude-mem and Obsidian skills are optional context/knowledge aids. Repository source, tests, ADRs, Project Memory and Current Handoff remain authoritative.
 
 ## MCP and connector policy
 
@@ -129,6 +136,8 @@ Add a project-specific skill at `.agents/skills/<project-name>/SKILL.md`.
 ## Required verification
 
 The project must define its actual test/build/lint/typecheck commands in Project Memory and CI.
+
+For review-specific guidance, use `REVIEW.md` in addition to the relevant quality/security skills.
 
 For every material change:
 - run the smallest relevant deterministic checks,
