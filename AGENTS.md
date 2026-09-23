@@ -2,11 +2,11 @@
 
 ## Canonical instructions
 
-This file is the canonical cross-agent working agreement. Platform-specific bootstrap files must stay thin and point back here rather than redefining project rules.
+This file is the canonical human-readable cross-agent working agreement. `.agents/project-policy.json` is the machine-readable branch/release/continuity contract. Platform-specific bootstrap files must stay thin and point back here rather than redefining project rules.
 
 Before editing:
 
-1. Read this file.
+1. Read this file and `.agents/project-policy.json`.
 2. Read `docs/PROJECT-MEMORY.md`.
 3. Read `docs/CURRENT-HANDOFF.md`.
 4. Before creating a new implementation branch or resuming interrupted work, apply `.agents/skills/task-continuity/SKILL.md` and reconcile the active task/PR/branch from GitHub evidence.
