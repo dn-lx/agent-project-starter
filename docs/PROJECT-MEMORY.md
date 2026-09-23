@@ -44,7 +44,7 @@
 
 | Environment | Branch | Purpose |
 | --- | --- | --- |
-| Development | `develop` | Integration/testing |
+| Development | `dev` | Integration/testing |
 | Production | `prod` | Released code |
 
 Add preview/staging details if the project uses them.
