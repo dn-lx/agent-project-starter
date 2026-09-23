@@ -7,11 +7,11 @@ This repository is itself maintained using the workflow it teaches.
 ```text
 feature/* / fix/* / chore/*
         ↓
-      develop
+      dev
         ↓
 checks + review
         ↓
-develop → main
+dev → prod
 ```
 
 Keep the starter generic. Project-specific product rules belong in generated repositories, not here.
