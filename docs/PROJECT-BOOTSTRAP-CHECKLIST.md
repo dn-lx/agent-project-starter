@@ -5,7 +5,7 @@ Use this immediately after creating a repository from Agent Project Starter.
 ## Identity and source
 
 - [ ] Rename/update README for the real project.
-- [ ] Fill `docs/PROJECT-MEMORY.md`.
+- [ ] Fill `docs/PROJECT-MEMORY.md` and confirm `.agents/project-policy.json` matches the repository branch policy.
 - [ ] Replace the examples in `docs/REQUIREMENTS.md` with the project's ordered requirements, issues and roadmap.
 - [ ] Add a project-specific skill under `.agents/skills/<project-name>/SKILL.md`.
 - [ ] Remove starter-only examples that do not apply.
@@ -108,12 +108,12 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 - [ ] Add observability/analytics only if useful and privacy-safe.
 - [ ] Document rollback/recovery expectations.
 
-## Curated CLI agent stack
+## Optional local coding hosts
 
-- [ ] Read `docs/CLI-AGENT-STACK.md` and decide which of the four curated hosts are actually used by the project/team.
-- [ ] Run `node scripts/agent-cli-doctor.mjs` on the development workstation.
+- [ ] If local coding CLIs are useful, read `docs/CLI-AGENT-STACK.md` and enable only the hosts actually used by the project/team.
+- [ ] Run `node scripts/agent-cli-doctor.mjs` only on workstations where those local hosts are used.
 - [ ] Use separate branches/worktrees for parallel modifying agents.
-- [ ] For Claude Code, verify the committed `.claude/settings.json` activates only the default efficiency profile: Ponytail, external Superpowers and Code Review; enable claude-mem or Obsidian skills only when their memory/knowledge value is needed and privacy boundaries are acceptable.
+- [ ] For Claude Code, install third-party plugins only when their concrete value and trust/privacy boundary have been reviewed; no third-party plugin is auto-enabled by the starter.
 - [ ] Keep `REVIEW.md` aligned with project-specific review invariants.
 - [ ] Do not add another coding-agent host unless a concrete uncovered capability gap is documented.
 
@@ -145,7 +145,5 @@ If not, the bootstrap is incomplete.
 - [ ] Read VERSIONING and BRANCH-LIFECYCLE; preserve an existing app version.
 - [ ] Protect prod/dev and require production guard plus version validation.
 - [ ] Verify a merged test branch is cleaned up.
-- [ ] Address applicable gaps in `docs/COVERAGE-REVIEW.md`.
-
 - [ ] Follow `docs/CLAUDE-GEMINI-SETUP.md` for the chosen host; verify context, skills and actual MCP connections.
 - [ ] Regenerate Claude adapters after adding a project skill: `node scripts/sync-claude-skills.mjs --write`.
