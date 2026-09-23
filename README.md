@@ -6,7 +6,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 
 ## What this starter gives every new project
 
-- `AGENTS.md` as the canonical cross-agent working agreement.
+- `AGENTS.md` as the canonical human-readable working agreement plus `.agents/project-policy.json` for machine-readable branch/release/continuity policy.
 - Thin bootstrap files for Claude Code, Gemini CLI and GitHub Copilot.
 - Durable project memory and machine-readable task/branch/PR continuity across interruptions.
 - Capability-based MCP/connector documentation.
@@ -39,7 +39,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 
 Every agent should begin with only:
 
-1. `AGENTS.md`
+1. `AGENTS.md` + `.agents/project-policy.json`
 2. `docs/PROJECT-MEMORY.md`
 3. `docs/CURRENT-HANDOFF.md`
 
