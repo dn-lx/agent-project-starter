@@ -17,15 +17,15 @@ If an adapter conflicts with `AGENTS.md`, follow `AGENTS.md`.
 
 1. Read AGENTS, Project Memory and Current Handoff.
 2. Inspect active branch, working tree, relevant PRs/issues and recent commits.
-3. Start ordinary work from `develop` on a focused feature/fix/chore branch.
+3. Start ordinary work from `dev` on a focused feature/fix/chore branch.
 4. Read relevant skills before specialized/sensitive work.
 5. Verify required MCPs/connectors before relying on them.
 6. Trace the actual code/data path.
 7. Make the smallest complete change.
 8. Run documented checks. Never weaken checks to get green.
 9. Use independent review for security/auth/payments/data/privacy/release-sensitive work.
-10. Record version impact per `docs/VERSIONING.md`; merge feature/fix/chore only into `develop` and verify cleanup per `docs/BRANCH-LIFECYCLE.md`.
-11. Release only through `develop → prod`.
+10. Record version impact per `docs/VERSIONING.md`; merge feature/fix/chore only into `dev` and verify cleanup per `docs/BRANCH-LIFECYCLE.md`.
+11. Release only through `dev → prod`.
 12. Before creating/resuming a branch, reconcile task → branch → PR using `task-continuity`; update Current Handoff when material state would otherwise be lost.
 
 ## ChatGPT / OpenAI Codex
