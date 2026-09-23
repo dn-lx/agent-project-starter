@@ -25,3 +25,19 @@ test('review contract prioritizes correctness and deterministic evidence', async
   assert.match(review, /develop/i)
   assert.match(review, /main/i)
 })
+
+
+test('Claude project settings enable only the default efficiency profile', async () => {
+  const settings = JSON.parse(await readFile('.claude/settings.json', 'utf8'))
+  assert.deepEqual(
+    Object.keys(settings.enabledPlugins).sort(),
+    [
+      'code-review@claude-plugins-official',
+      'ponytail@ponytail',
+      'superpowers@claude-plugins-official',
+    ],
+  )
+  assert.equal(settings.enabledPlugins['code-review@claude-plugins-official'], true)
+  assert.equal(settings.enabledPlugins['ponytail@ponytail'], true)
+  assert.equal(settings.enabledPlugins['superpowers@claude-plugins-official'], true)
+})
