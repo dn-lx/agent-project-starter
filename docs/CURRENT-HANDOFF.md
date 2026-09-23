@@ -2,41 +2,43 @@
 
 **Last updated:** 2026-09-23
 
-## Current task
+## Current state
 
-Add the curated multi-CLI development stack and Claude efficiency profile on `feature/curated-cli-agent-stack`, targeting `develop`.
+The curated multi-CLI development stack and Claude efficiency profile are merged into `develop` via PR #9.
 
-## Changes
+## Verified setup
 
-- Limited the default coding-agent host set to Claude Code, Codex CLI, Gemini CLI and OpenCode.
-- Documented the router/coordinator pattern and isolated branch/worktree ownership.
-- Added project-scoped Claude defaults for Ponytail, external Superpowers and Anthropic Code Review in `.claude/settings.json`.
-- Kept claude-mem and Obsidian skills opt-in because they create memory/knowledge boundaries that are not appropriate for every project.
-- Added `REVIEW.md` as the shared correctness/security/regression review contract.
-- Added `scripts/agent-cli-doctor.mjs` for local host availability checks.
-- Made Claude adapter drift validation CRLF-safe on Windows.
-- Kept repository source/tests/ADRs/Project Memory/Current Handoff authoritative over plugin memory or notes.
-- Explicitly rejected adding Aider, Goose, Qwen Code, Kiro or other coding-agent hosts by default unless a project-specific gap is documented.
+- Default coding-agent hosts: Claude Code, Codex CLI, Gemini CLI and OpenCode.
+- Project-scoped Claude defaults: Ponytail, external Superpowers and Anthropic Code Review.
+- claude-mem and Obsidian skills remain opt-in because they create memory/knowledge boundaries that are not appropriate for every project.
+- `REVIEW.md` is the shared correctness/security/regression review contract.
+- `scripts/agent-cli-doctor.mjs` verifies local host availability.
+- Claude adapter drift validation is CRLF-safe on Windows.
+- Repository source/tests/ADRs/Project Memory/Current Handoff remain authoritative over plugin memory or notes.
 
-## Verification / limits
+Clean-checkout local verification before merge:
+- `node scripts/validate-agent-stack.mjs` ✅
+- `node scripts/context-budget.mjs --check` ✅
+- `node scripts/validate-version.mjs` ✅
+- `node --test tests/*.test.mjs` ✅ (16/16)
+- Workstation CLI baseline: Claude Code ✅, Codex CLI ✅, Gemini CLI ✅, OpenCode ✅
 
-Clean-checkout local verification is green:
-- `node scripts/validate-agent-stack.mjs`
-- `node scripts/context-budget.mjs --check`
-- `node scripts/validate-version.mjs`
-- `node --test tests/*.test.mjs` (16/16)
-- Claude project plugins verified enabled: Ponytail, Superpowers, Code Review.
-- Development workstation CLI baseline verified: Claude Code, Codex CLI, Gemini CLI and OpenCode.
+## Temporary GitHub Actions mode
 
-GitHub-hosted Actions were failing before any workflow step started: affected jobs exposed no steps and no log URL. Per owner direction on 2026-09-23, all six GitHub workflows are temporarily set to manual-only (`workflow_dispatch`) so development can continue using local deterministic verification.
+GitHub-hosted Actions were failing before any workflow step started and exposed no usable job logs. Per owner direction on 2026-09-23, all six workflows are temporarily manual-only using `workflow_dispatch`:
+
+- agent-stack validation
+- security checks
+- version validation
+- merged branch cleanup
+- documentation drift
+- production branch guard
 
 While this temporary mode is active:
-- run the full local verification commands before merging into `develop`,
-- manually remove merged temporary branches because branch-cleanup is not automatic,
+- run the full local deterministic verification before merging into `develop`,
+- manually remove merged temporary branches,
 - do not promote `develop` to `main` until the automatic production guard and required CI workflows are re-enabled, unless the owner explicitly changes that temporary rule.
-
-Live claude-mem/Obsidian activation remains a per-project decision after privacy/data-boundary review.
 
 ## Next safe step
 
-Merge PR #9 into `develop` after the local deterministic checks pass. Later, restore the original automatic triggers for all six workflows, verify GitHub Actions can start jobs normally, and only then resume the normal automated `develop -> main` release path.
+Continue development from `develop`. When GitHub Actions is ready to be restored, reinstate the original automatic triggers for all six workflows, verify jobs actually start and produce logs, then resume the normal automated release path.
