@@ -16,7 +16,7 @@ Use this skill immediately after generating a new repository from the starter.
 7. Add actual project CI/test/build commands; do not leave a fake green CI that performs no meaningful checks.
 8. Confirm generic security workflows fit the stack.
 9. Update `docs/AGENTIC-STACK-STATUS.md` with verified status.
-9. Run the template validation workflow/script.
-10. Ask a fresh agent to explain project architecture, test commands, branch flow, MCP capabilities and release path. Fix any ambiguity it exposes.
+10. Run the template validation workflow/script.
+11. Ask a fresh agent to explain project architecture, test commands, branch flow, MCP capabilities and release path. Fix any ambiguity it exposes.
 
 Never copy credentials or machine-specific MCP tokens into the repository.
