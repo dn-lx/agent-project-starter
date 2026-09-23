@@ -28,10 +28,15 @@ Clean-checkout local verification is green:
 - Claude project plugins verified enabled: Ponytail, Superpowers, Code Review.
 - Development workstation CLI baseline verified: Claude Code, Codex CLI, Gemini CLI and OpenCode.
 
-GitHub-hosted Actions for the PR are currently failing before any workflow step starts: affected jobs expose no steps and no log URL. Do not merge while this remains unresolved; the repository rule still requires checks to pass.
+GitHub-hosted Actions were failing before any workflow step started: affected jobs exposed no steps and no log URL. Per owner direction on 2026-09-23, all six GitHub workflows are temporarily set to manual-only (`workflow_dispatch`) so development can continue using local deterministic verification.
+
+While this temporary mode is active:
+- run the full local verification commands before merging into `develop`,
+- manually remove merged temporary branches because branch-cleanup is not automatic,
+- do not promote `develop` to `main` until the automatic production guard and required CI workflows are re-enabled, unless the owner explicitly changes that temporary rule.
 
 Live claude-mem/Obsidian activation remains a per-project decision after privacy/data-boundary review.
 
 ## Next safe step
 
-Resolve the GitHub Actions startup/account/runner issue, rerun the PR checks, then merge PR #9 into `develop` only when the required checks are green. Production promotion remains a separate approved `develop -> main` release.
+Merge PR #9 into `develop` after the local deterministic checks pass. Later, restore the original automatic triggers for all six workflows, verify GitHub Actions can start jobs normally, and only then resume the normal automated `develop -> main` release path.
