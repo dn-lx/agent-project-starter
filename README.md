@@ -26,13 +26,14 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 1. Create the repository from this starter.
 2. Complete `docs/PROJECT-BOOTSTRAP-CHECKLIST.md`.
 3. Replace the placeholder project facts in `docs/PROJECT-MEMORY.md`.
-4. Add a project-specific skill under `.agents/skills/<project-name>/SKILL.md`.
-5. Select the MCP capabilities the project actually needs in `docs/MCP-SETUP.md`.
-6. Configure project-specific build/test commands and CI.
-7. Create/use `develop` for integration work and keep `main` as production.
-8. Verify external connections with harmless reads before any write.
-9. Keep credentials outside Git.
-10. Update `docs/CURRENT-HANDOFF.md` whenever another agent would otherwise need to rediscover unfinished state.
+4. Populate `docs/REQUIREMENTS.md` with the project's ordered requirements, issues and roadmap.
+5. Add a project-specific skill under `.agents/skills/<project-name>/SKILL.md`.
+6. Select the MCP capabilities the project actually needs in `docs/MCP-SETUP.md`.
+7. Configure project-specific build/test commands and CI.
+8. Create/use `develop` for integration work and keep `main` as production.
+9. Verify external connections with harmless reads before any write.
+10. Keep credentials outside Git.
+11. Update `docs/CURRENT-HANDOFF.md` whenever another agent would otherwise need to rediscover unfinished state.
 
 ## Agent startup order
 
@@ -42,7 +43,7 @@ Every agent should begin with only:
 2. `docs/PROJECT-MEMORY.md`
 3. `docs/CURRENT-HANDOFF.md`
 
-Then classify the task, load one applicable Superpower or skill, and use execution routing only when multiple hosts/models or delegation choices actually exist. Load platform/MCP/design/security/release documents only when the task requires them. This progressive-loading rule keeps startup context predictable and reduces token/usage waste.
+Then classify the task. For product/backlog/bug work, also load `docs/REQUIREMENTS.md`; otherwise keep it out of startup context. Load one applicable Superpower or skill, and use execution routing only when multiple hosts/models or delegation choices actually exist. Load platform/MCP/design/security/release documents only when the task requires them. This progressive-loading rule keeps startup context predictable and reduces token/usage waste.
 
 Use `node scripts/context-budget.mjs --check` to guard against static-context creep. Current source code, tests and accepted ADRs override stale documentation, session memory, cached code graphs or model assumptions.
 
