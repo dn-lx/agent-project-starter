@@ -58,7 +58,13 @@ plan → implement → deterministic checks → fresh review pass when justified
 
 Do not fail merely because preferred agents/models are unavailable if the current environment can safely perform the work.
 
-## 6. Usage discipline
+## 6. Curated host baseline
+
+When multiple CLI hosts are available, the default supported set is Claude Code, Codex CLI, Gemini CLI and OpenCode. Their suggested responsibilities and setup live in `docs/CLI-AGENT-STACK.md`. Treat those roles as defaults, not rankings, and do not use every host on every task.
+
+Do not introduce another coding-agent host unless the project documents a concrete capability gap.
+
+## 7. Usage discipline
 
 Optimize in this order:
 1. required capability and correctness,
