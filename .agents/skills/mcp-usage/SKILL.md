@@ -24,7 +24,10 @@ For database, hosting, payment, email, analytics, storage, repository settings o
 - prefer reversible operations,
 - describe destructive/irreversible effects before execution,
 - preserve least privilege,
-- record material writes in Current Handoff.
+- record material writes in Current Handoff,
+- before retrying a failed write, reconcile the remote state first so an already-completed action is not repeated,
+- use provider idempotency keys/request IDs when available,
+- keep automatic retries bounded and stop on repeated identical failures.
 
 ## Secrets
 
