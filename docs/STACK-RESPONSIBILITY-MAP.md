@@ -13,6 +13,7 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Code Hygiene | Confirmed dead code/unused exports/dependencies | Dependency upgrades or context compression |
 | Dependency Maintenance | Upgrades, advisories, lockfiles/update bots | Removing unused code |
 | Task Routing | Select one primary outcome workflow and minimal skill set | Choosing provider/model execution details |
+| Task Continuity | Bind/recover task → repository → branch → PR state across interruptions | Choosing implementation strategy or treating every open branch as active |
 | Execution Routing | Assign agent/host, model class and justified parallelism | Task decomposition logic inside a Superpower |
 | Curated CLI Stack | Claude Code, Codex CLI, Gemini CLI and OpenCode host setup/isolation | Adding every available coding agent |
 | Claude Enhancement Plugins | Ponytail/Superpowers/Code Review plus optional claude-mem/Obsidian integration | Overriding AGENTS.md, deterministic checks or project memory |
@@ -33,9 +34,10 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 
 ## Intentional overlaps
 
-### Task Routing + Execution Routing + Superpowers + Skills
+### Task Routing + Task Continuity + Execution Routing + Superpowers + Skills
 
 - Task Routing selects one outcome workflow.
+- Task Continuity determines whether valid work already exists and which task/branch/PR binding may be resumed.
 - Execution Routing decides where it runs, which model class is used and whether extra agents are justified.
 - A Superpower sequences the work.
 - Skills supply specialist procedures only when triggered.
