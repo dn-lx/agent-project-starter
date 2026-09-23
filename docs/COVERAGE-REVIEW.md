@@ -6,7 +6,7 @@ The starter has broad reusable process coverage, not proof that a particular app
 
 | Priority | Gap | Evidence needed |
 | --- | --- | --- |
-| High | Enforced repository governance | prod/develop deletion and force-push protection; required PR/check rules; verified permissions. At review time both branches reported unprotected. |
+| High | Enforced repository governance | prod/dev deletion and force-push protection; required PR/check rules; verified permissions. At review time both branches reported unprotected. |
 | High | Real application verification | Replace Project Memory command placeholders with actual unit/integration/E2E/build/typecheck commands and run them in CI. Stack-file validation is not an application test. |
 | High when stateful | Recovery and migrations | Tested backup restore, migration rollback/forward strategy and explicit recovery ownership. |
 | High when agent actions ship | Agent behavior evaluation | Regression cases, tool authorization denial tests, prompt-injection cases, timeouts, retry/idempotency and cost/run limits. |
