@@ -90,7 +90,9 @@ Do not load all three by default.
 
 ## Update policy
 
-These are external projects and may change. Before a material upgrade:
+These are external projects and may change. The install commands above are for deliberate project bootstrap; do not run unpinned third-party `npx` installers autonomously in a sensitive/shared environment. When automating installation, pin a reviewed release/revision where the upstream tool supports it.
+
+Before a material upgrade:
 1. inspect upstream release notes/source,
 2. review new hooks/scripts/permissions,
 3. update the audited revision in this document,
