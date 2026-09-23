@@ -1,13 +1,7 @@
 name: Documentation drift
 
 on:
-  schedule:
-    - cron: '0 17 * * *'
   workflow_dispatch:
-  push:
-    paths:
-      - 'scripts/documentation-drift.mjs'
-      - 'docs/DOCUMENTATION_POLICY.md'
 
 permissions:
   contents: read
