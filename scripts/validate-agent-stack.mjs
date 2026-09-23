@@ -21,7 +21,6 @@ const required = [
   'docs/AGENT-PLATFORM-WORKFLOWS.md',
   'docs/AGENT-ORCHESTRATION.md',
   'docs/EXECUTION-ROUTING-POLICY.md',
-  'docs/MODEL-ROUTING-POLICY.md',
   'docs/MEMORY-CONTEXT-POLICY.md',
   'docs/DOCUMENTATION_POLICY.md',
   'docs/STACK-RESPONSIBILITY-MAP.md',
