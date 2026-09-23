@@ -96,7 +96,7 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 - [ ] Read `docs/CLI-AGENT-STACK.md` and decide which of the four curated hosts are actually used by the project/team.
 - [ ] Run `node scripts/agent-cli-doctor.mjs` on the development workstation.
 - [ ] Use separate branches/worktrees for parallel modifying agents.
-- [ ] For Claude Code, install only the useful efficiency profile: Ponytail, external Superpowers and Code Review; enable claude-mem or Obsidian skills only when their memory/knowledge value is needed and privacy boundaries are acceptable.
+- [ ] For Claude Code, verify the committed `.claude/settings.json` activates only the default efficiency profile: Ponytail, external Superpowers and Code Review; enable claude-mem or Obsidian skills only when their memory/knowledge value is needed and privacy boundaries are acceptable.
 - [ ] Keep `REVIEW.md` aligned with project-specific review invariants.
 - [ ] Do not add another coding-agent host unless a concrete uncovered capability gap is documented.
 
