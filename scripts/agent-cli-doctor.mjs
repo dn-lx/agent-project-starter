@@ -9,9 +9,12 @@ export const curatedHosts = [
 ]
 
 export function probe(command) {
-  const result = spawnSync(command, ['--version'], {
+  const isWindows = process.platform === 'win32'
+  const executable = isWindows ? 'cmd.exe' : command
+  const args = isWindows ? ['/d', '/s', '/c', `${command} --version`] : ['--version']
+  const result = spawnSync(executable, args, {
     encoding: 'utf8',
-    shell: process.platform === 'win32',
+    shell: false,
     timeout: 5000,
   })
 
