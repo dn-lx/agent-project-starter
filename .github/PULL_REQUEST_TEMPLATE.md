@@ -1,10 +1,21 @@
-## What changed
+## Summary
 
-<!-- Concise description of the user-visible/technical outcome. -->
+<!-- Concise user-visible or engineering outcome. -->
 
-## Why
+## Why / requirement
 
-<!-- Root cause / requirement. -->
+- Task / requirement ID:
+- Root cause / need:
+
+## Task continuity
+
+- Base branch: `dev`
+- Working branch:
+- Status:
+- Last verified SHA:
+- Next safe step if interrupted:
+
+> For non-trivial work, keep task → branch → PR binding recoverable. An open branch alone is not an active-task signal.
 
 ## Verification
 
@@ -32,9 +43,11 @@ TODO
 - MCP/external writes performed:
 - Remaining limitations:
 
-## Version and branch lifecycle
+## Version / release impact
 
 - Release impact: none / patch / minor / major (explain).
 - Changelog entry or reason none is needed:
 - Compatibility/migration impact:
-- After merge: verify temporary branch cleanup; preserve main/develop.
+- [ ] Development-only change
+- [ ] Requires later `dev → prod` release review
+- [ ] After merge, verify temporary branch cleanup.
