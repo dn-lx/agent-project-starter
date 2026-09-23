@@ -3,6 +3,7 @@ import { readFile, access } from 'node:fs/promises'
 const required = [
   'docs/CLAUDE-GEMINI-SETUP.md',
   'docs/CLI-AGENT-STACK.md',
+  '.claude/settings.json',
   'REVIEW.md',
   'scripts/agent-cli-doctor.mjs',
   'tests/cli-stack.test.mjs',
