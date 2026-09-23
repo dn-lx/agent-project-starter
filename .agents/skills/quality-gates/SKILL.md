@@ -28,7 +28,7 @@ For auth, permissions, secrets, payments, schema/data, tenant isolation, privile
 - allowed + denied/negative-path verification where practical,
 - independent capable reviewer.
 
-## Tier 3 — develop→main release
+## Tier 3 — develop→prod release
 
 Follow Release Workflow and Release Readiness:
 - complete release diff,
