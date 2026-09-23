@@ -99,7 +99,7 @@ Keep the starter generic. Project-specific business rules belong in the generate
 
 ## Versioning and branch lifecycle
 
-The starter now carries a planned version in `VERSION` and release notes in `CHANGELOG.md`. Read [Versioning](docs/VERSIONING.md) and [Branch lifecycle](docs/BRANCH-LIFECYCLE.md). Only prod/dev are permanent; merged temporary branches are cleaned on dev pushes. Protect permanent branches and require CI checks when configuring a new repository.
+The starter now carries a planned version in `VERSION` and release notes in `CHANGELOG.md`. Read [Versioning](docs/VERSIONING.md) and [Branch lifecycle](docs/BRANCH-LIFECYCLE.md). Only prod/dev are permanent; merged temporary branches are cleaned automatically by GitHub after merge. Protect permanent branches and require CI checks when configuring a new repository.
 
 ## Optional local agent stack
 
