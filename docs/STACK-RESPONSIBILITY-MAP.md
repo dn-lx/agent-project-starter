@@ -14,6 +14,9 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Dependency Maintenance | Upgrades, advisories, lockfiles/update bots | Removing unused code |
 | Task Routing | Select one primary outcome workflow and minimal skill set | Choosing provider/model execution details |
 | Execution Routing | Assign agent/host, model class and justified parallelism | Task decomposition logic inside a Superpower |
+| Curated CLI Stack | Claude Code, Codex CLI, Gemini CLI and OpenCode host setup/isolation | Adding every available coding agent |
+| Claude Enhancement Plugins | Ponytail/Superpowers/Code Review plus optional claude-mem/Obsidian integration | Overriding AGENTS.md, deterministic checks or project memory |
+| REVIEW.md | Shared correctness/security/regression review contract | Replacing CI, tests or production approval |
 | Superpowers | End-to-end sequencing around resume/deliver/repair/verify/release/audit outcomes | Duplicating specialist skill instructions |
 | Memory Context | Retrieval/context discipline and durable memory rules | Compression proxy implementation |
 | Headroom Pilot | Optional measured context compression | Project memory or dead-code cleanup |
@@ -83,4 +86,4 @@ Ask:
 6. Does it create a new secret/data boundary?
 7. How will we measure whether it helps?
 
-If the answer is mostly “another way to do what we already do,” do not add it.
+If the answer is mostly “another way to do what we already do,” do not add it. The default CLI baseline is already Claude Code + Codex CLI + Gemini CLI + OpenCode; additional coding-agent hosts require an explicit project-specific gap.
