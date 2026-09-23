@@ -1,7 +1,9 @@
 name: Production branch guard
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches: [prod]
+    types: [opened, synchronize, reopened, labeled, unlabeled, ready_for_review]
 
 permissions:
   contents: read
