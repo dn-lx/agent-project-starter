@@ -12,7 +12,7 @@ Choose at most one primary superpower for a task. Load additional skills only wh
 | Deliver a normal feature/fix completely | `finish-feature` |
 | Repair a failing build/CI loop | `fix-until-green` |
 | Perform broad evidence-based verification | `full-qa` |
-| Prepare/promote develop to production | `ship-release` |
+| Prepare/promote dev to production | `ship-release` |
 | Audit project health and agent readiness | `project-doctor` |
 
 Skills remain atomic capabilities. Superpowers sequence them around an outcome.
