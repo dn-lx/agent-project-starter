@@ -10,10 +10,14 @@ const required = [
   'tests/cli-stack.test.mjs',
   'scripts/sync-claude-skills.mjs',
   'scripts/context-budget.mjs',
+  'scripts/task-state.mjs',
+  'tests/task-state.test.mjs',
+  '.github/pull_request_template.md',
   'VERSION',
   'CHANGELOG.md',
   'docs/VERSIONING.md',
   'docs/BRANCH-LIFECYCLE.md',
+  'docs/TASK-LIFECYCLE.md',
   '.github/workflows/branch-cleanup.yml',
   '.github/workflows/version-validation.yml',
   'AGENTS.md',
@@ -37,6 +41,7 @@ const required = [
   'docs/templates/ROUTING-PROFILE-EXAMPLE.md',
   '.github/dependabot.yml',
   '.agents/skills/task-routing/SKILL.md',
+  '.agents/skills/task-continuity/SKILL.md',
   '.agents/skills/execution-routing/SKILL.md',
   '.agents/superpowers/README.md',
   '.agents/superpowers/resume-project/SUPERPOWER.md',
@@ -81,12 +86,16 @@ for (const adapter of ['CLAUDE.md', 'GEMINI.md', '.github/copilot-instructions.m
 }
 
 const agents = await readFile('AGENTS.md', 'utf8')
-for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'develop', 'main', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot', 'task-routing', 'execution-routing', 'docs/EXECUTION-ROUTING-POLICY.md', 'docs/CLI-AGENT-STACK.md', 'docs/REQUIREMENTS.md', 'REVIEW.md', '.agents/superpowers/']) {
+for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'develop', 'prod', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot', 'task-routing', 'task-continuity', 'execution-routing', 'docs/EXECUTION-ROUTING-POLICY.md', 'docs/CLI-AGENT-STACK.md', 'docs/REQUIREMENTS.md', 'REVIEW.md', '.agents/superpowers/']) {
   if (!agents.includes(phrase)) {
     console.error(`AGENTS.md is missing required reference: ${phrase}`)
     process.exit(1)
   }
 }
+
+const { checkTaskState } = await import('./task-state.mjs')
+const taskState = await checkTaskState()
+if (!taskState.ok) process.exit(1)
 
 console.log(`Agent stack valid: ${required.length} required files present and adapters point to AGENTS.md.`)
 
