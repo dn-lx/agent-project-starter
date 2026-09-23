@@ -85,7 +85,7 @@ for (const adapter of ['CLAUDE.md', 'GEMINI.md', '.github/copilot-instructions.m
 }
 
 const agents = await readFile('AGENTS.md', 'utf8')
-for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'develop', 'prod', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot', 'task-routing', 'task-continuity', 'execution-routing', 'docs/EXECUTION-ROUTING-POLICY.md', 'docs/CLI-AGENT-STACK.md', 'docs/REQUIREMENTS.md', 'REVIEW.md', '.agents/superpowers/']) {
+for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'dev', 'prod', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot', 'task-routing', 'task-continuity', 'execution-routing', 'docs/EXECUTION-ROUTING-POLICY.md', 'docs/CLI-AGENT-STACK.md', 'docs/REQUIREMENTS.md', 'REVIEW.md', '.agents/superpowers/']) {
   if (!agents.includes(phrase)) {
     console.error(`AGENTS.md is missing required reference: ${phrase}`)
     process.exit(1)
