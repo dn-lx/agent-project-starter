@@ -47,7 +47,7 @@ Do not invoke every host for every task. One lead agent is the default. Parallel
 
 ## Claude Code efficiency profile
 
-Claude Code gets a small, intentional enhancement set. Repository rules in `AGENTS.md` remain authoritative over every plugin.
+Claude Code gets a small, intentional enhancement set. Repository rules in `AGENTS.md` remain authoritative over every plugin. The starter commits `.claude/settings.json` so Ponytail, Superpowers and Code Review are declared at project scope for generated projects; the install commands below are also useful for repairing or reproducing that setup.
 
 ### Ponytail — default simplicity guard
 
@@ -91,6 +91,8 @@ Install Anthropic's verified Code Review plugin:
 Use `/code-review` for substantive PRs or high-risk changes. Prefer manual/on-demand review unless the project has a reason to pay for review on every push. `REVIEW.md` contains the shared review contract.
 
 Code Review is an additional reviewer, not a substitute for tests, builds, lint/type checks, security checks or human production approval.
+
+The three plugins above are the default Claude profile. Do not auto-enable additional Claude plugins without a concrete gap.
 
 ### claude-mem — optional persistent episodic memory
 
