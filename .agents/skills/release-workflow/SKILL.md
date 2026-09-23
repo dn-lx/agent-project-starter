@@ -1,6 +1,6 @@
 ---
 name: release-workflow
-description: Enforce feature/fix/chore → develop → prod release flow.
+description: Enforce feature/fix/chore → dev → prod release flow.
 ---
 
 # Release Workflow
@@ -9,16 +9,16 @@ description: Enforce feature/fix/chore → develop → prod release flow.
 
 `prod` is production/release.
 
-The only branch allowed to merge into `prod` is this repository's `develop` branch.
+The only branch allowed to merge into `prod` is this repository's `dev` branch.
 
 ```text
 feature/* or fix/* or chore/*
              ↓
-           develop
+           dev
              ↓
        checks + review
              ↓
-      develop → prod PR
+      dev → prod PR
              ↓
      production-approved
              ↓
@@ -27,11 +27,11 @@ feature/* or fix/* or chore/*
 
 ## Development changes
 
-1. Start from current `develop`.
+1. Start from current `dev`.
 2. Create focused feature/fix/chore branch.
 3. Implement smallest complete change.
 4. Run relevant verification.
-5. Open PR into `develop`.
+5. Open PR into `dev`.
 6. Review final diff/checks.
 7. Merge only after checks pass.
 
@@ -39,13 +39,13 @@ feature/* or fix/* or chore/*
 
 Require:
 - base = `prod`,
-- head = same-repo `develop`,
+- head = same-repo `dev`,
 - `production-approved` label,
 - required checks passed,
 - release diff reviewed,
 - migrations/secrets/external-service/deployment changes explicitly reviewed.
 
-Prefer a normal merge commit for develop→prod when preserving branch ancestry is useful.
+Prefer a normal merge commit for dev→prod when preserving branch ancestry is useful.
 
 ## Forbidden
 
@@ -59,4 +59,4 @@ Never:
 
 ## Emergency fixes
 
-Emergency does not bypass the develop-only rule. Stabilize develop, verify the fix, then release develop→prod.
+Emergency does not bypass the dev-only rule. Stabilize dev, verify the fix, then release dev→prod.
