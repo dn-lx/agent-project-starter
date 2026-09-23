@@ -16,7 +16,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 - A curated multi-CLI baseline: Claude Code, Codex CLI, Gemini CLI and OpenCode — no extra agent host without a documented capability gap.
 - Planner → Executor → Independent Reviewer orchestration.
 - Quality-first model routing guidance.
-- A strict `feature/fix/chore → develop → prod` release path.
+- A strict `feature/fix/chore → dev → prod` release path.
 - Generic security, dependency-update and documentation-drift automation.
 - A bootstrap checklist for adapting the starter to a real project.
 - A stack-responsibility map that prevents overlapping tools/skills from accumulating without a clear gap.
@@ -30,7 +30,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 5. Add a project-specific skill under `.agents/skills/<project-name>/SKILL.md`.
 6. Select the MCP capabilities the project actually needs in `docs/MCP-SETUP.md`.
 7. Configure project-specific build/test commands and CI.
-8. Create/use `develop` for integration work and keep `prod` as production.
+8. Create/use `dev` for integration work and keep `prod` as production.
 9. Verify external connections with harmless reads before any write.
 10. Keep credentials outside Git.
 11. Use a draft PR plus the AGENT_TASK_STATE block in `docs/CURRENT-HANDOFF.md` for non-trivial unfinished work; never treat every open branch as active.
@@ -74,11 +74,11 @@ An agent must verify that a capability is actually connected in its current host
 ```text
 feature/*  fix/*  chore/*
           ↓
-        develop
+        dev
           ↓
   checks + review
           ↓
-develop → prod PR
+dev → prod PR
           ↓
  production approval
           ↓
@@ -92,14 +92,14 @@ Production merging remains a human-controlled decision.
 The starter itself should follow the same workflow after this initial bootstrap:
 
 ```text
-feature/fix/chore → develop → prod
+feature/fix/chore → dev → prod
 ```
 
 Keep the starter generic. Project-specific business rules belong in the generated project's Project Memory and project skill, not here.
 
 ## Versioning and branch lifecycle
 
-The starter now carries a planned version in `VERSION` and release notes in `CHANGELOG.md`. Read [Versioning](docs/VERSIONING.md), [Branch lifecycle](docs/BRANCH-LIFECYCLE.md), and [Coverage review](docs/COVERAGE-REVIEW.md). Only prod/develop are permanent; merged temporary branches are cleaned on develop pushes. Protect permanent branches and require CI checks when configuring a new repository.
+The starter now carries a planned version in `VERSION` and release notes in `CHANGELOG.md`. Read [Versioning](docs/VERSIONING.md), [Branch lifecycle](docs/BRANCH-LIFECYCLE.md), and [Coverage review](docs/COVERAGE-REVIEW.md). Only prod/dev are permanent; merged temporary branches are cleaned on dev pushes. Protect permanent branches and require CI checks when configuring a new repository.
 
 ## CLI agent stack
 
