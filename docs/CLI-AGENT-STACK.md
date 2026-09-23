@@ -1,8 +1,8 @@
-# Curated CLI Agent Stack
+# Optional CLI Agent Stack
 
-This starter uses a deliberately small set of complementary coding hosts. The goal is stronger implementation and review, not collecting every available agent.
+This starter can use a deliberately small set of complementary local coding hosts when a project benefits from them. The goal is stronger implementation and review, not collecting every available agent.
 
-## Curated baseline
+## Optional baseline
 
 | Host | Default use | Why it stays |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ Do **not** add Aider, Goose, Qwen Code, Kiro or another coding-agent layer by de
 
 Use one coordinator/router for a task. The coordinator owns decomposition, branch/worktree ownership, integration, deterministic checks and the final PR.
 
-A practical default when the current ChatGPT/Codex environment has repository and connector control is:
+A practical pattern when the current ChatGPT/Codex environment has repository and connector control is:
 
 ```text
 coordinator/router
@@ -32,7 +32,7 @@ coordinator/router
                     ↓
           deterministic verification
                     ↓
-                 PR -> develop
+                 PR -> dev
 ```
 
 Do not invoke every host for every task. One lead agent is the default. Parallel workers must have separable scopes or be read-only reviewers.
@@ -43,11 +43,11 @@ Do not invoke every host for every task. One lead agent is the default. Parallel
 - Never let two agents edit the same dirty working tree.
 - The router integrates changes and owns conflict resolution.
 - Reviewers receive the requirement, final diff, relevant source and deterministic evidence rather than the implementer's full transcript.
-- Production still follows the repository's explicit `develop -> main` approval path.
+- Production still follows the repository's explicit `dev -> prod` approval path.
 
 ## Claude Code efficiency profile
 
-Claude Code gets a small, intentional enhancement set. Repository rules in `AGENTS.md` remain authoritative over every plugin. The starter commits `.claude/settings.json` so Ponytail, Superpowers and Code Review are declared at project scope for generated projects; the install commands below are also useful for repairing or reproducing that setup.
+Claude Code gets a small, intentional enhancement set. Repository rules in `AGENTS.md` remain authoritative over every plugin. The starter does not auto-enable third-party Claude plugins. Install the options below only when their value and trust/privacy boundary have been reviewed for the project.
 
 ### Ponytail — default simplicity guard
 
@@ -92,7 +92,7 @@ Use `/code-review` for substantive PRs or high-risk changes. Prefer manual/on-de
 
 Code Review is an additional reviewer, not a substitute for tests, builds, lint/type checks, security checks or human production approval.
 
-The three plugins above are the default Claude profile. Do not auto-enable additional Claude plugins without a concrete gap.
+The three plugins above are optional Claude enhancements. Enable only the ones a project needs; do not auto-enable plugins without a concrete gap.
 
 ### claude-mem — optional persistent episodic memory
 
