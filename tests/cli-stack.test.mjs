@@ -15,7 +15,7 @@ test('CLI stack documents requested Claude efficiency tools and non-duplication 
   for (const phrase of ['Ponytail', 'Superpowers', 'Code Review', 'claude-mem', 'Obsidian', 'REVIEW.md']) {
     assert.match(doc, new RegExp(phrase.replace('-', '\\-'), 'i'))
   }
-  assert.match(doc, /Do not add Aider, Goose, Qwen Code, Kiro/i)
+  assert.match(doc, /Do\s*(?:\*\*)?not(?:\*\*)?\s+add Aider, Goose, Qwen Code, Kiro/i)
 })
 
 test('review contract prioritizes correctness and deterministic evidence', async () => {
