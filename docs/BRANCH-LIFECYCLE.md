@@ -1,12 +1,12 @@
 # Branch lifecycle
 
-Only main and develop are permanent. Temporary feature/fix/chore branches are removed after their work is merged. Never automatically discard unmerged work merely to reduce the branch count.
+Only `prod` and `develop` are permanent. Temporary feature/fix/chore branches are removed after their work is merged. Never automatically discard unmerged work merely to reduce the branch count.
 
 ## Automated cleanup
 
 `.github/workflows/branch-cleanup.yml` runs after every develop push, including PR merges, and sweeps previously merged branches. It can be dispatched on develop after the workflow is available on the default branch. It does not execute PR-head code with a write token.
 
-`scripts/cleanup-branches.mjs` preserves main, develop, the default branch, protected branches, open-PR branches, unmerged branches, forks and branches with commits added after their merged PR. It supports squash/rebase PRs by matching the recorded PR head SHA rather than requiring Git ancestry. Both branches and PR results are paginated. Immediately before deletion it rechecks the head and PR state. Deletion uses Git push with an explicit SHA `--force-with-lease`, so the remote atomically refuses deletion if new commits arrive after the recheck. A lease rejection fails visibly without a forced retry. Do not reuse completed branch names.
+`scripts/cleanup-branches.mjs` preserves prod, develop, the default branch, protected branches, open-PR branches, unmerged branches, forks and branches with commits added after their merged PR. It supports squash/rebase PRs by matching the recorded PR head SHA rather than requiring Git ancestry. Both branches and PR results are paginated. Immediately before deletion it rechecks the head and PR state. Deletion uses Git push with an explicit SHA `--force-with-lease`, so the remote atomically refuses deletion if new commits arrive after the recheck. A lease rejection fails visibly without a forced retry. Do not reuse completed branch names.
 
 Dry run: `node scripts/cleanup-branches.mjs`
 
@@ -20,6 +20,6 @@ After merging into develop, inspect cleanup results and verify the remote branch
 
 ## Repository setup
 
-Protect main and develop against deletion and force pushes. Require PRs and relevant checks, including version validation and the main production guard. GitHub's native automatic head-branch deletion is optional only after develop is protected against deletion; it can otherwise remove develop after a production PR. This cleanup workflow explicitly preserves develop.
+Protect prod and develop against deletion and force pushes. Require PRs and relevant checks, including version validation and the production guard. GitHub's native automatic head-branch deletion is optional only after develop is protected against deletion; it can otherwise remove develop after a production PR. For repositories using GitHub native **Automatically delete head branches**, no custom cleanup workflow is required. Keep `develop` and `prod` protected so they remain permanent.
 
 An unmerged abandoned branch needs an explicit reviewed decision to archive/preserve or discard its work. No automatic age-based deletion.
