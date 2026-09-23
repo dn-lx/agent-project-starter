@@ -3,41 +3,26 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { curatedHosts } from '../scripts/agent-cli-doctor.mjs'
 
-test('curated CLI host list stays intentionally small', () => {
+test('optional CLI host list stays intentionally small', () => {
   assert.deepEqual(
     curatedHosts.map(host => host.command),
     ['claude', 'codex', 'gemini', 'opencode'],
   )
 })
 
-test('CLI stack documents requested Claude efficiency tools and non-duplication rule', async () => {
+test('CLI stack documents optional Claude tools and non-duplication rule', async () => {
   const doc = await readFile('docs/CLI-AGENT-STACK.md', 'utf8')
   for (const phrase of ['Ponytail', 'Superpowers', 'Code Review', 'claude-mem', 'Obsidian', 'REVIEW.md']) {
     assert.match(doc, new RegExp(phrase.replace('-', '\\-'), 'i'))
   }
+  assert.match(doc, /does not auto-enable third-party Claude plugins/i)
   assert.match(doc, /Do\s*(?:\*\*)?not(?:\*\*)?\s+add Aider, Goose, Qwen Code, Kiro/i)
 })
 
-test('review contract prioritizes correctness and deterministic evidence', async () => {
+test('review contract uses dev to prod repository invariants', async () => {
   const review = await readFile('REVIEW.md', 'utf8')
   assert.match(review, /correctness/i)
   assert.match(review, /deterministic check results/i)
-  assert.match(review, /develop/i)
-  assert.match(review, /main/i)
-})
-
-
-test('Claude project settings enable only the default efficiency profile', async () => {
-  const settings = JSON.parse(await readFile('.claude/settings.json', 'utf8'))
-  assert.deepEqual(
-    Object.keys(settings.enabledPlugins).sort(),
-    [
-      'code-review@claude-plugins-official',
-      'ponytail@ponytail',
-      'superpowers@claude-plugins-official',
-    ],
-  )
-  assert.equal(settings.enabledPlugins['code-review@claude-plugins-official'], true)
-  assert.equal(settings.enabledPlugins['ponytail@ponytail'], true)
-  assert.equal(settings.enabledPlugins['superpowers@claude-plugins-official'], true)
+  assert.match(review, /dev/i)
+  assert.match(review, /prod/i)
 })
