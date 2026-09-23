@@ -42,5 +42,11 @@ test('accepts an idle template state', () => {
     next_step: null,
     updated_at: '2026-09-24T00:00:00Z',
   }
-  assert.deepEqual(validateTaskState(state), [])
+  assert.deepEqual(validateTaskState(state, 'dev'), [])
+})
+
+
+test('rejects task state bound to a stale integration branch', () => {
+  const errors = validateTaskState({ ...active, base: 'develop' }, 'dev')
+  assert.ok(errors.includes('base must match integration branch: dev'))
 })
