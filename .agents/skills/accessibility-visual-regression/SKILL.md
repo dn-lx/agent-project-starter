@@ -7,7 +7,7 @@ description: Verify meaningful frontend changes with accessibility checks, keybo
 
 Use for substantial UI changes, design-system work, critical user journeys, responsive regressions, or frontend release verification.
 
-This complements Frontend Design, Design Taste and Motion Design. It provides **evidence**, not a visual direction.
+This complements the Design Stack. It provides **evidence**, not a visual direction.
 
 ## Accessibility verification
 
@@ -67,7 +67,7 @@ Release-critical Safari/iOS behavior may require WebKit emulation and, for platf
 
 ## Motion
 
-When Motion Design is active:
+When the selected design direction includes motion:
 - test reduced-motion mode,
 - ensure state remains understandable without animation,
 - avoid screenshot comparisons during unstable animation frames,
