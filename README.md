@@ -10,7 +10,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 - Thin bootstrap files for Claude Code, Gemini CLI and GitHub Copilot.
 - Durable project memory and machine-readable task/branch/PR continuity across interruptions.
 - Capability-based MCP/connector documentation.
-- Agent Skills for MCP use, Context7, Graphify, code hygiene, dependency maintenance, context efficiency, frontend quality, accessibility/visual regression, security review and releases.
+- Agent Skills for MCP use, Context7, Graphify, code hygiene, dependency maintenance, context efficiency, a lean external design stack, accessibility/visual regression, security review and releases.
 - Outcome-oriented Superpowers for resume, feature delivery, CI repair, QA, release and project-health workflows.
 - Two-stage execution routing: agent/host assignment first, model-class assignment second, with minimal justified parallelism.
 - Optional local-agent portability guidance for Claude Code, Codex CLI, Gemini CLI and OpenCode; none are required by the core template.
@@ -100,6 +100,10 @@ Keep the starter generic. Project-specific business rules belong in the generate
 ## Versioning and branch lifecycle
 
 The starter now carries a planned version in `VERSION` and release notes in `CHANGELOG.md`. Read [Versioning](docs/VERSIONING.md) and [Branch lifecycle](docs/BRANCH-LIFECYCLE.md). Only prod/dev are permanent; merged temporary branches are cleaned automatically by GitHub after merge. Protect permanent branches and require CI checks when configuring a new repository.
+
+## Design stack
+
+Frontend projects can use [Design Stack](docs/DESIGN-STACK.md): Taste Skill for generation/redesign, Impeccable for critique/polish, and Awesome Design Skills only as an on-demand style catalogue. The starter does not bulk-install those external packs.
 
 ## Optional local agent stack
 
