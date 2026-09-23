@@ -25,8 +25,8 @@ If an adapter conflicts with `AGENTS.md`, follow `AGENTS.md`.
 8. Run documented checks. Never weaken checks to get green.
 9. Use independent review for security/auth/payments/data/privacy/release-sensitive work.
 10. Record version impact per `docs/VERSIONING.md`; merge feature/fix/chore only into `develop` and verify cleanup per `docs/BRANCH-LIFECYCLE.md`.
-11. Release only through `develop → main`.
-12. Update Current Handoff when material state would otherwise be lost.
+11. Release only through `develop → prod`.
+12. Before creating/resuming a branch, reconcile task → branch → PR using `task-continuity`; update Current Handoff when material state would otherwise be lost.
 
 ## ChatGPT / OpenAI Codex
 

@@ -1,25 +1,37 @@
 # Branch lifecycle
 
-Only main and develop are permanent. Temporary feature/fix/chore branches are removed after their work is merged. Never automatically discard unmerged work merely to reduce the branch count.
+Only `prod` and `develop` are permanent. Temporary feature/fix/chore branches are removed after their work is merged. Never automatically discard unmerged work merely to reduce the branch count.
 
-## Automated cleanup
+## Native merged-branch cleanup
 
-`.github/workflows/branch-cleanup.yml` runs after every develop push, including PR merges, and sweeps previously merged branches. It can be dispatched on develop after the workflow is available on the default branch. It does not execute PR-head code with a write token.
+Use GitHub repository setting **Automatically delete head branches**. Do not add a custom cleanup Action merely to delete successfully merged temporary branches.
 
-`scripts/cleanup-branches.mjs` preserves main, develop, the default branch, protected branches, open-PR branches, unmerged branches, forks and branches with commits added after their merged PR. It supports squash/rebase PRs by matching the recorded PR head SHA rather than requiring Git ancestry. Both branches and PR results are paginated. Immediately before deletion it rechecks the head and PR state. Deletion uses Git push with an explicit SHA `--force-with-lease`, so the remote atomically refuses deletion if new commits arrive after the recheck. A lease rejection fails visibly without a forced retry. Do not reuse completed branch names.
+This setting is safe only when `develop` and `prod` are protected against deletion. A production PR uses `develop → prod`; protection keeps `develop` permanent while GitHub removes ordinary merged feature/fix/chore heads.
 
-Dry run: `node scripts/cleanup-branches.mjs`
+After merging into `develop`, verify the temporary branch is gone. If it remains, inspect the PR state, branch protection/rulesets and whether the branch received new commits after merge before deleting it manually.
 
-Apply: `node scripts/cleanup-branches.mjs --apply`
+Do not automatically delete:
+- branches with open PRs,
+- unmerged work,
+- branches whose purpose is unclear,
+- automation branches still in use.
 
-Both require GITHUB_REPOSITORY and a securely provided GITHUB_TOKEN with contents write / pull requests read for apply. Never paste tokens into commands, Git or logs. Permission/ruleset failures fail the job visibly rather than pretending cleanup succeeded. Another push to develop retries cleanup.
+Do not reuse completed temporary branch names.
 
 ## Agent completion rule
 
-After merging into develop, inspect cleanup results and verify the remote branch is gone. If it remains, inspect its PR/head SHA and permissions before retrying. Locally use `git fetch --prune`; switch away from the completed branch, check worktrees/dirty files, then delete it safely. Squash-merged local branches may require explicit inspection before deletion; never use blanket forced deletion. Record unresolved leftovers in Current Handoff.
+After a merge:
+
+1. verify the PR is actually merged,
+2. verify checks/merge SHA when relevant,
+3. verify the temporary remote branch is removed,
+4. record unresolved leftovers in Current Handoff,
+5. never treat a leftover open branch as an active task without applying Task Continuity.
+
+Locally, agents/users may run `git fetch --prune` and safely remove stale local branches/worktrees only after confirming there is no uncommitted work.
 
 ## Repository setup
 
-Protect main and develop against deletion and force pushes. Require PRs and relevant checks, including version validation and the main production guard. GitHub's native automatic head-branch deletion is optional only after develop is protected against deletion; it can otherwise remove develop after a production PR. This cleanup workflow explicitly preserves develop.
+Protect `prod` and `develop` against deletion and force pushes. Require PRs and relevant checks, including version validation and the production guard. Enable GitHub native automatic head-branch deletion after those protections are in place.
 
-An unmerged abandoned branch needs an explicit reviewed decision to archive/preserve or discard its work. No automatic age-based deletion.
+An unmerged abandoned branch needs an explicit reviewed decision to preserve, supersede or discard its unique work. No automatic age-based deletion.

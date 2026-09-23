@@ -1,35 +1,37 @@
 # Current Handoff
 
-**Last updated:** 2026-09-23
+**Last updated:** 2026-09-24
+
+This file is the compact recovery record for unfinished work. GitHub/source/tests remain authoritative when they disagree with this handoff.
+
+<!-- AGENT_TASK_STATE_START -->
+{
+  "task_id": null,
+  "repository": null,
+  "base": "develop",
+  "branch": null,
+  "pr": null,
+  "status": "idle",
+  "last_verified_sha": null,
+  "next_step": null,
+  "updated_at": "2026-09-24T00:00:00Z"
+}
+<!-- AGENT_TASK_STATE_END -->
 
 ## Current state
 
-The curated multi-CLI development stack is on `develop`. A reusable product requirements/issues/plan workflow is being added on `feature/requirements-plan-template`.
+No active task is recorded in the starter template.
 
-## Requirements-plan addition
+When non-trivial work begins:
+- create/reconcile the focused branch from current `develop`,
+- create a draft PR early,
+- replace the idle task-state block with the active task/branch/PR binding,
+- record only the compact verified next step needed after interruption.
 
-- Added `docs/REQUIREMENTS.md` as a generic checkable requirements, issues and roadmap template.
-- Agents load it for product/backlog/bug work, but it is intentionally excluded from unrelated default startup context.
-- Requirement IDs should remain stable after work begins.
-- Checklist items may be marked `[x]` only after acceptance criteria are verified and concise completion evidence is recorded.
-- Project bootstrap now requires replacing template examples with the consuming project's actual plan.
-- Starter validation now requires the requirements document and AGENTS reference.
+## Recovery rule
 
-## Verified CLI setup already on develop
+Do not resume an arbitrary open branch. Apply `.agents/skills/task-continuity/SKILL.md`, inspect the referenced PR/branch/checks, compare with current `develop`, and continue only when the evidence matches the requested task.
 
-- Default coding-agent hosts: Claude Code, Codex CLI, Gemini CLI and OpenCode.
-- Project-scoped Claude defaults: Ponytail, external Superpowers and Anthropic Code Review.
-- claude-mem and Obsidian skills remain opt-in.
+## Production path
 
-## Temporary GitHub Actions mode
-
-All six starter GitHub workflows remain manual-only using `workflow_dispatch` while the GitHub Actions startup issue is deferred.
-
-While this temporary mode is active:
-- run local deterministic verification before merging into `develop`,
-- manually remove merged temporary branches,
-- do not promote `develop` to `main` until the automatic production guard and required CI workflows are re-enabled, unless the owner explicitly changes that rule.
-
-## Next safe step
-
-Validate the requirements-plan template locally, merge its PR into `develop`, and continue using the document pattern in consuming projects.
+Production promotion is `develop → prod` with explicit production approval.

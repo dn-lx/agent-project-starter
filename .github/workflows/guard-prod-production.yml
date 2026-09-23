@@ -22,7 +22,7 @@ jobs:
           BASE_REPO: ${{ github.repository }}
         run: |
           if [ "$HEAD_REF" != "develop" ]; then
-            echo "::error::Only develop may merge into main. Current head: $HEAD_REF"
+            echo "::error::Only develop may merge into prod. Current head: $HEAD_REF"
             exit 1
           fi
           if [ "$HEAD_REPO" != "$BASE_REPO" ]; then

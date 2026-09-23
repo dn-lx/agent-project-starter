@@ -3,7 +3,7 @@
 ## Release scope
 
 - Head: `develop`
-- Base: `main`
+- Base: `prod`
 - Release PR:
 - Date:
 

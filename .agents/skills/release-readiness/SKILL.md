@@ -1,13 +1,13 @@
 ---
 name: release-readiness
-description: Review a develop→main release candidate for correctness, security, external changes and rollback readiness.
+description: Review a develop→prod release candidate for correctness, security, external changes and rollback readiness.
 ---
 
 # Release Readiness
 
 Before a production release:
 
-1. Confirm PR head is `develop`, base is `main`, and required production approval is present.
+1. Confirm PR head is `develop`, base is `prod`, and required production approval is present.
 2. Review complete release diff for unrelated/unfinished work.
 3. Confirm required syntax/unit/integration/browser/security/dependency checks passed.
 4. Review migrations, environment variables, redirects/headers and external-service changes.

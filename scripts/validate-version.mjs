@@ -16,7 +16,7 @@ export function validate(version, changelog, previous, release = false) {
   if (!changelog.includes('## [Unreleased]')) throw new Error('Missing Unreleased changelog section')
   if (previous && compare(version, previous) < 0) throw new Error('Version must never decrease')
   if (release) {
-    if (previous && compare(version, previous) <= 0) throw new Error('Release must increase VERSION relative to main')
+    if (previous && compare(version, previous) <= 0) throw new Error('Release must increase VERSION relative to prod')
     const escaped = version.replaceAll('.', '\\.')
     if (!new RegExp(`^## \\[${escaped}\\] - \\d{4}-\\d{2}-\\d{2}$`, 'm').test(changelog)) throw new Error('Release needs dated changelog section matching VERSION')
   }

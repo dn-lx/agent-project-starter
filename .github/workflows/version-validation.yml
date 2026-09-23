@@ -19,7 +19,7 @@ jobs:
       - name: Validate version and release notes
         env:
           VERSION_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          VERSION_RELEASE: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
+          VERSION_RELEASE: ${{ github.event_name == 'pull_request' && github.base_ref == 'prod' }}
         run: node scripts/validate-version.mjs
       - name: Test lifecycle safeguards
         run: node --test tests/*.test.mjs

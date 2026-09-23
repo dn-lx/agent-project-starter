@@ -12,12 +12,13 @@ Use this immediately after creating a repository from Agent Project Starter.
 
 ## Branching
 
-- [ ] Ensure `main` exists as production/release branch.
+- [ ] Ensure `prod` exists as production/release branch and is the default branch.
 - [ ] Create `develop`.
 - [ ] Configure ordinary work as feature/fix/chore → develop.
-- [ ] Configure production flow as develop → main only.
+- [ ] Configure production flow as develop → prod only.
 - [ ] Create/require `production-approved` label if using the provided release guard.
-- [ ] Configure branch/ruleset protections appropriate to the repository.
+- [ ] Protect `develop` and `prod` from deletion/force-push and require PRs as appropriate.
+- [ ] Enable GitHub native **Automatically delete head branches** after `develop` is protected.
 
 ## Build and tests
 
@@ -63,6 +64,14 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 - [ ] Keep Headroom optional until baseline measurements show a real context bottleneck.
 - [ ] If piloting Headroom, record before/after quality and usage metrics.
 
+## Task / branch continuity
+
+- [ ] Use one task → one writable branch → one draft/open PR for non-trivial work.
+- [ ] Keep the AGENT_TASK_STATE block in `docs/CURRENT-HANDOFF.md` valid.
+- [ ] Run `node scripts/task-state.mjs --check` during bootstrap/validation.
+- [ ] Treat open branches as candidates only; reconcile task/PR/GitHub state before resuming.
+- [ ] Use separate branches/worktrees for parallel modifying agents.
+
 ## Memory/context
 
 - [ ] Keep Project Memory compact.
@@ -90,7 +99,7 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 
 - [ ] Decide which changes require independent review.
 - [ ] Use `docs/templates/REVIEW-PACKET-TEMPLATE.md` for sensitive/high-impact review handoffs.
-- [ ] Use `docs/templates/RELEASE-SUMMARY-TEMPLATE.md` for develop→main releases.
+- [ ] Use `docs/templates/RELEASE-SUMMARY-TEMPLATE.md` for develop→prod releases.
 
 ## Deployment/operations
 
@@ -134,7 +143,7 @@ If not, the bootstrap is incomplete.
 ## Version and branch setup
 
 - [ ] Read VERSIONING and BRANCH-LIFECYCLE; preserve an existing app version.
-- [ ] Protect main/develop and require production guard plus version validation.
+- [ ] Protect prod/develop and require production guard plus version validation.
 - [ ] Verify a merged test branch is cleaned up.
 - [ ] Address applicable gaps in `docs/COVERAGE-REVIEW.md`.
 
