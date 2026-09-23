@@ -2,7 +2,7 @@
 
 ## Release scope
 
-- Head: `develop`
+- Head: `dev`
 - Base: `prod`
 - Release PR:
 - Date:
