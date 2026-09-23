@@ -75,6 +75,8 @@ Do not update it for every small edit.
 
 ## Completion
 
+Before merging a completed task PR into `dev`, reset `docs/CURRENT-HANDOFF.md` to the idle task-state template so the integration branch never inherits stale active-task state.
+
 After merge:
 - verify the PR is merged,
 - verify the temporary branch is removed by GitHub native automatic head-branch deletion or remove it safely,
