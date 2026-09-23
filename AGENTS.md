@@ -9,10 +9,11 @@ Before editing:
 1. Read this file.
 2. Read `docs/PROJECT-MEMORY.md`.
 3. Read `docs/CURRENT-HANDOFF.md`.
-4. For product requirements, backlog execution, bugs/features, or questions about remaining work, read `docs/REQUIREMENTS.md`.
-5. Classify the task, then load only the applicable superpower or repository-local skill.
-6. Read `docs/AGENT-PLATFORM-WORKFLOWS.md` only for host portability/onboarding work.
-7. If external systems are needed, read `docs/MCP-SETUP.md` and verify the actual connection with a harmless read.
+4. Before creating a new implementation branch or resuming interrupted work, apply `.agents/skills/task-continuity/SKILL.md` and reconcile the active task/PR/branch from GitHub evidence.
+5. For product requirements, backlog execution, bugs/features, or questions about remaining work, read `docs/REQUIREMENTS.md`.
+6. Classify the task, then load only the applicable superpower or repository-local skill.
+7. Read `docs/AGENT-PLATFORM-WORKFLOWS.md` only for host portability/onboarding work.
+8. If external systems are needed, read `docs/MCP-SETUP.md` and verify the actual connection with a harmless read.
 
 Do not preload the full skill/superpower catalog. Progressive loading is the default context policy.
 
@@ -22,16 +23,16 @@ Current source code, tests and accepted ADRs override stale documentation, gener
 
 - `develop` is the development integration branch.
 - Ordinary work starts from current `develop` on a focused `feature/*`, `fix/*` or `chore/*` branch.
-- Feature/fix/chore branches merge into `develop`, never directly into `main`.
-- `main` is production/release.
-- Only this repository's `develop` branch may merge into `main`, through the release workflow and explicit production approval.
-- Never push directly to `main`, force-push it, or bypass Git history with an ad-hoc production deployment.
+- Feature/fix/chore branches merge into `develop`, never directly into `prod`.
+- `prod` is production/release.
+- Only this repository's `develop` branch may merge into `prod`, through the release workflow and explicit production approval.
+- Never push directly to `prod`, force-push it, or bypass Git history with an ad-hoc production deployment.
 
 Read `.agents/skills/release-workflow/SKILL.md` before creating/merging a production PR or changing production deployment policy.
 
 ## Branch cleanup and versioning
 
-Read `docs/BRANCH-LIFECYCLE.md` and `docs/VERSIONING.md` for lifecycle work. Only main and develop are permanent. Verify completed temporary branches are deleted after merge; preserve active/unmerged work. Every material change must identify version impact and update CHANGELOG.md when user-visible. Release preparation updates VERSION and dated notes; publish immutable tags only after approved develop → main release. All host adapters inherit these rules.
+Read `docs/BRANCH-LIFECYCLE.md` and `docs/VERSIONING.md` for lifecycle work. Only `prod` and `develop` are permanent. Verify completed temporary branches are deleted after merge; preserve active/unmerged work. Every material change must identify version impact and update CHANGELOG.md when user-visible. Release preparation updates VERSION and dated notes; publish immutable tags only after approved develop → prod release. All host adapters inherit these rules.
 
 ## Engineering principles
 
@@ -107,6 +108,7 @@ Skills are atomic capabilities; superpowers orchestrate them. Select one primary
 Read the relevant skill before specialized work:
 
 - `.agents/skills/task-routing/SKILL.md` — choose the smallest applicable superpower/skill set.
+- `.agents/skills/task-continuity/SKILL.md` — recover/bind task → branch → PR state across interruptions.
 - `.agents/skills/execution-routing/SKILL.md` — assign agent/host, model class and justified parallelism.
 
 - `.agents/skills/project-bootstrap/SKILL.md` — adapt this starter to a new project.
@@ -123,7 +125,7 @@ Read the relevant skill before specialized work:
 - `.agents/skills/accessibility-visual-regression/SKILL.md` — accessibility evidence and stable visual regression checks.
 - `.agents/skills/security-boundary-review/SKILL.md` — auth/secrets/data/external trust boundaries.
 - `.agents/skills/quality-gates/SKILL.md` — risk-based verification.
-- `.agents/skills/release-readiness/SKILL.md` — develop→main review.
+- `.agents/skills/release-readiness/SKILL.md` — develop→prod review.
 - `.agents/skills/release-workflow/SKILL.md` — branch/release contract.
 
 For frontend work, use `docs/FRONTEND-QUALITY-STANDARD.md` to decide when Taste and Motion should be loaded. Do not force those specialist skills onto tiny or unrelated changes.
@@ -159,6 +161,8 @@ For auth, permissions, secrets, payments, data models, worker command execution,
 For Claude Code or Gemini CLI setup, use `docs/CLAUDE-GEMINI-SETUP.md`. Keep `.agents/skills/` canonical. When changing skill metadata or inventory, regenerate Claude discovery adapters with `node scripts/sync-claude-skills.mjs --write` and validate them. Gemini reads the canonical directory directly. Do not copy credentials or blanket permission overrides between hosts.
 
 ## Universal continuity
+
+An open branch is not automatically an active task. For non-trivial work, bind the task to one writable branch and a draft/open PR, and keep the machine-readable task state in `docs/CURRENT-HANDOFF.md` valid. GitHub/source/check evidence overrides handoff or chat memory.
 
 At the beginning of a new coding-agent session, read Project Memory and Current Handoff. Before ending unfinished work, or after a material architectural decision/external side effect, update `docs/CURRENT-HANDOFF.md`.
 
