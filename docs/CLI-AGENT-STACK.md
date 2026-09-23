@@ -1,0 +1,172 @@
+# Curated CLI Agent Stack
+
+This starter uses a deliberately small set of complementary coding hosts. The goal is stronger implementation and review, not collecting every available agent.
+
+## Curated baseline
+
+| Host | Default use | Why it stays |
+| --- | --- | --- |
+| Claude Code | Primary local implementation, refactoring and repository work | Strong codebase reasoning and a mature plugin/skill ecosystem |
+| Codex CLI | Independent implementation, debugging and review in an isolated worktree | Strong coding/reasoning plus portable Agent Plugins and AGENTS.md workflows |
+| Gemini CLI | Alternative analysis, long-context work and independent review | Useful second implementation/review path with different model/tool behavior |
+| OpenCode | Provider-neutral fallback and isolated multi-session runner | Keeps the workflow portable across model providers without adding another project policy layer |
+
+These are execution hosts, not permanent quality rankings. Route by current capability, repository/tool locality and measured project outcomes.
+
+Do **not** add Aider, Goose, Qwen Code, Kiro or another coding-agent layer by default. Add another host only when a project records a concrete capability gap that the four hosts above cannot cover economically or reliably.
+
+## Router pattern
+
+Use one coordinator/router for a task. The coordinator owns decomposition, branch/worktree ownership, integration, deterministic checks and the final PR.
+
+A practical default when the current ChatGPT/Codex environment has repository and connector control is:
+
+```text
+coordinator/router
+  ├─ Claude Code   -> implementation worker
+  ├─ Codex CLI     -> independent implementation/review/debug worker
+  ├─ Gemini CLI    -> alternative analysis/review/long-context worker
+  └─ OpenCode      -> provider-neutral fallback/session runner
+                    ↓
+              isolated worktrees
+                    ↓
+          deterministic verification
+                    ↓
+                 PR -> develop
+```
+
+Do not invoke every host for every task. One lead agent is the default. Parallel workers must have separable scopes or be read-only reviewers.
+
+## Isolation contract
+
+- Every modifying worker gets its own feature/fix/chore branch or Git worktree.
+- Never let two agents edit the same dirty working tree.
+- The router integrates changes and owns conflict resolution.
+- Reviewers receive the requirement, final diff, relevant source and deterministic evidence rather than the implementer's full transcript.
+- Production still follows the repository's explicit `develop -> main` approval path.
+
+## Claude Code efficiency profile
+
+Claude Code gets a small, intentional enhancement set. Repository rules in `AGENTS.md` remain authoritative over every plugin.
+
+### Ponytail — default simplicity guard
+
+Use Ponytail to suppress unnecessary abstractions and prefer reuse/native capabilities/minimal diffs after the real code path is understood.
+
+Install in Claude Code:
+
+```text
+/plugin marketplace add DietrichGebert/ponytail
+/plugin install ponytail@ponytail
+```
+
+Recommended default: `/ponytail full`.
+
+Ponytail must never be used to remove validation, security boundaries, data-loss protection, accessibility requirements or required tests.
+
+### Superpowers — implementation methodology
+
+Install the official Superpowers plugin:
+
+```text
+/plugin install superpowers@claude-plugins-official
+```
+
+Use its brainstorming, TDD, systematic debugging and subagent-development techniques **inside** the outcome workflow already selected by this repository.
+
+Important distinction:
+- `.agents/superpowers/` = this repository's compact outcome workflows such as finish-feature/full-qa.
+- the Claude Superpowers plugin = reusable implementation methodology.
+
+The external plugin does not replace the repository workflows or branch rules.
+
+### Code Review — high-confidence PR review
+
+Install Anthropic's verified Code Review plugin:
+
+```text
+/plugin install code-review@claude-plugins-official
+```
+
+Use `/code-review` for substantive PRs or high-risk changes. Prefer manual/on-demand review unless the project has a reason to pay for review on every push. `REVIEW.md` contains the shared review contract.
+
+Code Review is an additional reviewer, not a substitute for tests, builds, lint/type checks, security checks or human production approval.
+
+### claude-mem — optional persistent episodic memory
+
+Install only when cross-session recall is useful and the project's privacy boundary allows it:
+
+```text
+npx claude-mem install
+```
+
+or in Claude Code:
+
+```text
+/plugin marketplace add thedotmack/claude-mem
+/plugin install claude-mem
+```
+
+Rules:
+- repository source, tests, ADRs, Project Memory and Current Handoff remain authoritative;
+- do not use claude-mem as the only copy of a decision;
+- do not capture secrets, credentials or sensitive customer data;
+- review the selected memory provider and retention before enabling it;
+- prefer the most privacy-preserving provider/configuration that still meets the project's need;
+- stale memories must be revalidated against current source.
+
+### Obsidian skills — optional knowledge workspace
+
+Use only for projects/teams that actually maintain an Obsidian vault. The recommended portable skill set is `kepano/obsidian-skills`, which follows the Agent Skills format and works across Claude Code, Codex and OpenCode.
+
+Claude Code installation:
+
+```text
+/plugin marketplace add kepano/obsidian-skills
+/plugin install obsidian@obsidian-skills
+```
+
+Keep vault paths and personal notes outside the repository unless explicitly intended. Obsidian is a knowledge interface, not a replacement for Git history, ADRs, Project Memory or Current Handoff.
+
+## Existing capabilities we intentionally keep instead of adding more plugins
+
+The starter already has:
+- Context7/current API documentation guidance,
+- Graphify/code-relationship guidance,
+- deterministic quality gates,
+- security-boundary review,
+- code hygiene/dependency maintenance,
+- frontend design + Taste + Motion + accessibility/visual regression,
+- repository-local Superpowers and execution routing.
+
+Do not add a second plugin that duplicates these responsibilities without a measured gap.
+
+## OpenCode portability
+
+OpenCode V2 reads repository `AGENTS.md` directly. Keep universal rules there; do not duplicate them into a second OpenCode-specific policy file. Provider selection belongs in local/runtime configuration, not Git.
+
+## Codex portability
+
+Codex should consume the repository `AGENTS.md` and the same compact context/skills strategy. Agent Plugins may be used when they provide a concrete capability, but plugin marketplaces and trust decisions are machine/user configuration unless the plugin is intentionally repo-scoped.
+
+## Verification
+
+Run:
+
+```bash
+node scripts/agent-cli-doctor.mjs
+node scripts/agent-cli-doctor.mjs --strict
+```
+
+The first command reports which curated hosts are installed. `--strict` fails when any curated host is missing and is intended for a workstation where the full four-host setup is expected; do not make CI require local coding-agent CLIs.
+
+Then verify inside each installed host that:
+- repository instructions resolve to `AGENTS.md`,
+- the correct branch/worktree is active,
+- required MCPs/connectors are actually authenticated,
+- Claude plugins/skills are visible when Claude is used,
+- no host has blanket permissions that bypass normal review.
+
+## Maintenance policy
+
+Third-party plugins can execute hooks or background helpers. Review their source/release notes before installation or major upgrades. Keep plugin upgrades separate from application feature work when practical, and rerun the starter validation after changing the agent stack.
