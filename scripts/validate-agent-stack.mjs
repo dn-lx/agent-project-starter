@@ -18,7 +18,6 @@ const required = [
   'docs/VERSIONING.md',
   'docs/BRANCH-LIFECYCLE.md',
   'docs/TASK-LIFECYCLE.md',
-  '.github/workflows/branch-cleanup.yml',
   '.github/workflows/version-validation.yml',
   'AGENTS.md',
   'CLAUDE.md',
