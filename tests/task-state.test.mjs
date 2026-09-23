@@ -5,7 +5,7 @@ import { extractTaskState, validateTaskState, START, END } from '../scripts/task
 const active = {
   task_id: 'REQ-123',
   repository: 'owner/repo',
-  base: 'develop',
+  base: 'dev',
   branch: 'feature/example',
   pr: 42,
   status: 'implementing',
@@ -25,7 +25,7 @@ test('rejects duplicate task state blocks', () => {
 })
 
 test('requires PR for implementation and validates branch binding', () => {
-  const errors = validateTaskState({ ...active, pr: null, branch: 'develop' })
+  const errors = validateTaskState({ ...active, pr: null, branch: 'dev' })
   assert.ok(errors.some(error => error.includes('pr must be a positive integer')))
   assert.ok(errors.includes('working branch must differ from base'))
 })
@@ -34,7 +34,7 @@ test('accepts an idle template state', () => {
   const state = {
     task_id: null,
     repository: null,
-    base: 'develop',
+    base: 'dev',
     branch: null,
     pr: null,
     status: 'idle',
@@ -42,5 +42,11 @@ test('accepts an idle template state', () => {
     next_step: null,
     updated_at: '2026-09-24T00:00:00Z',
   }
-  assert.deepEqual(validateTaskState(state), [])
+  assert.deepEqual(validateTaskState(state, 'dev'), [])
+})
+
+
+test('rejects task state bound to a stale integration branch', () => {
+  const errors = validateTaskState({ ...active, base: 'develop' }, 'dev')
+  assert.ok(errors.includes('base must match integration branch: dev'))
 })

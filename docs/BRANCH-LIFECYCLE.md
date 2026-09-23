@@ -1,14 +1,14 @@
 # Branch lifecycle
 
-Only `prod` and `develop` are permanent. Temporary feature/fix/chore branches are removed after their work is merged. Never automatically discard unmerged work merely to reduce the branch count.
+Only `prod` and `dev` are permanent. Temporary feature/fix/chore branches are removed after their work is merged. Never automatically discard unmerged work merely to reduce the branch count.
 
 ## Native merged-branch cleanup
 
 Use GitHub repository setting **Automatically delete head branches**. Do not add a custom cleanup Action merely to delete successfully merged temporary branches.
 
-This setting is safe only when `develop` and `prod` are protected against deletion. A production PR uses `develop → prod`; protection keeps `develop` permanent while GitHub removes ordinary merged feature/fix/chore heads.
+This setting is safe only when `dev` and `prod` are protected against deletion. A production PR uses `dev → prod`; protection keeps `dev` permanent while GitHub removes ordinary merged feature/fix/chore heads.
 
-After merging into `develop`, verify the temporary branch is gone. If it remains, inspect the PR state, branch protection/rulesets and whether the branch received new commits after merge before deleting it manually.
+After merging into `dev`, verify the temporary branch is gone. If it remains, inspect the PR state, branch protection/rulesets and whether the branch received new commits after merge before deleting it manually.
 
 Do not automatically delete:
 - branches with open PRs,
@@ -32,6 +32,6 @@ Locally, agents/users may run `git fetch --prune` and safely remove stale local 
 
 ## Repository setup
 
-Protect `prod` and `develop` against deletion and force pushes. Require PRs and relevant checks, including version validation and the production guard. Enable GitHub native automatic head-branch deletion after those protections are in place.
+Protect `prod` and `dev` against deletion and force pushes. Require PRs and relevant checks, including version validation and the production guard. Enable GitHub native automatic head-branch deletion after those protections are in place.
 
 An unmerged abandoned branch needs an explicit reviewed decision to preserve, supersede or discard its unique work. No automatic age-based deletion.

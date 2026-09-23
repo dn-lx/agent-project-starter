@@ -31,8 +31,8 @@ Avoid speculative findings that cannot be tied to the changed code or a real pro
 
 ## Repository invariants
 
-- Ordinary work targets `develop` from a focused feature/fix/chore branch.
-- Only `develop` may be promoted to `main`, with explicit production approval.
+- Ordinary work targets `dev` from a focused feature/fix/chore branch.
+- Only `dev` may be promoted to `prod`, with explicit production approval.
 - Do not weaken tests, validation, authorization, secret handling or accessibility to make CI pass.
 - External writes and privileged operations require the same trust-boundary review defined in `AGENTS.md`.
 - Documentation that represents an operational contract must change when that contract changes.

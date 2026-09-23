@@ -145,6 +145,5 @@ Optimize based on project evidence rather than benchmark reputation alone.
 
 See:
 - `.agents/skills/execution-routing/SKILL.md`
-- `docs/MODEL-ROUTING-POLICY.md`
 - `docs/AGENT-ORCHESTRATION.md`
 - `docs/MEMORY-CONTEXT-POLICY.md`

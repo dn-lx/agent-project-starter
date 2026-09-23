@@ -4,7 +4,7 @@ These adapters target Claude Code and Gemini CLI. For the broader curated Claude
 
 ## Shared setup
 
-1. Use the current develop revision; prod may lag until an approved release. Start the CLI from the repository root.
+1. Use the current dev revision; prod may lag until an approved release. Start the CLI from the repository root.
 2. Install/sign in using the chosen CLI's official setup. Run `claude --version` or `gemini --version` when diagnosing compatibility.
 3. Review the workspace before accepting the host trust prompt. Keep normal permissions enabled; do not use blanket auto-approval to make setup pass.
 4. Fill the consuming project's Project Memory commands and MCP profile. TODO entries are unconfigured, not passing checks.
@@ -29,7 +29,7 @@ These adapters target Claude Code and Gemini CLI. For the broader curated Claude
 
 > Read the loaded project instructions and relevant files. Without changing files or external services, report the current repository/branch, planned version, allowed merge path, required checks, relevant skills, and which external connections you have actually verified. Identify TODO configuration and missing access honestly. Explain how you will preserve active branches and record a handoff.
 
-The answer must reflect current VERSION, feature → develop → approved prod flow, canonical skills and actual commands. Claiming a connector works solely because a document mentions it fails this check.
+The answer must reflect current VERSION, feature → dev → approved prod flow, canonical skills and actual commands. Claiming a connector works solely because a document mentions it fails this check.
 
 ## Boundaries and troubleshooting
 

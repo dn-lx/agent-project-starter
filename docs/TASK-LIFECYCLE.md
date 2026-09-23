@@ -48,7 +48,7 @@ Keep exactly one block in `docs/CURRENT-HANDOFF.md`:
 {
   "task_id": "REQ-123",
   "repository": "owner/repository",
-  "base": "develop",
+  "base": "dev",
   "branch": "feature/example",
   "pr": 42,
   "status": "implementing",
@@ -75,7 +75,7 @@ When a new session receives "continue", "resume", "fix it", or another request t
 
 1. read `AGENTS.md`, Project Memory and Current Handoff,
 2. inspect the machine-readable task state,
-3. inspect the referenced GitHub PR/branch and current `develop`,
+3. inspect the referenced GitHub PR/branch and current `dev`,
 4. prefer GitHub/source/check evidence over stale handoff or chat memory,
 5. continue only if task, branch and PR still correspond to the requested outcome,
 6. otherwise mark the old state stale/superseded and bind the task explicitly.
@@ -104,11 +104,13 @@ A future AI Control Plane may add expiring write leases. A lease coordinates wri
 
 ## Completion and cleanup
 
-After a PR merges into `develop`:
+Before merging a completed task PR into `dev`, reset the branch's `AGENT_TASK_STATE` block to the idle template state. The PR body/history remains the durable per-task record; `dev` must not inherit a stale active-task marker.
+
+After a PR merges into `dev`:
 - verify the merged SHA/check state,
 - let GitHub's native "Automatically delete head branches" remove the temporary branch,
-- keep `develop` and `prod` protected and permanent,
+- keep `dev` and `prod` protected and permanent,
 - do not reuse completed temporary branch names,
 - retire stale/unmerged branches only after reviewing whether they contain unique work.
 
-Production promotion is only `develop → prod` with explicit production approval.
+Production promotion is only `dev → prod` with explicit production approval.

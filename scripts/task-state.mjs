@@ -34,7 +34,7 @@ export function extractTaskState(text) {
   }
 }
 
-export function validateTaskState(state) {
+export function validateTaskState(state, expectedBase = null) {
   const errors = []
   if (!state || typeof state !== 'object' || Array.isArray(state)) return ['task state must be a JSON object']
   if (!TASK_STATUSES.has(state.status)) errors.push(`unsupported status: ${state.status}`)
@@ -47,6 +47,7 @@ export function validateTaskState(state) {
     if (typeof state.task_id !== 'string' || !state.task_id.trim()) errors.push('task_id is required')
     if (typeof state.repository !== 'string' || !/^[\w.-]+\/[\w.-]+$/.test(state.repository)) errors.push('repository must be owner/name')
     if (typeof state.base !== 'string' || !state.base.trim()) errors.push('base is required')
+  if (expectedBase && state.base !== expectedBase) errors.push(`base must match integration branch: ${expectedBase}`)
     if (typeof state.branch !== 'string' || !state.branch.trim()) errors.push('branch is required')
     if (state.branch === state.base) errors.push('working branch must differ from base')
 
@@ -68,10 +69,10 @@ export function validateTaskState(state) {
   return [...new Set(errors)]
 }
 
-export async function checkTaskState(path = 'docs/CURRENT-HANDOFF.md') {
+export async function checkTaskState(path = 'docs/CURRENT-HANDOFF.md', expectedBase = null) {
   const text = await readFile(path, 'utf8')
   const state = extractTaskState(text)
-  const errors = validateTaskState(state)
+  const errors = validateTaskState(state, expectedBase)
   if (errors.length) {
     for (const error of errors) console.error(`Task state error: ${error}`)
     return { ok: false, state, errors }

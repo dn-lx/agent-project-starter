@@ -7,7 +7,7 @@ description: Choose efficient verification based on change risk without weakenin
 
 The real project must define exact commands in Project Memory and CI.
 
-## Tier 1 — ordinary feature/fix PR into develop
+## Tier 1 — ordinary feature/fix PR into dev
 
 Use fast deterministic checks relevant to changed behavior:
 - syntax/type/lint where applicable,
@@ -28,7 +28,7 @@ For auth, permissions, secrets, payments, schema/data, tenant isolation, privile
 - allowed + denied/negative-path verification where practical,
 - independent capable reviewer.
 
-## Tier 3 — develop→prod release
+## Tier 3 — dev→prod release
 
 Follow Release Workflow and Release Readiness:
 - complete release diff,

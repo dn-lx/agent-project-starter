@@ -2,7 +2,7 @@
 
 **Status:** Active  
 **Last updated:** YYYY-MM-DD  
-**Primary branch:** `develop`
+**Primary branch:** `dev`
 
 Use this document as the project-level, checkable source of truth for requested features, known issues, planned improvements and completion evidence.
 

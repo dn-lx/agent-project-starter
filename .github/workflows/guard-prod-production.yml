@@ -1,7 +1,9 @@
 name: Production branch guard
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches: [prod]
+    types: [opened, synchronize, reopened, labeled, unlabeled, ready_for_review]
 
 permissions:
   contents: read
@@ -12,21 +14,21 @@ concurrency:
 
 jobs:
   validate-release-source:
-    name: develop-only production source
+    name: dev-only production source
     runs-on: ubuntu-latest
     steps:
-      - name: Require same-repository develop branch
+      - name: Require same-repository dev branch
         env:
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
           HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
           BASE_REPO: ${{ github.repository }}
         run: |
-          if [ "$HEAD_REF" != "develop" ]; then
-            echo "::error::Only develop may merge into prod. Current head: $HEAD_REF"
+          if [ "$HEAD_REF" != "dev" ]; then
+            echo "::error::Only dev may merge into prod. Current head: $HEAD_REF"
             exit 1
           fi
           if [ "$HEAD_REPO" != "$BASE_REPO" ]; then
-            echo "::error::Production PR must originate from this repository's develop branch."
+            echo "::error::Production PR must originate from this repository's dev branch."
             exit 1
           fi
 
