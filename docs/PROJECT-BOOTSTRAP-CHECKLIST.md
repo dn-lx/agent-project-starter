@@ -6,6 +6,7 @@ Use this immediately after creating a repository from Agent Project Starter.
 
 - [ ] Rename/update README for the real project.
 - [ ] Fill `docs/PROJECT-MEMORY.md`.
+- [ ] Replace the examples in `docs/REQUIREMENTS.md` with the project's ordered requirements, issues and roadmap.
 - [ ] Add a project-specific skill under `.agents/skills/<project-name>/SKILL.md`.
 - [ ] Remove starter-only examples that do not apply.
 
@@ -77,6 +78,13 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 - [ ] Document secret storage.
 - [ ] Document sensitive logging/data rules.
 - [ ] Add project-specific security checks for auth/payments/storage/data.
+
+## Requirements / work tracking
+
+- [ ] Use stable requirement/issue IDs for material planned work.
+- [ ] Put acceptance criteria on non-trivial requirements before implementation.
+- [ ] Mark checklist items complete only after verification and record concise evidence.
+- [ ] Keep completed/cancelled items for history or follow the project's explicit archival policy.
 
 ## Review and release evidence
 
