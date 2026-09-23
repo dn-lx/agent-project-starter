@@ -2,6 +2,11 @@ import { readFile, access } from 'node:fs/promises'
 
 const required = [
   'docs/CLAUDE-GEMINI-SETUP.md',
+  'docs/CLI-AGENT-STACK.md',
+  '.claude/settings.json',
+  'REVIEW.md',
+  'scripts/agent-cli-doctor.mjs',
+  'tests/cli-stack.test.mjs',
   'scripts/sync-claude-skills.mjs',
   'scripts/context-budget.mjs',
   'VERSION',
@@ -75,7 +80,7 @@ for (const adapter of ['CLAUDE.md', 'GEMINI.md', '.github/copilot-instructions.m
 }
 
 const agents = await readFile('AGENTS.md', 'utf8')
-for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'develop', 'main', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot', 'task-routing', 'execution-routing', 'docs/EXECUTION-ROUTING-POLICY.md', '.agents/superpowers/']) {
+for (const phrase of ['docs/VERSIONING.md', 'docs/BRANCH-LIFECYCLE.md', 'develop', 'main', 'docs/MCP-SETUP.md', 'docs/PROJECT-MEMORY.md', 'docs/CURRENT-HANDOFF.md', 'design-taste', 'motion-design', 'accessibility-visual-regression', 'code-hygiene', 'dependency-maintenance', 'headroom-pilot', 'task-routing', 'execution-routing', 'docs/EXECUTION-ROUTING-POLICY.md', 'docs/CLI-AGENT-STACK.md', 'REVIEW.md', '.agents/superpowers/']) {
   if (!agents.includes(phrase)) {
     console.error(`AGENTS.md is missing required reference: ${phrase}`)
     process.exit(1)

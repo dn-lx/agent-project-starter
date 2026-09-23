@@ -118,6 +118,18 @@ Provider names can be used as a **starting operating profile**, not as a permane
 
 Actual assignments must follow verified host capabilities and project outcomes. Do not route work to a provider merely because this example mentions it.
 
+## Curated CLI baseline
+
+The default multi-host toolset is intentionally limited to:
+- **Claude Code** — primary local implementation/refactoring worker when its repository/terminal context is advantageous.
+- **Codex CLI** — independent implementation, difficult debugging or review worker in an isolated worktree.
+- **Gemini CLI** — alternative analysis, long-context synthesis or independent review when useful.
+- **OpenCode** — provider-neutral fallback/session runner when portability or provider choice is the concrete benefit.
+
+This is an operating baseline, not a permanent ranking. One coordinator owns integration, and one lead worker is the default. Do not invoke all four by default.
+
+Do not add Aider, Goose, Qwen Code, Kiro or another coding-agent host unless the project records a specific capability gap not already covered by this baseline. See `docs/CLI-AGENT-STACK.md`.
+
 ## Measurement
 
 Track routing quality with:

@@ -1,6 +1,6 @@
 # Claude Code and Gemini CLI setup
 
-These adapters target Claude Code and Gemini CLI. Selecting a Claude or Gemini **model inside Cline/OmniRoute** does not change the host into Claude Code/Gemini CLI: use Cline's project instructions and verify it reads AGENTS.md. Model routing does not transfer ChatGPT connectors, credentials or filesystem access.
+These adapters target Claude Code and Gemini CLI. For the broader curated Claude/Codex/Gemini/OpenCode host stack and the Claude efficiency plugin profile, read `docs/CLI-AGENT-STACK.md`. Selecting a Claude or Gemini **model inside Cline/OmniRoute** does not change the host into Claude Code/Gemini CLI: use Cline's project instructions and verify it reads AGENTS.md. Model routing does not transfer ChatGPT connectors, credentials or filesystem access.
 
 ## Shared setup
 

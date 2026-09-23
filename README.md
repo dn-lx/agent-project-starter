@@ -13,6 +13,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 - Agent Skills for MCP use, Context7, Graphify, code hygiene, dependency maintenance, context efficiency, frontend quality, accessibility/visual regression, security review and releases.
 - Outcome-oriented Superpowers for resume, feature delivery, CI repair, QA, release and project-health workflows.
 - Two-stage execution routing: agent/host assignment first, model-class assignment second, with minimal justified parallelism.
+- A curated multi-CLI baseline: Claude Code, Codex CLI, Gemini CLI and OpenCode — no extra agent host without a documented capability gap.
 - Planner → Executor → Independent Reviewer orchestration.
 - Quality-first model routing guidance.
 - A strict `feature/fix/chore → develop → main` release path.
@@ -98,6 +99,10 @@ Keep the starter generic. Project-specific business rules belong in the generate
 ## Versioning and branch lifecycle
 
 The starter now carries a planned version in `VERSION` and release notes in `CHANGELOG.md`. Read [Versioning](docs/VERSIONING.md), [Branch lifecycle](docs/BRANCH-LIFECYCLE.md), and [Coverage review](docs/COVERAGE-REVIEW.md). Only main/develop are permanent; merged temporary branches are cleaned on develop pushes. Protect permanent branches and require CI checks when configuring a new repository.
+
+## CLI agent stack
+
+[Curated CLI agent setup](docs/CLI-AGENT-STACK.md) defines the intentionally small host set: Claude Code, Codex CLI, Gemini CLI and OpenCode. It also documents the Claude efficiency profile (Ponytail, Superpowers, Code Review, optional claude-mem and optional Obsidian skills), isolation rules and a local CLI doctor. The router/coordinator integrates work; not every host runs on every task.
 
 ## Claude and Gemini
 

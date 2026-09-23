@@ -90,6 +90,12 @@ See `.agents/skills/headroom-pilot/SKILL.md` and `docs/CODE-HEALTH-AND-CONTEXT.m
 
 External memory services are optional. They must never become more authoritative than Git/source/docs. Prefer local/repository-owned memory for durable engineering facts.
 
+### claude-mem and Obsidian
+
+`claude-mem` is an optional episodic-memory aid for Claude Code, not durable project authority. Enable it only after reviewing provider/retention/privacy choices, and never store secrets or sensitive customer data there. Revalidate recalled facts against current source.
+
+Obsidian skills are optional when a project/team actually maintains a vault. Treat the vault as a knowledge interface; stable engineering decisions still belong in Git-tracked source, ADRs, Project Memory or Current Handoff.
+
 If adopting a memory plugin/service, document:
 - data stored,
 - retention,
