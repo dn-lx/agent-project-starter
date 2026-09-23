@@ -61,9 +61,9 @@ See:
 - `docs/EXECUTION-ROUTING-POLICY.md`
 - `docs/CLI-AGENT-STACK.md` — curated Claude/Codex/Gemini/OpenCode host baseline and Claude efficiency add-ons.
 
-## Curated CLI host baseline
+## Optional CLI host profile
 
-Default coding hosts are intentionally limited to Claude Code, Codex CLI, Gemini CLI and OpenCode. Use `docs/CLI-AGENT-STACK.md` for responsibilities, isolation, plugin setup and verification. Do not add another coding-agent host unless a project documents a concrete uncovered capability gap.
+When local coding-agent CLIs are useful, `docs/CLI-AGENT-STACK.md` documents a deliberately small Claude Code, Codex CLI, Gemini CLI and OpenCode profile. None is required by the core repository contract. Do not add another coding-agent host unless a project documents a concrete uncovered capability gap.
 
 Claude efficiency plugins may improve implementation/review, but they never override this file. Ponytail may simplify solutions; Superpowers may structure implementation; Code Review may add an independent review pass; claude-mem and Obsidian skills are optional context/knowledge aids. Repository source, tests, ADRs, Project Memory and Current Handoff remain authoritative.
 
@@ -118,16 +118,14 @@ Read the relevant skill before specialized work:
 - `.agents/skills/code-hygiene/SKILL.md` — dead-code, unused exports/dependencies and cleanup.
 - `.agents/skills/dependency-maintenance/SKILL.md` — upgrades, advisories, lockfiles and update bots.
 - `.agents/skills/headroom-pilot/SKILL.md` — measured optional context compression pilot.
-- `.agents/skills/frontend-design/SKILL.md` — foundation for substantial UI/design work.
-- `.agents/skills/design-taste/SKILL.md` — visual quality, hierarchy, typography and anti-generic design.
-- `.agents/skills/motion-design/SKILL.md` — purposeful animation, transitions and interaction feedback.
+- `.agents/skills/design-stack/SKILL.md` — route frontend design through Taste Skill, Impeccable and on-demand Awesome Design styles without overlapping generic skills.
 - `.agents/skills/accessibility-visual-regression/SKILL.md` — accessibility evidence and stable visual regression checks.
 - `.agents/skills/security-boundary-review/SKILL.md` — auth/secrets/data/external trust boundaries.
 - `.agents/skills/quality-gates/SKILL.md` — risk-based verification.
 - `.agents/skills/release-readiness/SKILL.md` — dev→prod review.
 - `.agents/skills/release-workflow/SKILL.md` — branch/release contract.
 
-For frontend work, use `docs/FRONTEND-QUALITY-STANDARD.md` to decide when Taste and Motion should be loaded. Do not force those specialist skills onto tiny or unrelated changes.
+For substantial frontend work, use `docs/DESIGN-STACK.md`. Load the smallest applicable design source; do not invoke Taste, Impeccable and an Awesome Design style together by default.
 
 For repository cleanup/context optimization, follow `docs/CODE-HEALTH-AND-CONTEXT.md`. Code Hygiene and Headroom solve different problems: dead code vs model context.
 

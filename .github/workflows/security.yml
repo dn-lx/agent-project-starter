@@ -14,6 +14,7 @@ concurrency:
 
 jobs:
   gitleaks:
+    name: security / gitleaks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -24,6 +25,7 @@ jobs:
           docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.24.3 detect --source=/repo --redact --exit-code 1
 
   semgrep:
+    name: security / semgrep
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -36,6 +38,7 @@ jobs:
         run: semgrep scan --config auto --severity ERROR --error
 
   dependency-audit:
+    name: security / dependency-audit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6

@@ -18,6 +18,8 @@ Use this immediately after creating a repository from Agent Project Starter.
 - [ ] Configure production flow as dev → prod only.
 - [ ] Create/require `production-approved` label if using the provided release guard.
 - [ ] Protect `dev` and `prod` from deletion/force-push and require PRs as appropriate.
+- [ ] After the checks have run at least once, require `policy / agent-stack`, `policy / version`, `security / gitleaks`, `security / semgrep`, and `security / dependency-audit` on `dev` (or the adapted project equivalents).
+- [ ] On `prod`, also require `policy / prod-source-and-approval` so only an approved same-repository `dev` PR can release.
 - [ ] Enable GitHub native **Automatically delete head branches** after `dev` is protected.
 
 ## Build and tests
@@ -36,9 +38,9 @@ For projects with a frontend:
 
 - [ ] Record the design system/component library and brand assets.
 - [ ] Record default visual variance, motion level and information density.
-- [ ] Keep `frontend-design` as the foundation UI skill.
-- [ ] Use `design-taste` for substantial visual design/redesign work.
-- [ ] Use `motion-design` only when animation/transition behavior is material.
+- [ ] Read `docs/DESIGN-STACK.md` and enable only the design sources the project needs.
+- [ ] Use Taste Skill for substantial generation/redesign; use Impeccable for critique/polish; pull one Awesome Design style only when the brief calls for a named aesthetic.
+- [ ] Review any third-party hooks/scripts before enabling them; do not bulk-install the Awesome Design registry.
 - [ ] Document critical mobile/desktop breakpoints and accessibility constraints.
 - [ ] Add screenshot/browser verification for important visual changes.
 - [ ] Add accessibility automation/manual keyboard checks for critical UI flows.
@@ -136,7 +138,7 @@ A fresh agent should be able to answer, without asking the project owner:
 - Which external writes are sensitive?
 - How do I release safely?
 - Where do I record unfinished work?
-- If there is a frontend, what design/taste/motion rules apply?
+- If there is a frontend, which design source is authoritative and what verification is required?
 
 If not, the bootstrap is incomplete.
 
