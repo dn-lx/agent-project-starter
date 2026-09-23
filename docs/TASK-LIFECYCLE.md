@@ -104,6 +104,8 @@ A future AI Control Plane may add expiring write leases. A lease coordinates wri
 
 ## Completion and cleanup
 
+Before merging a completed task PR into `dev`, reset the branch's `AGENT_TASK_STATE` block to the idle template state. The PR body/history remains the durable per-task record; `dev` must not inherit a stale active-task marker.
+
 After a PR merges into `dev`:
 - verify the merged SHA/check state,
 - let GitHub's native "Automatically delete head branches" remove the temporary branch,
