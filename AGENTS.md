@@ -9,9 +9,10 @@ Before editing:
 1. Read this file.
 2. Read `docs/PROJECT-MEMORY.md`.
 3. Read `docs/CURRENT-HANDOFF.md`.
-4. Classify the task, then load only the applicable superpower or repository-local skill.
-5. Read `docs/AGENT-PLATFORM-WORKFLOWS.md` only for host portability/onboarding work.
-6. If external systems are needed, read `docs/MCP-SETUP.md` and verify the actual connection with a harmless read.
+4. For product requirements, backlog execution, bugs/features, or questions about remaining work, read `docs/REQUIREMENTS.md`.
+5. Classify the task, then load only the applicable superpower or repository-local skill.
+6. Read `docs/AGENT-PLATFORM-WORKFLOWS.md` only for host portability/onboarding work.
+7. If external systems are needed, read `docs/MCP-SETUP.md` and verify the actual connection with a harmless read.
 
 Do not preload the full skill/superpower catalog. Progressive loading is the default context policy.
 
@@ -132,6 +133,12 @@ For repository cleanup/context optimization, follow `docs/CODE-HEALTH-AND-CONTEX
 Before adding a new skill/tool, check `docs/STACK-RESPONSIBILITY-MAP.md` so existing capabilities are extended rather than duplicated.
 
 Add a project-specific skill at `.agents/skills/<project-name>/SKILL.md`.
+
+## Requirements and execution-plan discipline
+
+`docs/REQUIREMENTS.md` is the checkable product/backlog plan for the consuming project. Keep requirement IDs stable once work begins. Use the plan when implementing product work, bugs or planned improvements. Mark `[x]` only after the item's acceptance criteria are verified and add concise completion evidence. Do not mark work complete merely because code was written. If scope changes materially, update the requirement before or alongside implementation.
+
+The requirements plan is not part of the default static startup context for unrelated tasks; load it when the task needs it.
 
 ## Required verification
 
