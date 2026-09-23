@@ -61,9 +61,9 @@ See:
 - `docs/EXECUTION-ROUTING-POLICY.md`
 - `docs/CLI-AGENT-STACK.md` — curated Claude/Codex/Gemini/OpenCode host baseline and Claude efficiency add-ons.
 
-## Curated CLI host baseline
+## Optional CLI host profile
 
-Default coding hosts are intentionally limited to Claude Code, Codex CLI, Gemini CLI and OpenCode. Use `docs/CLI-AGENT-STACK.md` for responsibilities, isolation, plugin setup and verification. Do not add another coding-agent host unless a project documents a concrete uncovered capability gap.
+When local coding-agent CLIs are useful, `docs/CLI-AGENT-STACK.md` documents a deliberately small Claude Code, Codex CLI, Gemini CLI and OpenCode profile. None is required by the core repository contract. Do not add another coding-agent host unless a project documents a concrete uncovered capability gap.
 
 Claude efficiency plugins may improve implementation/review, but they never override this file. Ponytail may simplify solutions; Superpowers may structure implementation; Code Review may add an independent review pass; claude-mem and Obsidian skills are optional context/knowledge aids. Repository source, tests, ADRs, Project Memory and Current Handoff remain authoritative.
 
