@@ -15,8 +15,8 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Task Routing | Select one primary outcome workflow and minimal skill set | Choosing provider/model execution details |
 | Task Continuity | Bind/recover task → repository → branch → PR state across interruptions | Choosing implementation strategy or treating every open branch as active |
 | Execution Routing | Assign agent/host, model class and justified parallelism | Task decomposition logic inside a Superpower |
-| Curated CLI Stack | Claude Code, Codex CLI, Gemini CLI and OpenCode host setup/isolation | Adding every available coding agent |
-| Claude Enhancement Plugins | Ponytail/Superpowers/Code Review plus optional claude-mem/Obsidian integration | Overriding AGENTS.md, deterministic checks or project memory |
+| Optional CLI Stack | Claude Code, Codex CLI, Gemini CLI and OpenCode host setup/isolation when a project uses them | Core repository policy |
+| Optional Claude Plugins | Ponytail/Superpowers/Code Review plus optional claude-mem/Obsidian integration | Core repository policy or automatic activation |
 | REVIEW.md | Shared correctness/security/regression review contract | Replacing CI, tests or production approval |
 | Superpowers | End-to-end sequencing around resume/deliver/repair/verify/release/audit outcomes | Duplicating specialist skill instructions |
 | Memory Context | Retrieval/context discipline and durable memory rules | Compression proxy implementation |
@@ -30,7 +30,6 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Agent Orchestration | Planner/implementer/reviewer role flow | Vendor lock-in |
 | Release Workflow | Allowed branch/release path | Deciding technical release readiness |
 | Release Readiness | Evidence/risk check before production | Authorization to merge |
-| Documentation Drift | Signal that maintained docs may be stale | Proving docs are semantically correct |
 
 ## Intentional overlaps
 
@@ -88,4 +87,4 @@ Ask:
 6. Does it create a new secret/data boundary?
 7. How will we measure whether it helps?
 
-If the answer is mostly “another way to do what we already do,” do not add it. The default CLI baseline is already Claude Code + Codex CLI + Gemini CLI + OpenCode; additional coding-agent hosts require an explicit project-specific gap.
+If the answer is mostly “another way to do what we already do,” do not add it. The optional CLI profile already documents Claude Code + Codex CLI + Gemini CLI + OpenCode; add or enable hosts only for a concrete project-specific gap.
