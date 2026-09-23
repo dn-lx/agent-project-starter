@@ -18,6 +18,8 @@ Use this immediately after creating a repository from Agent Project Starter.
 - [ ] Configure production flow as dev → prod only.
 - [ ] Create/require `production-approved` label if using the provided release guard.
 - [ ] Protect `dev` and `prod` from deletion/force-push and require PRs as appropriate.
+- [ ] After the checks have run at least once, require `policy / agent-stack`, `policy / version`, `security / gitleaks`, `security / semgrep`, and `security / dependency-audit` on `dev` (or the adapted project equivalents).
+- [ ] On `prod`, also require `policy / prod-source-and-approval` so only an approved same-repository `dev` PR can release.
 - [ ] Enable GitHub native **Automatically delete head branches** after `dev` is protected.
 
 ## Build and tests
