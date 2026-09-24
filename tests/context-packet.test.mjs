@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { mkdtemp, writeFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { measureContextPacket } from '../scripts/context-packet.mjs'
+import { measureContextPacket, parseContextPacketArgs } from '../scripts/context-packet.mjs'
 
 test('task context packet deduplicates paths and respects budget', async () => {
   const root = await mkdtemp(join(tmpdir(), 'context-packet-'))
@@ -21,4 +21,17 @@ test('task context packet deduplicates paths and respects budget', async () => {
   } finally {
     await rm(root, { recursive: true, force: true })
   }
+})
+
+test('context packet CLI parsing preserves file paths with and without a budget flag', () => {
+  assert.deepEqual(parseContextPacketArgs(['a.md', 'b.md']), {
+    check: false,
+    budget: undefined,
+    paths: ['a.md', 'b.md'],
+  })
+  assert.deepEqual(parseContextPacketArgs(['--check', '--budget', '5000', 'a.md']), {
+    check: true,
+    budget: 5000,
+    paths: ['a.md'],
+  })
 })
