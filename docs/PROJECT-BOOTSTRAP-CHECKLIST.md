@@ -106,6 +106,8 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 - [ ] Document tenant/user isolation if applicable.
 - [ ] Document secret storage.
 - [ ] Document sensitive logging/data rules.
+- [ ] Document data classification/minimization plus retention/deletion/export expectations where personal/sensitive data exists.
+- [ ] Document public API/webhook/upload trust boundaries, signature/replay/rate-limit/idempotency expectations where applicable.
 - [ ] Add project-specific security checks for auth/payments/storage/data.
 
 ## Requirements / work tracking
