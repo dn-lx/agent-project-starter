@@ -44,24 +44,30 @@ function skipTemplatePath(target) {
 }
 
 export function findLegacyBranchTerms(content, integration, production) {
-  const findings = []
-  if (integration !== 'develop') {
-    const patterns = [
-      /\`develop\`/gi,
-      /\bmerge(?:s|d)?\s+(?:only\s+)?into\s+develop\b/gi,
-      /\bdevelop\s*(?:→|->)/gi,
-    ]
-    for (const pattern of patterns) if (pattern.test(content)) findings.push('develop')
+  const configured = new Set([integration, production])
+  const knownBranchNames = ['dev', 'prod', 'develop', 'main', 'master']
+  const findings = new Set()
+
+  const codeSpans = [...content.matchAll(/`([^`]+)`/g)].map(match => match[1])
+  for (const span of codeSpans) {
+    for (const branch of knownBranchNames) {
+      if (configured.has(branch)) continue
+      if (new RegExp(`(^|[^A-Za-z0-9_.-])${branch}([^A-Za-z0-9_.-]|$)`).test(span)) findings.add(branch)
+    }
   }
-  if (production !== 'main') {
-    const patterns = [
-      /\`main\`/gi,
-      /(?:→|->)\s*main\b/gi,
-      /\brelease(?:s|d)?\s+(?:only\s+)?to\s+main\b/gi,
-    ]
-    for (const pattern of patterns) if (pattern.test(content)) findings.push('main')
+
+  const phrasePatterns = [
+    /\bmerge(?:s|d)?\s+(?:only\s+)?into\s+([A-Za-z0-9._/-]+)\b/gi,
+    /\brelease(?:s|d)?\s+(?:only\s+)?to\s+([A-Za-z0-9._/-]+)\b/gi,
+  ]
+  for (const pattern of phrasePatterns) {
+    for (const match of content.matchAll(pattern)) {
+      const branch = match[1]
+      if (knownBranchNames.includes(branch) && !configured.has(branch)) findings.add(branch)
+    }
   }
-  return [...new Set(findings)]
+
+  return [...findings]
 }
 
 export async function validateDocs(root = process.cwd(), { strictProject = false } = {}) {
@@ -125,6 +131,17 @@ export async function validateDocs(root = process.cwd(), { strictProject = false
     if (!content) continue
     const legacy = findLegacyBranchTerms(content, integration, production)
     for (const term of legacy) errors.push(`${path}: stale branch token "${term}" conflicts with policy ${integration} → ${production}`)
+  }
+
+  for (const path of [
+    '.github/workflows/agent-stack-validation.yml',
+    '.github/workflows/guard-prod-production.yml',
+    '.github/workflows/security.yml',
+    '.github/workflows/version-validation.yml',
+  ]) {
+    const content = await readFile(resolve(root, path), 'utf8')
+    if (!new RegExp(`\\b${integration}\\b`).test(content)) errors.push(`${path}: integration branch ${integration} is not represented`)
+    if (!new RegExp(`\\b${production}\\b`).test(content)) errors.push(`${path}: production branch ${production} is not represented`)
   }
 
   const skillDirs = (await readdir(resolve(root, '.agents/skills'), { withFileTypes: true }))
