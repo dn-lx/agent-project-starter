@@ -11,4 +11,4 @@ This is an example only. Copy the relevant rows into `docs/MCP-SETUP.md` and rep
 | Browser verification | Optional | Playwright | Local/preview | Open read-only page |
 | Code relationships | Optional | Graphify | Local | Query known symbol |
 
-Never put access tokens, service-role keys or passwords in this table.
+Status values are `Required`, `Optional`, or `Not used`. Never put access tokens, service-role keys or passwords in this table.
