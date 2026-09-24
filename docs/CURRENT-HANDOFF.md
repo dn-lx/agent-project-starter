@@ -6,21 +6,27 @@ This file is the compact recovery record for unfinished work. GitHub/source/test
 
 <!-- AGENT_TASK_STATE_START -->
 {
-  "task_id": "documentation-systems-audit-20260925",
-  "repository": "dn-lx/agent-project-starter",
+  "task_id": null,
+  "repository": null,
   "base": "dev",
-  "branch": "feature/documentation-systems-audit",
-  "pr": 19,
-  "status": "testing",
-  "last_verified_sha": "c69174f6e3b2817279a59c14cb94ac1bd26e2467",
-  "next_step": "Repair documentation-validator false positives for valid directory references and the explicitly upstream Impeccable path, then re-run final checks on the new candidate SHA.",
-  "updated_at": "2026-09-25T00:41:00+02:00"
+  "branch": null,
+  "pr": null,
+  "status": "idle",
+  "last_verified_sha": null,
+  "next_step": null,
+  "updated_at": "2026-09-24T22:46:00Z"
 }
 <!-- AGENT_TASK_STATE_END -->
 
 ## Current state
 
-PR #19 final-candidate checks exposed documentation-validator false positives. The failed SHA is retained as evidence only; it is not verified green.
+No active task is recorded in the starter template.
+
+When non-trivial work begins:
+- create/reconcile the focused branch from current `dev`,
+- create a draft PR early,
+- replace the idle task-state block with the active task/branch/PR binding,
+- record only the compact verified next step needed after interruption.
 
 ## Recovery rule
 
