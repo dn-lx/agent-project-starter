@@ -11,16 +11,16 @@ This file is the compact recovery record for unfinished work. GitHub/source/test
   "base": "dev",
   "branch": "feature/documentation-systems-audit",
   "pr": 19,
-  "status": "implementing",
-  "last_verified_sha": null,
-  "next_step": "Fix documentation-validator false positives for directory references and explicitly upstream paths, then refreeze the candidate and rerun final checks.",
-  "updated_at": "2026-09-24T23:04:00Z"
+  "status": "testing",
+  "last_verified_sha": "c69174f6e3b2817279a59c14cb94ac1bd26e2467",
+  "next_step": "Repair documentation-validator false positives for valid directory references and the explicitly upstream Impeccable path, then re-run final checks on the new candidate SHA.",
+  "updated_at": "2026-09-25T00:41:00+02:00"
 }
 <!-- AGENT_TASK_STATE_END -->
 
 ## Current state
 
-PR #19 final-candidate validation exposed documentation-validator path-classification false positives. The task remains active until those validator semantics are repaired and a new exact-head gate is green.
+PR #19 final-candidate checks exposed documentation-validator false positives. The failed SHA is retained as evidence only; it is not verified green.
 
 ## Recovery rule
 
