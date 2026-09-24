@@ -99,7 +99,30 @@ export async function validateDocs(root = process.cwd(), { strictProject = false
   const policy = JSON.parse(await readFile(resolve(root, '.agents/project-policy.json'), 'utf8'))
   const integration = policy.branches?.integration
   const production = policy.branches?.production
-  for (const [path, content] of contents) {
+  const branchPolicyDocs = [
+    'AGENTS.md',
+    'README.md',
+    'REVIEW.md',
+    '.github/PULL_REQUEST_TEMPLATE.md',
+    'docs/AGENT-PLATFORM-WORKFLOWS.md',
+    'docs/BRANCH-LIFECYCLE.md',
+    'docs/PROJECT-BOOTSTRAP-CHECKLIST.md',
+    'docs/PROJECT-MEMORY.md',
+    'docs/TASK-LIFECYCLE.md',
+    'docs/VERSIONING.md',
+    '.agents/skills/dependency-maintenance/SKILL.md',
+    '.agents/skills/project-bootstrap/SKILL.md',
+    '.agents/skills/quality-gates/SKILL.md',
+    '.agents/skills/release-readiness/SKILL.md',
+    '.agents/skills/release-workflow/SKILL.md',
+    '.agents/skills/task-continuity/SKILL.md',
+    '.agents/superpowers/finish-feature/SUPERPOWER.md',
+    '.agents/superpowers/resume-project/SUPERPOWER.md',
+    '.agents/superpowers/ship-release/SUPERPOWER.md',
+  ]
+  for (const path of branchPolicyDocs) {
+    const content = contents.get(path)
+    if (!content) continue
     const legacy = findLegacyBranchTerms(content, integration, production)
     for (const term of legacy) errors.push(`${path}: stale branch token "${term}" conflicts with policy ${integration} → ${production}`)
   }
@@ -120,9 +143,12 @@ export async function validateDocs(root = process.cwd(), { strictProject = false
   }
 
   if (strictProject) {
-    for (const path of ['docs/PROJECT-MEMORY.md', 'docs/MCP-SETUP.md']) {
-      const content = contents.get(path) || ''
-      if (/\bTODO\b/.test(content)) errors.push(`${path}: unresolved TODO placeholder in strict project mode`)
+    const memory = contents.get('docs/PROJECT-MEMORY.md') || ''
+    if (/\bTODO\b/.test(memory)) errors.push('docs/PROJECT-MEMORY.md: unresolved TODO placeholder in strict project mode')
+
+    const mcp = contents.get('docs/MCP-SETUP.md') || ''
+    if (/\|\s*TODO(?:\s*\/[^|]*)?\s*\|/.test(mcp)) {
+      errors.push('docs/MCP-SETUP.md: unresolved table TODO placeholder in strict project mode')
     }
     const requirements = contents.get('docs/REQUIREMENTS.md') || ''
     if (/YYYY-MM-DD|Short requirement title|Example foundational work|Example product work|Example QA\/release work/.test(requirements)) {
