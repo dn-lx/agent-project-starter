@@ -1,71 +1,82 @@
 ---
 name: design-stack
-description: Route substantial frontend design work through Taste Skill, Impeccable, and the Awesome Design catalogue without loading overlapping design systems by default.
+description: Route substantial frontend work through Taste Skill, UI/UX Pro Max, Impeccable, Motion, and independent accessibility/visual verification without loading overlapping design systems by default.
 ---
 
 # Design Stack
 
-Use for substantial frontend creation, redesign, visual polish, or design-system work. Do not load it for backend-only work or trivial copy/layout edits.
+Use for substantial frontend creation, redesign, visual polish, UX/system work, or interaction design. Do not load it for backend-only work or trivial copy/layout edits.
 
-Read `docs/DESIGN-STACK.md` before using external design packs.
+Read `docs/DESIGN-STACK.md` before using external design tooling.
 
 ## Routing
 
-Use the smallest design path that satisfies the task:
+Use the smallest path that satisfies the task:
 
-- **Taste Skill** — primary generation/redesign direction when a screen should feel less generic, more deliberate, or more visually ambitious.
-- **Impeccable** — critique, audit, polish, UX hardening, browser iteration, anti-pattern detection, and final design refinement.
-- **Awesome Design Skills** — an on-demand catalogue of specific visual systems. Select one style only when the product/brand brief actually calls for a defined aesthetic.
-- **Accessibility + Visual Regression** — independent verification evidence after material UI changes. It remains separate because verification is not visual direction.
+- **Taste Skill** — creative direction and anti-generic generation/redesign.
+- **UI/UX Pro Max** — structured design intelligence: product/style matching, palettes, typography, UX rules, charts, platform/stack guidance, accessibility heuristics, and design-system generation.
+- **Impeccable** — critique, audit, polish, UX hardening, browser iteration, anti-pattern detection, and final refinement.
+- **Motion** — runtime animation implementation when CSS alone is insufficient. For React, use the current `motion` package and import from `motion/react`.
+- **Accessibility + Visual Regression** — independent verification evidence after material UI changes.
 
-Do not invoke all sources automatically.
+Do not invoke every layer automatically.
 
 ## Existing-product rule
 
 Before changing UI:
 1. inspect the current design system, tokens, components, brand assets and real product states,
 2. preserve a coherent incumbent system unless the task is explicitly a redesign,
-3. treat the user/project brief as higher authority than a third-party skill's defaults,
-4. never replace product truth, accessibility, security or functional constraints merely to satisfy an aesthetic rule.
+3. treat the user/project brief as higher authority than any third-party skill default,
+4. never weaken product truth, accessibility, security, performance or functional constraints for aesthetics,
+5. check existing dependencies before adding Motion or another runtime library.
 
-## Third-party skill rule
+## Third-party rule
 
-The starter does not vendor or auto-enable the upstream packs. Use the verified install/update commands in `docs/DESIGN-STACK.md` for projects that need them.
+The starter does not vendor or auto-install the upstream design packs or Motion runtime. Use the verified source/install guidance in `docs/DESIGN-STACK.md` when a consuming project needs them.
 
-Before relying on an upstream pack:
-- verify the source/revision,
-- review hooks/scripts before enabling them,
-- keep third-party runtime caches and local settings out of Git,
-- do not claim a pack is installed merely because this template documents it.
+Before relying on an upstream pack/runtime:
+- verify source/revision/version,
+- review installer hooks/scripts before enabling them,
+- keep caches and machine-local settings out of Git,
+- pin reviewed versions/revisions when automation supports it,
+- do not claim something is installed merely because this template documents it.
 
-## Practical sequence
+## Practical sequences
 
-For a new or redesigned surface:
+New or substantially redesigned surface:
 
 ```text
 product/brand brief
       ↓
-Taste Skill OR one selected Awesome Design style
+Taste Skill
+      ↓
+UI/UX Pro Max design intelligence
       ↓
 implementation
       ↓
-Impeccable critique/polish when useful
+Motion only when runtime animation is justified
+      ↓
+Impeccable critique/polish
       ↓
 accessibility + visual-regression evidence
 ```
 
-For an existing UI that only needs refinement:
+Existing UI that mainly needs refinement:
 
 ```text
 existing design truth
       ↓
+UI/UX Pro Max targeted UX/design query when useful
+      ↓
 Impeccable audit/polish
       ↓
 targeted implementation
+      ↓
+Motion only for material interaction/motion work
       ↓
 accessibility + visual-regression evidence
 ```
 
 ## Anti-clutter rule
 
-Do not add another general frontend-design, taste, motion, audit, or polish skill unless a concrete capability gap remains after evaluating this stack. Project-specific brand/design rules belong in the consuming project's design system or project skill.
+Do not add another general design catalogue, frontend-design, taste, motion, audit, or polish layer unless a concrete capability gap remains after evaluating this stack. Project-specific brand/design rules belong in the consuming project's design system or project skill.
