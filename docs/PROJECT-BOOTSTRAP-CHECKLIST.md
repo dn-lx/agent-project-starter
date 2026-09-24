@@ -39,8 +39,9 @@ For projects with a frontend:
 - [ ] Record the design system/component library and brand assets.
 - [ ] Record default visual variance, motion level and information density.
 - [ ] Read `docs/DESIGN-STACK.md` and enable only the design sources the project needs.
-- [ ] Use Taste Skill for substantial generation/redesign; use Impeccable for critique/polish; pull one Awesome Design style only when the brief calls for a named aesthetic.
-- [ ] Review any third-party hooks/scripts before enabling them; do not bulk-install the Awesome Design registry.
+- [ ] For frontend projects, install/review UI/UX Pro Max when structured design intelligence is useful; use Taste Skill for creative direction and Impeccable for critique/polish.
+- [ ] Add Motion only when the actual project needs material runtime animation beyond CSS; for new React work use the current `motion` package, not legacy `framer-motion`.
+- [ ] Review third-party installers/hooks/scripts before enabling them and keep machine-local caches/configuration out of Git.
 - [ ] Document critical mobile/desktop breakpoints and accessibility constraints.
 - [ ] Add screenshot/browser verification for important visual changes.
 - [ ] Add accessibility automation/manual keyboard checks for critical UI flows.
