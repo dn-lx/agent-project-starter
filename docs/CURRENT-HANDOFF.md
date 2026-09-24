@@ -6,27 +6,29 @@ This file is the compact recovery record for unfinished work. GitHub/source/test
 
 <!-- AGENT_TASK_STATE_START -->
 {
-  "task_id": null,
-  "repository": null,
+  "task_id": "starter-workflow-gaps-20260924",
+  "repository": "dn-lx/agent-project-starter",
   "base": "dev",
-  "branch": null,
+  "branch": "feature/close-agent-workflow-gaps",
   "pr": null,
-  "status": "idle",
+  "status": "planning",
   "last_verified_sha": null,
-  "next_step": null,
-  "updated_at": "2026-09-24T00:00:00Z"
+  "next_step": "Add the missing planning, frontend-runtime verification, test-engineering/evidence, performance-budget and analytics-contract capabilities without duplicating existing skills.",
+  "updated_at": "2026-09-24T21:45:00Z"
 }
 <!-- AGENT_TASK_STATE_END -->
 
 ## Current state
 
-No active task is recorded in the starter template.
+Closing verified workflow gaps in Agent Project Starter only.
 
-When non-trivial work begins:
-- create/reconcile the focused branch from current `dev`,
-- create a draft PR early,
-- replace the idle task-state block with the active task/branch/PR binding,
-- record only the compact verified next step needed after interruption.
+## Scope
+
+- structured implementation planning distinct from product requirements,
+- real-browser frontend verification distinct from design direction and accessibility/visual regression,
+- test harness/strategy/evidence discipline distinct from risk-based quality-gate selection,
+- measurable performance budgets and regression checks,
+- explicit privacy-safe analytics event contracts distinct from the analytics provider itself.
 
 ## Recovery rule
 
