@@ -41,14 +41,18 @@
 | Browser/E2E | TODO |
 | Performance | TODO / Not used |
 
-## Environments
+## Runtime environments
 
-| Environment | Branch | Purpose |
-| --- | --- | --- |
-| Development | `dev` | Integration/testing |
-| Production | `prod` | Released code |
+Branches are code-promotion lanes, not proof of runtime/data isolation.
 
-Add preview/staging details if the project uses them.
+| Runtime | Code source | Non-secret target identifiers | Data/auth isolation |
+| --- | --- | --- | --- |
+| Local | working branch | TODO | TODO |
+| Preview/staging | TODO / Not used | TODO | TODO |
+| Production | `prod` / adapted production branch | TODO | TODO |
+
+- **Code promotion path:** `dev → prod` unless adapted in `.agents/project-policy.json`.
+- **Feature-flag/config environments:** TODO / Not used.
 
 ## Verification contracts
 
@@ -57,6 +61,8 @@ Add preview/staging details if the project uses them.
 - **Performance budgets:** TODO / Not used — record measurable user-critical thresholds/config and where they are enforced.
 - **Analytics contract/taxonomy:** TODO / Not used — record the durable event-contract document/config, not provider credentials.
 - **Verification evidence location:** PR / CI artifacts / TODO.
+- **Localization/i18n:** TODO / Not used — source locale, supported locales, fallback, timezone/date/number/currency policy, RTL if applicable.
+- **Operations runbook:** TODO / Not used — deployed revision verification, health/smoke checks, observability, rollback and backup/restore where applicable. See `docs/OPERATIONS-RECOVERY.md`.
 
 ## Product / domain invariants
 
@@ -99,10 +105,3 @@ Link accepted ADRs rather than duplicating them.
 ## Context freshness
 
 Update this file when architecture, commands, core product invariants, security boundaries or external-system topology materially changes. Source/tests/accepted ADRs override stale memory.
-
-## Starter lifecycle tooling
-
-- Planned initial starter version: VERSION; policy: `docs/VERSIONING.md`.
-- Starter checks: `node scripts/validate-agent-stack.mjs`, `node scripts/validate-version.mjs`, `node --test tests/*.test.mjs`.
-- Branch lifecycle: `docs/BRANCH-LIFECYCLE.md`.
-- These checks do not replace the consuming application commands above.
