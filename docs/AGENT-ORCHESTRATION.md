@@ -50,6 +50,10 @@ rerun relevant checks
 branch + PR
   ↓
 human release approval
+  ↓
+for release tasks: deployed-revision + health/smoke verification
+  ↓
+rollback/contain if release verification fails
 ```
 
 ## Independent review contract
