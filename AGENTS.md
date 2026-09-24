@@ -83,7 +83,7 @@ Use least privilege. Record material external writes in `docs/CURRENT-HANDOFF.md
 - Durable facts belong in source, ADRs, project memory or skills.
 - Temporary/unfinished state belongs in Current Handoff.
 - Do not use a long chat transcript as the project's memory system.
-- Use Graphify/source search to identify relevant files before loading broad repository context.
+- Use Graphify/source search to identify relevant files before loading broad repository context. Some search/index tools are default-branch-scoped; before treating a hit as current truth, verify/fetch it from the active branch/SHA.
 - Prefer compact, source-linked summaries and current diffs over replaying previous agent transcripts.
 - Mark memory as stale when related source/architecture changed.
 
