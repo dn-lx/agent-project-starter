@@ -4,12 +4,12 @@ This starter can use a deliberately small set of complementary local coding host
 
 ## Optional baseline
 
-| Host | Default use | Why it stays |
+| Host | Use when its verified capabilities fit | Notes |
 | --- | --- | --- |
-| Claude Code | Primary local implementation, refactoring and repository work | Strong codebase reasoning and a mature plugin/skill ecosystem |
-| Codex CLI | Independent implementation, debugging and review in an isolated worktree | Strong coding/reasoning plus portable Agent Plugins and AGENTS.md workflows |
-| Gemini CLI | Alternative analysis, long-context work and independent review | Useful second implementation/review path with different model/tool behavior |
-| OpenCode | Provider-neutral fallback and isolated multi-session runner | Keeps the workflow portable across model providers without adding another project policy layer |
+| Claude Code | Local repository/terminal implementation, refactoring or review | Optional host; plugin/skill ecosystem may be useful |
+| Codex CLI | Local implementation, debugging, review or isolated worker tasks | Optional host; follows the same repository contract |
+| Gemini CLI | Local implementation, analysis, long-context synthesis or review | Optional host; use when its current context/tooling is advantageous |
+| OpenCode | Provider-neutral local/session execution | Optional fallback when portability/provider choice is useful |
 
 These are execution hosts, not permanent quality rankings. Route by current capability, repository/tool locality and measured project outcomes.
 
@@ -19,14 +19,14 @@ Do **not** add Aider, Goose, Qwen Code, Kiro or another coding-agent layer by de
 
 Use one coordinator/router for a task. The coordinator owns decomposition, branch/worktree ownership, integration, deterministic checks and the final PR.
 
-A practical pattern when the current ChatGPT/Codex environment has repository and connector control is:
+A capability-based multi-host pattern is:
 
 ```text
-coordinator/router
-  ├─ Claude Code   -> implementation worker
-  ├─ Codex CLI     -> independent implementation/review/debug worker
-  ├─ Gemini CLI    -> alternative analysis/review/long-context worker
-  └─ OpenCode      -> provider-neutral fallback/session runner
+selected coordinator/router
+  ├─ capable host A -> scoped implementation worker
+  ├─ capable host B -> independent review/debug worker
+  ├─ capable host C -> specialist/long-context worker when justified
+  └─ optional host  -> fallback/session runner
                     ↓
               isolated worktrees
                     ↓
