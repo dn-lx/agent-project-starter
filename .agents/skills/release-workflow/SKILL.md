@@ -43,7 +43,8 @@ Require:
 - `production-approved` label,
 - required checks passed,
 - release diff reviewed,
-- migrations/secrets/external-service/deployment changes explicitly reviewed.
+- migrations/secrets/external-service/deployment changes explicitly reviewed,
+- runtime/deployed-revision verification and rollback/containment plan defined when the project has a production runtime; see `docs/OPERATIONS-RECOVERY.md`.
 
 Prefer a normal merge commit for dev→prod when preserving branch ancestry is useful.
 
