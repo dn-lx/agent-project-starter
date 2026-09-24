@@ -26,8 +26,10 @@ Use this immediately after creating a repository from Agent Project Starter.
 
 - [ ] Record install/dev/test/build/lint/typecheck commands in Project Memory.
 - [ ] Add project-specific CI.
-- [ ] Add unit/integration tests for critical logic.
+- [ ] Use `test-engineering` when selecting/repairing the harness; prefer an existing runner before adding another framework.
+- [ ] Add unit/integration tests for critical logic and negative paths.
 - [ ] Add Playwright/browser checks if the project has important UI workflows.
+- [ ] Ensure material verification can report exact commands/results/artifacts rather than only “tests passed”.
 - [ ] Verify generic security workflow is compatible with the stack.
 - [ ] Configure dependency update automation for the actual package ecosystems used by the project.
 - [ ] Keep dependency update PRs reviewable; do not enable blanket auto-merge by default.
@@ -43,11 +45,20 @@ For projects with a frontend:
 - [ ] Add Motion only when the actual project needs material runtime animation beyond CSS; for new React work use the current `motion` package, not legacy `framer-motion`.
 - [ ] Review third-party installers/hooks/scripts before enabling them and keep machine-local caches/configuration out of Git.
 - [ ] Document critical mobile/desktop breakpoints and accessibility constraints.
+- [ ] Define the real-browser verification matrix for material UI changes: primary flow, desktop/mobile, console, relevant network failures and changed loading/error/empty states.
 - [ ] Add screenshot/browser verification for important visual changes.
 - [ ] Add accessibility automation/manual keyboard checks for critical UI flows.
 - [ ] Use stable screenshot baselines for critical states instead of snapshotting every page.
 
 For non-frontend projects, mark this section Not applicable rather than inventing UI requirements.
+
+## Performance and analytics
+
+- [ ] If user-perceived performance is important, record a stable baseline and measurable project-specific budget; add CI/release enforcement where repeatable.
+- [ ] For web projects, consider Lighthouse CI/browser traces only when they fit the stack; do not copy universal thresholds blindly.
+- [ ] If product analytics is enabled, define a provider-neutral event contract/taxonomy before wiring events.
+- [ ] Document forbidden/sensitive analytics properties and verify analytics failure cannot break transactional product behavior.
+- [ ] Mark performance and analytics explicitly Not used when the project does not need them.
 
 ## MCP/connectors
 
@@ -95,6 +106,7 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 
 - [ ] Use stable requirement/issue IDs for material planned work.
 - [ ] Put acceptance criteria on non-trivial requirements before implementation.
+- [ ] For cross-cutting/high-risk work, use `implementation-planning` and the implementation-plan template to record delivery order, rollback and verification without duplicating requirements.
 - [ ] Mark checklist items complete only after verification and record concise evidence.
 - [ ] Keep completed/cancelled items for history or follow the project's explicit archival policy.
 
@@ -102,6 +114,7 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 
 - [ ] Decide which changes require independent review.
 - [ ] Use `docs/templates/REVIEW-PACKET-TEMPLATE.md` for sensitive/high-impact review handoffs.
+- [ ] Use `docs/templates/VERIFICATION-EVIDENCE-TEMPLATE.md` when material work benefits from a compact reproducible check/browser/performance/analytics evidence packet.
 - [ ] Use `docs/templates/RELEASE-SUMMARY-TEMPLATE.md` for dev→prod releases.
 
 ## Deployment/operations
@@ -139,7 +152,8 @@ A fresh agent should be able to answer, without asking the project owner:
 - Which external writes are sensitive?
 - How do I release safely?
 - Where do I record unfinished work?
-- If there is a frontend, which design source is authoritative and what verification is required?
+- If there is a frontend, which design source is authoritative and what rendered-runtime verification is required?
+- If performance budgets or analytics are used, where are their contracts and how are they verified?
 
 If not, the bootstrap is incomplete.
 
