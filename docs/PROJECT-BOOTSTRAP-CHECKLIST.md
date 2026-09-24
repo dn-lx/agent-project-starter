@@ -39,6 +39,7 @@ Use this immediately after creating a repository from Agent Project Starter.
 For projects with a frontend:
 
 - [ ] Record the design system/component library and brand assets.
+- [ ] Record semantic text/surface/border/accent tokens and theme variants; prefer token pairs over ad-hoc foreground/background colors.
 - [ ] Record default visual variance, motion level and information density.
 - [ ] Read `docs/DESIGN-STACK.md` and enable only the design sources the project needs.
 - [ ] For frontend projects, install/review UI/UX Pro Max when structured design intelligence is useful; use Taste Skill for creative direction and Impeccable for critique/polish.
@@ -46,6 +47,7 @@ For projects with a frontend:
 - [ ] Review third-party installers/hooks/scripts before enabling them and keep machine-local caches/configuration out of Git.
 - [ ] Document critical mobile/desktop breakpoints and accessibility constraints.
 - [ ] Define the real-browser verification matrix for material UI changes: primary flow, desktop/mobile, console, relevant network failures and changed loading/error/empty states.
+- [ ] Add a focused visual-sanity check for contrast, alignment, spacing, overflow, clipping, overlap and theme/state variants; use the visual-QA template where useful.
 - [ ] Add screenshot/browser verification for important visual changes.
 - [ ] Add accessibility automation/manual keyboard checks for critical UI flows.
 - [ ] Use stable screenshot baselines for critical states instead of snapshotting every page.
@@ -93,6 +95,8 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 - [ ] Configure Graphify for larger/cross-file repositories if useful.
 - [ ] Add generated/dependency/secret paths to `.graphifyignore`.
 - [ ] Do not use chat history as the only project memory.
+- [ ] Keep root `AGENTS.md` inside the canonical context budget; move catalog/reference detail to on-demand files instead of growing startup context.
+- [ ] Use `scripts/context-packet.mjs` to measure broad task packets when repeated context loading becomes expensive.
 
 ## Security
 
