@@ -36,7 +36,7 @@ function isExternal(target) {
 
 function cleanTarget(target) {
   const value = target.trim().replace(/^<|>$/g, '')
-  return value.split('#')[0].split('?')[0]
+  return value.split('#')[0].split('?')[0].replace(/\/+$/, '')
 }
 
 function skipTemplatePath(target) {
