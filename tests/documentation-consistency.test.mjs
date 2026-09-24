@@ -11,6 +11,7 @@ test('current documentation is internally consistent', async () => {
 })
 
 test('legacy branch wording is detected against configured policy', () => {
-  assert.deepEqual(findLegacyBranchTerms('merge into `develop`, then develop → main', 'dev', 'prod'), ['develop', 'main'])
-  assert.deepEqual(findLegacyBranchTerms('feature → dev → prod', 'dev', 'prod'), [])
+  assert.deepEqual(findLegacyBranchTerms('merge into `develop`, then `develop → main`', 'dev', 'prod'), ['develop', 'main'])
+  assert.deepEqual(findLegacyBranchTerms('feature → `dev → prod`', 'dev', 'prod'), [])
+  assert.deepEqual(findLegacyBranchTerms('feature → `dev → prod`', 'develop', 'main'), ['dev', 'prod'])
 })
