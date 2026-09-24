@@ -18,6 +18,19 @@ Before asking an agent to inspect a broad repository:
 5. open only relevant source/tests,
 6. broaden only when evidence requires it.
 
+## Task context packet
+
+For broad work, build a small explicit packet before broadening:
+- requirement/acceptance criteria,
+- current diff or failing evidence,
+- one selected skill/superpower,
+- the smallest relevant source/tests,
+- Project Memory/Handoff only when they add task-relevant facts.
+
+When running locally, `node scripts/context-packet.mjs <files...>` reports an approximate packet size. Use `--check` only when the team wants a hard local guard. The default task budget is a warning/discipline aid, not permission to omit required evidence.
+
+Prefer adding one newly justified file at a time over dumping a directory. Do not resend a file unchanged after it has already supplied the needed fact.
+
 ## Do not resend
 
 Avoid repeatedly sending:
