@@ -11,6 +11,7 @@ What was requested? Include acceptance criteria, not the implementer's reasoning
 - Risk level:
 - Sensitive boundaries touched:
 - External systems touched:
+- Runtime/environment targeted:
 
 ## Changed surface
 
@@ -28,7 +29,8 @@ What was requested? Include acceptance criteria, not the implementer's reasoning
 - Analytics contract/wiring:
 - Accessibility/visual:
 - Security checks:
-- Migration/data checks:
+- Migration/data/rollout compatibility checks:
+- Deployment/recovery checks:
 - Anything not run:
 
 ## Reviewer focus
