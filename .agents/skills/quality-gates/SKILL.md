@@ -42,7 +42,8 @@ Follow Release Workflow and Release Readiness:
 - accessibility/visual evidence reviewed for material frontend releases,
 - performance budgets checked for performance-relevant releases,
 - analytics contracts checked when instrumentation/flags changed,
-- rollback/compatibility documented.
+- rollback/compatibility documented,
+- production runtime/deployed-revision and post-deploy smoke/health verification defined for releases with a deployed runtime.
 
 ## Completion evidence
 
