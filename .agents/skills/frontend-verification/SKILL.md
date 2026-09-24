@@ -36,7 +36,7 @@ For affected UI, explicitly inspect:
 - **content resilience:** realistic long/localized text does not break the changed layout,
 - **theme/state matrix:** check affected light/dark/high-contrast themes plus hover/focus/disabled/error/open states when they exist.
 
-Use `docs/templates/FRONTEND-VISUAL-QA-TEMPLATE.md` when durable evidence is useful.
+Use `docs/templates/FRONTEND-VISUAL-QA-TEMPLATE.md` when durable evidence is useful. For Playwright projects, `docs/templates/PLAYWRIGHT-VISUAL-SANITY.md` contains targeted overflow, clipping, geometry, contrast and screenshot patterns.
 
 ## Required evidence for material UI changes
 
