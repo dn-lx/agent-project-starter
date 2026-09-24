@@ -39,6 +39,7 @@
 | Build | TODO |
 | Lint/typecheck | TODO |
 | Browser/E2E | TODO |
+| Performance | TODO / Not used |
 
 ## Environments
 
@@ -49,7 +50,15 @@
 
 Add preview/staging details if the project uses them.
 
+## Verification contracts
+
+- **Frontend runtime matrix:** TODO / Not applicable — record critical browsers/viewports/devices and any print/platform-specific checks.
+- **Performance budgets:** TODO / Not used — record measurable user-critical thresholds/config and where they are enforced.
+- **Analytics contract/taxonomy:** TODO / Not used — record the durable event-contract document/config, not provider credentials.
+- **Verification evidence location:** PR / CI artifacts / TODO.
+
 ## Product / domain invariants
+
 
 Record rules that agents must not accidentally change without an explicit product decision.
 
