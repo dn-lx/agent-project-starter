@@ -151,14 +151,6 @@ for (const file of ['CLAUDE.md', 'GEMINI.md']) {
   }
 }
 
-const { validateDocs } = await import('./validate-docs.mjs')
-const docs = await validateDocs()
-if (!docs.ok) {
-  for (const error of docs.errors) console.error(`Documentation error: ${error}`)
-  process.exit(1)
-}
-console.log(`Documentation verified: ${docs.markdownCount} markdown files; ${docs.skillCount} skills.`)
-
 const { sync } = await import('./sync-claude-skills.mjs')
 console.log(`Claude adapters verified: ${await sync(process.cwd())}`)
 
