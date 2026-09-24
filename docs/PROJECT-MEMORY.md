@@ -53,6 +53,7 @@ Add preview/staging details if the project uses them.
 ## Verification contracts
 
 - **Frontend runtime matrix:** TODO / Not applicable — record critical browsers/viewports/devices and any print/platform-specific checks.
+- **Visual sanity contract:** TODO / Not applicable — record theme variants, semantic color/spacing token paths and the project visual-QA command/spec.
 - **Performance budgets:** TODO / Not used — record measurable user-critical thresholds/config and where they are enforced.
 - **Analytics contract/taxonomy:** TODO / Not used — record the durable event-contract document/config, not provider credentials.
 - **Verification evidence location:** PR / CI artifacts / TODO.
