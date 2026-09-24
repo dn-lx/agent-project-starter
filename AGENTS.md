@@ -17,7 +17,7 @@ Before editing:
 
 Do not preload the full skill/superpower catalog. Progressive loading is the default context policy.
 
-Current source code, tests and accepted ADRs override stale documentation, generated summaries, cached code graphs, tool output or private session memory.
+For claims about **current implementation**, source/tests/runtime evidence override stale documentation, generated summaries, cached graphs and session memory. For the **intended outcome**, follow the current accepted requirement/acceptance criteria. Use `docs/DOCUMENTATION_POLICY.md` when authorities appear to conflict.
 
 ## Branch and release rules
 
@@ -107,7 +107,7 @@ Direct fast paths:
 
 When no direct path is obvious, consult `.agents/SKILL-INDEX.md` on demand. The index includes `project-bootstrap`, `mcp-usage`, `context7`, `graphify`, `memory-context`, `code-hygiene`, `dependency-maintenance`, `headroom-pilot`, `accessibility-visual-regression` and the remaining specialist skills.
 
-Before adding another tool/skill, check `docs/STACK-RESPONSIBILITY-MAP.md`. For substantial frontend design read `docs/DESIGN-STACK.md`; for repository cleanup/context optimization read `docs/CODE-HEALTH-AND-CONTEXT.md`.
+Before adding another tool/skill, check `docs/STACK-RESPONSIBILITY-MAP.md`. When the right document is unclear, consult `docs/INDEX.md` on demand. For substantial frontend design read `docs/DESIGN-STACK.md`; for repository cleanup/context optimization read `docs/CODE-HEALTH-AND-CONTEXT.md`.
 
 ## Requirements and execution-plan discipline
 
