@@ -6,30 +6,27 @@ This file is the compact recovery record for unfinished work. GitHub/source/test
 
 <!-- AGENT_TASK_STATE_START -->
 {
-  "task_id": "documentation-systems-audit-20260925",
-  "repository": "dn-lx/agent-project-starter",
+  "task_id": null,
+  "repository": null,
   "base": "dev",
-  "branch": "feature/documentation-systems-audit",
-  "pr": 19,
-  "status": "implementing",
-  "last_verified_sha": "00e529b272f9f809ef5de281e73f02aa81a33d54",
-  "next_step": "Apply the deep documentation audit findings: authority model, docs consistency validation, operations/recovery, environment/localization contracts, stale branch fix and routing neutrality.",
-  "updated_at": "2026-09-25T23:15:00Z"
+  "branch": null,
+  "pr": null,
+  "status": "idle",
+  "last_verified_sha": null,
+  "next_step": null,
+  "updated_at": "2026-09-24T22:36:00Z"
 }
 <!-- AGENT_TASK_STATE_END -->
 
 ## Current state
 
-Deep documentation systems audit for Agent Project Starter only.
+No active task is recorded in the starter template.
 
-## Scope
-
-- clarify authority for current-state facts versus desired requirements,
-- detect documentation drift and broken internal references deterministically,
-- strengthen deploy verification, rollback/recovery, migration and operational readiness,
-- document runtime environment identity and optional localization contracts,
-- fix stale branch terminology and remove provider-role bias,
-- keep startup context compact and avoid new overlapping skills.
+When non-trivial work begins:
+- create/reconcile the focused branch from current `dev`,
+- create a draft PR early,
+- replace the idle task-state block with the active task/branch/PR binding,
+- record only the compact verified next step needed after interruption.
 
 ## Recovery rule
 
@@ -37,4 +34,4 @@ Do not resume an arbitrary open branch. Apply `.agents/skills/task-continuity/SK
 
 ## Production path
 
-Production promotion is `dev → prod` with explicit production approval.
+Production promotion is `dev → prod` with explicit human production approval.
