@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { estimateTokens, extractImports, measureStartupContext, DEFAULT_CONTEXT_BUDGET_TOKENS } from '../scripts/context-budget.mjs'
+import { estimateTokens, extractImports, measureStartupContext, checkStartupContext, DEFAULT_CONTEXT_BUDGET_TOKENS, DEFAULT_AGENTS_BUDGET_TOKENS } from '../scripts/context-budget.mjs'
 
 test('token estimate is deterministic and import parsing is narrow', () => {
   assert.equal(estimateTokens('12345678'), 2)
@@ -19,4 +19,7 @@ test('host startup context stays progressive and inside the default budget', asy
     assert.ok(info.paths.includes('docs/CURRENT-HANDOFF.md'))
     assert.ok(info.estimated_tokens <= DEFAULT_CONTEXT_BUDGET_TOKENS, `${host} startup context exceeds default budget`)
   }
+  const checked = await checkStartupContext()
+  assert.equal(checked.ok, true)
+  assert.ok(checked.agentsTokens <= DEFAULT_AGENTS_BUDGET_TOKENS)
 })
