@@ -34,6 +34,7 @@ Load `docs/REQUIREMENTS.md` additionally when the task concerns product/backlog/
 | `REVIEW.md` | Reviewing a material PR/change |
 | `docs/OPERATIONS-RECOVERY.md` | Production runtime, deploy verification, rollback, backup/restore or incident work |
 | `docs/DOCUMENTATION_POLICY.md` | Resolving documentation authority/drift or deciding where knowledge belongs |
+| `docs/STACK-RESPONSIBILITY-MAP.md` | Checking whether a proposed tool/skill/doc duplicates an existing responsibility |
 
 ## Integrations and lifecycle
 
