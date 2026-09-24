@@ -19,7 +19,9 @@ Do not spend review bandwidth on formatting or preferences already enforced by d
 
 ## Evidence contract
 
-Review the original requirement, final diff, relevant source/tests, project rules and deterministic check results. Do not rely on the implementer's full reasoning transcript.
+Review the original requirement, implementation plan when one exists, final diff, relevant source/tests, project rules and deterministic check results. Do not rely on the implementer's full reasoning transcript.
+
+For material work, evidence should identify exact checks/results and the reviewed revision. For affected surfaces, also inspect rendered frontend evidence, performance-budget results and analytics-contract/privacy evidence rather than accepting generic “verified” claims.
 
 A finding should identify:
 - the concrete file/behavior,
@@ -33,7 +35,9 @@ Avoid speculative findings that cannot be tied to the changed code or a real pro
 
 - Ordinary work targets `dev` from a focused feature/fix/chore branch.
 - Only `dev` may be promoted to `prod`, with explicit production approval.
-- Do not weaken tests, validation, authorization, secret handling or accessibility to make CI pass.
+- Do not weaken tests, validation, authorization, secret handling, accessibility or performance budgets to make CI pass.
+- Material frontend changes require rendered-runtime evidence; source inspection alone is insufficient.
+- Analytics changes must preserve privacy boundaries and remain non-authoritative for transactional behavior.
 - External writes and privileged operations require the same trust-boundary review defined in `AGENTS.md`.
 - Documentation that represents an operational contract must change when that contract changes.
 
