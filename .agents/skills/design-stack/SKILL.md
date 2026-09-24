@@ -21,6 +21,8 @@ Use the smallest path that satisfies the task:
 
 Do not invoke every layer automatically.
 
+For a focused visual defect (contrast, alignment, clipping, overflow, isolated responsive breakage), skip the external design layers unless visual direction is actually changing. Start with `frontend-verification`, the affected component/styles and the current design tokens. This avoids unnecessary redesigns and context/tool cost.
+
 ## Existing-product rule
 
 Before changing UI:
