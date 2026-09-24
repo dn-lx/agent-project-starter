@@ -21,7 +21,8 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Superpowers | End-to-end sequencing around resume/deliver/repair/verify/release/audit outcomes | Duplicating specialist skill instructions |
 | Memory Context | Retrieval/context discipline and durable memory rules | Compression proxy implementation |
 | Headroom Pilot | Optional measured context compression | Project memory or dead-code cleanup |
-| Design Stack | Minimal routing across Taste Skill (generation/redesign), Impeccable (critique/polish) and one on-demand Awesome Design style | Accessibility evidence or bulk-installing style catalogues |
+| Design Stack | Taste Skill for creative direction, UI/UX Pro Max for structured design intelligence, Impeccable for critique/polish | Runtime animation implementation or accessibility evidence |
+| Motion Runtime | Production animation/gesture/layout-transition implementation when CSS is insufficient | Choosing visual direction or replacing UX/a11y review |
 | Accessibility + Visual Regression | UI verification evidence and regression detection | Choosing the visual direction |
 | Quality Gates | Which deterministic checks are required by risk | Implementing the feature |
 | Security Boundary Review | Auth/secrets/data/external trust-boundary reasoning | Generic linting or dependency updates |
@@ -46,10 +47,11 @@ Some overlap is useful and deliberate:
 
 ### Design Stack + Accessibility/Visual
 
-- Design Stack chooses the smallest external design source for direction, critique or a named aesthetic.
+- Design Stack chooses the smallest design-intelligence path for direction, structured UX guidance and critique.
+- Motion Runtime implements animation only when the product actually needs it.
 - Accessibility/Visual Regression remains independent verification evidence.
 
-Do not load Taste, Impeccable and an Awesome Design style automatically; use only what the task needs.
+Do not load every design layer automatically; use only what the task needs.
 
 ### Quality Gates + Security Review + Release Readiness
 
