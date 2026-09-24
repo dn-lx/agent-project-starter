@@ -34,6 +34,7 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Agent Orchestration | Planner/implementer/reviewer role flow | Vendor lock-in |
 | Release Workflow | Allowed branch/release path | Deciding technical release readiness |
 | Release Readiness | Evidence/risk check before production | Authorization to merge |
+| Operations / Recovery | Runtime identity, deployed-revision proof, health/smoke, observability, rollback, backup/restore and incident minimums | Replacing release authorization or application-specific SRE design |
 
 ## Intentional overlaps
 
