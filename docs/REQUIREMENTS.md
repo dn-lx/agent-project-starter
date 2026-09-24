@@ -49,12 +49,14 @@ Describe the desired end state, not the implementation.
 - Concrete behavior 2.
 - Important constraints.
 - Privacy/security/accessibility expectations where relevant.
+- Performance budget and analytics behavior where they are part of the user/product requirement.
 
 **Acceptance criteria**
 - [ ] Observable criterion 1.
 - [ ] Observable criterion 2.
 - [ ] Negative/error path verified.
 - [ ] Relevant tests/checks pass.
+- [ ] Browser/runtime, performance or analytics-contract evidence captured when relevant.
 
 **Dependencies**
 - None / REQ-XYZ / external dependency.
@@ -105,7 +107,7 @@ Use this section for ordered work that is not yet detailed enough to become a fu
 ## Phase 3 — Quality and release
 - [ ] PLAN-003 — Example QA/release work.
 
-Convert a plan item into a detailed requirement before implementation when scope/risk is non-trivial.
+Convert a plan item into a detailed requirement before implementation when scope/risk is non-trivial. If delivery sequencing, migration, rollback or handoff is also non-trivial, use the implementation-planning skill for the task-specific “how”; do not turn this requirements file into an implementation transcript.
 
 ---
 
