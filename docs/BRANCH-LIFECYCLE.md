@@ -35,3 +35,16 @@ Locally, agents/users may run `git fetch --prune` and safely remove stale local 
 Protect `prod` and `dev` against deletion and force pushes. Require PRs and relevant checks, including version validation and the production guard. Enable GitHub native automatic head-branch deletion after those protections are in place.
 
 An unmerged abandoned branch needs an explicit reviewed decision to preserve, supersede or discard its unique work. No automatic age-based deletion.
+
+## Adapting branch names
+
+`.agents/project-policy.json` is the machine-readable branch contract. Changing its integration or production branch names is a repository migration, not a one-file edit.
+
+When adapting the names:
+1. update/create the actual GitHub branches and protection/rulesets,
+2. update workflow triggers and production-source guards,
+3. update maintained branch/release documentation and templates,
+4. update hosting/deployment branch mappings,
+5. run `node scripts/validate-docs.mjs`, `node scripts/validate-agent-stack.mjs` and the project checks before adopting the new flow.
+
+Do not change the policy JSON while leaving CI or deployment rules pointed at the old branches.
