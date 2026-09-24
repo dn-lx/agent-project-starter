@@ -21,6 +21,7 @@ Skills remain atomic capabilities. Superpowers sequence them around an outcome.
 
 A superpower should receive only:
 - the user requirement,
+- the implementation plan when one exists,
 - Project Memory and Current Handoff,
 - current Git/PR/check state,
 - the smallest relevant source/test set.

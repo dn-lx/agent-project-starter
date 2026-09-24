@@ -115,6 +115,11 @@ Read the relevant skill before specialized work:
 - `.agents/skills/context7/SKILL.md` — current third-party API/SDK docs.
 - `.agents/skills/graphify/SKILL.md` — local code relationships/change impact.
 - `.agents/skills/memory-context/SKILL.md` — context/token efficiency and durable memory.
+- `.agents/skills/implementation-planning/SKILL.md` — compact implementation plans for non-trivial, cross-cutting or high-risk work; requirements remain the source of product intent.
+- `.agents/skills/test-engineering/SKILL.md` — test-harness architecture, regression coverage and reproducible verification evidence.
+- `.agents/skills/frontend-verification/SKILL.md` — mandatory rendered-browser/runtime verification for material frontend changes.
+- `.agents/skills/performance-budget/SKILL.md` — measurable project-specific performance budgets and regression checks.
+- `.agents/skills/analytics-contract/SKILL.md` — privacy-safe provider-neutral analytics event contracts and wiring verification.
 - `.agents/skills/code-hygiene/SKILL.md` — dead-code, unused exports/dependencies and cleanup.
 - `.agents/skills/dependency-maintenance/SKILL.md` — upgrades, advisories, lockfiles and update bots.
 - `.agents/skills/headroom-pilot/SKILL.md` — measured optional context compression pilot.
@@ -138,6 +143,8 @@ Add a project-specific skill at `.agents/skills/<project-name>/SKILL.md`.
 
 `docs/REQUIREMENTS.md` is the checkable product/backlog plan for the consuming project. Keep requirement IDs stable once work begins. Use the plan when implementing product work, bugs or planned improvements. Mark `[x]` only after the item's acceptance criteria are verified and add concise completion evidence. Do not mark work complete merely because code was written. If scope changes materially, update the requirement before or alongside implementation.
 
+For non-trivial work where implementation order, migration, external boundaries or handoffs matter, use `implementation-planning` and `docs/templates/IMPLEMENTATION-PLAN-TEMPLATE.md`. Requirements define **what** must be true; the implementation plan records **how** the task will be delivered and verified. Do not create plan files for tiny obvious changes.
+
 The requirements plan is not part of the default static startup context for unrelated tasks; load it when the task needs it.
 
 ## Required verification
@@ -149,8 +156,12 @@ For review-specific guidance, use `REVIEW.md` in addition to the relevant qualit
 For every material change:
 - run the smallest relevant deterministic checks,
 - add/adjust tests for changed behavior,
+- use `test-engineering` when the harness or regression strategy itself needs work,
+- use `frontend-verification` for material frontend changes; source inspection alone is not sufficient evidence,
+- enforce documented performance budgets when the change can materially affect user-perceived performance,
+- verify the analytics contract when instrumentation/events/flags change,
 - inspect the final diff,
-- report anything that could not be verified.
+- report anything that could not be verified; use `docs/templates/VERIFICATION-EVIDENCE-TEMPLATE.md` when a compact reproducible evidence packet helps.
 
 For auth, permissions, secrets, payments, data models, worker command execution, external writes or production changes, perform an independent security/review pass and negative-path checks where practical.
 

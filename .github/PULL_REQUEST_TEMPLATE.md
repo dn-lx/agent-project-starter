@@ -21,12 +21,14 @@
 
 - [ ] Relevant tests passed
 - [ ] Build/type/lint checks passed where applicable
-- [ ] Browser/manual verification completed where applicable
+- [ ] Browser/runtime verification completed for material frontend changes
+- [ ] Performance budget checked where performance is materially affected
+- [ ] Analytics contract/wiring checked where instrumentation changed
 - [ ] Final diff inspected
 - [ ] Security boundary review completed if sensitive
 - [ ] Documentation/memory updated if durable behavior changed
 
-Evidence / commands:
+Evidence / commands (exact checks/results; use the verification evidence template for material work when useful):
 
 ```text
 TODO

@@ -5,7 +5,7 @@ Use capability roles so the workflow remains agent-independent.
 ## Roles
 
 ### Planner / Architect
-Use for ambiguous, cross-system or high-risk work. Produces a compact plan, affected boundaries, risks and verification strategy.
+Use for ambiguous, cross-system or high-risk work. Use `implementation-planning` when a durable plan is justified. It produces a compact evidence-based implementation sequence, affected boundaries, risks, rollback and verification strategy without duplicating product requirements.
 
 ### Executor / Implementer
 Makes the smallest complete change on an isolated branch/worktree and follows project-specific skills.
@@ -35,7 +35,7 @@ assign agent/host + model class + justified parallelism
   ↓
 retrieve minimal relevant project context
   ↓
-plan if complexity/risk justifies it
+plan with implementation-planning if complexity/risk justifies it
   ↓
 implement
   ↓

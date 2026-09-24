@@ -135,7 +135,10 @@ Keep vault paths and personal notes outside the repository unless explicitly int
 The starter already has:
 - Context7/current API documentation guidance,
 - Graphify/code-relationship guidance,
-- deterministic quality gates,
+- implementation planning for non-trivial delivery,
+- test engineering plus deterministic quality gates,
+- rendered frontend verification,
+- performance budgets and analytics contracts,
 - security-boundary review,
 - code hygiene/dependency maintenance,
 - frontend design + Taste + Motion + accessibility/visual regression,

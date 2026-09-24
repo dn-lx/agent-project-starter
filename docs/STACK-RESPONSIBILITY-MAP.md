@@ -20,6 +20,11 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | REVIEW.md | Shared correctness/security/regression review contract | Replacing CI, tests or production approval |
 | Superpowers | End-to-end sequencing around resume/deliver/repair/verify/release/audit outcomes | Duplicating specialist skill instructions |
 | Memory Context | Retrieval/context discipline and durable memory rules | Compression proxy implementation |
+| Implementation Planning | Task-specific implementation sequence, affected boundaries, rollback and verification plan | Product requirements/backlog intent or durable architecture decisions |
+| Test Engineering | Test harness architecture, fixtures and regression coverage | Selecting risk-tier checks for each change |
+| Frontend Verification | Rendered browser/runtime workflow, responsive, console/network and failure-state evidence | Choosing visual direction or replacing accessibility/visual-regression checks |
+| Performance Budget | Measurable user-critical performance budgets and regression evidence | Production observability or speculative micro-optimization |
+| Analytics Contract | Provider-neutral event taxonomy, privacy-safe properties and wiring verification | Transactional product logic or provider account configuration |
 | Headroom Pilot | Optional measured context compression | Project memory or dead-code cleanup |
 | Design Stack | Taste Skill for creative direction, UI/UX Pro Max for structured design intelligence, Impeccable for critique/polish | Runtime animation implementation or accessibility evidence |
 | Motion Runtime | Production animation/gesture/layout-transition implementation when CSS is insufficient | Choosing visual direction or replacing UX/a11y review |
@@ -52,6 +57,21 @@ Some overlap is useful and deliberate:
 - Accessibility/Visual Regression remains independent verification evidence.
 
 Do not load every design layer automatically; use only what the task needs.
+
+### Test Engineering + Quality Gates
+
+- Test Engineering builds/repairs the harness and regression strategy.
+- Quality Gates selects which deterministic checks are required by change risk.
+
+Do not add a second test framework when the existing harness can prove the behavior.
+
+### Frontend Verification + Accessibility/Visual + Performance
+
+- Frontend Verification proves the real rendered workflow and runtime health.
+- Accessibility/Visual Regression supplies specialist a11y and stable screenshot evidence.
+- Performance Budget measures user-perceived regressions when performance is affected.
+
+These layers may run together, but none replaces the others.
 
 ### Quality Gates + Security Review + Release Readiness
 

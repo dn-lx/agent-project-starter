@@ -14,11 +14,14 @@ Use fast deterministic checks relevant to changed behavior:
 - unit/integration tests,
 - build/compile,
 - targeted browser smoke test for UI changes,
+- `frontend-verification` for material UI behavior/layout/interaction changes,
 - accessibility and targeted visual-regression checks for material UI changes when configured,
+- documented performance-budget checks when the change can materially affect user-perceived performance,
+- analytics-contract verification when events, flags or experiments change,
 - secret scanning,
 - dependency/security checks relevant to the stack.
 
-Use CI concurrency/cancel-in-progress so obsolete runs do not waste resources.
+Use `test-engineering` when the test harness, fixtures or regression strategy itself must be added/repaired. Use CI concurrency/cancel-in-progress so obsolete runs do not waste resources.
 
 ## Tier 2 — sensitive change
 
@@ -35,7 +38,10 @@ Follow Release Workflow and Release Readiness:
 - required checks green,
 - migrations/env/external-service changes reviewed,
 - critical user flows verified,
+- frontend runtime/browser evidence reviewed for material frontend releases,
 - accessibility/visual evidence reviewed for material frontend releases,
+- performance budgets checked for performance-relevant releases,
+- analytics contracts checked when instrumentation/flags changed,
 - rollback/compatibility documented.
 
 ## Efficiency
@@ -43,4 +49,5 @@ Follow Release Workflow and Release Readiness:
 - deterministic tools answer deterministic questions,
 - add tests that protect real behavior/regressions/security boundaries,
 - do not run expensive release matrices on every tiny commit unless risk requires it,
-- never weaken a test because a change made it inconvenient.
+- never weaken a test because a change made it inconvenient,
+- report exact checks/results and anything not run; a generic “tests passed” claim without scope is not enough for material work.

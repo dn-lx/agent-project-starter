@@ -27,7 +27,9 @@
 
 - Unit/integration:
 - Build/type/lint:
-- Browser/mobile:
+- Browser/runtime:
+- Performance budget:
+- Analytics contract/wiring:
 - Accessibility/visual:
 - Security/dependency:
 - Manual checks:

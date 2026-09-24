@@ -10,7 +10,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 - Thin bootstrap files for Claude Code, Gemini CLI and GitHub Copilot.
 - Durable project memory and machine-readable task/branch/PR continuity across interruptions.
 - Capability-based MCP/connector documentation.
-- Agent Skills for MCP use, Context7, Graphify, code hygiene, dependency maintenance, context efficiency, a lean external design stack, accessibility/visual regression, security review and releases.
+- Agent Skills for MCP use, Context7, Graphify, implementation planning, test engineering, rendered frontend verification, performance budgets, analytics contracts, code hygiene, dependency maintenance, context efficiency, a lean external design stack, accessibility/visual regression, security review and releases.
 - Outcome-oriented Superpowers for resume, feature delivery, CI repair, QA, release and project-health workflows.
 - Two-stage execution routing: agent/host assignment first, model-class assignment second, with minimal justified parallelism.
 - Optional local-agent portability guidance for Claude Code, Codex CLI, Gemini CLI and OpenCode; none are required by the core template.
@@ -29,7 +29,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 4. Populate `docs/REQUIREMENTS.md` with the project's ordered requirements, issues and roadmap.
 5. Add a project-specific skill under `.agents/skills/<project-name>/SKILL.md`.
 6. Select the MCP capabilities the project actually needs in `docs/MCP-SETUP.md`.
-7. Configure project-specific build/test commands and CI.
+7. Configure project-specific build/test commands and CI; define browser/runtime verification for frontends and performance/analytics contracts when those capabilities are used.
 8. Create/use `dev` for integration work and keep `prod` as production.
 9. Verify external connections with harmless reads before any write.
 10. Keep credentials outside Git.
