@@ -103,7 +103,7 @@ The starter now carries a planned version in `VERSION` and release notes in `CHA
 
 ## Design stack
 
-Frontend projects can use [Design Stack](docs/DESIGN-STACK.md): Taste Skill for generation/redesign, Impeccable for critique/polish, and Awesome Design Skills only as an on-demand style catalogue. The starter does not bulk-install those external packs.
+Frontend projects can use [Design Stack](docs/DESIGN-STACK.md): Taste Skill for creative direction, UI/UX Pro Max for structured design intelligence, Impeccable for critique/polish, and Motion for runtime animation only when justified. Accessibility/visual regression remains independent evidence.
 
 ## Optional local agent stack
 
