@@ -7,8 +7,8 @@ Use this immediately after creating a repository from Agent Project Starter.
 - [ ] Rename/update README for the real project.
 - [ ] Fill `docs/PROJECT-MEMORY.md` and confirm `.agents/project-policy.json` matches the repository branch policy.
 - [ ] Replace the examples in `docs/REQUIREMENTS.md` with the project's ordered requirements, issues and roadmap.
-- [ ] Add a project-specific skill under `.agents/skills/<project-name>/SKILL.md`.
-- [ ] Remove starter-only examples that do not apply.
+- [ ] Replace `.agents/skills/project-template/` with a real `.agents/skills/<project-name>/SKILL.md`; remove its obsolete generated `.claude/skills/project-template/` adapter and regenerate Claude adapters.
+- [ ] Remove starter-only examples/placeholders that do not apply.
 
 ## Branching
 
