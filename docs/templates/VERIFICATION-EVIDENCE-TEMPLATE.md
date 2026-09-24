@@ -8,6 +8,8 @@ Use when a material change benefits from a compact, reproducible evidence record
 - Branch/PR:
 - Commit SHA:
 - Requirement/task:
+- Runtime/environment target (when relevant):
+- Deployed revision/build (when relevant):
 
 ## Deterministic checks
 
@@ -31,7 +33,9 @@ Use when a material change benefits from a compact, reproducible evidence record
 - Performance budget:
 - Security/negative paths:
 - Analytics contract/wiring:
-- Data/migration:
+- Data/migration/compatibility:
+- Localization/time/number/currency:
+- Post-deploy health/smoke/observability:
 
 ## Not run / limitations
 
