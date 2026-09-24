@@ -36,6 +36,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 9. Verify external connections with harmless reads before any write.
 10. Keep credentials outside Git.
 11. Use a draft PR plus the AGENT_TASK_STATE block in `docs/CURRENT-HANDOFF.md` for non-trivial unfinished work; never treat every open branch as active.
+12. Run `node scripts/validate-docs.mjs --strict-project` after replacing starter placeholders.
 
 ## Agent startup order
 
