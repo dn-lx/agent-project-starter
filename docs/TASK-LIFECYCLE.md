@@ -104,7 +104,15 @@ A future AI Control Plane may add expiring write leases. A lease coordinates wri
 
 ## Completion and cleanup
 
-Before merging a completed task PR into `dev`, reset the branch's `AGENT_TASK_STATE` block to the idle template state. The PR body/history remains the durable per-task record; `dev` must not inherit a stale active-task marker.
+When implementation is otherwise ready for final verification:
+1. reset the branch's `AGENT_TASK_STATE` block to the idle template state,
+2. make that reset part of the final merge-candidate revision,
+3. run/retrigger required checks for that exact head SHA,
+4. merge only if the current head is green/verified.
+
+This ordering avoids a handoff-only commit invalidating an already-finished verification run. If a later repair/change is required, restore an active task state before continuing and treat the previous green checks as stale.
+
+The PR body/history remains the durable per-task record; `dev` must not inherit a stale active-task marker.
 
 After a PR merges into `dev`:
 - verify the merged SHA/check state,
