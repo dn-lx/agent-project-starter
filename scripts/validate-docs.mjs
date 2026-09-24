@@ -152,6 +152,15 @@ export async function validateDocs(root = process.cwd(), { strictProject = false
     if (!skillIndex.includes(`\`${skill}\``)) errors.push(`.agents/SKILL-INDEX.md: missing skill ${skill}`)
   }
 
+  const superpowerDirs = (await readdir(resolve(root, '.agents/superpowers'), { withFileTypes: true }))
+    .filter(entry => entry.isDirectory())
+    .map(entry => entry.name)
+    .sort()
+  const superpowerIndex = await readFile(resolve(root, '.agents/superpowers/README.md'), 'utf8')
+  for (const superpower of superpowerDirs) {
+    if (!superpowerIndex.includes(`\`${superpower}\``)) errors.push(`.agents/superpowers/README.md: missing superpower ${superpower}`)
+  }
+
   const docsIndex = await readFile(resolve(root, 'docs/INDEX.md'), 'utf8')
   const topLevelDocs = markdown.filter(path => /^docs\/[^/]+\.md$/.test(path) && path !== 'docs/INDEX.md')
   for (const path of topLevelDocs) {
@@ -178,7 +187,7 @@ export async function validateDocs(root = process.cwd(), { strictProject = false
     } catch {}
   }
 
-  return { ok: errors.length === 0, errors, markdownCount: markdown.length, skillCount: skillDirs.length }
+  return { ok: errors.length === 0, errors, markdownCount: markdown.length, skillCount: skillDirs.length, superpowerCount: superpowerDirs.length }
 }
 
 const isMain = process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url
@@ -190,6 +199,6 @@ if (isMain) {
     for (const error of result.errors) console.error(`- ${error}`)
     process.exit(1)
   }
-  console.log(`Documentation valid: ${result.markdownCount} markdown files; ${result.skillCount} canonical skills.`)
+  console.log(`Documentation valid: ${result.markdownCount} markdown files; ${result.skillCount} canonical skills; ${result.superpowerCount} superpowers.`)
   if (!strictProject) console.log('Run with --strict-project after adapting the starter to detect unresolved starter placeholders.')
 }
