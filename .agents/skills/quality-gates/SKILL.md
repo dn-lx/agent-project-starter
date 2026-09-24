@@ -44,6 +44,17 @@ Follow Release Workflow and Release Readiness:
 - analytics contracts checked when instrumentation/flags changed,
 - rollback/compatibility documented.
 
+## Completion evidence
+
+A material task is complete only when:
+- the selected requirement/acceptance criteria are satisfied,
+- required checks correspond to the **current final SHA**,
+- runtime/browser/deployment evidence is current where required,
+- no unresolved blocking review/security/data findings remain,
+- required documentation/operational contracts are updated.
+
+A green check from an earlier SHA is stale evidence after any later commit. Retrigger/re-run the required gate or report it as unverified; never carry an old green result forward.
+
 ## Efficiency
 
 - deterministic tools answer deterministic questions,
