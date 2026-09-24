@@ -21,6 +21,8 @@ Use the smallest path that satisfies the task:
 
 Do not invoke every layer automatically.
 
+For a focused visual defect (contrast, alignment, clipping, overflow, isolated responsive breakage), skip the external design layers unless visual direction is actually changing. Start with `frontend-verification`, the affected component/styles and the current design tokens. This avoids unnecessary redesigns and context/tool cost.
+
 ## Existing-product rule
 
 Before changing UI:
@@ -28,7 +30,8 @@ Before changing UI:
 2. preserve a coherent incumbent system unless the task is explicitly a redesign,
 3. treat the user/project brief as higher authority than any third-party skill default,
 4. never weaken product truth, accessibility, security, performance or functional constraints for aesthetics,
-5. check existing dependencies before adding Motion or another runtime library.
+5. check existing dependencies before adding Motion or another runtime library,
+6. prefer semantic foreground/surface/border/accent and spacing/layout tokens over theme-sensitive raw values; when a token pair changes, verify every affected theme/state.
 
 ## Third-party rule
 

@@ -2,6 +2,7 @@ import { readFile, access } from 'node:fs/promises'
 
 const required = [
   '.agents/project-policy.json',
+  '.agents/SKILL-INDEX.md',
   'AGENTS.md',
   'REVIEW.md',
   'VERSION',
@@ -33,11 +34,15 @@ const required = [
   'docs/templates/IMPLEMENTATION-PLAN-TEMPLATE.md',
   'docs/templates/VERIFICATION-EVIDENCE-TEMPLATE.md',
   'docs/templates/ANALYTICS-EVENT-CONTRACT-TEMPLATE.md',
+  'docs/templates/FRONTEND-VISUAL-QA-TEMPLATE.md',
+  'docs/templates/PLAYWRIGHT-VISUAL-SANITY.md',
   'scripts/context-budget.mjs',
+  'scripts/context-packet.mjs',
   'scripts/task-state.mjs',
   'scripts/sync-claude-skills.mjs',
   'scripts/validate-version.mjs',
   'tests/context-budget.test.mjs',
+  'tests/context-packet.test.mjs',
   'tests/task-state.test.mjs',
   'tests/lifecycle.test.mjs',
   'tests/workflow-capabilities.test.mjs',

@@ -16,7 +16,7 @@ For web projects, verify at least:
 - keyboard navigation,
 - visible focus,
 - form labels/errors,
-- contrast where relevant,
+- text/non-text contrast in every affected theme/state; include automated color-contrast rules when the configured scanner supports them,
 - dialogs/drawers/popovers focus behavior,
 - reduced-motion behavior when motion exists,
 - touch target usability on mobile-sized layouts.
@@ -24,6 +24,8 @@ For web projects, verify at least:
 For JavaScript/TypeScript projects using Playwright, `@axe-core/playwright` is a strong default candidate for automated WCAG rule checks.
 
 Automated accessibility scans do **not** replace keyboard/manual inspection.
+
+For theme-aware products, a passing light-theme screenshot is not evidence for dark theme. Capture/scan the affected theme variants when color tokens or surfaces changed.
 
 ## Visual regression
 

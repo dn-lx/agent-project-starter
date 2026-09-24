@@ -104,6 +104,12 @@ Use the repository-local `frontend-verification` skill after material UI changes
 
 The separate `accessibility-visual-regression` skill remains because accessibility and stable screenshot regression are specialist evidence, not design direction. It complements frontend runtime verification rather than replacing it.
 
+## Focused visual-defect fast path
+
+For dark-on-dark text, alignment drift, clipping, overflow, isolated spacing or responsive defects, do not start a redesign workflow. Use the current design tokens + affected component/styles + `frontend-verification`. Inspect the exact rendered state, computed styles and geometry, apply the smallest root-cause fix, then rerender.
+
+Only bring in Taste/UI-UX Pro Max/Impeccable when the problem is genuinely about visual direction, system-wide design consistency or a broader polish pass.
+
 ## Selection rule
 
 Use the smallest useful combination:

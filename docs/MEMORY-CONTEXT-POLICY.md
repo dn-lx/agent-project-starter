@@ -25,7 +25,7 @@ After startup:
 5. open only relevant source/tests and conditional specialist guidance,
 6. broaden only when evidence requires it.
 
-Use `scripts/context-budget.mjs` to estimate and guard static startup context. The estimate is deliberately approximate; its purpose is regression control, not billing reconciliation.
+Use `scripts/context-budget.mjs` to estimate and guard static startup context. For a broad task packet, use `scripts/context-packet.mjs` with the exact files you intend to load. Both estimates are deliberately approximate; their purpose is regression control and routing discipline, not billing reconciliation.
 
 ## Freshness
 
@@ -51,11 +51,14 @@ Avoid:
 Prefer:
 - compact startup memory,
 - one selected superpower or skill,
+- one small task packet instead of a broad directory dump,
 - repository/module summaries only when needed,
 - relevant source,
 - current diff,
-- failing test/error,
+- failing test/error or screenshot,
 - specific project rules.
+
+For visual bugs, start from the screenshot/reproduction + affected component/styles + `frontend-verification`. Do not load the full design stack or unrelated pages unless the defect shows a system-wide cause.
 
 Do not spend context describing tools/skills that are not being used for the current task.
 

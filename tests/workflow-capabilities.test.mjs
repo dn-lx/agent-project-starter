@@ -33,11 +33,24 @@ test('quality, delivery and PR contracts enforce the new evidence layers', async
   assert.ok(pr.includes('Analytics contract/wiring'))
 })
 
+test('frontend verification contains focused visual-sanity protections', async () => {
+  const frontend = await readFile('.agents/skills/frontend-verification/SKILL.md', 'utf8')
+  const routing = await readFile('.agents/skills/task-routing/SKILL.md', 'utf8')
+  const index = await readFile('.agents/SKILL-INDEX.md', 'utf8')
+  for (const phrase of ['contrast', 'alignment', 'overflow', 'clipping', 'getBoundingClientRect']) {
+    assert.ok(frontend.includes(phrase), `frontend verification must cover ${phrase}`)
+  }
+  assert.ok(routing.includes('focused visual defect'))
+  assert.ok(index.includes('Focused UI bug'))
+})
+
 test('reusable templates exist for planning, verification and analytics', async () => {
   for (const path of [
     'docs/templates/IMPLEMENTATION-PLAN-TEMPLATE.md',
     'docs/templates/VERIFICATION-EVIDENCE-TEMPLATE.md',
     'docs/templates/ANALYTICS-EVENT-CONTRACT-TEMPLATE.md',
+    'docs/templates/FRONTEND-VISUAL-QA-TEMPLATE.md',
+    'docs/templates/PLAYWRIGHT-VISUAL-SANITY.md',
   ]) {
     const content = await readFile(path, 'utf8')
     assert.ok(content.length > 100, `${path} should contain a usable template`)

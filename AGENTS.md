@@ -63,9 +63,7 @@ See:
 
 ## Optional CLI host profile
 
-When local coding-agent CLIs are useful, `docs/CLI-AGENT-STACK.md` documents a deliberately small Claude Code, Codex CLI, Gemini CLI and OpenCode profile. None is required by the core repository contract. Do not add another coding-agent host unless a project documents a concrete uncovered capability gap.
-
-Claude efficiency plugins may improve implementation/review, but they never override this file. Ponytail may simplify solutions; Superpowers may structure implementation; Code Review may add an independent review pass; claude-mem and Obsidian skills are optional context/knowledge aids. Repository source, tests, ADRs, Project Memory and Current Handoff remain authoritative.
+Local Claude Code, Codex CLI, Gemini CLI and OpenCode guidance lives in `docs/CLI-AGENT-STACK.md` and is loaded only when host setup/routing matters. Host plugins never override repository policy.
 
 ## MCP and connector policy
 
@@ -91,53 +89,25 @@ Use least privilege. Record material external writes in `docs/CURRENT-HANDOFF.md
 
 See `docs/MEMORY-CONTEXT-POLICY.md`.
 
-## Superpowers and repository-local skills
+## Task and skill routing
 
-For broad/end-to-end work, use `.agents/skills/task-routing/SKILL.md` to choose one primary workflow from `.agents/superpowers/`:
+Keep routing progressive. For broad/stalled/end-to-end work, use `.agents/skills/task-routing/SKILL.md` to select one primary Superpower from `.agents/superpowers/`. Do not preload the Superpower/skill catalog.
 
-- `resume-project` — recover stalled/interrupted work from verified repository state.
-- `finish-feature` — deliver a feature/fix through verified PR into `dev`.
-- `fix-until-green` — repair build/test/CI failures with bounded retry loops.
-- `full-qa` — run risk-based verification and produce compact evidence.
-- `ship-release` — prepare the only allowed production path, `dev → prod`.
-- `project-doctor` — audit project health, agent readiness and context efficiency.
+Direct fast paths:
+- resume/branch uncertainty → `task-continuity`;
+- host/model/parallelism choice → `execution-routing`;
+- non-trivial delivery sequencing → `implementation-planning`;
+- test harness/regression architecture → `test-engineering`;
+- focused UI defect (contrast/alignment/overflow/clipping/responsive) → `frontend-verification` **without** the full design stack unless visual direction changes;
+- substantial redesign/UX direction → `design-stack`; load `motion-runtime` only when runtime animation is justified;
+- performance or analytics changes → `performance-budget` / `analytics-contract`;
+- sensitive trust boundaries → `security-boundary-review`;
+- risk-based verification → `quality-gates`;
+- release preparation/mechanics → `release-readiness` / `release-workflow`.
 
-Skills are atomic capabilities; superpowers orchestrate them. Select one primary superpower and load only the skills it actually needs.
+When no direct path is obvious, consult `.agents/SKILL-INDEX.md` on demand. The index includes `project-bootstrap`, `mcp-usage`, `context7`, `graphify`, `memory-context`, `code-hygiene`, `dependency-maintenance`, `headroom-pilot`, `accessibility-visual-regression` and the remaining specialist skills.
 
-Read the relevant skill before specialized work:
-
-- `.agents/skills/task-routing/SKILL.md` — choose the smallest applicable superpower/skill set.
-- `.agents/skills/task-continuity/SKILL.md` — recover/bind task → branch → PR state across interruptions.
-- `.agents/skills/execution-routing/SKILL.md` — assign agent/host, model class and justified parallelism.
-
-- `.agents/skills/project-bootstrap/SKILL.md` — adapt this starter to a new project.
-- `.agents/skills/mcp-usage/SKILL.md` — external MCP/connector use.
-- `.agents/skills/context7/SKILL.md` — current third-party API/SDK docs.
-- `.agents/skills/graphify/SKILL.md` — local code relationships/change impact.
-- `.agents/skills/memory-context/SKILL.md` — context/token efficiency and durable memory.
-- `.agents/skills/implementation-planning/SKILL.md` — compact implementation plans for non-trivial, cross-cutting or high-risk work; requirements remain the source of product intent.
-- `.agents/skills/test-engineering/SKILL.md` — test-harness architecture, regression coverage and reproducible verification evidence.
-- `.agents/skills/frontend-verification/SKILL.md` — mandatory rendered-browser/runtime verification for material frontend changes.
-- `.agents/skills/performance-budget/SKILL.md` — measurable project-specific performance budgets and regression checks.
-- `.agents/skills/analytics-contract/SKILL.md` — privacy-safe provider-neutral analytics event contracts and wiring verification.
-- `.agents/skills/code-hygiene/SKILL.md` — dead-code, unused exports/dependencies and cleanup.
-- `.agents/skills/dependency-maintenance/SKILL.md` — upgrades, advisories, lockfiles and update bots.
-- `.agents/skills/headroom-pilot/SKILL.md` — measured optional context compression pilot.
-- `.agents/skills/design-stack/SKILL.md` — route frontend design through Taste Skill, UI/UX Pro Max, Impeccable, and Motion without overlapping generic layers.
-- `.agents/skills/motion-runtime/SKILL.md` — implement material runtime animation with Motion only when CSS is insufficient.
-- `.agents/skills/accessibility-visual-regression/SKILL.md` — accessibility evidence and stable visual regression checks.
-- `.agents/skills/security-boundary-review/SKILL.md` — auth/secrets/data/external trust boundaries.
-- `.agents/skills/quality-gates/SKILL.md` — risk-based verification.
-- `.agents/skills/release-readiness/SKILL.md` — dev→prod review.
-- `.agents/skills/release-workflow/SKILL.md` — branch/release contract.
-
-For substantial frontend work, use `docs/DESIGN-STACK.md`. Load only the design/UX/runtime layers the task actually needs; Motion is an implementation dependency, not a default design requirement.
-
-For repository cleanup/context optimization, follow `docs/CODE-HEALTH-AND-CONTEXT.md`. Code Hygiene and Headroom solve different problems: dead code vs model context.
-
-Before adding a new skill/tool, check `docs/STACK-RESPONSIBILITY-MAP.md` so existing capabilities are extended rather than duplicated.
-
-Add a project-specific skill at `.agents/skills/<project-name>/SKILL.md`.
+Before adding another tool/skill, check `docs/STACK-RESPONSIBILITY-MAP.md`. For substantial frontend design read `docs/DESIGN-STACK.md`; for repository cleanup/context optimization read `docs/CODE-HEALTH-AND-CONTEXT.md`.
 
 ## Requirements and execution-plan discipline
 
