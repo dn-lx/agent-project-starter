@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Added
+- Implementation-planning, test-engineering, rendered frontend-verification, performance-budget and analytics-contract capabilities with reusable implementation, verification and analytics templates.
 - Unified frontend design routing: Taste Skill for creative direction, UI/UX Pro Max for structured design intelligence, Impeccable for critique/polish, Motion for justified runtime animation, with accessibility/visual regression kept as independent evidence.
 - Stable CI check names for branch-ruleset enforcement.
 - Reusable `docs/REQUIREMENTS.md` template for ordered requirements, issues, roadmap items, acceptance criteria, completion checkboxes and verification evidence.
