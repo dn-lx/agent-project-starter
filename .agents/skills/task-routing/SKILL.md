@@ -7,7 +7,7 @@ description: Select the smallest applicable superpower and skill set for a codin
 
 Use this skill when the request is broad, ambiguous, stalled, or naturally end-to-end.
 
-1. Classify the primary outcome: resume, deliver, repair, verify, release or audit.
+1. Classify the primary outcome: resume, deliver, repair CI/build, recover production, verify, release or audit.
 2. Select exactly one primary workflow from `.agents/superpowers/README.md`.
 3. Read that superpower file.
 4. If multiple agent hosts or model choices are available, read `.agents/skills/execution-routing/SKILL.md` and assign the smallest capable execution setup.
