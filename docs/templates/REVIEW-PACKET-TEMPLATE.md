@@ -23,7 +23,10 @@ What was requested? Include acceptance criteria, not the implementer's reasoning
 
 - Tests:
 - Build/type/lint:
-- Browser/mobile:
+- Browser/runtime (including console/network where relevant):
+- Performance budget:
+- Analytics contract/wiring:
+- Accessibility/visual:
 - Security checks:
 - Migration/data checks:
 - Anything not run:
