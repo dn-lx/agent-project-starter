@@ -34,6 +34,7 @@ For affected UI, explicitly inspect:
 - **clipping:** labels/buttons/headings are not cut off unless truncation is intentional,
 - **overlap/stacking:** no accidental collisions, hidden controls or z-index obstruction,
 - **content resilience:** realistic long/localized text does not break the changed layout,
+- **semantic coherence:** labels, icons, visual hierarchy and disabled/error/success states match what the control actually does; repeated actions use consistent variants,
 - **theme/state matrix:** check affected light/dark/high-contrast themes plus hover/focus/disabled/error/open states when they exist.
 
 Use `docs/templates/FRONTEND-VISUAL-QA-TEMPLATE.md` when durable evidence is useful. For Playwright projects, `docs/templates/PLAYWRIGHT-VISUAL-SANITY.md` contains targeted overflow, clipping, geometry, contrast and screenshot patterns.
@@ -81,3 +82,5 @@ A frontend task is not fully verified when:
 - screenshots were updated blindly.
 
 If browser verification cannot be run, report that limitation explicitly in the PR/evidence packet.
+
+Stop when the requested behavior and visual-sanity contract are clean. Do not continue opportunistic redesign/polish beyond the task unless a broader design issue is explicitly in scope.
