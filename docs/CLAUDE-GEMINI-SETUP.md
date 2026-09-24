@@ -8,7 +8,7 @@ These adapters target Claude Code and Gemini CLI. For the broader curated Claude
 2. Install/sign in using the chosen CLI's official setup. Run `claude --version` or `gemini --version` when diagnosing compatibility.
 3. Review the workspace before accepting the host trust prompt. Keep normal permissions enabled; do not use blanket auto-approval to make setup pass.
 4. Fill the consuming project's Project Memory commands and MCP profile. TODO entries are unconfigured, not passing checks.
-5. Run `node scripts/validate-agent-stack.mjs`, `node scripts/context-budget.mjs --check`, `node scripts/sync-claude-skills.mjs`, `node scripts/validate-version.mjs` and `node --test tests/*.test.mjs`.
+5. Run `node scripts/validate-docs.mjs`, `node scripts/validate-agent-stack.mjs`, `node scripts/context-budget.mjs --check`, `node scripts/sync-claude-skills.mjs`, `node scripts/validate-version.mjs` and `node --test tests/*.test.mjs`.
 
 ## Claude Code
 
