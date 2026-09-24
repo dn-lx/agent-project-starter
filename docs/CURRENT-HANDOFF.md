@@ -1,32 +1,34 @@
 # Current Handoff
 
-**Last updated:** 2026-09-24
+**Last updated:** 2026-09-25
 
 This file is the compact recovery record for unfinished work. GitHub/source/tests remain authoritative when they disagree with this handoff.
 
 <!-- AGENT_TASK_STATE_START -->
 {
-  "task_id": null,
-  "repository": null,
+  "task_id": "visual-sanity-context-efficiency-20260925",
+  "repository": "dn-lx/agent-project-starter",
   "base": "dev",
-  "branch": null,
+  "branch": "feature/visual-sanity-context-efficiency",
   "pr": null,
-  "status": "idle",
+  "status": "planning",
   "last_verified_sha": null,
-  "next_step": null,
-  "updated_at": "2026-09-24T22:30:00Z"
+  "next_step": "Add a focused visual-sanity verification contract and reduce default context/token load without weakening task completion evidence.",
+  "updated_at": "2026-09-25T20:30:00Z"
 }
 <!-- AGENT_TASK_STATE_END -->
 
 ## Current state
 
-No active task is recorded in the starter template.
+Improving Agent Project Starter only.
 
-When non-trivial work begins:
-- create/reconcile the focused branch from current `dev`,
-- create a draft PR early,
-- replace the idle task-state block with the active task/branch/PR binding,
-- record only the compact verified next step needed after interruption.
+## Scope
+
+- detect and prevent low-contrast theme combinations, alignment drift, clipping, overflow and overlapping UI,
+- define a fast repair loop for focused visual defects without loading the full design stack,
+- reduce static/default skill-catalog context,
+- add a measurable task-context packet/budget helper for broad work,
+- preserve current branch/release/security contracts.
 
 ## Recovery rule
 
