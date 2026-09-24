@@ -20,7 +20,7 @@ SemVer reference: https://semver.org/
 1. Read VERSION, changelog, current release tags and this policy.
 2. Add meaningful user-facing notes to Unreleased; identify breaking changes and migration actions.
 3. Keep ecosystem manifest/lockfile versions synchronized if introduced. This stack-neutral starter has no package manifest.
-4. Run `node scripts/validate-version.mjs` and `node --test tests/*.test.mjs`.
+4. Run `node scripts/validate-docs.mjs`, `node scripts/validate-version.mjs` and `node --test tests/*.test.mjs`.
 5. Include version impact and any compatibility risk in the PR/handoff.
 
 ## Release preparation and publication
