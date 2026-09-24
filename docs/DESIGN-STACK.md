@@ -96,9 +96,13 @@ For simple hover/focus/press transitions, prefer CSS and avoid unnecessary depen
 
 See `.agents/skills/motion-runtime/SKILL.md`.
 
-## 5. Accessibility + Visual Regression — independent evidence
+## 5. Frontend Verification — rendered runtime evidence
 
-The separate `accessibility-visual-regression` skill remains because verification is not design direction. Use it after material UI changes for keyboard/focus/accessibility and stable visual-regression evidence.
+Use the repository-local `frontend-verification` skill after material UI changes to prove the real rendered workflow: desktop/mobile behavior, relevant loading/error states, console health and failed network requests. Source inspection alone is not final frontend evidence.
+
+## 6. Accessibility + Visual Regression — specialist evidence
+
+The separate `accessibility-visual-regression` skill remains because accessibility and stable screenshot regression are specialist evidence, not design direction. It complements frontend runtime verification rather than replacing it.
 
 ## Selection rule
 
@@ -110,13 +114,13 @@ Use the smallest useful combination:
 | Structured design system, palettes, typography, UX patterns, charts | UI/UX Pro Max |
 | Existing UI critique / polish / hardening | Impeccable |
 | Material React/JS animation beyond CSS | Motion |
-| Final UI evidence | Accessibility + Visual Regression |
+| Final UI evidence | Frontend Verification + Accessibility/Visual Regression where relevant |
 | Tiny copy/spacing/hover fix | Existing project system; no external pack unless needed |
 
 A normal substantial UI flow is:
 
 ```text
-Taste → UI/UX Pro Max → implementation → Motion if justified → Impeccable → accessibility/visual QA
+Taste → UI/UX Pro Max → implementation → Motion if justified → Impeccable → frontend runtime verification → accessibility/visual QA
 ```
 
 But do not load every layer automatically.
