@@ -30,7 +30,8 @@ Before changing UI:
 2. preserve a coherent incumbent system unless the task is explicitly a redesign,
 3. treat the user/project brief as higher authority than any third-party skill default,
 4. never weaken product truth, accessibility, security, performance or functional constraints for aesthetics,
-5. check existing dependencies before adding Motion or another runtime library.
+5. check existing dependencies before adding Motion or another runtime library,
+6. prefer semantic foreground/surface/border/accent and spacing/layout tokens over theme-sensitive raw values; when a token pair changes, verify every affected theme/state.
 
 ## Third-party rule
 
