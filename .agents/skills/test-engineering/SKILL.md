@@ -34,6 +34,8 @@ Do not add Vitest, Playwright or any other tool solely because the starter menti
 For changed behavior, identify:
 - pure logic that deserves unit coverage,
 - integration boundaries that need contract/fixture coverage,
+- API/schema compatibility across old/new clients or deployment phases when rollout is non-atomic,
+- migration/backfill retry/idempotency and data-integrity cases when data changes,
 - user-critical flows that need browser coverage,
 - security/privacy negative paths,
 - regression scenarios that previously failed.
