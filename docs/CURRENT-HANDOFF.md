@@ -6,27 +6,30 @@ This file is the compact recovery record for unfinished work. GitHub/source/test
 
 <!-- AGENT_TASK_STATE_START -->
 {
-  "task_id": null,
-  "repository": null,
+  "task_id": "documentation-systems-audit-20260925",
+  "repository": "dn-lx/agent-project-starter",
   "base": "dev",
-  "branch": null,
+  "branch": "feature/documentation-systems-audit",
   "pr": null,
-  "status": "idle",
+  "status": "planning",
   "last_verified_sha": null,
-  "next_step": null,
-  "updated_at": "2026-09-25T21:10:00Z"
+  "next_step": "Apply the deep documentation audit findings: authority model, docs consistency validation, operations/recovery, environment/localization contracts, stale branch fix and routing neutrality.",
+  "updated_at": "2026-09-25T22:50:00Z"
 }
 <!-- AGENT_TASK_STATE_END -->
 
 ## Current state
 
-No active task is recorded in the starter template.
+Deep documentation systems audit for Agent Project Starter only.
 
-When non-trivial work begins:
-- create/reconcile the focused branch from current `dev`,
-- create a draft PR early,
-- replace the idle task-state block with the active task/branch/PR binding,
-- record only the compact verified next step needed after interruption.
+## Scope
+
+- clarify authority for current-state facts versus desired requirements,
+- detect documentation drift and broken internal references deterministically,
+- strengthen deploy verification, rollback/recovery, migration and operational readiness,
+- document runtime environment identity and optional localization contracts,
+- fix stale branch terminology and remove provider-role bias,
+- keep startup context compact and avoid new overlapping skills.
 
 ## Recovery rule
 
