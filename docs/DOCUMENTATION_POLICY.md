@@ -44,6 +44,8 @@ Tiny copy/style changes that do not alter behavior usually do not require archit
 - **Agent Skill:** repeatable specialist workflow.
 - **Analytics contract/taxonomy:** durable provider-neutral event definitions when analytics is used.
 - **Verification evidence:** exact task/release check results and artifacts when a durable evidence packet is useful.
+- **Operations/runbook:** runtime identity, health/smoke, observability, rollback, backup/restore and incident recovery for deployed systems.
+- **Documentation map:** on-demand routing to maintained documentation; not another source of policy.
 - **README:** human onboarding and project entry point.
 - **PR/issue:** task-specific discussion/review history.
 
