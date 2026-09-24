@@ -5,7 +5,7 @@
 ### Added
 - Question-specific documentation authority model so current source facts cannot silently override accepted intended requirements (or vice versa).
 - Documentation map plus deterministic documentation consistency validation, including broken internal references, skill/doc index coverage, stale branch terminology and optional strict-project placeholder checks.
-- Operations/recovery guidance and runbook template covering runtime identity, deployed-revision proof, production smoke/health, migrations, observability, rollback and backup/restore.
+- Operations/recovery guidance, runbook template and production-recovery Superpower covering runtime identity, deployed-revision proof, production smoke/health, migrations, observability, rollback and backup/restore.
 - Compact runtime-environment and localization contracts for project bootstrap and verification.
 - Focused frontend visual-sanity verification for contrast, alignment, spacing, overflow, clipping, overlap and theme/state defects, plus a reusable visual-QA packet.
 - On-demand skill index and task-context packet measurement, with an explicit budget for always-loaded `AGENTS.md` to reduce repeated token consumption.
