@@ -31,7 +31,7 @@ if (isMain) {
   const paths = args.filter((arg, index) =>
     arg !== '--check' &&
     arg !== '--budget' &&
-    index !== budgetIndex + 1
+    !(budgetIndex >= 0 && index === budgetIndex + 1)
   )
   const result = await measureContextPacket(paths, budget === undefined ? {} : { budget })
   for (const file of result.files) console.log(`${file.path}: ~${file.tokens} tokens`)
