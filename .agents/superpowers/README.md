@@ -11,6 +11,7 @@ Choose at most one primary superpower for a task. Load additional skills only wh
 | Continue interrupted/stalled work | `resume-project` |
 | Deliver a normal feature/fix completely | `finish-feature` |
 | Repair a failing build/CI loop | `fix-until-green` |
+| Stabilize/recover degraded production | `recover-production` |
 | Perform broad evidence-based verification | `full-qa` |
 | Prepare/promote dev to production | `ship-release` |
 | Audit project health and agent readiness | `project-doctor` |
