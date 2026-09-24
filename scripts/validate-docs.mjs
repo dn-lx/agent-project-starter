@@ -1,5 +1,5 @@
-import { access, readFile, readdir, stat } from 'node:fs/promises'
-import { dirname, join, normalize, relative, resolve, sep } from 'node:path'
+import { access, readFile, readdir } from 'node:fs/promises'
+import { dirname, join, normalize, resolve, sep } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
 const IGNORE_DIRS = new Set(['.git', 'node_modules', '.graphify', '.venv', '.venv-graphify'])
