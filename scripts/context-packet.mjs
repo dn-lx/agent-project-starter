@@ -22,9 +22,7 @@ export async function measureContextPacket(paths, {
   return { files, total, budget, ok: total <= budget }
 }
 
-const isMain = process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url
-if (isMain) {
-  const args = process.argv.slice(2)
+export function parseContextPacketArgs(args) {
   const check = args.includes('--check')
   const budgetIndex = args.indexOf('--budget')
   const budget = budgetIndex >= 0 ? Number(args[budgetIndex + 1]) : undefined
@@ -33,6 +31,12 @@ if (isMain) {
     arg !== '--budget' &&
     !(budgetIndex >= 0 && index === budgetIndex + 1)
   )
+  return { check, budget, paths }
+}
+
+const isMain = process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url
+if (isMain) {
+  const { check, budget, paths } = parseContextPacketArgs(process.argv.slice(2))
   const result = await measureContextPacket(paths, budget === undefined ? {} : { budget })
   for (const file of result.files) console.log(`${file.path}: ~${file.tokens} tokens`)
   console.log(`Task packet: ~${result.total} / ${result.budget} tokens [${result.ok ? 'OK' : 'OVER'}]`)
