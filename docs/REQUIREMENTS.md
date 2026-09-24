@@ -11,12 +11,12 @@ Do not use it as a chat transcript or duplicate implementation details that belo
 ## How agents use this document
 
 - Read this file when the task is product planning, backlog execution, bug/feature delivery, or when the user refers to "the requirements", "the plan", "the issues" or "what is left".
-- Work from the highest-priority unchecked item unless a dependency requires a different order.
+- If the user/task explicitly selects a requirement or issue, work on that item. Only choose the highest-priority unchecked item when asked to select/continue backlog work without a specific target, and still respect dependencies/blockers.
 - Use stable requirement IDs in branches, PRs and handoffs when useful.
 - Change `[ ]` to `[x]` only after the acceptance criteria are verified.
 - Add concise completion evidence when marking an item done.
 - Do not mark an item complete merely because code was written.
-- Current source, tests and accepted ADRs override stale wording in this plan.
+- Source/tests define current implementation facts; this file defines accepted intended outcomes while an item is active. If a requirement is stale or conflicts with an accepted ADR/invariant, reconcile the conflict explicitly instead of silently choosing one.
 - Keep completed items for history unless the project has an explicit archival policy.
 
 ## Priority model
