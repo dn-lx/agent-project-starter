@@ -6,27 +6,21 @@ This file is the compact recovery record for unfinished work. GitHub/source/test
 
 <!-- AGENT_TASK_STATE_START -->
 {
-  "task_id": null,
-  "repository": null,
+  "task_id": "documentation-systems-audit-20260925",
+  "repository": "dn-lx/agent-project-starter",
   "base": "dev",
-  "branch": null,
-  "pr": null,
-  "status": "idle",
+  "branch": "feature/documentation-systems-audit",
+  "pr": 19,
+  "status": "implementing",
   "last_verified_sha": null,
-  "next_step": null,
-  "updated_at": "2026-09-24T22:36:00Z"
+  "next_step": "Fix documentation-validator false positives for directory references and explicitly upstream paths, then refreeze the candidate and rerun final checks.",
+  "updated_at": "2026-09-24T23:04:00Z"
 }
 <!-- AGENT_TASK_STATE_END -->
 
 ## Current state
 
-No active task is recorded in the starter template.
-
-When non-trivial work begins:
-- create/reconcile the focused branch from current `dev`,
-- create a draft PR early,
-- replace the idle task-state block with the active task/branch/PR binding,
-- record only the compact verified next step needed after interruption.
+PR #19 final-candidate validation exposed documentation-validator path-classification false positives. The task remains active until those validator semantics are repaired and a new exact-head gate is green.
 
 ## Recovery rule
 
