@@ -25,7 +25,7 @@ Use `test-engineering` when the test harness, fixtures or regression strategy it
 
 ## Tier 2 — sensitive change
 
-For auth, permissions, secrets, payments, schema/data, tenant isolation, privileged functions, external writes or worker command execution:
+For auth, permissions, secrets, payments, schema/data, tenant isolation, public APIs/webhooks/uploads, privileged functions, external writes or worker command execution:
 - Tier 1,
 - Security Boundary Review,
 - allowed + denied/negative-path verification where practical,
