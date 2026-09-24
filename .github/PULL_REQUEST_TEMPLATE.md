@@ -21,7 +21,7 @@
 
 - [ ] Relevant tests passed
 - [ ] Build/type/lint checks passed where applicable
-- [ ] Browser/runtime verification completed for material frontend changes
+- [ ] Browser/runtime verification completed for material frontend changes, including contrast/alignment/overflow/clipping/theme sanity where affected
 - [ ] Performance budget checked where performance is materially affected
 - [ ] Analytics contract/wiring checked where instrumentation changed
 - [ ] Final diff inspected
