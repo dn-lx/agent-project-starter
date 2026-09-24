@@ -1,0 +1,153 @@
+import { access, readFile, readdir, stat } from 'node:fs/promises'
+import { dirname, join, normalize, relative, resolve, sep } from 'node:path'
+import { pathToFileURL } from 'node:url'
+
+const IGNORE_DIRS = new Set(['.git', 'node_modules', '.graphify', '.venv', '.venv-graphify'])
+
+function unix(path) {
+  return path.split(sep).join('/')
+}
+
+async function walk(root, current = '.') {
+  const abs = resolve(root, current)
+  const entries = await readdir(abs, { withFileTypes: true })
+  const files = [], dirs = []
+  for (const entry of entries) {
+    if (entry.name.startsWith('.') && !['.agents', '.claude', '.github'].includes(entry.name)) {
+      if (entry.isDirectory()) continue
+    }
+    if (entry.isDirectory() && IGNORE_DIRS.has(entry.name)) continue
+    const rel = unix(join(current, entry.name)).replace(/^\.\//, '')
+    if (entry.isDirectory()) {
+      dirs.push(rel)
+      const nested = await walk(root, rel)
+      files.push(...nested.files)
+      dirs.push(...nested.dirs)
+    } else {
+      files.push(rel)
+    }
+  }
+  return { files, dirs }
+}
+
+function isExternal(target) {
+  return /^(?:https?:|mailto:|tel:|data:|#)/i.test(target)
+}
+
+function cleanTarget(target) {
+  const value = target.trim().replace(/^<|>$/g, '')
+  return value.split('#')[0].split('?')[0]
+}
+
+function skipTemplatePath(target) {
+  return !target || /[<>{}*]/.test(target) || target.includes('...')
+}
+
+export function findLegacyBranchTerms(content, integration, production) {
+  const findings = []
+  if (integration !== 'develop') {
+    const patterns = [
+      /\`develop\`/gi,
+      /\bmerge(?:s|d)?\s+(?:only\s+)?into\s+develop\b/gi,
+      /\bdevelop\s*(?:→|->)/gi,
+    ]
+    for (const pattern of patterns) if (pattern.test(content)) findings.push('develop')
+  }
+  if (production !== 'main') {
+    const patterns = [
+      /\`main\`/gi,
+      /(?:→|->)\s*main\b/gi,
+      /\brelease(?:s|d)?\s+(?:only\s+)?to\s+main\b/gi,
+    ]
+    for (const pattern of patterns) if (pattern.test(content)) findings.push('main')
+  }
+  return [...new Set(findings)]
+}
+
+export async function validateDocs(root = process.cwd(), { strictProject = false } = {}) {
+  const errors = []
+  const { files, dirs } = await walk(root)
+  const fileSet = new Set(files)
+  const pathSet = new Set([...files, ...dirs])
+
+  const markdown = files.filter(path => path.endsWith('.md'))
+  const contents = new Map()
+  for (const path of markdown) contents.set(path, await readFile(resolve(root, path), 'utf8'))
+
+  // Markdown links are relative to the document containing them.
+  for (const [path, content] of contents) {
+    const linkPattern = /\[[^\]]*\]\(([^)]+)\)/g
+    let match
+    while ((match = linkPattern.exec(content))) {
+      const raw = match[1].trim().split(/\s+["']/)[0]
+      if (isExternal(raw)) continue
+      const target = cleanTarget(raw)
+      if (skipTemplatePath(target)) continue
+      const resolved = unix(normalize(join(dirname(path), target)))
+      if (!pathSet.has(resolved)) errors.push(`${path}: broken markdown link -> ${raw}`)
+    }
+
+    // Backticked repository-root paths are common in agent instructions.
+    const repoPathPattern = /`((?:\.agents\/|docs\/|scripts\/|tests\/|\.github\/)[^`\s]+|AGENTS\.md|README\.md|REVIEW\.md|CLAUDE\.md|GEMINI\.md|CHANGELOG\.md|VERSION)`/g
+    while ((match = repoPathPattern.exec(content))) {
+      const target = cleanTarget(match[1].replace(/[),.;:]+$/, ''))
+      if (skipTemplatePath(target)) continue
+      if (!pathSet.has(target)) errors.push(`${path}: missing referenced repository path -> ${target}`)
+    }
+  }
+
+  const policy = JSON.parse(await readFile(resolve(root, '.agents/project-policy.json'), 'utf8'))
+  const integration = policy.branches?.integration
+  const production = policy.branches?.production
+  for (const [path, content] of contents) {
+    const legacy = findLegacyBranchTerms(content, integration, production)
+    for (const term of legacy) errors.push(`${path}: stale branch token "${term}" conflicts with policy ${integration} → ${production}`)
+  }
+
+  const skillDirs = (await readdir(resolve(root, '.agents/skills'), { withFileTypes: true }))
+    .filter(entry => entry.isDirectory())
+    .map(entry => entry.name)
+    .sort()
+  const skillIndex = await readFile(resolve(root, '.agents/SKILL-INDEX.md'), 'utf8')
+  for (const skill of skillDirs) {
+    if (!skillIndex.includes(`\`${skill}\``)) errors.push(`.agents/SKILL-INDEX.md: missing skill ${skill}`)
+  }
+
+  const docsIndex = await readFile(resolve(root, 'docs/INDEX.md'), 'utf8')
+  const topLevelDocs = markdown.filter(path => /^docs\/[^/]+\.md$/.test(path) && path !== 'docs/INDEX.md')
+  for (const path of topLevelDocs) {
+    if (!docsIndex.includes(`\`${path}\``)) errors.push(`docs/INDEX.md: missing top-level document ${path}`)
+  }
+
+  if (strictProject) {
+    for (const path of ['docs/PROJECT-MEMORY.md', 'docs/MCP-SETUP.md']) {
+      const content = contents.get(path) || ''
+      if (/\bTODO\b/.test(content)) errors.push(`${path}: unresolved TODO placeholder in strict project mode`)
+    }
+    const requirements = contents.get('docs/REQUIREMENTS.md') || ''
+    if (/YYYY-MM-DD|Short requirement title|Example foundational work|Example product work|Example QA\/release work/.test(requirements)) {
+      errors.push('docs/REQUIREMENTS.md: starter examples/placeholders remain in strict project mode')
+    }
+    const readme = contents.get('README.md') || ''
+    if (/^# Agent Project Starter\s*$/m.test(readme)) errors.push('README.md: starter identity remains in strict project mode')
+    try {
+      await access(resolve(root, '.agents/skills/project-template/SKILL.md'))
+      errors.push('.agents/skills/project-template/SKILL.md: replace/remove the placeholder project skill in strict project mode')
+    } catch {}
+  }
+
+  return { ok: errors.length === 0, errors, markdownCount: markdown.length, skillCount: skillDirs.length }
+}
+
+const isMain = process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url
+if (isMain) {
+  const strictProject = process.argv.includes('--strict-project')
+  const result = await validateDocs(process.cwd(), { strictProject })
+  if (!result.ok) {
+    console.error(`Documentation validation failed with ${result.errors.length} issue(s):`)
+    for (const error of result.errors) console.error(`- ${error}`)
+    process.exit(1)
+  }
+  console.log(`Documentation valid: ${result.markdownCount} markdown files; ${result.skillCount} canonical skills.`)
+  if (!strictProject) console.log('Run with --strict-project after adapting the starter to detect unresolved starter placeholders.')
+}
