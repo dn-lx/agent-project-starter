@@ -103,6 +103,7 @@ Direct fast paths:
 - performance or analytics changes → `performance-budget` / `analytics-contract`;
 - sensitive trust boundaries → `security-boundary-review`;
 - risk-based verification → `quality-gates`;
+- degraded/broken production → `recover-production` + `docs/OPERATIONS-RECOVERY.md`;
 - release preparation/mechanics → `release-readiness` / `release-workflow`.
 
 When no direct path is obvious, consult `.agents/SKILL-INDEX.md` on demand. The index includes `project-bootstrap`, `mcp-usage`, `context7`, `graphify`, `memory-context`, `code-hygiene`, `dependency-maintenance`, `headroom-pilot`, `accessibility-visual-regression` and the remaining specialist skills.
