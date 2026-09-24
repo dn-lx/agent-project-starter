@@ -78,6 +78,8 @@ Record rules that agents must not accidentally change without an explicit produc
 - Where secrets live: TODO
 - Tenant/user isolation model: TODO
 - Sensitive data/logging restrictions: TODO
+- Data classification/retention/deletion/export requirements: TODO / Not applicable
+- Public ingress/webhooks/uploads and abuse/replay/rate-limit boundaries: TODO / Not applicable
 
 ## External systems
 
