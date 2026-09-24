@@ -7,7 +7,7 @@ description: Take a feature or fix from requirement through a verified PR into d
 
 1. Classify scope/risk and retrieve only the relevant project context.
 2. For non-trivial/cross-cutting/high-risk work, load `implementation-planning` and create/update a compact task plan before editing.
-3. Start from current `dev` on a focused feature/fix/chore branch unless already on the correct active branch.
+3. Start from current `dev` on a focused feature/fix/chore branch unless already on the correct active branch; for non-trivial work create/reconcile the draft PR early so task → branch → PR continuity exists before a long implementation pass.
 4. Trace the active code/data path before editing.
 5. Implement the smallest complete change.
 6. Load only the specialist skills triggered by the work.
