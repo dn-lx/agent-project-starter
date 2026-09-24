@@ -22,7 +22,7 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Memory Context | Retrieval/context discipline and durable memory rules | Compression proxy implementation |
 | Implementation Planning | Task-specific implementation sequence, affected boundaries, rollback and verification plan | Product requirements/backlog intent or durable architecture decisions |
 | Test Engineering | Test harness architecture, fixtures and regression coverage | Selecting risk-tier checks for each change |
-| Frontend Verification | Rendered browser/runtime workflow, responsive, console/network and failure-state evidence | Choosing visual direction or replacing accessibility/visual-regression checks |
+| Frontend Verification | Rendered browser/runtime workflow plus visual sanity for contrast, alignment, spacing, overflow, clipping, overlap, responsive/theme states, console/network and failure-state evidence | Choosing visual direction or replacing accessibility/visual-regression checks |
 | Performance Budget | Measurable user-critical performance budgets and regression evidence | Production observability or speculative micro-optimization |
 | Analytics Contract | Provider-neutral event taxonomy, privacy-safe properties and wiring verification | Transactional product logic or provider account configuration |
 | Headroom Pilot | Optional measured context compression | Project memory or dead-code cleanup |
