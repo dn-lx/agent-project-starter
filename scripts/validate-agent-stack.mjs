@@ -24,6 +24,7 @@ const required = [
   'docs/MEMORY-CONTEXT-POLICY.md',
   'docs/DOCUMENTATION_POLICY.md',
   'docs/STACK-RESPONSIBILITY-MAP.md',
+  'docs/DESIGN-STACK.md',
   'docs/BRANCH-LIFECYCLE.md',
   'docs/TASK-LIFECYCLE.md',
   'docs/VERSIONING.md',
@@ -42,6 +43,8 @@ const required = [
   '.agents/skills/execution-routing/SKILL.md',
   '.agents/skills/memory-context/SKILL.md',
   '.agents/skills/mcp-usage/SKILL.md',
+  '.agents/skills/design-stack/SKILL.md',
+  '.agents/skills/motion-runtime/SKILL.md',
   '.agents/skills/quality-gates/SKILL.md',
   '.agents/skills/security-boundary-review/SKILL.md',
   '.agents/skills/release-readiness/SKILL.md',
@@ -94,6 +97,8 @@ for (const phrase of [
   'quality-gates',
   'security-boundary-review',
   'release-workflow',
+  'design-stack',
+  'motion-runtime',
   '.agents/superpowers/',
 ]) {
   if (!agents.includes(phrase)) throw new Error(`AGENTS.md is missing required reference: ${phrase}`)
