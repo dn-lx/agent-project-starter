@@ -19,7 +19,7 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Optional Claude Plugins | Ponytail/Superpowers/Code Review plus optional claude-mem/Obsidian integration | Core repository policy or automatic activation |
 | REVIEW.md | Shared correctness/security/regression review contract | Replacing CI, tests or production approval |
 | Superpowers | End-to-end sequencing around resume/deliver/repair/verify/release/audit outcomes | Duplicating specialist skill instructions |
-| Memory Context | Retrieval/context discipline and durable memory rules | Compression proxy implementation |
+| Memory Context | Retrieval/context discipline, task-packet sizing and durable memory rules | Compression proxy implementation or omitting evidence just to save tokens |
 | Implementation Planning | Task-specific implementation sequence, affected boundaries, rollback and verification plan | Product requirements/backlog intent or durable architecture decisions |
 | Test Engineering | Test harness architecture, fixtures and regression coverage | Selecting risk-tier checks for each change |
 | Frontend Verification | Rendered browser/runtime workflow plus visual sanity for contrast, alignment, spacing, overflow, clipping, overlap, responsive/theme states, console/network and failure-state evidence | Choosing visual direction or replacing accessibility/visual-regression checks |
