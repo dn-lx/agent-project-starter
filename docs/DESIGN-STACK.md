@@ -1,10 +1,8 @@
 # Design Stack
 
-The starter keeps one small design-routing layer instead of several overlapping generic frontend skills.
+The starter uses a small, layered frontend design stack. Each layer has a distinct responsibility; none is loaded automatically for unrelated work.
 
-## Roles
-
-### Taste Skill — generation and redesign
+## 1. Taste Skill — creative direction
 
 Use **Taste Skill** when the main problem is visual direction, anti-generic composition, hierarchy, typography, spacing, density, or a substantial redesign.
 
@@ -20,9 +18,37 @@ Typical project install:
 npx skills add https://github.com/tasteskill/tasteskill --skill "design-taste-frontend"
 ```
 
-The upstream defaults are intentionally opinionated. The project's product brief, design system, accessibility requirements and explicit user direction always win.
+Taste is deliberately opinionated. The project's product brief, incumbent design system, accessibility requirements and explicit user direction override its defaults.
 
-### Impeccable — critique, polish and deterministic design checks
+## 2. UI/UX Pro Max — structured design intelligence
+
+Use **UI/UX Pro Max** for structured design-system generation and targeted design/UX intelligence: product/style matching, palettes, typography, UX guidelines, icons, charts, stack-specific implementation guidance, accessibility heuristics and motion/interaction recommendations.
+
+Verified upstream:
+- Repository: `nextlevelbuilder/ui-ux-pro-max-skill`
+- Audited skill path: `.claude/skills/ui-ux-pro-max/SKILL.md`
+- Audited skill revision: `41f8e2fd7f8c568228d0b55186ebe3f7b4007377`
+- Audited README revision: `4f0a13340753466048afa98a2b330731d7b0b48f`
+- License: MIT
+
+Recommended CLI install for a consuming project/agent host:
+
+```bash
+npx ui-ux-pro-max-cli init --ai <host>
+```
+
+Claude Code also supports the upstream plugin marketplace flow:
+
+```text
+/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill
+/plugin install ui-ux-pro-max@ui-ux-pro-max-skill
+```
+
+The skill uses Python 3 for its local search engine and can persist a generated design system into the project. Do not overwrite an existing persisted design system without explicit authorization.
+
+Use targeted queries rather than loading its entire database into model context.
+
+## 3. Impeccable — critique and polish
 
 Use **Impeccable** for audit, critique, polish, responsive/UX hardening, browser iteration and anti-pattern detection.
 
@@ -40,39 +66,39 @@ npx impeccable install
 
 Impeccable can install hooks and local runtime support. Review those hooks before enabling them and keep developer-local caches/configuration out of Git.
 
-### Awesome Design Skills — on-demand style catalogue
+## 4. Motion — runtime animation implementation
 
-**Awesome Design Skills is a registry, not the default design brain.** It contains many named design-system packs. Do not bulk-install the catalogue into every project.
+Framer Motion is now **Motion**. Use it when a consuming JavaScript/React/Vue project needs runtime animation capabilities beyond simple CSS transitions.
 
 Verified upstream:
-- Repository: `bergside/awesome-design-skills`
-- Audited README revision: `9466ecea1615b75488c346d03c298fbb86d8fe10`
+- Repository: `motiondivision/motion`
+- Audited package README revision: `6feda0b1c9b0ebbea04f2218ccc7044b842aff96`
+- License revision: `81110442c72270dd317667cc52181522647401f2`
 - License: MIT
 
-Browse styles:
+React / JavaScript install:
 
 ```bash
-npx typeui.sh list
+npm install motion
 ```
 
-Pull only a selected style when the project brief calls for it:
+React import:
 
-```bash
-npx typeui.sh pull <slug>
+```js
+import { motion, AnimatePresence } from "motion/react"
 ```
 
-Record the chosen style/design authority in the consuming project's Project Memory or design documentation so later agents do not silently switch aesthetics.
+Vue uses the separate `motion-v` package.
 
-## What this replaces
+Motion is a runtime dependency, not a design skill. Do **not** install it in this generic starter or in every generated project. Add it only where the project actually needs material animation, gestures, springs, layout transitions, scroll-linked effects or similar behavior.
 
-The starter no longer maintains separate generic:
-- `frontend-design`
-- `design-taste`
-- `motion-design`
+For simple hover/focus/press transitions, prefer CSS and avoid unnecessary dependency weight.
 
-Those responsibilities overlap materially with Taste Skill + Impeccable. Motion remains part of design work when the selected upstream skill or project brief requires it.
+See `.agents/skills/motion-runtime/SKILL.md`.
 
-The separate `accessibility-visual-regression` skill remains because it provides verification evidence rather than visual direction.
+## 5. Accessibility + Visual Regression — independent evidence
+
+The separate `accessibility-visual-regression` skill remains because verification is not design direction. Use it after material UI changes for keyboard/focus/accessibility and stable visual-regression evidence.
 
 ## Selection rule
 
@@ -80,21 +106,38 @@ Use the smallest useful combination:
 
 | Need | Use |
 | --- | --- |
-| New premium interface / major redesign | Taste Skill |
+| New premium interface / major redesign | Taste Skill + UI/UX Pro Max |
+| Structured design system, palettes, typography, UX patterns, charts | UI/UX Pro Max |
 | Existing UI critique / polish / hardening | Impeccable |
-| Strong named aesthetic or design-system style | One Awesome Design style |
+| Material React/JS animation beyond CSS | Motion |
 | Final UI evidence | Accessibility + Visual Regression |
-| Tiny copy/spacing fix | No external design pack unless necessary |
+| Tiny copy/spacing/hover fix | Existing project system; no external pack unless needed |
 
-Do not load all three by default.
+A normal substantial UI flow is:
 
-## Update policy
+```text
+Taste → UI/UX Pro Max → implementation → Motion if justified → Impeccable → accessibility/visual QA
+```
 
-These are external projects and may change. The install commands above are for deliberate project bootstrap; do not run unpinned third-party `npx` installers autonomously in a sensitive/shared environment. When automating installation, pin a reviewed release/revision where the upstream tool supports it.
+But do not load every layer automatically.
 
-Before a material upgrade:
-1. inspect upstream release notes/source,
-2. review new hooks/scripts/permissions,
-3. update the audited revision in this document,
-4. run the project's normal UI and security checks,
-5. keep the upgrade separate from unrelated product work when practical.
+## Removed overlap
+
+The starter intentionally does not maintain or route through:
+- the old generic `frontend-design` skill,
+- the old `design-taste` skill,
+- the old `motion-design` skill,
+- the Awesome Design Skills catalogue.
+
+UI/UX Pro Max now covers the structured style/design-intelligence role previously assigned to the Awesome Design catalogue, with substantially broader UX and implementation guidance.
+
+## Supply-chain and update policy
+
+These are external projects and may change. The commands above are for deliberate project bootstrap or dependency installation.
+
+- Do not run unpinned third-party `npx` installers autonomously in sensitive/shared environments.
+- Pin a reviewed release/revision where upstream tooling supports it.
+- Review new installer hooks/scripts/permissions before major upgrades.
+- Keep third-party caches and machine-specific configuration outside Git.
+- Keep design-tool upgrades separate from unrelated product work when practical.
+- Run normal UI, dependency and security checks after upgrades.
