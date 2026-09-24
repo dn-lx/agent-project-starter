@@ -11,7 +11,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 - Durable project memory and machine-readable task/branch/PR continuity across interruptions.
 - Capability-based MCP/connector documentation.
 - Agent Skills for MCP use, Context7, Graphify, implementation planning, test engineering, rendered frontend verification with focused visual-sanity checks, performance budgets, analytics contracts, code hygiene, dependency maintenance, context efficiency, a lean external design stack, accessibility/visual regression, security review and releases.
-- Outcome-oriented Superpowers for resume, feature delivery, CI repair, QA, release and project-health workflows.
+- Outcome-oriented Superpowers for resume, feature delivery, CI repair, production recovery, QA, release and project-health workflows.
 - Two-stage execution routing: agent/host assignment first, model-class assignment second, with minimal justified parallelism.
 - Optional local-agent portability guidance for Claude Code, Codex CLI, Gemini CLI and OpenCode; none are required by the core template.
 - Planner → Executor → Independent Reviewer orchestration.
