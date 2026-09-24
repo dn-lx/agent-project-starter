@@ -21,7 +21,8 @@ Use only for non-trivial work where sequencing, risk or handoff benefits from a 
 - User-visible behavior:
 - API/data/schema:
 - Auth/security/privacy:
-- Deployment/configuration:
+- Deployment/configuration/environment target:
+- Localization/time/number/currency:
 - Analytics/performance:
 
 ## Ordered implementation
@@ -44,6 +45,9 @@ Use only for non-trivial work where sequencing, risk or handoff benefits from a 
 ## Migration / rollback
 
 - Compatibility/migration:
+- Old/new application-data compatibility:
+- Deploy/migration order:
+- Backup/recovery point where needed:
 - Rollback/recovery:
 - Irreversible operations:
 

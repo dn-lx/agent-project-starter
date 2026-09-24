@@ -54,7 +54,7 @@ Use **Impeccable** for audit, critique, polish, responsive/UX hardening, browser
 
 Verified upstream:
 - Repository: `pbakaus/impeccable`
-- Audited skill path: `.agents/skills/impeccable/SKILL.md`
+- Audited upstream skill path: `upstream:.agents/skills/impeccable/SKILL.md`
 - Audited revision: `2f12a53b1e5eaa38fd69625926340704a4ced54b`
 - License: Apache-2.0
 

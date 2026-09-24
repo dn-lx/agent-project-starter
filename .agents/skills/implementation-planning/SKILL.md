@@ -39,7 +39,7 @@ A valid plan states:
 - verified current-state evidence,
 - affected components/contracts,
 - ordered implementation steps,
-- migration/compatibility/rollback needs,
+- migration/compatibility/deploy-order/rollback needs, including old/new application/data compatibility where relevant,
 - testing and browser/runtime evidence,
 - security/privacy implications,
 - performance and analytics implications when relevant,

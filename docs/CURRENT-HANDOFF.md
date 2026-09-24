@@ -14,7 +14,7 @@ This file is the compact recovery record for unfinished work. GitHub/source/test
   "status": "idle",
   "last_verified_sha": null,
   "next_step": null,
-  "updated_at": "2026-09-25T21:10:00Z"
+  "updated_at": "2026-09-24T22:46:00Z"
 }
 <!-- AGENT_TASK_STATE_END -->
 
@@ -34,4 +34,4 @@ Do not resume an arbitrary open branch. Apply `.agents/skills/task-continuity/SK
 
 ## Production path
 
-Production promotion is `dev → prod` with explicit production approval.
+Production promotion is `dev → prod` with explicit human production approval.

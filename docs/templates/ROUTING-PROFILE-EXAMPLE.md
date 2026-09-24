@@ -6,10 +6,8 @@ This file is an example. Copy/adapt it into a project's durable configuration on
 
 | Agent/host | Capabilities | Constraints |
 | --- | --- | --- |
-| ChatGPT / Codex | GitHub, connected tools, orchestration | Verify connections each session |
-| Claude Code | Local repository, terminal, coding workflow | Host-specific MCP/config |
-| Gemini CLI | Local repository, terminal, skills/MCP | Host-specific setup |
-| Cursor | IDE-local execution, optional parallel agents | Keep workers isolated |
+| Host A | TODO verified capabilities | TODO constraints |
+| Host B | TODO verified capabilities | TODO constraints |
 
 ## Model classes
 
@@ -24,7 +22,7 @@ This file is an example. Copy/adapt it into a project's durable configuration on
 ## Project preferences
 
 - Lead coordinator: TODO
-- Default implementation agent: TODO
+- Default implementation agent (only if the team intentionally pins one): TODO / none
 - Independent reviewer: TODO
 - Maximum automatic parallel workers: 1 unless explicitly justified
 - Context budget: use repository context-budget policy

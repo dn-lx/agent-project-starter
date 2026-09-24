@@ -12,14 +12,14 @@
 - Base branch: `dev`
 - Working branch:
 - Status:
-- Last verified SHA:
+- Last verified SHA (must match current head for final evidence):
 - Next safe step if interrupted:
 
 > For non-trivial work, keep task → branch → PR binding recoverable. An open branch alone is not an active-task signal.
 
 ## Verification
 
-- [ ] Relevant tests passed
+- [ ] Relevant tests passed for the current head SHA
 - [ ] Build/type/lint checks passed where applicable
 - [ ] Browser/runtime verification completed for material frontend changes, including contrast/alignment/overflow/clipping/theme sanity where affected
 - [ ] Performance budget checked where performance is materially affected

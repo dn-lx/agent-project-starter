@@ -107,26 +107,15 @@ A delegated agent should receive only:
 
 Do not pass full chat histories or another agent's hidden reasoning.
 
-## Default provider profile
+## Provider-neutral host rule
 
-Provider names can be used as a **starting operating profile**, not as a permanent quality ranking:
+Do not assign permanent coordinator/implementer/reviewer roles by vendor name. A host may be excellent for one task and unsuitable for the next because repository state, browser access, connected apps, local tooling or model availability changed.
 
-- **ChatGPT/Codex host:** often useful as coordinator when GitHub/connectors/cross-system tools are available.
-- **Claude Code host:** often useful as an implementation worker when it owns the local repository/terminal workflow.
-- **Gemini CLI host:** can be used as an implementation or independent review worker when its local/tool context is advantageous.
-- **Cursor or another multi-agent IDE:** can coordinate multiple isolated workers when the task decomposition genuinely benefits from parallelism.
-
-Actual assignments must follow verified host capabilities and project outcomes. Do not route work to a provider merely because this example mentions it.
+Provider-specific examples belong in optional host setup documentation. Runtime routing must use the capability dimensions above and measured project outcomes.
 
 ## Curated CLI baseline
 
-The default multi-host toolset is intentionally limited to:
-- **Claude Code** — primary local implementation/refactoring worker when its repository/terminal context is advantageous.
-- **Codex CLI** — independent implementation, difficult debugging or review worker in an isolated worktree.
-- **Gemini CLI** — alternative analysis, long-context synthesis or independent review when useful.
-- **OpenCode** — provider-neutral fallback/session runner when portability or provider choice is the concrete benefit.
-
-This is an operating baseline, not a permanent ranking. One coordinator owns integration, and one lead worker is the default. Do not invoke all four by default.
+The optional multi-host compatibility baseline is intentionally limited to Claude Code, Codex CLI, Gemini CLI and OpenCode. This is a portability/support list, not a role assignment or quality ranking. One coordinator owns integration, and one lead worker is the default. Do not invoke all four by default.
 
 Do not add Aider, Goose, Qwen Code, Kiro or another coding-agent host unless the project records a specific capability gap not already covered by this baseline. See `docs/CLI-AGENT-STACK.md`.
 

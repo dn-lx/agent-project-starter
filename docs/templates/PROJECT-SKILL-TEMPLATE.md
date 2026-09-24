@@ -19,6 +19,14 @@ Follow root `AGENTS.md`.
 
 - TODO
 
+## Runtime / environment rules
+
+- TODO
+
+## Localization / regional rules
+
+- TODO / Not used
+
 ## Implementation rules
 
 - TODO
@@ -26,6 +34,10 @@ Follow root `AGENTS.md`.
 ## Verification
 
 - TODO
+
+## Operations / recovery
+
+- TODO / Not used
 
 ## Project-specific hazards
 

@@ -21,7 +21,7 @@ After startup:
 1. classify the task,
 2. select one primary Superpower or the smallest directly relevant skill,
 3. inspect Git status/diff/history,
-4. use exact source search or Graphify before broad reads,
+4. use exact source search or Graphify before broad reads; if a search/index is default-branch-scoped, re-fetch candidate files from the active branch/SHA before treating them as current evidence,
 5. open only relevant source/tests and conditional specialist guidance,
 6. broaden only when evidence requires it.
 

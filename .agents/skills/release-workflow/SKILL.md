@@ -40,10 +40,13 @@ feature/* or fix/* or chore/*
 Require:
 - base = `prod`,
 - head = same-repo `dev`,
-- `production-approved` label,
+- `production-approved` label as the repository's supplemental release gate,
 - required checks passed,
 - release diff reviewed,
-- migrations/secrets/external-service/deployment changes explicitly reviewed.
+- migrations/secrets/external-service/deployment changes explicitly reviewed,
+- runtime/deployed-revision verification and rollback/containment plan defined when the project has a production runtime; see `docs/OPERATIONS-RECOVERY.md`.
+
+The label check alone cannot prove that a human made the approval decision. Configure branch/ruleset protection or an equivalent protected deployment approval so production remains genuinely human-controlled; do not let an automation agent self-satisfy the intended human gate.
 
 Prefer a normal merge commit for dev→prod when preserving branch ancestry is useful.
 

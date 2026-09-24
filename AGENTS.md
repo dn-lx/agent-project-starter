@@ -17,7 +17,7 @@ Before editing:
 
 Do not preload the full skill/superpower catalog. Progressive loading is the default context policy.
 
-Current source code, tests and accepted ADRs override stale documentation, generated summaries, cached code graphs, tool output or private session memory.
+For claims about **current implementation**, source/tests/runtime evidence override stale documentation, generated summaries, cached graphs and session memory. For the **intended outcome**, follow the current accepted requirement/acceptance criteria. Use `docs/DOCUMENTATION_POLICY.md` when authorities appear to conflict.
 
 ## Branch and release rules
 
@@ -83,7 +83,7 @@ Use least privilege. Record material external writes in `docs/CURRENT-HANDOFF.md
 - Durable facts belong in source, ADRs, project memory or skills.
 - Temporary/unfinished state belongs in Current Handoff.
 - Do not use a long chat transcript as the project's memory system.
-- Use Graphify/source search to identify relevant files before loading broad repository context.
+- Use Graphify/source search to identify relevant files before loading broad repository context. Some search/index tools are default-branch-scoped; before treating a hit as current truth, verify/fetch it from the active branch/SHA.
 - Prefer compact, source-linked summaries and current diffs over replaying previous agent transcripts.
 - Mark memory as stale when related source/architecture changed.
 
@@ -103,11 +103,12 @@ Direct fast paths:
 - performance or analytics changes → `performance-budget` / `analytics-contract`;
 - sensitive trust boundaries → `security-boundary-review`;
 - risk-based verification → `quality-gates`;
+- degraded/broken production → `recover-production` + `docs/OPERATIONS-RECOVERY.md`;
 - release preparation/mechanics → `release-readiness` / `release-workflow`.
 
 When no direct path is obvious, consult `.agents/SKILL-INDEX.md` on demand. The index includes `project-bootstrap`, `mcp-usage`, `context7`, `graphify`, `memory-context`, `code-hygiene`, `dependency-maintenance`, `headroom-pilot`, `accessibility-visual-regression` and the remaining specialist skills.
 
-Before adding another tool/skill, check `docs/STACK-RESPONSIBILITY-MAP.md`. For substantial frontend design read `docs/DESIGN-STACK.md`; for repository cleanup/context optimization read `docs/CODE-HEALTH-AND-CONTEXT.md`.
+Before adding another tool/skill, check `docs/STACK-RESPONSIBILITY-MAP.md`. When the right document is unclear, consult `docs/INDEX.md` on demand. For substantial frontend design read `docs/DESIGN-STACK.md`; for repository cleanup/context optimization read `docs/CODE-HEALTH-AND-CONTEXT.md`.
 
 ## Requirements and execution-plan discipline
 

@@ -29,6 +29,10 @@ request
   ↓
 classify outcome + capability + risk
   ↓
+reconcile existing task/branch/PR when applicable
+  ↓
+create/resume isolated branch + early draft PR for non-trivial work
+  ↓
 select one primary Superpower or direct skill
   ↓
 assign agent/host + model class + justified parallelism
@@ -39,17 +43,19 @@ plan with implementation-planning if complexity/risk justifies it
   ↓
 implement
   ↓
-deterministic tests/build/lint/browser checks
+deterministic tests/build/lint/browser checks on final candidate SHA
   ↓
 independent review when required
   ↓
-repair confirmed findings
+repair confirmed findings + reverify if the SHA changes
   ↓
-rerun relevant checks
+merge PR into dev
   ↓
-branch + PR
+human release approval when releasing
   ↓
-human release approval
+for release tasks: deployed-revision + health/smoke verification
+  ↓
+rollback/contain if release verification fails
 ```
 
 ## Independent review contract

@@ -8,7 +8,7 @@ These adapters target Claude Code and Gemini CLI. For the broader curated Claude
 2. Install/sign in using the chosen CLI's official setup. Run `claude --version` or `gemini --version` when diagnosing compatibility.
 3. Review the workspace before accepting the host trust prompt. Keep normal permissions enabled; do not use blanket auto-approval to make setup pass.
 4. Fill the consuming project's Project Memory commands and MCP profile. TODO entries are unconfigured, not passing checks.
-5. Run `node scripts/validate-agent-stack.mjs`, `node scripts/context-budget.mjs --check`, `node scripts/sync-claude-skills.mjs`, `node scripts/validate-version.mjs` and `node --test tests/*.test.mjs`.
+5. Run `node scripts/validate-docs.mjs`, `node scripts/validate-agent-stack.mjs`, `node scripts/context-budget.mjs --check`, `node scripts/sync-claude-skills.mjs`, `node scripts/validate-version.mjs` and `node --test tests/*.test.mjs`.
 
 ## Claude Code
 
@@ -39,7 +39,9 @@ The answer must reflect current VERSION, feature → dev → approved prod flow,
 - Keep local preferences, settings and machine MCP configuration out of Git. Share reviewed credential-free examples separately if needed.
 - Do not run two agents against the same dirty working tree. Use separate branches/worktrees and commit a handoff before switching ownership.
 
-## Official references (checked 2026-09-22)
+## Official references (last checked 2026-09-22)
+
+The date below is a historical verification point, not a compatibility guarantee. Re-check current official host documentation before changing installation, permission, import, skill or MCP configuration.
 
 - Claude memory/imports: https://code.claude.com/docs/en/memory
 - Claude skills: https://code.claude.com/docs/en/skills

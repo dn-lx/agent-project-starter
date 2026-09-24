@@ -34,6 +34,7 @@ For affected UI, explicitly inspect:
 - **clipping:** labels/buttons/headings are not cut off unless truncation is intentional,
 - **overlap/stacking:** no accidental collisions, hidden controls or z-index obstruction,
 - **content resilience:** realistic long/localized text does not break the changed layout,
+- **localization correctness when relevant:** no missing/raw translation keys; fallback works; dates, times, numbers and currencies use the intended locale/timezone policy; supported RTL layouts are checked where applicable,
 - **semantic coherence:** labels, icons, visual hierarchy and disabled/error/success states match what the control actually does; repeated actions use consistent variants,
 - **theme/state matrix:** check affected light/dark/high-contrast themes plus hover/focus/disabled/error/open states when they exist.
 

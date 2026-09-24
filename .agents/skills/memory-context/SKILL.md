@@ -9,6 +9,8 @@ Read `docs/MEMORY-CONTEXT-POLICY.md`.
 
 ## Retrieval before reasoning
 
+Search/index results are navigation evidence, not automatically revision-correct evidence. If a search tool cannot scope to the active branch/SHA, use the hit to locate candidate paths and then fetch/read those files from the active ref or local checkout before reasoning from their contents.
+
 Before asking an agent to inspect a broad repository:
 
 1. read compact Project Memory + Current Handoff,

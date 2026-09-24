@@ -21,7 +21,7 @@ Do not spend review bandwidth on formatting or preferences already enforced by d
 
 Review the original requirement, implementation plan when one exists, final diff, relevant source/tests, project rules and deterministic check results. Do not rely on the implementer's full reasoning transcript.
 
-For material work, evidence should identify exact checks/results and the reviewed revision. For affected surfaces, also inspect rendered frontend evidence—including contrast, alignment, spacing, overflow, clipping, overlap and affected theme/state sanity—plus performance-budget results and analytics-contract/privacy evidence rather than accepting generic “verified” claims.
+For material work, evidence should identify exact checks/results and the reviewed revision. Check results must belong to the current reviewed SHA; an earlier green run is not current evidence after later commits. For affected surfaces, also inspect rendered frontend evidence—including contrast, alignment, spacing, overflow, clipping, overlap and affected theme/state sanity—plus performance-budget results and analytics-contract/privacy evidence rather than accepting generic “verified” claims.
 
 A finding should identify:
 - the concrete file/behavior,

@@ -25,7 +25,7 @@ Use `test-engineering` when the test harness, fixtures or regression strategy it
 
 ## Tier 2 — sensitive change
 
-For auth, permissions, secrets, payments, schema/data, tenant isolation, privileged functions, external writes or worker command execution:
+For auth, permissions, secrets, payments, schema/data, tenant isolation, public APIs/webhooks/uploads, privileged functions, external writes or worker command execution:
 - Tier 1,
 - Security Boundary Review,
 - allowed + denied/negative-path verification where practical,
@@ -42,7 +42,19 @@ Follow Release Workflow and Release Readiness:
 - accessibility/visual evidence reviewed for material frontend releases,
 - performance budgets checked for performance-relevant releases,
 - analytics contracts checked when instrumentation/flags changed,
-- rollback/compatibility documented.
+- rollback/compatibility documented,
+- production runtime/deployed-revision and post-deploy smoke/health verification defined for releases with a deployed runtime.
+
+## Completion evidence
+
+A material task is complete only when:
+- the selected requirement/acceptance criteria are satisfied,
+- required checks correspond to the **current final SHA**,
+- runtime/browser/deployment evidence is current where required,
+- no unresolved blocking review/security/data findings remain,
+- required documentation/operational contracts are updated.
+
+A green check from an earlier SHA is stale evidence after any later commit. Retrigger/re-run the required gate or report it as unverified; never carry an old green result forward.
 
 ## Efficiency
 

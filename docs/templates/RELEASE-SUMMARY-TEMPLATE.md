@@ -5,6 +5,8 @@
 - Head: `dev`
 - Base: `prod`
 - Release PR:
+- Candidate SHA/build:
+- Production runtime target:
 - Date:
 
 ## User-visible changes
@@ -38,9 +40,13 @@
 ## Operational notes
 
 - Required secrets/config changes:
-- Migration order:
+- Migration/deploy order and compatibility:
+- Backup/recovery point:
 - Cache/assets:
+- Deployed revision verification:
+- Production health/smoke checks:
 - Observability checks:
+- Rollback trigger:
 - Rollback path:
 - Irreversible operations:
 
