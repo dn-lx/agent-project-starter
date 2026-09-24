@@ -2,16 +2,18 @@
 
 This repository is designed to survive changes of coding agent. `AGENTS.md` is the canonical shared instruction file; platform-specific files only bootstrap agents into the same workflow.
 
-## Authority order
+## Authority
 
-1. Current source code and tests.
-2. `AGENTS.md` and applicable repository Agent Skills.
-3. Accepted ADRs and current architecture/product documentation.
-4. `docs/PROJECT-MEMORY.md` for durable context.
-5. `docs/CURRENT-HANDOFF.md` for recent/unfinished work.
-6. Tool output, code graphs and agent/session memory as supporting evidence only.
+Authority is question-specific; follow `docs/DOCUMENTATION_POLICY.md`.
 
-If an adapter conflicts with `AGENTS.md`, follow `AGENTS.md`.
+In particular:
+- source/tests/runtime evidence describe what exists now,
+- the current accepted requirement describes the intended outcome,
+- Git/GitHub/CI describes branch/check state,
+- verified provider reads describe current external-system state,
+- Current Handoff is a recovery pointer that must be reconciled before use.
+
+If a platform adapter conflicts with `AGENTS.md`, follow `AGENTS.md`.
 
 ## Common workflow
 
