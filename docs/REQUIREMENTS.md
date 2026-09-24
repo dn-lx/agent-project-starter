@@ -58,6 +58,12 @@ Describe the desired end state, not the implementation.
 - [ ] Relevant tests/checks pass.
 - [ ] Browser/runtime, performance or analytics-contract evidence captured when relevant.
 
+**UI verification contract (when applicable)**
+- Theme/state(s): TODO / Not applicable.
+- Critical viewport(s): TODO / Not applicable.
+- Visual reference/invariant: TODO / Not applicable.
+- Contrast/alignment/overflow/clipping expectations: TODO / Not applicable.
+
 **Dependencies**
 - None / REQ-XYZ / external dependency.
 
