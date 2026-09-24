@@ -162,6 +162,9 @@ A fresh agent should be able to answer, without asking the project owner:
 - Where do I record unfinished work?
 - If there is a frontend, which design source is authoritative and what rendered-runtime verification is required?
 - If performance budgets or analytics are used, where are their contracts and how are they verified?
+- Which runtime/environment is safe for this task, and how is its data/auth target identified?
+- If localization is used, what are the locale/fallback/timezone/formatting rules?
+- For production, how is the deployed revision verified, which smoke/health signals matter, and what is the rollback/recovery path?
 
 If not, the bootstrap is incomplete.
 
