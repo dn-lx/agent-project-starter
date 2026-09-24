@@ -85,6 +85,7 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 - [ ] Use one task → one writable branch → one draft/open PR for non-trivial work.
 - [ ] Keep the AGENT_TASK_STATE block in `docs/CURRENT-HANDOFF.md` valid.
 - [ ] Run `node scripts/task-state.mjs --check` during bootstrap/validation.
+- [ ] Run `node scripts/validate-docs.mjs --strict-project` after replacing starter placeholders.
 - [ ] Treat open branches as candidates only; reconcile task/PR/GitHub state before resuming.
 - [ ] Use separate branches/worktrees for parallel modifying agents.
 
@@ -123,10 +124,13 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 
 ## Deployment/operations
 
-- [ ] Document development/preview/production environments.
+- [ ] Document actual local/preview/staging/production runtime identities; branch names alone do not prove database/auth/external-service isolation.
+- [ ] Record how the deployed revision/build is verified for production.
 - [ ] Connect hosting MCP only if needed.
 - [ ] Add observability/analytics only if useful and privacy-safe.
-- [ ] Document rollback/recovery expectations.
+- [ ] For production runtime/data, adapt `docs/templates/OPERATIONS-RUNBOOK-TEMPLATE.md` or maintain equivalent runbook information: health/smoke, observability, rollback, backup/restore and incident minimums.
+- [ ] For schema/data changes, document deploy order, old/new compatibility and recovery/rollback constraints.
+- [ ] If localization is used, record source/supported locales, fallback, date/time/number/currency/timezone policy and RTL requirements where applicable.
 
 ## Optional local coding hosts
 
