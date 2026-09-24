@@ -39,7 +39,9 @@ The answer must reflect current VERSION, feature → dev → approved prod flow,
 - Keep local preferences, settings and machine MCP configuration out of Git. Share reviewed credential-free examples separately if needed.
 - Do not run two agents against the same dirty working tree. Use separate branches/worktrees and commit a handoff before switching ownership.
 
-## Official references (checked 2026-09-22)
+## Official references (last checked 2026-09-22)
+
+The date below is a historical verification point, not a compatibility guarantee. Re-check current official host documentation before changing installation, permission, import, skill or MCP configuration.
 
 - Claude memory/imports: https://code.claude.com/docs/en/memory
 - Claude skills: https://code.claude.com/docs/en/skills
