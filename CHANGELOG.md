@@ -3,6 +3,10 @@
 ## [Unreleased]
 
 ### Added
+- Question-specific documentation authority model so current source facts cannot silently override accepted intended requirements (or vice versa).
+- Documentation map plus deterministic documentation consistency validation, including broken internal references, skill/doc index coverage, stale branch terminology and optional strict-project placeholder checks.
+- Operations/recovery guidance and runbook template covering runtime identity, deployed-revision proof, production smoke/health, migrations, observability, rollback and backup/restore.
+- Compact runtime-environment and localization contracts for project bootstrap and verification.
 - Focused frontend visual-sanity verification for contrast, alignment, spacing, overflow, clipping, overlap and theme/state defects, plus a reusable visual-QA packet.
 - On-demand skill index and task-context packet measurement, with an explicit budget for always-loaded `AGENTS.md` to reduce repeated token consumption.
 - Implementation-planning, test-engineering, rendered frontend-verification, performance-budget and analytics-contract capabilities with reusable implementation, verification and analytics templates.
@@ -15,6 +19,11 @@
 - Explicit Claude/Gemini context imports, Claude skill discovery adapters, drift checks and host setup/acceptance instructions.
 - Initial versioned starter baseline: shared agent instructions, quality and security workflows, context and design skills.
 - GitHub-native merged-branch cleanup guidance, task/branch/PR continuity, and semantic version validation.
+
+### Changed
+- Final task verification now runs after the idle handoff is part of the merge candidate; any later commit invalidates earlier green-check evidence.
+- Execution routing documentation is provider-neutral by default instead of assigning persistent vendor roles.
+- Dependency-maintenance branch instructions now follow the canonical `dev → prod` workflow.
 
 ### Changed
 - Removed overlapping in-house frontend-design, design-taste and motion-design skills, and retired the Awesome Design catalogue after UI/UX Pro Max covered that structured design-intelligence role more broadly.
