@@ -32,7 +32,7 @@ Before proposing implementation:
 
 ## Plan contents
 
-Use `docs/templates/IMPLEMENTATION-PLAN-TEMPLATE.md` for durable plans. Keep it compact.
+Use `docs/templates/IMPLEMENTATION-PLAN-TEMPLATE.md` for durable plans. When the plan must survive handoffs, store it under `docs/plans/<task-id>-<slug>.md` (create the folder only when needed); otherwise the PR description can carry the compact plan. Keep it compact.
 
 A valid plan states:
 - intended outcome and non-goals,
