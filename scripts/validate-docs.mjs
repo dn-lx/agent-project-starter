@@ -73,7 +73,6 @@ export function findLegacyBranchTerms(content, integration, production) {
 export async function validateDocs(root = process.cwd(), { strictProject = false } = {}) {
   const errors = []
   const { files, dirs } = await walk(root)
-  const fileSet = new Set(files)
   const pathSet = new Set([...files, ...dirs])
 
   const markdown = files.filter(path => path.endsWith('.md'))
