@@ -104,4 +104,4 @@ Link accepted ADRs rather than duplicating them.
 
 ## Context freshness
 
-Update this file when architecture, commands, core product invariants, security boundaries or external-system topology materially changes. Source/tests/accepted ADRs override stale memory.
+Update this file when architecture, commands, core product invariants, runtime targets, localization contracts, operations/recovery expectations, security boundaries or external-system topology materially changes. Source/tests/accepted ADRs override stale memory.
