@@ -32,7 +32,7 @@ jobs:
             exit 1
           fi
 
-      - name: Require production approval label
+      - name: Require production-approved label (supplemental gate)
         env:
           LABELS_JSON: ${{ toJson(github.event.pull_request.labels.*.name) }}
         run: |
