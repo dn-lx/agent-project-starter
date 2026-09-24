@@ -26,8 +26,11 @@ Tiny copy/style changes that do not alter behavior usually do not require archit
 - **AGENTS.md:** universal working contract.
 - **Project Memory:** durable current project facts.
 - **Current Handoff:** recent/unfinished state.
+- **Implementation plan:** task-specific delivery sequence/rollback/verification for non-trivial work; not product intent.
 - **ADR:** important architectural decision and rationale.
 - **Agent Skill:** repeatable specialist workflow.
+- **Analytics contract/taxonomy:** durable provider-neutral event definitions when analytics is used.
+- **Verification evidence:** exact task/release check results and artifacts when a durable evidence packet is useful.
 - **README:** human onboarding and project entry point.
 - **PR/issue:** task-specific discussion/review history.
 
