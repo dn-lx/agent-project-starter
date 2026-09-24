@@ -19,6 +19,8 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 - A strict `feature/fix/chore → dev → prod` release path.
 - Generic security and dependency-update automation, with project-specific CI added during bootstrap.
 - A bootstrap checklist for adapting the starter to a real project.
+- Runtime operations/recovery guidance for deployed revision verification, health/smoke checks, migrations, rollback and backup/restore.
+- Deterministic documentation consistency checks plus strict bootstrap-placeholder validation.
 - A stack-responsibility map that prevents overlapping tools/skills from accumulating without a clear gap.
 
 ## Start a new project
@@ -45,7 +47,7 @@ Every agent should begin with only:
 
 Then classify the task. For product/backlog/bug work, also load `docs/REQUIREMENTS.md`; otherwise keep it out of startup context. Load one applicable Superpower or skill, and use execution routing only when multiple hosts/models or delegation choices actually exist. Load platform/MCP/design/security/release documents only when the task requires them. This progressive-loading rule keeps startup context predictable and reduces token/usage waste.
 
-Use `node scripts/context-budget.mjs --check` to guard against static-context creep. For broad tasks, `node scripts/context-packet.mjs <files...>` measures the exact task packet so agents can broaden context deliberately instead of dumping directories. Current source code, tests and accepted ADRs override stale documentation, session memory, cached code graphs or model assumptions.
+Use `node scripts/validate-docs.mjs` to catch documentation drift/broken internal references. Use `node scripts/context-budget.mjs --check` to guard against static-context creep. For broad tasks, `node scripts/context-packet.mjs <files...>` measures the exact task packet so agents can broaden context deliberately instead of dumping directories. Current source code, tests and accepted ADRs override stale documentation, session memory, cached code graphs or model assumptions.
 
 ## MCP philosophy
 
