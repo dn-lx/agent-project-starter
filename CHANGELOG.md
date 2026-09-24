@@ -21,6 +21,8 @@
 - GitHub-native merged-branch cleanup guidance, task/branch/PR continuity, and semantic version validation.
 
 ### Changed
+- Security review now covers session/token lifecycle, public ingress/webhooks, replay/abuse/idempotency, XSS/CSRF/CORS/SSRF, uploads and sensitive-data lifecycle boundaries.
+- Test engineering now explicitly addresses flaky tests, deterministic time/randomness/network state, concurrency/races and retry/partial-failure behavior.
 - Final task verification now runs after the idle handoff is part of the merge candidate; any later commit invalidates earlier green-check evidence.
 - Execution routing documentation is provider-neutral by default instead of assigning persistent vendor roles.
 - Dependency-maintenance branch instructions now follow the canonical `dev → prod` workflow.
