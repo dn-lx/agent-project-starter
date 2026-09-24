@@ -16,6 +16,8 @@ const required = [
   '.github/workflows/guard-prod-production.yml',
   '.github/workflows/version-validation.yml',
   'docs/PROJECT-MEMORY.md',
+  'docs/INDEX.md',
+  'docs/OPERATIONS-RECOVERY.md',
   'docs/CURRENT-HANDOFF.md',
   'docs/REQUIREMENTS.md',
   'docs/MCP-SETUP.md',
@@ -31,17 +33,20 @@ const required = [
   'docs/VERSIONING.md',
   'docs/templates/REVIEW-PACKET-TEMPLATE.md',
   'docs/templates/RELEASE-SUMMARY-TEMPLATE.md',
+  'docs/templates/OPERATIONS-RUNBOOK-TEMPLATE.md',
   'docs/templates/IMPLEMENTATION-PLAN-TEMPLATE.md',
   'docs/templates/VERIFICATION-EVIDENCE-TEMPLATE.md',
   'docs/templates/ANALYTICS-EVENT-CONTRACT-TEMPLATE.md',
   'docs/templates/FRONTEND-VISUAL-QA-TEMPLATE.md',
   'docs/templates/PLAYWRIGHT-VISUAL-SANITY.md',
   'scripts/context-budget.mjs',
+  'scripts/validate-docs.mjs',
   'scripts/context-packet.mjs',
   'scripts/task-state.mjs',
   'scripts/sync-claude-skills.mjs',
   'scripts/validate-version.mjs',
   'tests/context-budget.test.mjs',
+  'tests/documentation-consistency.test.mjs',
   'tests/context-packet.test.mjs',
   'tests/task-state.test.mjs',
   'tests/lifecycle.test.mjs',
@@ -145,6 +150,14 @@ for (const file of ['CLAUDE.md', 'GEMINI.md']) {
     throw new Error(`${file} must load platform workflows on demand, not in static startup context`)
   }
 }
+
+const { validateDocs } = await import('./validate-docs.mjs')
+const docs = await validateDocs()
+if (!docs.ok) {
+  for (const error of docs.errors) console.error(`Documentation error: ${error}`)
+  process.exit(1)
+}
+console.log(`Documentation verified: ${docs.markdownCount} markdown files; ${docs.skillCount} skills.`)
 
 const { sync } = await import('./sync-claude-skills.mjs')
 console.log(`Claude adapters verified: ${await sync(process.cwd())}`)
