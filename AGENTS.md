@@ -118,14 +118,15 @@ Read the relevant skill before specialized work:
 - `.agents/skills/code-hygiene/SKILL.md` — dead-code, unused exports/dependencies and cleanup.
 - `.agents/skills/dependency-maintenance/SKILL.md` — upgrades, advisories, lockfiles and update bots.
 - `.agents/skills/headroom-pilot/SKILL.md` — measured optional context compression pilot.
-- `.agents/skills/design-stack/SKILL.md` — route frontend design through Taste Skill, Impeccable and on-demand Awesome Design styles without overlapping generic skills.
+- `.agents/skills/design-stack/SKILL.md` — route frontend design through Taste Skill, UI/UX Pro Max, Impeccable, and Motion without overlapping generic layers.
+- `.agents/skills/motion-runtime/SKILL.md` — implement material runtime animation with Motion only when CSS is insufficient.
 - `.agents/skills/accessibility-visual-regression/SKILL.md` — accessibility evidence and stable visual regression checks.
 - `.agents/skills/security-boundary-review/SKILL.md` — auth/secrets/data/external trust boundaries.
 - `.agents/skills/quality-gates/SKILL.md` — risk-based verification.
 - `.agents/skills/release-readiness/SKILL.md` — dev→prod review.
 - `.agents/skills/release-workflow/SKILL.md` — branch/release contract.
 
-For substantial frontend work, use `docs/DESIGN-STACK.md`. Load the smallest applicable design source; do not invoke Taste, Impeccable and an Awesome Design style together by default.
+For substantial frontend work, use `docs/DESIGN-STACK.md`. Load only the design/UX/runtime layers the task actually needs; Motion is an implementation dependency, not a default design requirement.
 
 For repository cleanup/context optimization, follow `docs/CODE-HEALTH-AND-CONTEXT.md`. Code Hygiene and Headroom solve different problems: dead code vs model context.
 
