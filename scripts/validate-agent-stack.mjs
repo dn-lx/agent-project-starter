@@ -72,6 +72,7 @@ const required = [
   '.agents/superpowers/resume-project/SUPERPOWER.md',
   '.agents/superpowers/finish-feature/SUPERPOWER.md',
   '.agents/superpowers/fix-until-green/SUPERPOWER.md',
+  '.agents/superpowers/recover-production/SUPERPOWER.md',
   '.agents/superpowers/full-qa/SUPERPOWER.md',
   '.agents/superpowers/ship-release/SUPERPOWER.md',
   '.agents/superpowers/project-doctor/SUPERPOWER.md',
