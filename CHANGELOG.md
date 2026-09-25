@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-09-25
+
 ### Added
 - Question-specific documentation authority model so current source facts cannot silently override accepted intended requirements (or vice versa).
 - Documentation map plus deterministic documentation consistency validation, including broken internal references, skill/doc index coverage, stale branch terminology and optional strict-project placeholder checks.
@@ -27,5 +29,3 @@
 - Execution routing documentation is provider-neutral by default instead of assigning persistent vendor roles.
 - Dependency-maintenance branch instructions now follow the canonical `dev → prod` workflow.
 - Removed overlapping in-house frontend-design, design-taste and motion-design skills, and retired the Awesome Design catalogue after UI/UX Pro Max covered that structured design-intelligence role more broadly.
-
-No version has been published yet. `VERSION` is the first planned release.
