@@ -25,6 +25,8 @@ jobs:
           node-version: '22'
       - name: Test bootstrap automation
         run: node --test tests/bootstrap-project.test.mjs
+      - name: Test bootstrap end to end
+        run: node --test tests/bootstrap-project-e2e.test.mjs
       - name: Validate documentation consistency
         run: node scripts/validate-docs.mjs
       - name: Validate canonical agent stack
