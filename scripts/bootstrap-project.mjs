@@ -32,8 +32,8 @@ function normalizeConfig(input) {
   const projectName = required(input.projectName, 'projectName')
   const slug = input.slug ? slugify(input.slug) : slugify(projectName)
   if (!slug) throw new Error('Could not derive a project slug')
-  const integration = input.branches?.integration || 'dev'
-  const production = input.branches?.production || 'prod'
+  const integration = required(input.branches?.integration ?? 'dev', 'branches.integration')
+  const production = required(input.branches?.production ?? 'prod', 'branches.production')
   if (integration === production) throw new Error('integration and production branches must differ')
 
   const capabilities = {}
@@ -91,6 +91,42 @@ function policy(c) {
   }, null, 2)}\n`
 }
 
+async function readOptional(path) {
+  try {
+    return await readFile(path, 'utf8')
+  } catch (error) {
+    if (error?.code === 'ENOENT') return null
+    throw error
+  }
+}
+
+function inspectSkillIndex(source) {
+  if (!source) return { canonical: new Set(), projectSlug: null }
+  const canonical = new Set()
+  let projectSlug = null
+  for (const line of source.split(/\r?\n/)) {
+    const match = line.match(/^\|\s*(.*?)\s*\|\s*`([^`]+)`\s*\|$/)
+    if (!match) continue
+    const [, trigger, slug] = match
+    if (trigger === 'Starter placeholder project knowledge') continue
+    if (trigger === 'Project-specific durable guidance') {
+      projectSlug = slug
+      continue
+    }
+    canonical.add(slug)
+  }
+  return { canonical, projectSlug }
+}
+
+async function validateProjectSkillTarget(root, slug) {
+  const index = await readOptional(join(root, '.agents/SKILL-INDEX.md'))
+  const { canonical, projectSlug } = inspectSkillIndex(index)
+  if (canonical.has(slug)) throw new Error(`Project slug collides with canonical skill: ${slug}`)
+  if (projectSlug && projectSlug !== slug) {
+    throw new Error(`Project slug is already ${projectSlug}; changing it to ${slug} requires an explicit migration`)
+  }
+}
+
 async function write(root, path, content, dryRun, changed) {
   const target = join(root, path)
   changed.push(path)
@@ -101,13 +137,8 @@ async function write(root, path, content, dryRun, changed) {
 
 async function updateExisting(root, path, transform, dryRun, changed) {
   const target = join(root, path)
-  let source
-  try {
-    source = await readFile(target, 'utf8')
-  } catch (error) {
-    if (error?.code === 'ENOENT') return
-    throw error
-  }
+  const source = await readOptional(target)
+  if (source === null) return
   const updated = transform(source)
   if (updated === source) return
   changed.push(path)
@@ -116,6 +147,7 @@ async function updateExisting(root, path, transform, dryRun, changed) {
 
 export async function bootstrapProject(input, { root = process.cwd(), dryRun = false } = {}) {
   const c = normalizeConfig(input)
+  await validateProjectSkillTarget(root, c.slug)
   const changed = []
   await write(root, '.agents/project-policy.json', policy(c), dryRun, changed)
   await write(root, 'docs/PROJECT-MEMORY.md', projectMemory(c), dryRun, changed)
