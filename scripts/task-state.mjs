@@ -46,8 +46,6 @@ export function validateTaskState(state, expectedBase = null) {
   } else {
     if (typeof state.task_id !== 'string' || !state.task_id.trim()) errors.push('task_id is required')
     if (typeof state.repository !== 'string' || !/^[\w.-]+\/[\w.-]+$/.test(state.repository)) errors.push('repository must be owner/name')
-    if (typeof state.base !== 'string' || !state.base.trim()) errors.push('base is required')
-  if (expectedBase && state.base !== expectedBase) errors.push(`base must match integration branch: ${expectedBase}`)
     if (typeof state.branch !== 'string' || !state.branch.trim()) errors.push('branch is required')
     if (state.branch === state.base) errors.push('working branch must differ from base')
 
@@ -64,6 +62,7 @@ export function validateTaskState(state, expectedBase = null) {
   }
 
   if (typeof state.base !== 'string' || !state.base.trim()) errors.push('base is required')
+  if (expectedBase && state.base !== expectedBase) errors.push(`base must match integration branch: ${expectedBase}`)
   if (typeof state.updated_at !== 'string' || Number.isNaN(Date.parse(state.updated_at))) errors.push('updated_at must be an ISO-compatible date/time string')
 
   return [...new Set(errors)]
