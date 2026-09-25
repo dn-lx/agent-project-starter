@@ -3,6 +3,7 @@ import { readFile, access } from 'node:fs/promises'
 const required = [
   '.agents/project-policy.json',
   '.agents/SKILL-INDEX.md',
+  '.agents/router-profile.example.json',
   'AGENTS.md',
   'REVIEW.md',
   'VERSION',
@@ -24,6 +25,7 @@ const required = [
   'docs/AGENT-PLATFORM-WORKFLOWS.md',
   'docs/AGENT-ORCHESTRATION.md',
   'docs/EXECUTION-ROUTING-POLICY.md',
+  'docs/LOCAL-AGENT-ROUTER.md',
   'docs/MEMORY-CONTEXT-POLICY.md',
   'docs/DOCUMENTATION_POLICY.md',
   'docs/STACK-RESPONSIBILITY-MAP.md',
@@ -42,12 +44,14 @@ const required = [
   'scripts/context-budget.mjs',
   'scripts/validate-docs.mjs',
   'scripts/context-packet.mjs',
+  'scripts/local-agent-router.mjs',
   'scripts/task-state.mjs',
   'scripts/sync-claude-skills.mjs',
   'scripts/validate-version.mjs',
   'tests/context-budget.test.mjs',
   'tests/documentation-consistency.test.mjs',
   'tests/context-packet.test.mjs',
+  'tests/local-agent-router.test.mjs',
   'tests/task-state.test.mjs',
   'tests/lifecycle.test.mjs',
   'tests/workflow-capabilities.test.mjs',
@@ -95,6 +99,16 @@ const production = policy.branches?.production
 if (!integration || !production || integration === production) throw new Error('project-policy must define distinct integration and production branches')
 if (!Array.isArray(policy.branches?.work_prefixes) || policy.branches.work_prefixes.length === 0) {
   throw new Error('project-policy must define work_prefixes')
+}
+
+const routerProfile = JSON.parse(await readFile('.agents/router-profile.example.json', 'utf8'))
+if (routerProfile.version !== 1) throw new Error('Unsupported router profile version')
+if (routerProfile.execution?.mode !== 'local-router') throw new Error('Router profile must demonstrate local-router mode')
+if (JSON.stringify(routerProfile.execution?.allowedAgents) !== JSON.stringify(['claude', 'gemini'])) {
+  throw new Error('Local router allowlist must contain only claude and gemini')
+}
+if (routerProfile.policy?.githubViaLocalRouter !== false || routerProfile.policy?.allowArbitraryShell !== false) {
+  throw new Error('Router profile must forbid GitHub-through-local-router and arbitrary shell execution')
 }
 
 for (const adapter of ['CLAUDE.md', 'GEMINI.md', '.github/copilot-instructions.md']) {

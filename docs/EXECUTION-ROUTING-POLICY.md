@@ -113,6 +113,18 @@ Do not assign permanent coordinator/implementer/reviewer roles by vendor name. A
 
 Provider-specific examples belong in optional host setup documentation. Runtime routing must use the capability dimensions above and measured project outcomes.
 
+## Local execution bridge
+
+When the coordinator needs local Claude Code or Gemini CLI execution, use `scripts/local-agent-router.mjs` and the contract in `docs/LOCAL-AGENT-ROUTER.md`.
+
+The local bridge is intentionally narrow:
+- it may invoke only `claude` or `gemini`,
+- it must receive a scoped task packet,
+- it is not a general shell,
+- it must not be used for GitHub repository operations.
+
+Use native integrations first. GitHub reads, branches, commits, pull requests, reviews, CI inspection and merges stay on the GitHub connector/API path whenever available. Do not tunnel GitHub work through the local router or an agent CLI merely because it is technically possible.
+
 ## Curated CLI baseline
 
 The optional multi-host compatibility baseline is intentionally limited to Claude Code, Codex CLI, Gemini CLI and OpenCode. This is a portability/support list, not a role assignment or quality ranking. One coordinator owns integration, and one lead worker is the default. Do not invoke all four by default.
@@ -135,4 +147,5 @@ Optimize based on project evidence rather than benchmark reputation alone.
 See:
 - `.agents/skills/execution-routing/SKILL.md`
 - `docs/AGENT-ORCHESTRATION.md`
+- `docs/LOCAL-AGENT-ROUTER.md`
 - `docs/MEMORY-CONTEXT-POLICY.md`
