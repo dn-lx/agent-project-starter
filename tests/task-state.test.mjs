@@ -14,6 +14,18 @@ const active = {
   updated_at: '2026-09-24T00:00:00Z',
 }
 
+const idle = {
+  task_id: null,
+  repository: null,
+  base: 'dev',
+  branch: null,
+  pr: null,
+  status: 'idle',
+  last_verified_sha: null,
+  next_step: null,
+  updated_at: '2026-09-24T00:00:00Z',
+}
+
 test('extracts one machine-readable task state block', () => {
   const text = `# Handoff\n\n${START}\n${JSON.stringify(active, null, 2)}\n${END}\n`
   assert.deepEqual(extractTaskState(text), active)
@@ -31,22 +43,15 @@ test('requires PR for implementation and validates branch binding', () => {
 })
 
 test('accepts an idle template state', () => {
-  const state = {
-    task_id: null,
-    repository: null,
-    base: 'dev',
-    branch: null,
-    pr: null,
-    status: 'idle',
-    last_verified_sha: null,
-    next_step: null,
-    updated_at: '2026-09-24T00:00:00Z',
-  }
-  assert.deepEqual(validateTaskState(state, 'dev'), [])
+  assert.deepEqual(validateTaskState(idle, 'dev'), [])
 })
 
-
-test('rejects task state bound to a stale integration branch', () => {
+test('rejects active task state bound to a stale integration branch', () => {
   const errors = validateTaskState({ ...active, base: 'develop' }, 'dev')
+  assert.ok(errors.includes('base must match integration branch: dev'))
+})
+
+test('rejects idle task state bound to a stale integration branch', () => {
+  const errors = validateTaskState({ ...idle, base: 'develop' }, 'dev')
   assert.ok(errors.includes('base must match integration branch: dev'))
 })
