@@ -39,17 +39,33 @@
 | Build | TODO |
 | Lint/typecheck | TODO |
 | Browser/E2E | TODO |
+| Performance | TODO / Not used |
 
-## Environments
+## Runtime environments
 
-| Environment | Branch | Purpose |
-| --- | --- | --- |
-| Development | `develop` | Integration/testing |
-| Production | `main` | Released code |
+Branches are code-promotion lanes, not proof of runtime/data isolation.
 
-Add preview/staging details if the project uses them.
+| Runtime | Code source | Non-secret target identifiers | Data/auth isolation |
+| --- | --- | --- | --- |
+| Local | working branch | TODO | TODO |
+| Preview/staging | TODO / Not used | TODO | TODO |
+| Production | `prod` / adapted production branch | TODO | TODO |
+
+- **Code promotion path:** `dev → prod` unless adapted in `.agents/project-policy.json`.
+- **Feature-flag/config environments:** TODO / Not used.
+
+## Verification contracts
+
+- **Frontend runtime matrix:** TODO / Not applicable — record critical browsers/viewports/devices and any print/platform-specific checks.
+- **Visual sanity contract:** TODO / Not applicable — record theme variants, semantic color/spacing token paths and the project visual-QA command/spec.
+- **Performance budgets:** TODO / Not used — record measurable user-critical thresholds/config and where they are enforced.
+- **Analytics contract/taxonomy:** TODO / Not used — record the durable event-contract document/config, not provider credentials.
+- **Verification evidence location:** PR / CI artifacts / TODO.
+- **Localization/i18n:** TODO / Not used — source locale, supported locales, fallback, timezone/date/number/currency policy, RTL if applicable.
+- **Operations runbook:** TODO / Not used — deployed revision verification, health/smoke checks, observability, rollback and backup/restore where applicable. See `docs/OPERATIONS-RECOVERY.md`.
 
 ## Product / domain invariants
+
 
 Record rules that agents must not accidentally change without an explicit product decision.
 
@@ -62,6 +78,8 @@ Record rules that agents must not accidentally change without an explicit produc
 - Where secrets live: TODO
 - Tenant/user isolation model: TODO
 - Sensitive data/logging restrictions: TODO
+- Data classification/retention/deletion/export requirements: TODO / Not applicable
+- Public ingress/webhooks/uploads and abuse/replay/rate-limit boundaries: TODO / Not applicable
 
 ## External systems
 
@@ -88,4 +106,4 @@ Link accepted ADRs rather than duplicating them.
 
 ## Context freshness
 
-Update this file when architecture, commands, core product invariants, security boundaries or external-system topology materially changes. Source/tests/accepted ADRs override stale memory.
+Update this file when architecture, commands, core product invariants, runtime targets, localization contracts, operations/recovery expectations, security boundaries or external-system topology materially changes. Source/tests/accepted ADRs override stale memory.

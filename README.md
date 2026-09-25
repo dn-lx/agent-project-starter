@@ -6,42 +6,49 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 
 ## What this starter gives every new project
 
-- `AGENTS.md` as the canonical cross-agent working agreement.
+- `AGENTS.md` as the canonical human-readable working agreement plus `.agents/project-policy.json` for machine-readable branch/release/continuity policy.
 - Thin bootstrap files for Claude Code, Gemini CLI and GitHub Copilot.
-- Durable project memory and current-task handoff.
+- Durable project memory and machine-readable task/branch/PR continuity across interruptions.
 - Capability-based MCP/connector documentation.
-- Agent Skills for MCP use, Context7, Graphify, context efficiency, quality gates, security review, frontend work and releases.
+- Agent Skills for MCP use, Context7, Graphify, implementation planning, test engineering, rendered frontend verification with focused visual-sanity checks, performance budgets, analytics contracts, code hygiene, dependency maintenance, context efficiency, a lean external design stack, accessibility/visual regression, security review and releases.
+- Outcome-oriented Superpowers for resume, feature delivery, CI repair, production recovery, QA, release and project-health workflows.
+- Two-stage execution routing: agent/host assignment first, model-class assignment second, with minimal justified parallelism.
+- Optional local-agent portability guidance for Claude Code, Codex CLI, Gemini CLI and OpenCode; none are required by the core template.
 - Planner → Executor → Independent Reviewer orchestration.
 - Quality-first model routing guidance.
-- A strict `feature/fix/chore → develop → main` release path.
-- Generic security and documentation-drift automation.
+- A strict `feature/fix/chore → dev → prod` release path.
+- Generic security and dependency-update automation, with project-specific CI added during bootstrap.
 - A bootstrap checklist for adapting the starter to a real project.
+- Runtime operations/recovery guidance for deployed revision verification, health/smoke checks, migrations, rollback and backup/restore.
+- Deterministic documentation consistency checks plus strict bootstrap-placeholder validation.
+- A stack-responsibility map that prevents overlapping tools/skills from accumulating without a clear gap.
 
 ## Start a new project
 
 1. Create the repository from this starter.
 2. Complete `docs/PROJECT-BOOTSTRAP-CHECKLIST.md`.
 3. Replace the placeholder project facts in `docs/PROJECT-MEMORY.md`.
-4. Add a project-specific skill under `.agents/skills/<project-name>/SKILL.md`.
-5. Select the MCP capabilities the project actually needs in `docs/MCP-SETUP.md`.
-6. Configure project-specific build/test commands and CI.
-7. Create/use `develop` for integration work and keep `main` as production.
-8. Verify external connections with harmless reads before any write.
-9. Keep credentials outside Git.
-10. Update `docs/CURRENT-HANDOFF.md` whenever another agent would otherwise need to rediscover unfinished state.
+4. Populate `docs/REQUIREMENTS.md` with the project's ordered requirements, issues and roadmap.
+5. Add a project-specific skill under `.agents/skills/<project-name>/SKILL.md`.
+6. Select the MCP capabilities the project actually needs in `docs/MCP-SETUP.md`.
+7. Configure project-specific build/test commands and CI; define browser/runtime verification for frontends and performance/analytics contracts when those capabilities are used.
+8. Create/use `dev` for integration work and keep `prod` as production.
+9. Verify external connections with harmless reads before any write.
+10. Keep credentials outside Git.
+11. Use a draft PR plus the AGENT_TASK_STATE block in `docs/CURRENT-HANDOFF.md` for non-trivial unfinished work; never treat every open branch as active.
+12. Run `node scripts/validate-docs.mjs --strict-project` after replacing starter placeholders.
 
 ## Agent startup order
 
-Every agent should begin with:
+Every agent should begin with only:
 
-1. `AGENTS.md`
+1. `AGENTS.md` + `.agents/project-policy.json`
 2. `docs/PROJECT-MEMORY.md`
 3. `docs/CURRENT-HANDOFF.md`
-4. `docs/AGENT-PLATFORM-WORKFLOWS.md`
-5. the relevant skill under `.agents/skills/`
-6. `docs/MCP-SETUP.md` when external systems are required
 
-Current source code, tests and accepted ADRs override stale documentation, session memory, cached code graphs or model assumptions.
+Then classify the task. For product/backlog/bug work, also load `docs/REQUIREMENTS.md`; otherwise keep it out of startup context. Load one applicable Superpower or skill, and use execution routing only when multiple hosts/models or delegation choices actually exist. Load platform/MCP/design/security/release documents only when the task requires them. This progressive-loading rule keeps startup context predictable and reduces token/usage waste.
+
+Use `node scripts/validate-docs.mjs` to catch documentation drift/broken internal references. Use `node scripts/context-budget.mjs --check` to guard against static-context creep. For broad tasks, `node scripts/context-packet.mjs <files...>` measures the exact task packet so agents can broaden context deliberately instead of dumping directories. Current source code, tests and accepted ADRs override stale documentation, session memory, cached code graphs or model assumptions.
 
 ## MCP philosophy
 
@@ -70,15 +77,15 @@ An agent must verify that a capability is actually connected in its current host
 ```text
 feature/*  fix/*  chore/*
           ↓
-        develop
+        dev
           ↓
   checks + review
           ↓
-develop → main PR
+dev → prod PR
           ↓
  production approval
           ↓
-         main
+         prod
 ```
 
 Production merging remains a human-controlled decision.
@@ -88,7 +95,23 @@ Production merging remains a human-controlled decision.
 The starter itself should follow the same workflow after this initial bootstrap:
 
 ```text
-feature/fix/chore → develop → main
+feature/fix/chore → dev → prod
 ```
 
 Keep the starter generic. Project-specific business rules belong in the generated project's Project Memory and project skill, not here.
+
+## Versioning and branch lifecycle
+
+The starter now carries a planned version in `VERSION` and release notes in `CHANGELOG.md`. Read [Versioning](docs/VERSIONING.md) and [Branch lifecycle](docs/BRANCH-LIFECYCLE.md). Only prod/dev are permanent; merged temporary branches are cleaned automatically by GitHub after merge. Protect permanent branches and require CI checks when configuring a new repository.
+
+## Design stack
+
+Frontend projects can use [Design Stack](docs/DESIGN-STACK.md): Taste Skill for creative direction, UI/UX Pro Max for structured design intelligence, Impeccable for critique/polish, and Motion for runtime animation only when justified. Accessibility/visual regression remains independent evidence.
+
+## Optional local agent stack
+
+[Optional CLI agent setup](docs/CLI-AGENT-STACK.md) defines the intentionally small host set: Claude Code, Codex CLI, Gemini CLI and OpenCode. It also documents the Claude efficiency profile (Ponytail, Superpowers, Code Review, optional claude-mem and optional Obsidian skills), isolation rules and a local CLI doctor. The router/coordinator integrates work; not every host runs on every task.
+
+## Claude and Gemini
+
+[Host setup and acceptance checks](docs/CLAUDE-GEMINI-SETUP.md) cover Claude Code, Gemini CLI and the distinction from routed models inside Cline. Shared context is explicitly imported; Claude discovery adapters are committed and validated for drift.

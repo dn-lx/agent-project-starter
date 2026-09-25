@@ -11,11 +11,11 @@ When bootstrapping a real project, mark each capability as **Required**, **Optio
 | Capability | Status | Typical provider/tool | Project provider | Purpose |
 | --- | --- | --- | --- | --- |
 | Source control / PRs / CI | Required | GitHub | TODO | Branches, diffs, PRs, checks, workflow logs |
-| Current library/API docs | Recommended | Context7 / official docs | TODO | Version-aware SDK/API behavior |
+| Current library/API docs | TODO | Context7 / official docs | TODO | Version-aware SDK/API behavior |
 | Database/auth/storage | TODO | Supabase / Firebase / vendor tool | TODO | Schema, auth, storage, functions, logs |
 | Hosting/deployments | TODO | Netlify / Vercel / Cloudflare | TODO | Preview/deploy state and config |
-| Browser/computer verification | Recommended for UI | Playwright / browser tooling | TODO | Rendered UI and workflows |
-| Code relationships | Recommended for larger repos | Graphify / code graph | Graphify local | Imports, callers, change impact |
+| Browser/computer verification | TODO | Playwright / browser tooling | TODO | Rendered UI and workflows |
+| Code relationships | TODO | Graphify / code graph | TODO | Imports, callers, change impact |
 | Runtime observability | TODO | Sentry / vendor equivalent | TODO | Production errors/traces |
 | Product analytics/flags | TODO | PostHog / vendor equivalent | TODO | Events, flags, experiments |
 | Payments | TODO | Stripe / equivalent | TODO | Test/sandbox payments/config |
@@ -23,7 +23,7 @@ When bootstrapping a real project, mark each capability as **Required**, **Optio
 | Documents/business files | TODO | Google Drive / SharePoint / Dropbox | TODO | Existing project/business artifacts |
 | Issue/project management | TODO | GitHub / Linear / Jira | TODO | Planning and issue state |
 
-Only connect capabilities the project actually needs.
+Only connect capabilities the project actually needs. In the starter, `TODO` means the project has not made the Required / Optional / Not used decision yet; replace every status TODO during bootstrap.
 
 ## 2. Capability-first rule
 

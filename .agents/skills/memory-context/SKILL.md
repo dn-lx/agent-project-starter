@@ -9,6 +9,8 @@ Read `docs/MEMORY-CONTEXT-POLICY.md`.
 
 ## Retrieval before reasoning
 
+Search/index results are navigation evidence, not automatically revision-correct evidence. If a search tool cannot scope to the active branch/SHA, use the hit to locate candidate paths and then fetch/read those files from the active ref or local checkout before reasoning from their contents.
+
 Before asking an agent to inspect a broad repository:
 
 1. read compact Project Memory + Current Handoff,
@@ -17,6 +19,19 @@ Before asking an agent to inspect a broad repository:
 4. use Graphify for relationships/change impact,
 5. open only relevant source/tests,
 6. broaden only when evidence requires it.
+
+## Task context packet
+
+For broad work, build a small explicit packet before broadening:
+- requirement/acceptance criteria,
+- current diff or failing evidence,
+- one selected skill/superpower,
+- the smallest relevant source/tests,
+- Project Memory/Handoff only when they add task-relevant facts.
+
+When running locally, `node scripts/context-packet.mjs <files...>` reports an approximate packet size. Use `--check` only when the team wants a hard local guard. The default task budget is a warning/discipline aid, not permission to omit required evidence.
+
+Prefer adding one newly justified file at a time over dumping a directory. Do not resend a file unchanged after it has already supplied the needed fact.
 
 ## Do not resend
 

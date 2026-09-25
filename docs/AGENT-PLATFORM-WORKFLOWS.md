@@ -2,31 +2,34 @@
 
 This repository is designed to survive changes of coding agent. `AGENTS.md` is the canonical shared instruction file; platform-specific files only bootstrap agents into the same workflow.
 
-## Authority order
+## Authority
 
-1. Current source code and tests.
-2. `AGENTS.md` and applicable repository Agent Skills.
-3. Accepted ADRs and current architecture/product documentation.
-4. `docs/PROJECT-MEMORY.md` for durable context.
-5. `docs/CURRENT-HANDOFF.md` for recent/unfinished work.
-6. Tool output, code graphs and agent/session memory as supporting evidence only.
+Authority is question-specific; follow `docs/DOCUMENTATION_POLICY.md`.
 
-If an adapter conflicts with `AGENTS.md`, follow `AGENTS.md`.
+In particular:
+- source/tests/runtime evidence describe what exists now,
+- the current accepted requirement describes the intended outcome,
+- Git/GitHub/CI describes branch/check state,
+- verified provider reads describe current external-system state,
+- Current Handoff is a recovery pointer that must be reconciled before use.
+
+If a platform adapter conflicts with `AGENTS.md`, follow `AGENTS.md`.
 
 ## Common workflow
 
 1. Read AGENTS, Project Memory and Current Handoff.
-2. Inspect active branch, working tree, relevant PRs/issues and recent commits.
-3. Start ordinary work from `develop` on a focused feature/fix/chore branch.
-4. Read relevant skills before specialized/sensitive work.
-5. Verify required MCPs/connectors before relying on them.
-6. Trace the actual code/data path.
-7. Make the smallest complete change.
-8. Run documented checks. Never weaken checks to get green.
-9. Use independent review for security/auth/payments/data/privacy/release-sensitive work.
-10. Merge feature/fix/chore only into `develop`.
-11. Release only through `develop → main`.
-12. Update Current Handoff when material state would otherwise be lost.
+2. Reconcile task → branch → PR with `task-continuity` before creating/resuming implementation work.
+3. Inspect the verified active branch/working tree, relevant PRs/issues and recent commits.
+4. If no valid task branch exists, start ordinary work from current `dev` on a focused feature/fix/chore branch and create a draft PR early for non-trivial work.
+5. Read relevant skills before specialized/sensitive work.
+6. Verify required MCPs/connectors before relying on them.
+7. Trace the actual code/data path and intended requirement.
+8. Make the smallest complete change.
+9. Run documented checks for the current candidate SHA. Never weaken checks to get green.
+10. Use independent review for security/auth/payments/data/privacy/release-sensitive work.
+11. Record version impact per `docs/VERSIONING.md`; merge feature/fix/chore only into `dev` and verify cleanup per `docs/BRANCH-LIFECYCLE.md`.
+12. Release only through `dev → prod`; for deployed systems follow operations/recovery verification.
+13. Update Current Handoff when material unfinished state would otherwise be lost.
 
 ## ChatGPT / OpenAI Codex
 
@@ -38,7 +41,8 @@ If an adapter conflicts with `AGENTS.md`, follow `AGENTS.md`.
 
 ## Claude Code
 
-- `CLAUDE.md` points back to the shared workflow.
+- `CLAUDE.md` imports shared context; `.claude/skills/` adapters load canonical skills.
+- Follow `docs/CLAUDE-GEMINI-SETUP.md` and verify loaded context/skill discovery.
 - Verify active repository/branch at session start.
 - Inspect MCP configuration before external-system work.
 - Keep credentials out of Git.
@@ -46,7 +50,8 @@ If an adapter conflicts with `AGENTS.md`, follow `AGENTS.md`.
 
 ## Gemini CLI
 
-- `GEMINI.md` points back to shared context.
+- `GEMINI.md` imports shared context; `.agents/skills/` supplies skills directly.
+- Follow `docs/CLAUDE-GEMINI-SETUP.md` and verify loaded context/skill discovery.
 - Confirm loaded project memory/instructions when needed.
 - Inspect MCP status before external actions.
 - Durable decisions belong in repository docs, not session history.
