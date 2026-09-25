@@ -62,7 +62,7 @@ test('full starter copy bootstraps and passes strict validation', async () => {
   await writeFile(configPath, `${JSON.stringify(config, null, 2)}\n`, 'utf8')
 
   const bootstrapOutput = run(projectRoot, ['scripts/bootstrap-project.mjs', '--config', 'bootstrap.e2e.json'])
-  assert.match(bootstrapOutput, /Updated 4 bootstrap targets/)
+  assert.match(bootstrapOutput, /Updated 6 bootstrap targets/)
 
   const syncOutput = run(projectRoot, ['scripts/sync-claude-skills.mjs', '--write'])
   assert.match(syncOutput, /Claude skill adapters valid:/)
