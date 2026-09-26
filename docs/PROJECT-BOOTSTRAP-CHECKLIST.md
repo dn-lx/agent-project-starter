@@ -32,6 +32,7 @@ Use this immediately after creating a repository from Agent Project Starter.
 - [ ] Add Playwright/browser checks if the project has important UI workflows.
 - [ ] Ensure material verification can report exact commands/results/artifacts rather than only “tests passed”.
 - [ ] Verify generic security workflow is compatible with the stack.
+- [ ] If the project has `package.json`, commit an npm lockfile or adapt `security / dependency-audit` to its actual package manager before requiring the check.
 - [ ] Configure dependency update automation for the actual package ecosystems used by the project.
 - [ ] Keep dependency update PRs reviewable; do not enable blanket auto-merge by default.
 
