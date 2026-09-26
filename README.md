@@ -25,18 +25,13 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 
 ## Start a new project
 
-1. Create the repository from this starter.
-2. Complete `docs/PROJECT-BOOTSTRAP-CHECKLIST.md`.
-3. Replace the placeholder project facts in `docs/PROJECT-MEMORY.md`.
-4. Populate `docs/REQUIREMENTS.md` with the project's ordered requirements, issues and roadmap.
-5. Add a project-specific skill under `.agents/skills/<project-name>/SKILL.md`.
-6. Select the MCP capabilities the project actually needs in `docs/MCP-SETUP.md`.
-7. Configure project-specific build/test commands and CI; define browser/runtime verification for frontends and performance/analytics contracts when those capabilities are used.
-8. Create/use `dev` for integration work and keep `prod` as production.
-9. Verify external connections with harmless reads before any write.
-10. Keep credentials outside Git.
-11. Use a draft PR plus the AGENT_TASK_STATE block in `docs/CURRENT-HANDOFF.md` for non-trivial unfinished work; never treat every open branch as active.
-12. Run `node scripts/validate-docs.mjs --strict-project` after replacing starter placeholders.
+1. Create a repository from this template. The default branch is `prod`; create `dev` as the integration branch.
+2. Copy `bootstrap.config.example.json` to a local config file, fill the project identity, architecture, commands and capabilities, then run `node scripts/bootstrap-project.mjs --config <your-config.json>`.
+3. Run `node scripts/sync-claude-skills.mjs --write` to generate the project's Claude skill adapter.
+4. Replace the starter README and example items in `docs/REQUIREMENTS.md`; complete `docs/PROJECT-BOOTSTRAP-CHECKLIST.md`, including project CI, branch protection, runtime targets and connector verification.
+5. Run `node scripts/validate-docs.mjs --strict-project`, `node scripts/validate-agent-stack.mjs` and the project's own checks before the first release.
+
+The bootstrap script deliberately supports the template's `dev → prod` branch contract. Other branch names require the full repository migration in `docs/BRANCH-LIFECYCLE.md`, including workflow triggers, guards, protections and documentation. Keep credentials outside Git.
 
 ## Agent startup order
 

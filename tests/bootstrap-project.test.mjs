@@ -97,6 +97,15 @@ test('bootstrap trims branch names before comparing and writing them', async () 
   assert.deepEqual(policy.branches.production, 'prod')
 })
 
+test('bootstrap rejects branch names that would leave fixed workflow gates inconsistent', async () => {
+  const root = await fixture()
+  await assert.rejects(
+    bootstrapProject({ ...config, branches: { integration: 'develop', production: 'main' } }, { root }),
+    /supports dev → prod only/,
+  )
+  await assert.rejects(access(join(root, '.agents/project-policy.json')))
+})
+
 test('bootstrap rejects a slug that collides with a canonical skill', async () => {
   const root = await fixture()
   await assert.rejects(

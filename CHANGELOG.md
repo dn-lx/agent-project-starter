@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-09-26
+
+### Fixed
+- Bootstrap now rejects custom branch names until the full workflow/branch migration is performed, preventing policy and CI guard drift.
+- The copied-project acceptance test verifies strict placeholder validation after project identity and requirements are filled.
+
+### Changed
+- Documented the bootstrap command and required manual setup steps.
+- Pinned Semgrep and pip-audit versions and require a committed npm lockfile instead of generating one during the dependency audit.
+
 ## [0.1.1] - 2026-09-26
 
 ### Changed
