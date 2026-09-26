@@ -35,6 +35,9 @@ function normalizeConfig(input) {
   const integration = required(input.branches?.integration ?? 'dev', 'branches.integration')
   const production = required(input.branches?.production ?? 'prod', 'branches.production')
   if (integration === production) throw new Error('integration and production branches must differ')
+  if (integration !== 'dev' || production !== 'prod') {
+    throw new Error('Bootstrap supports dev → prod only; adapting branch names requires the repository migration in docs/BRANCH-LIFECYCLE.md')
+  }
 
   const capabilities = {}
   for (const [key] of CAPABILITIES) {
