@@ -94,6 +94,21 @@ Code Review is an additional reviewer, not a substitute for tests, builds, lint/
 
 The three plugins above are optional Claude enhancements. Enable only the ones a project needs; do not auto-enable plugins without a concrete gap.
 
+### Claude token/cost discipline
+
+Ponytail is only the implementation-simplicity layer. Control Claude usage independently:
+
+- search/symbol-locate before reading whole files; read the smallest relevant ranges first;
+- do not spawn a subagent for simple repository search, one-file edits, straightforward tests or documentation edits;
+- use subagents only for genuinely independent work that benefits from isolation or parallelism, and give each a bounded context packet rather than the parent transcript;
+- prefer the smallest capable model class from `docs/EXECUTION-ROUTING-POLICY.md`; escalate when evidence shows the cheaper class is failing or risk requires stronger reasoning;
+- compact/reset long sessions at stable milestones after durable state is written to source, Project Memory, Current Handoff, an ADR or the PR;
+- do not repeatedly resend unchanged files, logs or requirements once the needed facts are established;
+- use deterministic search, tests, lint/type checks and generated summaries instead of asking the model to rediscover stable facts;
+- measure total cost-to-correct-completion, not token count in isolation. Rework and failed cheap-model attempts are part of the cost.
+
+For recurring/broad work, use `scripts/context-packet.mjs` before expanding context. Keep permanent knowledge in repository artifacts and temporary exploration in the session.
+
 ### claude-mem — optional persistent episodic memory
 
 Install only when cross-session recall is useful and the project's privacy boundary allows it:

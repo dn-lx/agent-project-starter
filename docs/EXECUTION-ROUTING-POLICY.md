@@ -131,6 +131,20 @@ The optional multi-host compatibility baseline is intentionally limited to Claud
 
 Do not add Aider, Goose, Qwen Code, Kiro or another coding-agent host unless the project records a specific capability gap not already covered by this baseline. See `docs/CLI-AGENT-STACK.md`.
 
+## Token/cost controls
+
+Apply these controls before adding more agent infrastructure:
+
+1. **Retrieve before loading** — locate symbols/files first; broaden context only when targeted evidence is insufficient.
+2. **One lead by default** — do not create a subagent for search, a one-file change, routine tests or docs. Delegate only separable work with a concrete expected benefit.
+3. **Bound delegated context** — send requirements, interfaces, relevant source/diff and evidence; never copy the parent transcript by default.
+4. **Smallest capable model** — start with the lowest-cost class that reliably fits the risk/complexity. Escalate after a concrete failure signal or when the task inherently requires stronger reasoning.
+5. **Milestone compaction** — after a stable milestone, persist durable facts and continue from a compact handoff instead of carrying exploratory history indefinitely.
+6. **No duplicate evidence** — avoid re-reading/resending unchanged files, giant logs, generated artifacts or lockfiles unless they are directly needed.
+7. **Deterministic work stays deterministic** — prefer search, tests, linters, typecheckers and scripts over model reasoning for facts those tools can establish.
+
+Token savings never justify omitting evidence required for correctness, security, accessibility, data integrity or production safety.
+
 ## Measurement
 
 Track routing quality with:
@@ -138,11 +152,14 @@ Track routing quality with:
 - deterministic check success,
 - repair rounds,
 - review findings,
+- input/output/cache token counts when the host exposes them,
+- estimated or billed cost when available,
+- tool calls and delegated/subagent count,
 - context/usage estimate,
 - latency,
 - handoff/integration failures.
 
-Optimize based on project evidence rather than benchmark reputation alone.
+Optimize **cost to correct completion**, not raw token count. A cheap route that causes repeated retries can cost more overall. Compare task classes over enough samples before changing defaults; do not claim savings without measured evidence.
 
 See:
 - `.agents/skills/execution-routing/SKILL.md`

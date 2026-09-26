@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Changed
+- Strengthened agent token/cost discipline with explicit retrieve-before-load, bounded subagent, smallest-capable-model, milestone-compaction and cost-to-correct-completion guidance, including richer usage telemetry.
+
 ## [0.1.0] - 2026-09-25
 
 ### Added
