@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-09-26
+
 ### Fixed
 - Bootstrap now rejects custom branch names until the full workflow/branch migration is performed, preventing policy and CI guard drift.
 - The copied-project acceptance test verifies strict placeholder validation after project identity and requirements are filled.
