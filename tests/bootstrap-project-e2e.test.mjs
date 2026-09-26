@@ -71,9 +71,9 @@ test('full starter copy bootstraps and passes strict validation', async () => {
   assert.throws(() => run(projectRoot, ['scripts/validate-docs.mjs', '--strict-project']))
 
   await writeFile(join(projectRoot, 'README.md'),
-    '# Disposable Bootstrap Project\\n\\nA test project created from Agent Project Starter.\\n', 'utf8')
+    '# Disposable Bootstrap Project\n\nA test project created from Agent Project Starter.\n', 'utf8')
   await writeFile(join(projectRoot, 'docs/REQUIREMENTS.md'),
-    '# Requirements\\n\\n## REQ-001 — Bootstrap\\n\\nThe generated project passes strict validation.\\n', 'utf8')
+    '# Requirements\n\n## REQ-001 — Bootstrap\n\nThe generated project passes strict validation.\n', 'utf8')
 
   const docsOutput = run(projectRoot, ['scripts/validate-docs.mjs', '--strict-project'])
   assert.match(docsOutput, /Documentation valid:/)
