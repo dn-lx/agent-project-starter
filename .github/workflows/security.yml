@@ -33,7 +33,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install Semgrep
-        run: python -m pip install --disable-pip-version-check semgrep
+        run: python -m pip install --disable-pip-version-check 'semgrep==1.178.0'
       - name: Scan high-severity findings
         run: semgrep scan --config auto --severity ERROR --error
 
@@ -52,8 +52,9 @@ jobs:
         shell: bash
         run: |
           if [ -f package.json ]; then
-            if [ ! -f package-lock.json ]; then
-              npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+            if [ ! -f package-lock.json ] && [ ! -f npm-shrinkwrap.json ]; then
+              echo "::error::package.json has no committed npm lockfile. Commit a lockfile or adapt this audit job to the project's package manager."
+              exit 1
             fi
             npm audit --omit=dev --audit-level=high
           else
@@ -63,7 +64,7 @@ jobs:
         shell: bash
         run: |
           if [ -f requirements.txt ]; then
-            python -m pip install --disable-pip-version-check pip-audit
+            python -m pip install --disable-pip-version-check 'pip-audit==2.10.1'
             pip-audit -r requirements.txt
           else
             echo "No root requirements.txt; skipping pip-audit."
