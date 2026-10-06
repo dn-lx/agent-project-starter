@@ -8,6 +8,8 @@ const capabilities = [
   'frontend-verification',
   'performance-budget',
   'analytics-contract',
+  'posthog-analytics',
+  'firecrawl-research',
 ]
 
 test('workflow-gap capabilities are canonical and routed from AGENTS', async () => {
@@ -55,4 +57,16 @@ test('reusable templates exist for planning, verification and analytics', async 
     const content = await readFile(path, 'utf8')
     assert.ok(content.length > 100, `${path} should contain a usable template`)
   }
+})
+
+
+test('PostHog and Firecrawl workflows preserve capability boundaries', async () => {
+  const posthog = await readFile('.agents/skills/posthog-analytics/SKILL.md', 'utf8')
+  const firecrawl = await readFile('.agents/skills/firecrawl-research/SKILL.md', 'utf8')
+  const mcp = await readFile('docs/MCP-SETUP.md', 'utf8')
+  assert.ok(posthog.includes('analytics-contract'))
+  assert.ok(posthog.includes('must continue to work when PostHog is unavailable'))
+  assert.ok(firecrawl.includes('Firecrawl'))
+  assert.ok(firecrawl.includes('does not replace'))
+  assert.ok(mcp.includes('Public web research / crawl'))
 })
