@@ -25,6 +25,8 @@ Use this map before adding a new skill, MCP, CI job or agent tool. The goal is c
 | Frontend Verification | Rendered browser/runtime workflow plus visual sanity for contrast, alignment, spacing, overflow, clipping, overlap, responsive/theme states, console/network and failure-state evidence | Choosing visual direction or replacing accessibility/visual-regression checks |
 | Performance Budget | Measurable user-critical performance budgets and regression evidence | Production observability or speculative micro-optimization |
 | Analytics Contract | Provider-neutral event taxonomy, privacy-safe properties and wiring verification | Transactional product logic or provider account configuration |
+| PostHog Analytics | Provider-specific analytics/flags/experiment/release verification when PostHog is connected | Event taxonomy design or transactional authority |
+| Firecrawl Research | Current public-web search, scrape, mapping and bounded crawl evidence | Rendered-browser interaction testing or private system access |
 | Headroom Pilot | Optional measured context compression | Project memory or dead-code cleanup |
 | Design Stack | Taste Skill for creative direction, UI/UX Pro Max for structured design intelligence, Impeccable for critique/polish | Runtime animation implementation or accessibility evidence |
 | Motion Runtime | Production animation/gesture/layout-transition implementation when CSS is insufficient | Choosing visual direction or replacing UX/a11y review |
@@ -107,3 +109,18 @@ Ask:
 7. How will we measure whether it helps?
 
 If the answer is mostly “another way to do what we already do,” do not add it. The optional CLI profile already documents Claude Code + Codex CLI + Gemini CLI + OpenCode; add or enable hosts only for a concrete project-specific gap.
+
+
+### Analytics Contract + PostHog
+
+- Analytics Contract defines the stable event/privacy contract.
+- PostHog Analytics verifies provider-specific delivery, flags, experiments and release evidence.
+
+Do not encode product business rules in PostHog.
+
+### Firecrawl + Frontend Verification
+
+- Firecrawl validates public content, routes, metadata and current external research.
+- Frontend Verification validates rendered interaction, responsive behavior, console/network health and accessibility-relevant states.
+
+Do not use crawl output as proof that an interactive UI works.
