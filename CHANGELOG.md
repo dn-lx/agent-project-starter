@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-10-06
+
+### Added
+- PostHog-specific analytics verification workflow layered on the provider-neutral analytics contract.
+- Firecrawl search/scrape/map/crawl research workflow for current public-web evidence and release content checks.
+
+### Fixed
+- Removed a literal `\\n` formatting artifact from the skill index and added validation coverage for the new specialist workflows.
+
+
 ## [0.1.2] - 2026-09-26
 
 ### Fixed
