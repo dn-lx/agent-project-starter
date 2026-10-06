@@ -32,6 +32,8 @@ Load `docs/REQUIREMENTS.md` additionally when the task concerns product/backlog/
 | File | Read when |
 | --- | --- |
 | `docs/DESIGN-STACK.md` | Substantial frontend design/UX direction |
+| `docs/DESIGN-SYSTEM-CONTRACT.md` | Design tokens/components/contracts for a consuming frontend |
+| `docs/FIGMA-WORKFLOW.md` | Figma handoff/generation workflow when a project uses Figma |
 | `REVIEW.md` | Reviewing a material PR/change |
 | `docs/OPERATIONS-RECOVERY.md` | Production runtime, deploy verification, rollback, backup/restore or incident work |
 | `docs/DOCUMENTATION_POLICY.md` | Resolving documentation authority/drift or deciding where knowledge belongs |

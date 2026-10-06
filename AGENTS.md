@@ -100,7 +100,8 @@ Direct fast paths:
 - test harness/regression architecture → `test-engineering`;
 - focused UI defect (contrast/alignment/overflow/clipping/responsive) → `frontend-verification` **without** the full design stack unless visual direction changes;
 - substantial redesign/UX direction → `design-stack`; load `motion-runtime` only when runtime animation is justified;
-- performance or analytics changes → `performance-budget` / `analytics-contract`;
+- performance or analytics changes → `performance-budget` / `analytics-contract`; PostHog-specific verification → `posthog-analytics`;
+- current public-web research, site mapping or bounded crawl verification → `firecrawl-research`;
 - sensitive trust boundaries → `security-boundary-review`;
 - risk-based verification → `quality-gates`;
 - degraded/broken production → `recover-production` + `docs/OPERATIONS-RECOVERY.md`;
