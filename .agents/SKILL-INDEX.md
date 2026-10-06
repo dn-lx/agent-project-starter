@@ -17,6 +17,7 @@ Load this file only when the correct specialist path is not already obvious. Do 
 | Focused UI bug: contrast/alignment/overflow/clipping/responsive | `frontend-verification` |
 | Broad mobile/responsive breakpoint audit | `responsive-ui-audit` + `frontend-verification` |
 | Major design/redesign/UX direction | `design-stack` |
+| Premium visual redesign execution | `premium-redesign` + `design-stack` |
 | Runtime animation beyond CSS | `motion-runtime` |
 | Accessibility/screenshot regression | `accessibility-visual-regression` |
 | Performance regression/budget | `performance-budget` |
