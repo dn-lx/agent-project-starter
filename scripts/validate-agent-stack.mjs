@@ -66,6 +66,8 @@ const required = [
   '.agents/skills/frontend-verification/SKILL.md',
   '.agents/skills/performance-budget/SKILL.md',
   '.agents/skills/analytics-contract/SKILL.md',
+  '.agents/skills/firecrawl-research/SKILL.md',
+  '.agents/skills/posthog-analytics/SKILL.md',
   '.agents/skills/design-stack/SKILL.md',
   '.agents/skills/motion-runtime/SKILL.md',
   '.agents/skills/quality-gates/SKILL.md',
@@ -138,6 +140,8 @@ for (const phrase of [
   'frontend-verification',
   'performance-budget',
   'analytics-contract',
+  'posthog-analytics',
+  'firecrawl-research',
   '.agents/superpowers/',
 ]) {
   if (!agents.includes(phrase)) throw new Error(`AGENTS.md is missing required reference: ${phrase}`)
