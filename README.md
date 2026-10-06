@@ -58,6 +58,7 @@ For example, a project may require:
 | Database/auth/storage | Supabase, Firebase, etc. |
 | Hosting/deployments | Netlify, Vercel, Cloudflare, etc. |
 | Browser verification | Playwright / browser computer use |
+| Public web research / crawl | Firecrawl or equivalent |
 | Code relationships | Graphify / local code graph |
 | Runtime observability | Sentry or equivalent |
 | Product analytics | PostHog or equivalent |
