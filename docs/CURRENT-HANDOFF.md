@@ -1,37 +1,33 @@
 # Current Handoff
 
-**Last updated:** 2026-09-25
-
-This file is the compact recovery record for unfinished work. GitHub/source/tests remain authoritative when they disagree with this handoff.
+**Last updated:** 2026-10-07
 
 <!-- AGENT_TASK_STATE_START -->
 {
-  "task_id": null,
-  "repository": null,
+  "task_id": "ECC-001",
+  "repository": "dn-lx/agent-project-starter",
   "base": "dev",
-  "branch": null,
-  "pr": null,
-  "status": "idle",
+  "branch": "feature/ecc-agent-reliability",
+  "pr": 45,
+  "status": "implementing",
   "last_verified_sha": null,
-  "next_step": null,
-  "updated_at": "2026-09-24T22:46:00Z"
+  "next_step": "Implement and test the verification/evaluation tools, canonical skills and Claude/Gemini adapters against the ECC-001 plan.",
+  "updated_at": "2026-10-07T07:29:00Z"
 }
 <!-- AGENT_TASK_STATE_END -->
 
-## Current state
+## Scope
 
-No active task is recorded in the starter template.
+User approved improving this starter with curated Everything Claude Code ideas. Read `docs/plans/ECC-001-agent-reliability.md` and PR #45. Base dev revision: 4d7b2171d78600fd8df3bdfb2b9fc39a059d6e9f. The existing dev-to-prod release PR #44 is unrelated and must not be merged as part of this task.
 
-When non-trivial work begins:
-- create/reconcile the focused branch from current `dev`,
-- create a draft PR early,
-- replace the idle task-state block with the active task/branch/PR binding,
-- record only the compact verified next step needed after interruption.
+## External writes
 
-## Recovery rule
+Created only this starter task branch, plan and draft PR #45. No FrankiFlow application, database, hosting or email changes. No global Claude/Gemini config or upstream hooks installed.
 
-Do not resume an arbitrary open branch. Apply `.agents/skills/task-continuity/SKILL.md`, inspect the referenced PR/branch/checks, compare with current `dev`, and continue only when the evidence matches the requested task.
+## Verification
 
-## Production path
+Implementation pending. Local container has Node 22 but no Claude Code or Gemini CLI; runtime host activation cannot be claimed here. GitHub connector reads work; local Git clone network access is unavailable, so new-tool tests will run locally and full repository validation in GitHub CI.
 
-Production promotion is `dev → prod` with explicit human production approval.
+## Completion
+
+Reset the task-state block to the idle template before integration into dev. Production promotion remains a separately approved dev-to-prod release.
