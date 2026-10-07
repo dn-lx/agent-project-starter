@@ -143,3 +143,13 @@ test('repository identity accepts aliases but rejects a nested working directory
   assert.equal(result.status, 'INCOMPLETE')
   await assert.rejects(readFile(join(nested, 'UNEXPECTED')))
 })
+
+test('malformed JSON diagnostics do not disclose input content', async t => {
+  const root = await fixture(t, false)
+  await writeFile(join(root, 'private.json'), '{"token":"PRIVATE-JSON-SENTINEL",invalid}')
+  await assert.rejects(readDocument(root, 'private.json'), error => {
+    assert.equal(error.message, 'Invalid JSON input; inspect the file locally')
+    assert.ok(!error.message.includes('PRIVATE-JSON-SENTINEL'))
+    return true
+  })
+})

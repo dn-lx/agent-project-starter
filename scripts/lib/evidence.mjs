@@ -28,7 +28,10 @@ export async function readDocument(root, name, maxBytes = 1024 * 1024) {
   requireThat(stat.size <= maxBytes, 'Input exceeds size limit')
   const bytes = await readFile(path)
   requireThat(bytes.length <= maxBytes, 'Input exceeds size limit')
-  return { value: JSON.parse(bytes.toString('utf8')), sha256: digest(bytes) }
+  let value
+  try { value = JSON.parse(bytes.toString('utf8')) }
+  catch { throw new Error('Invalid JSON input; inspect the file locally') }
+  return { value, sha256: digest(bytes) }
 }
 
 export async function artifactTarget(root, name) {

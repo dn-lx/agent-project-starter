@@ -1,6 +1,6 @@
 # ECC-001 — Evidence-based coding partners
 
-Status: implementation planned; not release approval.
+Status: implemented; awaiting final candidate checks and independent review. Not release approval.
 
 ## Accepted outcome
 
@@ -8,26 +8,28 @@ Improve Agent Project Starter for future Claude Code and Gemini CLI coding partn
 
 ## Current evidence
 
-The current dev baseline is 4d7b2171d78600fd8df3bdfb2b9fc39a059d6e9f. It already has risk-based quality gates, context budgets, task continuity, a local router, canonical skills, generated Claude discovery adapters and Gemini direct skill discovery. There is no reason to replace these with a vendor-specific framework. The existing prod release PR is outside this task.
+The task started from dev baseline 4d7b2171d78600fd8df3bdfb2b9fc39a059d6e9f. Existing risk-based quality gates, context budgets, task continuity, local routing, canonical skills and host discovery remain intact. No vendor-specific framework replaced them. The existing prod release PR is outside this task.
 
-## Acceptance criteria
+## Implementation acceptance
 
-- [ ] A real dependency-free verification runner produces machine-readable evidence, preserves command failures/timeouts, and never executes commands merely to preview the plan.
-- [ ] Missing application checks and missing human/runtime evidence cannot become a false release pass; reports bind to the tested revision and identify dirty worktrees.
-- [ ] A versioned agent-evaluation suite and scorer distinguish unrun, failed, incomplete and completed trials; no fabricated agent benchmark results.
-- [ ] Focused specialist reviews cover code paths, silent failures, test adequacy and database boundaries without automatic multi-agent fan-out.
-- [ ] Claude discovery adapters and Gemini project commands resolve to shared procedures, not duplicated policies or vendor-model defaults.
-- [ ] Learning remains proposal/review based; no automatic transcript retention or promotion into trusted instructions.
-- [ ] Upstream provenance and attribution are recorded; no remote installer, global config overwrite, production write or blanket permission grant.
-- [ ] New negative-path tests and existing repository CI run; actual host activation is reported separately from static adapter validation.
+- [x] A real dependency-free verification runner produces machine-readable evidence, preserves command failures/timeouts, and never executes commands merely to preview the plan.
+- [x] Missing application checks and missing human/runtime evidence cannot become a false release pass; reports bind to the tested revision and identify dirty worktrees.
+- [x] A versioned agent-evaluation suite and scorer distinguish unrun, failed, incomplete and completed trials; no fabricated agent benchmark results.
+- [x] Focused specialist reviews cover code paths, silent failures, test adequacy and database boundaries without automatic multi-agent fan-out.
+- [x] Claude discovery adapters and Gemini project commands resolve to shared procedures, not duplicated policies or vendor-model defaults.
+- [x] Learning remains proposal/review based; no automatic transcript retention or promotion into trusted instructions.
+- [x] Upstream provenance and attribution are recorded; no remote installer, global config overwrite, production write or blanket permission grant.
+- [x] New negative-path tests and existing repository CI run; actual host activation is reported separately from static adapter validation.
+
+## Verification and remaining review
+
+43 focused local tests pass on Node 22/Linux, and all six Gemini command files parse as TOML. Repository CI at a267f896360dce8f8e40926b6d6a326f7cc325e2 passed Agent stack validation, Version validation, Security checks, and Agent reliability (complete Linux starter checks plus 42 Windows tool tests). Windows CI initially caught path-alias handling; filesystem identity comparison fixed it without relaxing root-only execution. The additional JSON-diagnostic privacy regression brings the focused suite to 43 tests and must pass in CI on this newer candidate.
+
+The latest PR #45 checks remain authoritative for its actual final head/merge candidate. Earlier green results do not cover subsequent edits. Independent command-boundary review and real authenticated Claude/Gemini activation remain unverified; static tests are not evidence of either. Record final CI evidence in the PR without making another source edit solely to embed its own SHA.
 
 ## Delivery
 
-1. Pin/reference the supplied WorldFlowAI snapshot and official licensed ECC source; check official Claude/Gemini format documentation.
-2. Implement verification/evaluation tools and focused tests using the existing Node test runner.
-3. Add small canonical skills, review cards and reviewable learning template; generate matching Claude adapters and safe Gemini prompt-only commands.
-4. Wire real checks into CI, update indexes/setup docs and Unreleased changelog; leave VERSION and production release to the separate approved flow.
-5. Run local tool tests and repository CI, inspect the final diff, document evidence and limitations in the PR and handoff.
+Pinned references and licenses are in `docs/UPSTREAM-PROVENANCE.md`. The executable workflow and commands are in `docs/AGENT-RELIABILITY.md`. Four canonical skills, four Claude adapters, six Gemini commands, focused review references, tests and CI are committed. Unreleased records additive/minor impact; VERSION/tags/prod are unchanged.
 
 ## Boundaries and rollback
 

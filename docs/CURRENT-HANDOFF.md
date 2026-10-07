@@ -9,27 +9,25 @@
   "base": "dev",
   "branch": "feature/ecc-agent-reliability",
   "pr": 45,
-  "status": "testing",
-  "last_verified_sha": null,
-  "next_step": "Run full repository CI on this implementation, inspect the final diff, and obtain independent review before integration. Record host activation separately from static checks.",
-  "updated_at": "2026-10-07T08:30:00Z"
+  "status": "reviewing",
+  "last_verified_sha": "a267f896360dce8f8e40926b6d6a326f7cc325e2",
+  "next_step": "Read PR #45's latest-SHA CI evidence, obtain independent command-boundary review, and record actual Claude/Gemini activation separately. Preserve this task branch until review is resolved.",
+  "updated_at": "2026-10-07T08:41:00Z"
 }
 <!-- AGENT_TASK_STATE_END -->
 
-## Scope and implementation
+## Implemented
 
-User approved ECC-inspired improvements to this starter. Plan: `docs/plans/ECC-001-agent-reliability.md`; task PR #45. Added opt-in verification and evidence scoring tools, eight partner-evaluation scenarios, four canonical skills, focused review references, four Claude adapters, six Gemini prompt-only commands, regression tests, CI and provenance. Existing policy and routing remain authoritative.
+ECC-001 is implemented on task PR #45: opt-in verification/evidence scoring, eight partner-evaluation scenarios, four canonical skills, focused review references, four Claude adapters, six Gemini commands, tests, CI and source-pinned attribution. See `docs/plans/ECC-001-agent-reliability.md` and `docs/AGENT-RELIABILITY.md`.
 
-## Verification
+## Evidence and limits
 
-Locally ran `node --test tests/verification.test.mjs tests/agent-evals.test.mjs tests/partner-commands.test.mjs`: 41 passed, zero failed/skipped on Node 22/Linux. These are synthetic tool tests, not Claude/Gemini benchmark runs. Full repository validation must run in GitHub CI because local clone/network access is unavailable; this local workspace contains only the new tooling fixtures.
+Local focused suite: 43 passed, zero failed/skipped on Node 22/Linux; six Gemini TOML files parsed. Full GitHub CI passed at the historical last_verified_sha above, including complete starter verification on Linux and 42 focused Windows tests after fixing path-alias handling. The newer privacy regression and documentation updates require fresh CI: read the PR's final-SHA results rather than carrying the earlier green status forward. Final results belong in the PR/CI artifacts, avoiding a self-referential SHA update cycle.
 
-No authenticated Claude Code or Gemini CLI activation was tested. Independent reviewer approval is still required for the command-execution boundary. Do not infer either approval or actual model reliability from a static pass.
+No authenticated Claude Code or Gemini CLI activation or actual agent benchmark run was performed. Independent reviewer approval of the command-execution boundary is still required. A static pass is neither independent approval nor model-capability evidence.
 
-## External writes and release boundary
+## Scope / next integration
 
-Only this starter task branch/PR is affected. No FrankiFlow application, Supabase, hosting, email, global host configuration or upstream hook installation was changed. Existing dev-to-prod release PR #44 is unrelated and must not be merged as part of this task. Additive changes propose a minor version impact; VERSION/tags/prod are unchanged.
+Only this starter task branch/PR changed. No FrankiFlow application, database, hosting, email, global host configuration or upstream hook installation changed. Existing dev-to-prod release PR #44 is unrelated. Minor version impact is proposed in Unreleased; VERSION/tags/prod are unchanged.
 
-## Completion
-
-Before eventual integration into dev, reset this block to the idle task-state template and run all required checks on that final candidate SHA. Production promotion remains a separately approved dev-to-prod release.
+Before eventual integration into dev, reset this block to the idle task-state template and run required checks on that final candidate. Production promotion remains a separately approved release.
