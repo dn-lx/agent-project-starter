@@ -1,4 +1,4 @@
-import { pathToFileURL } from 'node:url'
+import { isMainModule } from './lib/entrypoint.mjs'
 import { digest, keys, options, readDocument, requireThat, text, unique, writeArtifact } from './lib/evidence.mjs'
 
 const validId = value => typeof value === 'string' && /^[a-z][a-z0-9-]{0,63}$/.test(value)
@@ -103,6 +103,6 @@ export async function main(args = process.argv.slice(2)) {
   console.log(JSON.stringify(report, null, 2))
   process.exitCode = report.status === 'FAIL' ? 1 : report.status === 'INCOMPLETE' ? 2 : 0
 }
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (isMainModule(import.meta.url)) {
   main().catch(error => { console.error(JSON.stringify({ status: 'ERROR', message: error.message })); process.exitCode = 1 })
 }

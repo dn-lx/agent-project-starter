@@ -24,8 +24,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: '22'
       - name: Verify complete starter on Linux
@@ -33,7 +35,7 @@ jobs:
         run: node scripts/verify.mjs --profile starter --run --out starter-checks.json
       - name: Test evidence tools on Windows
         if: runner.os == 'Windows'
-        run: node --test tests/verification.test.mjs tests/agent-evals.test.mjs tests/partner-commands.test.mjs
+        run: node --test tests/verification.test.mjs tests/agent-evals.test.mjs tests/partner-commands.test.mjs tests/entrypoint.test.mjs
       - name: Validate Windows command adapters
         if: runner.os == 'Windows'
         run: node scripts/sync-partner-commands.mjs

@@ -2,7 +2,7 @@ import { spawn, spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { realpathSync, statSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { pathToFileURL } from 'node:url'
+import { isMainModule } from './lib/entrypoint.mjs'
 import { artifactTarget, digest, keys, options, readDocument, requireThat, text, unique, writeArtifact } from './lib/evidence.mjs'
 
 export function validateConfig(config) {
@@ -134,6 +134,6 @@ export async function main(args = process.argv.slice(2)) {
   console.log(JSON.stringify(report, null, 2))
   process.exitCode = report.status === 'FAIL' ? 1 : report.status === 'INCOMPLETE' ? 2 : 0
 }
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (isMainModule(import.meta.url)) {
   main().catch(error => { console.error(JSON.stringify({ status: 'ERROR', message: error.message })); process.exitCode = 1 })
 }

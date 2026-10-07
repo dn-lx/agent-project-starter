@@ -1,6 +1,6 @@
 import { access, lstat, mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
-import { pathToFileURL } from 'node:url'
+import { isMainModule } from './lib/entrypoint.mjs'
 import { requireThat } from './lib/evidence.mjs'
 
 export const commands = [
@@ -45,7 +45,7 @@ export async function sync(root, write = false) {
   }
   return commands.length
 }
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (isMainModule(import.meta.url)) {
   const args = process.argv.slice(2)
   requireThat(args.length === 0 || args.length === 1 && args[0] === '--write', 'Usage: node scripts/sync-partner-commands.mjs [--write]')
   console.log(`Gemini project commands valid: ${await sync(resolve('.'), args.includes('--write'))}`)
