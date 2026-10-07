@@ -26,6 +26,10 @@ Load this file only when the correct specialist path is not already obvious. Do 
 | Current public-web research / site map / crawl | `firecrawl-research` |
 | Auth/secrets/privacy/trust boundaries | `security-boundary-review` |
 | Risk-based checks | `quality-gates` |
+| Execute checks and produce revision-bound evidence | `verification-loop` |
+| Evaluate coding-partner reliability with observed trials | `agent-evaluation` |
+| Focused code-path, silent-failure, tests or database review | `specialist-review` |
+| Propose a verified lesson for durable review | `reviewed-learning` |
 | Production readiness | `release-readiness` |
 | Branch/release mechanics | `release-workflow` |
 | Dead/unused code | `code-hygiene` |

@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-07
+
+### Added
+- ECC-inspired, dependency-free verification runner with explicit execution opt-in, revision/dirty-worktree evidence, preserved failures/timeouts, bounded hashed output and separate unconfigured/manual requirements.
+- Versioned coding-partner evaluation suite covering eight scenarios, with an evidence scorer that preserves unrun/incomplete trials and failed safety attempts instead of inventing model benchmark results.
+- Canonical verification-loop, agent-evaluation, specialist-review and reviewed-learning skills; focused code-path, silent-failure, test-adequacy and database-boundary review references.
+- Four Claude discovery adapters and six generated prompt-only Gemini project commands with drift, custom-file and symlink safeguards.
+- Negative-path regression tests, cross-platform evidence-tool CI, source-pinned upstream attribution, host onboarding and reviewed-learning templates.
+
+### Compatibility and verification
+- Additive minor release; existing provider-neutral policy, task routing and dev-to-prod release controls remain authoritative. No database migration, global installation or automatic upstream hook activation.
+- Starter tooling is tested separately from consuming applications. Actual Claude/Gemini login, activation and coding-model evaluations still require verification on the target host; no model benchmark results are claimed.
+- Final-candidate CI and independent-review evidence are recorded in implementation PR #45 and release PR #44. Rollback is a reviewed revert; published release tags must never be moved.
+
 ## [0.1.3] - 2026-10-06
 
 ### Added
