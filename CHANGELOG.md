@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+### Added
+- ECC-inspired, dependency-free verification runner with explicit execution opt-in, revision/dirty-worktree evidence, preserved failures/timeouts, bounded hashed output and separate unconfigured/manual requirements.
+- Versioned coding-partner evaluation suite covering eight scenarios, with an evidence scorer that preserves unrun/incomplete trials and failed safety attempts instead of inventing model benchmark results.
+- Canonical verification-loop, agent-evaluation, specialist-review and reviewed-learning skills; focused code-path, silent-failure, test-adequacy and database-boundary review references.
+- Four Claude discovery adapters and six generated prompt-only Gemini project commands with drift, custom-file and symlink safeguards.
+- Negative-path regression tests, cross-platform evidence-tool CI, source-pinned upstream attribution, host onboarding and reviewed-learning templates.
+
+### Version impact
+- Additive starter tooling and workflows; minor release proposed. VERSION and production release remain unchanged until the separately approved release workflow.
+
 ## [0.1.3] - 2026-10-06
 
 ### Added
