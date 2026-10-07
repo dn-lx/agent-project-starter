@@ -2,32 +2,38 @@
 
 **Last updated:** 2026-10-07
 
+This file is the compact recovery record for unfinished work. GitHub/source/tests remain authoritative when they disagree with this handoff.
+
 <!-- AGENT_TASK_STATE_START -->
 {
-  "task_id": "ECC-001",
-  "repository": "dn-lx/agent-project-starter",
+  "task_id": null,
+  "repository": null,
   "base": "dev",
-  "branch": "feature/ecc-agent-reliability",
-  "pr": 45,
-  "status": "reviewing",
-  "last_verified_sha": "a267f896360dce8f8e40926b6d6a326f7cc325e2",
-  "next_step": "Read PR #45's latest-SHA CI evidence, obtain independent command-boundary review, and record actual Claude/Gemini activation separately. Preserve this task branch until review is resolved.",
-  "updated_at": "2026-10-07T08:41:00Z"
+  "branch": null,
+  "pr": null,
+  "status": "idle",
+  "last_verified_sha": null,
+  "next_step": null,
+  "updated_at": "2026-10-07T09:00:00Z"
 }
 <!-- AGENT_TASK_STATE_END -->
 
-## Implemented
+## Current state
 
-ECC-001 is implemented on task PR #45: opt-in verification/evidence scoring, eight partner-evaluation scenarios, four canonical skills, focused review references, four Claude adapters, six Gemini commands, tests, CI and source-pinned attribution. See `docs/plans/ECC-001-agent-reliability.md` and `docs/AGENT-RELIABILITY.md`.
+No active implementation task is recorded in the starter template. ECC-001 implementation and release preparation are tracked in PR #45; dev-to-prod promotion is tracked in PR #44. The project owner explicitly requested both merges on 2026-10-07. This idle template does not imply that either PR has merged: inspect current PR/check/review state before continuing release work.
 
-## Evidence and limits
+Before merging, independent command-boundary review and all required checks must cover the final candidate. Final review outcomes, tested revisions, merge commits and published release identity belong in those PRs and CI artifacts rather than a self-referential source-SHA update.
 
-Local focused suite: 43 passed, zero failed/skipped on Node 22/Linux; six Gemini TOML files parsed. Full GitHub CI passed at the historical last_verified_sha above, including complete starter verification on Linux and 42 focused Windows tests after fixing path-alias handling. The newer privacy regression and documentation updates require fresh CI: read the PR's final-SHA results rather than carrying the earlier green status forward. Final results belong in the PR/CI artifacts, avoiding a self-referential SHA update cycle.
+## Usage and remaining host verification
 
-No authenticated Claude Code or Gemini CLI activation or actual agent benchmark run was performed. Independent reviewer approval of the command-execution boundary is still required. A static pass is neither independent approval nor model-capability evidence.
+Version 0.2.0 introduces optional verification/evaluation tooling and shared Claude/Gemini workflows. Read `docs/AGENT-RELIABILITY.md` and `docs/CLAUDE-GEMINI-SETUP.md` on demand. Actual authenticated host activation and coding-model benchmark trials remain unverified; static and synthetic tooling tests do not establish either.
 
-## Scope / next integration
+No FrankiFlow application, database, hosting, email or global host configuration changes are part of this release. No data migration is required; rollback uses a reviewed revert without moving published tags.
 
-Only this starter task branch/PR changed. No FrankiFlow application, database, hosting, email, global host configuration or upstream hook installation changed. Existing dev-to-prod release PR #44 is unrelated. Minor version impact is proposed in Unreleased; VERSION/tags/prod are unchanged.
+## Recovery rule
 
-Before eventual integration into dev, reset this block to the idle task-state template and run required checks on that final candidate. Production promotion remains a separately approved release.
+Do not resume an arbitrary open branch. Apply `.agents/skills/task-continuity/SKILL.md`, inspect the referenced PR/branch/checks, compare with current `dev`, and continue only when the evidence matches the requested task. Start new non-trivial work with one task/branch/PR binding and preserve unrelated changes.
+
+## Production path
+
+Production promotion is `dev → prod` with explicit human production approval. The release notes in CHANGELOG.md describe the planned release; remote tags/releases and their target commits establish actual publication.
