@@ -26,6 +26,7 @@ Load `docs/REQUIREMENTS.md` additionally when the task concerns product/backlog/
 | `docs/AGENT-PLATFORM-WORKFLOWS.md` | Host portability/onboarding |
 | `docs/MEMORY-CONTEXT-POLICY.md` | Context/token problems or memory design |
 | `docs/CODE-HEALTH-AND-CONTEXT.md` | Cleanup/dead-code/context-efficiency work |
+| `docs/AGENT-RELIABILITY.md` | Verification runner, partner evaluations, specialist review and reviewed learning |
 
 ## Quality, design and operations
 
@@ -49,6 +50,7 @@ Load `docs/REQUIREMENTS.md` additionally when the task concerns product/backlog/
 | `docs/VERSIONING.md` | Version/release identity |
 | `docs/CLAUDE-GEMINI-SETUP.md` | Claude Code/Gemini host setup |
 | `docs/CLI-AGENT-STACK.md` | Optional local coding-host setup |
+| `docs/UPSTREAM-PROVENANCE.md` | Reviewing ECC-derived concepts, pinned sources, attribution and update boundaries |
 
 ## Durable decisions
 
@@ -70,6 +72,7 @@ Templates are reference material; load only the one needed:
 - `docs/templates/MCP-PROFILE-EXAMPLE.md`
 - `docs/templates/ROUTING-PROFILE-EXAMPLE.md`
 - `docs/templates/PROJECT-SKILL-TEMPLATE.md`
+- `docs/templates/LEARNING-PROPOSAL-TEMPLATE.md`
 
 Agent-skill discovery is separate: use `.agents/SKILL-INDEX.md`.
 
