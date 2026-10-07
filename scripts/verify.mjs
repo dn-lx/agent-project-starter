@@ -1,6 +1,6 @@
 import { spawn, spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { realpathSync } from 'node:fs'
+import { realpathSync, statSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { artifactTarget, digest, keys, options, readDocument, requireThat, text, unique, writeArtifact } from './lib/evidence.mjs'
@@ -37,10 +37,18 @@ function git(root, args) {
   if (result.error || result.status !== 0) throw new Error('Git evidence unavailable')
   return result.stdout.trim()
 }
+export function sameDirectory(leftPath, rightPath) {
+  // Git and Node may preserve different casing/8.3 spellings for one Windows path.
+  // Compare filesystem identity instead of loosening the repository-root boundary.
+  const left = statSync(leftPath, { bigint: true }), right = statSync(rightPath, { bigint: true })
+  if (!left.isDirectory() || !right.isDirectory()) return false
+  if (left.ino > 0n && right.ino > 0n) return left.dev === right.dev && left.ino === right.ino
+  return realpathSync.native(leftPath) === realpathSync.native(rightPath)
+}
 export function snapshot(root) {
   try {
     const top = realpathSync(git(root, ['rev-parse', '--show-toplevel']))
-    requireThat(top === realpathSync(root), 'Run from the repository root')
+    requireThat(sameDirectory(top, root), 'Run from the repository root')
     const sha = git(root, ['rev-parse', 'HEAD'])
     requireThat(/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(sha), 'Invalid Git revision')
     const status = git(root, ['status', '--porcelain', '--untracked-files=normal'])

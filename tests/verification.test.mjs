@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
-import { validateConfig, verify } from '../scripts/verify.mjs'
+import { validateConfig, verify, snapshot, sameDirectory } from '../scripts/verify.mjs'
 import { readDocument, writeArtifact, options } from '../scripts/lib/evidence.mjs'
 
 const config = (command = ['node', '-e', 'process.stdout.write("ok")'], extra = {}) => ({ schema_version: 1,
@@ -130,4 +130,16 @@ test('CLI incomplete report exits 2 rather than green', async t => {
   const result = spawnSync(process.execPath, [fileURLToPath(script), '--run'], { cwd:root, encoding:'utf8' })
   assert.equal(result.status,2, result.stderr)
   assert.equal(JSON.parse(result.stdout).status,'INCOMPLETE')
+})
+
+test('repository identity accepts aliases but rejects a nested working directory', async t => {
+  const root = await fixture(t), nested = join(root, 'nested')
+  await mkdir(nested)
+  assert.equal(sameDirectory(root, join(root, 'nested', '..')), true)
+  assert.equal(sameDirectory(root, nested), false)
+  assert.match(snapshot(root).sha, /^[a-f0-9]{40}$/)
+  assert.equal(snapshot(nested).sha, null)
+  const result = await verify(nested, config(['node', '-e', 'require("fs").writeFileSync("UNEXPECTED","bad")']), 'starter', true)
+  assert.equal(result.status, 'INCOMPLETE')
+  await assert.rejects(readFile(join(nested, 'UNEXPECTED')))
 })
