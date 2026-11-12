@@ -14,10 +14,10 @@ Use this immediately after creating a repository from Agent Project Starter.
 
 - [ ] Ensure `prod` exists as production/release branch and is the default branch.
 - [ ] Create `dev`.
-- [ ] Configure ordinary work as feature/fix/chore → dev.
+- [ ] Configure development for verified direct commits to `dev` without mandatory pull requests.
 - [ ] Configure production flow as dev → prod only.
 - [ ] Create/require `production-approved` label if using the provided release guard.
-- [ ] Protect `dev` and `prod` from deletion/force-push and require PRs as appropriate.
+- [ ] Protect `dev` and `prod` from deletion/force-push, but do not require a PR to commit to `dev`; require a production PR and human approval for `prod`.
 - [ ] After the checks have run at least once, require `policy / agent-stack`, `policy / version`, `security / gitleaks`, `security / semgrep`, and `security / dependency-audit` on `dev` (or the adapted project equivalents).
 - [ ] On `prod`, also require `policy / prod-source-and-approval` so only an approved same-repository `dev` PR can release.
 - [ ] Configure a real human production approval mechanism (for example required approving review/CODEOWNER/protected deployment as appropriate); the `production-approved` label check is supplemental and cannot by itself prove the approver was human.
@@ -84,7 +84,7 @@ For non-frontend projects, mark this section Not applicable rather than inventin
 
 ## Task / branch continuity
 
-- [ ] Use one task → one writable branch → one draft/open PR for non-trivial work.
+- [ ] Use one task → one active writer → current `dev` commit/Issue trace; development PRs are optional.
 - [ ] Keep the AGENT_TASK_STATE block in `docs/CURRENT-HANDOFF.md` valid.
 - [ ] Run `node scripts/task-state.mjs --check` during bootstrap/validation.
 - [ ] Run `node scripts/validate-docs.mjs --strict-project` after replacing starter placeholders.
@@ -176,6 +176,6 @@ If not, the bootstrap is incomplete.
 
 - [ ] Read VERSIONING and BRANCH-LIFECYCLE; preserve an existing app version.
 - [ ] Protect prod/dev and require production guard plus version validation.
-- [ ] Verify a merged test branch is cleaned up.
+- [ ] Verify direct commits to `dev` are permitted and optional temporary branches can be cleaned up.
 - [ ] Follow `docs/CLAUDE-GEMINI-SETUP.md` for the chosen host; verify context, skills and actual MCP connections.
 - [ ] Regenerate Claude adapters after adding a project skill: `node scripts/sync-claude-skills.mjs --write`.
