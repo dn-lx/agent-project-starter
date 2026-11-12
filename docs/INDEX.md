@@ -27,6 +27,7 @@ Load `docs/REQUIREMENTS.md` additionally when the task concerns product/backlog/
 | `docs/MEMORY-CONTEXT-POLICY.md` | Context/token problems or memory design |
 | `docs/CODE-HEALTH-AND-CONTEXT.md` | Cleanup/dead-code/context-efficiency work |
 | `docs/AGENT-RELIABILITY.md` | Verification runner, partner evaluations, specialist review and reviewed learning |
+| `docs/FUTURE-MULTI-PROVIDER-COORDINATION.md` | Proposed opt-in dual-coordinator and subscription-first multi-provider roadmap; not active |
 
 ## Quality, design and operations
 
