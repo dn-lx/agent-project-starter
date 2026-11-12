@@ -1,6 +1,6 @@
 ---
 name: release-workflow
-description: Enforce feature/fix/chore → dev → prod release flow.
+description: Enforce direct development commits to dev and human-approved dev → prod releases.
 ---
 
 # Release Workflow
@@ -12,7 +12,7 @@ description: Enforce feature/fix/chore → dev → prod release flow.
 The only branch allowed to merge into `prod` is this repository's `dev` branch.
 
 ```text
-feature/* or fix/* or chore/*
+verified direct commits
              ↓
            dev
              ↓
@@ -27,13 +27,12 @@ feature/* or fix/* or chore/*
 
 ## Development changes
 
-1. Start from current `dev`.
-2. Create focused feature/fix/chore branch.
-3. Implement smallest complete change.
-4. Run relevant verification.
-5. Open PR into `dev`.
-6. Review final diff/checks.
-7. Merge only after checks pass.
+1. Refresh current `dev` and confirm one writer owns the task/files.
+2. Make the smallest complete change directly on `dev` (or in a temporary isolated worktree if needed).
+3. Run relevant tests/checks and inspect the final diff before committing.
+4. Commit directly to `dev` without a development PR.
+5. Verify the committed SHA and available CI; report any check not run or any failure.
+6. Use PRs for `dev → prod` releases or only when the owner explicitly requests a development PR.
 
 ## Production release
 
