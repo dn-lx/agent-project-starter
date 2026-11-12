@@ -2,39 +2,19 @@
 
 Only `prod` and `dev` are permanent. Temporary feature/fix/chore branches are removed after their work is merged. Never automatically discard unmerged work merely to reduce the branch count.
 
-## Native merged-branch cleanup
+## Development: direct commits to `dev` by default
 
-Use GitHub repository setting **Automatically delete head branches**. Do not add a custom cleanup Action merely to delete successfully merged temporary branches.
+The user authorizes ordinary changes (including features, fixes and documentation) to be committed **directly to `dev` without an implementation PR**. Refresh the current branch before editing, serialize writes to the same task/files, run the relevant checks and inspect the diff before pushing. Verify the actual `dev` SHA and CI afterwards. When checks cannot run, disclose that limitation; never claim unverified results.
 
-This setting is safe only when `dev` and `prod` are protected against deletion. A production PR uses `dev → prod`; protection keeps `dev` permanent while GitHub removes ordinary merged feature/fix/chore heads.
+Temporary isolated worktrees/feature branches are optional for genuinely concurrent or high-risk work. They are not the default and do not require a PR for integration. Do not discard unintegrated work. Cleanup follows verification of `dev` history.
 
-After merging into `dev`, verify the temporary branch is gone. If it remains, inspect the PR state, branch protection/rulesets and whether the branch received new commits after merge before deleting it manually.
+## Production remains protected
 
-Do not automatically delete:
-- branches with open PRs,
-- unmerged work,
-- branches whose purpose is unclear,
-- automation branches still in use.
+Only `dev` can be promoted to `prod` by the existing production PR and explicit human approval workflow. Never push directly to `prod`, force-push it or bypass release gates. Configure **no required pull request for `dev`** (that branch rule blocks direct commits), but keep deletion/force-push protections and available CI checks. GitHub settings must actually be changed by an authorized repository administrator; documentation alone cannot override a server-side branch rule.
 
-Do not reuse completed temporary branch names.
+## Recovery
 
-## Agent completion rule
-
-After a merge:
-
-1. verify the PR is actually merged,
-2. verify checks/merge SHA when relevant,
-3. verify the temporary remote branch is removed,
-4. record unresolved leftovers in Current Handoff,
-5. never treat a leftover open branch as an active task without applying Task Continuity.
-
-Locally, agents/users may run `git fetch --prune` and safely remove stale local branches/worktrees only after confirming there is no uncommitted work.
-
-## Repository setup
-
-Protect `prod` and `dev` against deletion and force pushes. Require PRs and relevant checks, including version validation and the production guard. Enable GitHub native automatic head-branch deletion after those protections are in place.
-
-An unmerged abandoned branch needs an explicit reviewed decision to preserve, supersede or discard its unique work. No automatic age-based deletion.
+Inspect the task Issue/handoff, current `dev` commits and checks, and any existing PR/temporary branch. One modifying agent owns each task. Do not treat any open branch as proof of active work; never delete a branch with unique unmerged commits.
 
 ## Adapting branch names
 
