@@ -47,10 +47,8 @@ export function validateTaskState(state, expectedBase = null) {
     if (typeof state.task_id !== 'string' || !state.task_id.trim()) errors.push('task_id is required')
     if (typeof state.repository !== 'string' || !/^[\w.-]+\/[\w.-]+$/.test(state.repository)) errors.push('repository must be owner/name')
     if (typeof state.branch !== 'string' || !state.branch.trim()) errors.push('branch is required')
-    if (state.branch === state.base) errors.push('working branch must differ from base')
+    // A direct-development task may use branch === base (`dev`) without a PR.
 
-    const prRequired = !['planning', 'cancelled'].includes(state.status)
-    if (prRequired && (!Number.isInteger(state.pr) || state.pr <= 0)) errors.push(`pr must be a positive integer while status is ${state.status}`)
     if (state.pr !== null && (!Number.isInteger(state.pr) || state.pr <= 0)) errors.push('pr must be null or a positive integer')
 
     if (state.last_verified_sha !== null && (typeof state.last_verified_sha !== 'string' || !/^[a-f0-9]{40}$/i.test(state.last_verified_sha))) {
@@ -77,7 +75,7 @@ export async function checkTaskState(path = 'docs/CURRENT-HANDOFF.md', expectedB
     return { ok: false, state, errors }
   }
 
-  const task = state.status === 'idle' ? 'idle' : `${state.task_id} on ${state.branch} (PR #${state.pr ?? 'pending'})`
+  const task = state.status === 'idle' ? 'idle' : `${state.task_id} on ${state.branch}${state.pr == null ? ' (direct commit)' : ` (PR #${state.pr})`}`
   console.log(`Task state valid: ${task}; status=${state.status}`)
   return { ok: true, state, errors: [] }
 }
