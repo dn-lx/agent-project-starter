@@ -1,6 +1,6 @@
 # Future plan: subscription-first multi-provider coordination
 
-> **Status: Proposed / opt-in / not implemented.** This is a roadmap item, not an active automation or a change to the default coordinator. Revisit current provider limits, billing, and security before adopting it.
+> **Status: Proposed / opt-in / not implemented.** The core starter's current development policy is verified direct commits to `dev` without development PRs; the provider orchestration remains future-only. This is a roadmap item, not an active automation or a change to the default coordinator. Revisit current provider limits, billing, and security before adopting it.
 
 ## Goal
 
@@ -19,18 +19,18 @@ No provider is hardwired into `AGENTS.md` as universally superior. Different pro
 
 ```text
 User → active coordinator (one of: preferred / backup)
-     → reconcile GitHub issue + handoff + branch + PR + CI
+     → reconcile GitHub issue + handoff + dev commits + CI
      → classify outcome, risk and available capabilities
      → choose worker host, then supported model class/effort
-     → scoped implementation branch + early PR when justified
+     → verified direct dev commit; optional isolated worktree
      → deterministic build/tests/browser checks
      → independent review when risk justifies it
      → repair verified findings + reverify final SHA
-     → merge feature/fix/chore PR into dev
+     → verify direct dev commit and checks (no development PR)
      → human approval before dev → prod
 ```
 
-The backup reads the same GitHub evidence when taking over; it must not duplicate an unfinished implementation or simultaneously coordinate the same task. Project source, tested SHA and PR history are more authoritative than old transcripts or a speculative handoff note.
+The backup reads the same GitHub evidence when taking over; it must not duplicate an unfinished implementation or simultaneously coordinate the same task. Project source, current dev commits, CI results and optional PR history are more authoritative than old transcripts or a speculative handoff note.
 
 ### Coordinator handoff fields
 
@@ -82,7 +82,7 @@ A free CLI/agent framework is not the same as free inference or free hosting. Ad
 - On 2026-11-12, official GitHub documentation lists **$12/month included Actions compute**, **120 Codespaces core-hours/month**, and **15 GB-month Codespaces storage** for personal GitHub Free. These numbers are time-sensitive and are not limits guaranteed for every account/context.
 - Keep credentials, subscription tokens, personal/private docs and account-specific billing details **outside this public starter repository**.
 - Reuse `AGENTS.md`, `.agents/project-policy.json`, `docs/PROJECT-MEMORY.md`, `docs/CURRENT-HANDOFF.md`, issues and PRs rather than creating competing truth stores.
-- Observe this starter's real branch contract: `feature/fix/chore → dev → prod`; production requires human approval. Consuming projects may adopt equivalent integration/production branch names only after an explicit documented migration.
+- Observe this starter's branch contract: verified direct commits → `dev` → approved production PR → `prod`. Development PRs are not required; production approval remains mandatory. Consuming projects may adopt equivalent integration/production branch names only after an explicit documented migration.
 - Keep an iPad/browser-first path using native cloud agents where supported. Antigravity desktop or local agent CLIs must not be assumed to run from an iPad without an eligible remote execution environment.
 
 ## Phased adoption
@@ -91,7 +91,7 @@ A free CLI/agent framework is not the same as free inference or free hosting. Ad
 
 **Phase 1 — Manual dual-coordinator pilot.** Verify Claude and ChatGPT can read GitHub and follow the same handoff schema. Manually switch coordinator ownership during a real scoped issue.
 
-**Phase 2 — Native execution pilot.** Test one Claude Code task and one Codex task, using subscription logins and verified GitHub permissions. Require an integration-branch PR, passing appropriate tests and an accurate final report.
+**Phase 2 — Native execution pilot.** Test one Claude Code task and one Codex task, using subscription logins and verified GitHub permissions. Require verified direct commits to the integration branch, passing appropriate tests and an accurate final report.
 
 **Phase 3 — Optional free specialists.** Try Antigravity/Gemini, Copilot Free or OpenCode one at a time when there is a real capability gap and no additional charge. Do not enable all candidates together.
 
@@ -101,11 +101,11 @@ A free CLI/agent framework is not the same as free inference or free hosting. Ad
 
 ## Acceptance criteria before implementation can be called complete
 
-- [ ] Primary and backup coordinators can read the same current issue, PR, checks and handoff.
+- [ ] Primary and backup coordinators can read the same current issue, `dev` commits, checks, handoff and optional PR.
 - [ ] Single active coordinator/task owner; no conflicting branch edits.
 - [ ] Each requested coding agent can actually run via a supported method, not merely an issue label.
 - [ ] Model and reasoning choices are reported only when confirmed in the relevant host.
-- [ ] Passing code/build/test evidence and review are attached to final PR SHA.
+- [ ] Passing code/build/test evidence and review correspond to the final direct `dev` commit SHA.
 - [ ] Handover test succeeds without replaying long chat history.
 - [ ] GitHub costs, optional provider fees and private-data boundaries are verified.
 - [ ] Integration branch is protected by process/available platform mechanisms; production remains human approved.
