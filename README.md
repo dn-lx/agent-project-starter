@@ -16,7 +16,7 @@ The goal is simple: a new coding agent should be able to enter a project, unders
 - Optional local-agent portability guidance for Claude Code, Codex CLI, Gemini CLI and OpenCode; none are required by the core template.
 - Planner → Executor → Independent Reviewer orchestration.
 - Quality-first model routing guidance.
-- A strict `feature/fix/chore → dev → prod` release path.
+- Fast verified direct commits to `dev` without development PRs; human-approved `dev → prod` production releases.
 - Generic security and dependency-update automation, with project-specific CI added during bootstrap.
 - A bootstrap checklist for adapting the starter to a real project.
 - Runtime operations/recovery guidance for deployed revision verification, health/smoke checks, migrations, rollback and backup/restore.
@@ -71,7 +71,7 @@ An agent must verify that a capability is actually connected in its current host
 ## Branch model
 
 ```text
-feature/*  fix/*  chore/*
+verified development commits
           ↓
         dev
           ↓
@@ -91,14 +91,14 @@ Production merging remains a human-controlled decision.
 The starter itself should follow the same workflow after this initial bootstrap:
 
 ```text
-feature/fix/chore → dev → prod
+direct commits → dev → prod
 ```
 
 Keep the starter generic. Project-specific business rules belong in the generated project's Project Memory and project skill, not here.
 
 ## Versioning and branch lifecycle
 
-The starter now carries a planned version in `VERSION` and release notes in `CHANGELOG.md`. Read [Versioning](docs/VERSIONING.md) and [Branch lifecycle](docs/BRANCH-LIFECYCLE.md). Only prod/dev are permanent; merged temporary branches are cleaned automatically by GitHub after merge. Protect permanent branches and require CI checks when configuring a new repository.
+The starter now carries a planned version in `VERSION` and release notes in `CHANGELOG.md`. Read [Versioning](docs/VERSIONING.md) and [Branch lifecycle](docs/BRANCH-LIFECYCLE.md). Only prod/dev are permanent; optional temporary branches are cleaned up after verifying integration. Direct commits to dev are the default. Protect permanent branches and require CI checks when configuring a new repository.
 
 ## Design stack
 
