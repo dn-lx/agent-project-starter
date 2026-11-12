@@ -10,7 +10,7 @@ All agents must read this policy when changing behavior, compatibility or prepar
 - MINOR: compatible capabilities; during 0.x, also explicitly documented breaking changes.
 - MAJOR: incompatible changes once 1.0 is declared stable.
 - Do not bump once per agent message or commit. Prepare one version for the reviewed release scope.
-- Use conventional PR titles (`fix:`, `feat:`, `chore:`, and `!` for breaking changes) and state release impact in the PR.
+- Use conventional commit messages (`fix:`, `feat:`, `chore:`, and `!` for breaking changes); record release impact in the changelog/issue or in the production PR.
 - Apps copied from the starter own their version independently. Record the upstream starter commit/version separately; never overwrite an existing app version with the starter's version.
 
 SemVer reference: https://semver.org/
@@ -21,11 +21,11 @@ SemVer reference: https://semver.org/
 2. Add meaningful user-facing notes to Unreleased; identify breaking changes and migration actions.
 3. Keep ecosystem manifest/lockfile versions synchronized if introduced. This stack-neutral starter has no package manifest.
 4. Run `node scripts/validate-docs.mjs`, `node scripts/validate-version.mjs` and `node --test tests/*.test.mjs`.
-5. Include version impact and any compatibility risk in the PR/handoff.
+5. Include version impact and compatibility risk in the commit, issue or handoff; development PRs are optional.
 
 ## Release preparation and publication
 
-1. Prepare a feature/chore PR into dev: choose a version greater than prod's VERSION (first adoption may keep 0.1.0), move applicable Unreleased entries to `## [X.Y.Z] - YYYY-MM-DD`, retain the Unreleased heading, and document tests/rollback.
+1. Prepare the release candidate directly on dev: choose a version greater than prod's VERSION (first adoption may keep 0.1.0), move applicable Unreleased entries to `## [X.Y.Z] - YYYY-MM-DD`, retain the Unreleased heading, and document tests/rollback.
 2. Open dev → prod. Version validation requires an increased version and matching dated notes. Follow the production approval and release-readiness rules. A version bump does not authorize production.
 3. After the approved merge, create an immutable annotated `vX.Y.Z` tag on the exact verified prod merge commit and a GitHub Release containing that version's changelog notes. Use a verified GitHub tool or `git tag -a vX.Y.Z <prod-merge-sha>` then `git push origin vX.Y.Z`; never tag dev as stable, move a published tag or reuse a version.
 4. Verify the remote tag/release target. Record version, SHA, release URL and checks in Current Handoff. Sync released prod ancestry back to dev through the normal reviewed workflow when needed.
