@@ -8,7 +8,7 @@ Use capability roles so the workflow remains agent-independent.
 Use for ambiguous, cross-system or high-risk work. Use `implementation-planning` when a durable plan is justified. It produces a compact evidence-based implementation sequence, affected boundaries, risks, rollback and verification strategy without duplicating product requirements.
 
 ### Executor / Implementer
-Makes the smallest complete change on an isolated branch/worktree and follows project-specific skills.
+Makes the smallest complete change directly on `dev`, using isolation when genuinely necessary, and follows project-specific skills.
 
 ### Independent Reviewer
 Uses the original requirement, final diff, relevant source and deterministic check results. It does **not** need the implementer's full transcript.
@@ -29,9 +29,9 @@ request
   ↓
 classify outcome + capability + risk
   ↓
-reconcile existing task/branch/PR when applicable
+reconcile task, current `dev` commits and any optional branch/PR
   ↓
-create/resume isolated branch + early draft PR for non-trivial work
+reserve one writer; use current dev (optional isolated worktree)
   ↓
 select one primary Superpower or direct skill
   ↓
@@ -49,7 +49,7 @@ independent review when required
   ↓
 repair confirmed findings + reverify if the SHA changes
   ↓
-merge PR into dev
+commit verified change directly to dev (no development PR)
   ↓
 human release approval when releasing
   ↓
