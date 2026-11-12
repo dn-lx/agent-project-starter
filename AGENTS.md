@@ -9,7 +9,7 @@ Before editing:
 1. Read this file and `.agents/project-policy.json`.
 2. Read `docs/PROJECT-MEMORY.md`.
 3. Read `docs/CURRENT-HANDOFF.md`.
-4. Before creating a new implementation branch or resuming interrupted work, apply `.agents/skills/task-continuity/SKILL.md` and reconcile the active task/PR/branch from GitHub evidence.
+4. Before modifying `dev` or resuming work, apply `.agents/skills/task-continuity/SKILL.md` and reconcile active tasks, commits and any existing branches/PRs from GitHub evidence.
 5. For product requirements, backlog execution, bugs/features, or questions about remaining work, read `docs/REQUIREMENTS.md`.
 6. Classify the task, then load only the applicable superpower or repository-local skill.
 7. Read `docs/AGENT-PLATFORM-WORKFLOWS.md` only for host portability/onboarding work.
@@ -22,8 +22,8 @@ For claims about **current implementation**, source/tests/runtime evidence overr
 ## Branch and release rules
 
 - `dev` is the development integration branch.
-- Ordinary work starts from current `dev` on a focused `feature/*`, `fix/*` or `chore/*` branch.
-- Feature/fix/chore branches merge into `dev`, never directly into `prod`.
+- **Commit ordinary development work directly to `dev`; no development pull request is required.** This is the owner's explicit default for features, fixes and documentation.
+- Refresh `dev` before writing and ensure only one agent modifies the same task/files at a time. Temporary worktrees/branches may isolate genuinely concurrent or high-risk work but do not require a PR to integrate into `dev`.
 - `prod` is production/release.
 - Only this repository's `dev` branch may merge into `prod`, through the release workflow and explicit production approval.
 - Never push directly to `prod`, force-push it, or bypass Git history with an ad-hoc production deployment.
@@ -32,7 +32,7 @@ Read `.agents/skills/release-workflow/SKILL.md` before creating/merging a produc
 
 ## Branch cleanup and versioning
 
-Read `docs/BRANCH-LIFECYCLE.md` and `docs/VERSIONING.md` for lifecycle work. Only `prod` and `dev` are permanent. Verify completed temporary branches are deleted after merge; preserve active/unmerged work. Every material change must identify version impact and update CHANGELOG.md when user-visible. Release preparation updates VERSION and dated notes; publish immutable tags only after approved dev → prod release. All host adapters inherit these rules.
+Read `docs/BRANCH-LIFECYCLE.md` and `docs/VERSIONING.md` for lifecycle work. Only `prod` and `dev` are permanent. Verify completed temporary branches are cleaned up after their work is integrated; preserve active/unmerged work. Every material change must identify version impact and update CHANGELOG.md when user-visible. Release preparation updates VERSION and dated notes; publish immutable tags only after approved dev → prod release. All host adapters inherit these rules.
 
 ## Engineering principles
 
@@ -42,7 +42,7 @@ Read `docs/BRANCH-LIFECYCLE.md` and `docs/VERSIONING.md` for lifecycle work. Onl
 - Do not weaken tests, authorization, validation, error handling or secret boundaries to get green CI.
 - Never expose secrets, private tokens, privileged keys or customer/user data in browser code, logs, prompts or Git.
 - Treat external systems as shared/live unless documentation proves the environment is isolated.
-- Automated agents may create branches and PRs; production merge remains human-controlled.
+- Agents may commit verified development changes directly to `dev` without a PR; production promotion remains human-controlled.
 
 ## Agent-independent orchestration
 
@@ -143,7 +143,7 @@ For Claude Code or Gemini CLI setup, use `docs/CLAUDE-GEMINI-SETUP.md`. Keep `.a
 
 ## Universal continuity
 
-An open branch is not automatically an active task. For non-trivial work, bind the task to one writable branch and a draft/open PR, and keep the machine-readable task state in `docs/CURRENT-HANDOFF.md` valid. GitHub/source/check evidence overrides handoff or chat memory.
+An open branch is not automatically an active task. For non-trivial work, bind one writer to the current `dev` revision (and an Issue when useful); a development PR is optional, not required. Keep the machine-readable task state in `docs/CURRENT-HANDOFF.md` valid. GitHub/source/check evidence overrides handoff or chat memory.
 
 At the beginning of a new coding-agent session, read Project Memory and Current Handoff. Before ending unfinished work, or after a material architectural decision/external side effect, update `docs/CURRENT-HANDOFF.md`.
 
