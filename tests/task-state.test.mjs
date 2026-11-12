@@ -36,10 +36,12 @@ test('rejects duplicate task state blocks', () => {
   assert.throws(() => extractTaskState(`${block}\n${block}`), /exactly one/)
 })
 
-test('requires PR for implementation and validates branch binding', () => {
-  const errors = validateTaskState({ ...active, pr: null, branch: 'dev' })
-  assert.ok(errors.some(error => error.includes('pr must be a positive integer')))
-  assert.ok(errors.includes('working branch must differ from base'))
+test('allows direct dev implementation without a PR', () => {
+  assert.deepEqual(validateTaskState({ ...active, pr: null, branch: 'dev' }), [])
+})
+
+test('still validates optional PR format', () => {
+  assert.ok(validateTaskState({ ...active, pr: -1 }).some(error => error.includes('pr must be null or a positive integer')))
 })
 
 test('accepts an idle template state', () => {
