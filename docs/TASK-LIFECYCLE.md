@@ -13,9 +13,9 @@ task / requirement
       ↓
 repository
       ↓
-working branch
+current `dev` commit / optional isolated worktree
       ↓
-draft/open PR
+GitHub issue or handoff (PR optional)
       ↓
 verified next step
 ```
@@ -37,7 +37,7 @@ Supported states:
 - `merged`
 - `cancelled`
 
-For non-trivial implementation work, create a draft PR early. From `implementing` onward, the task should normally have a PR number.
+For non-trivial implementation work, assign one writer and use a GitHub Issue when useful. No development PR is required; active tasks may have `branch: "dev"` and `pr: null`.
 
 ## Machine-readable Current Handoff block
 
@@ -49,8 +49,8 @@ Keep exactly one block in `docs/CURRENT-HANDOFF.md`:
   "task_id": "REQ-123",
   "repository": "owner/repository",
   "base": "dev",
-  "branch": "feature/example",
-  "pr": 42,
+  "branch": "dev",
+  "pr": null,
   "status": "implementing",
   "last_verified_sha": "0123456789abcdef0123456789abcdef01234567",
   "next_step": "Run the targeted integration test after the API fix.",
@@ -75,50 +75,29 @@ When a new session receives "continue", "resume", "fix it", or another request t
 
 1. read `AGENTS.md`, Project Memory and Current Handoff,
 2. inspect the machine-readable task state,
-3. inspect the referenced GitHub PR/branch and current `dev`,
+3. inspect the current `dev` commit chain and any relevant Issue, optional PR or isolated branch,
 4. prefer GitHub/source/check evidence over stale handoff or chat memory,
-5. continue only if task, branch and PR still correspond to the requested outcome,
+5. continue only if task, active writer and current GitHub evidence correspond to the requested outcome,
 6. otherwise mark the old state stale/superseded and bind the task explicitly.
 
 If several open branches exist, do not choose one merely because it is open.
 
-## Draft PR policy
+## Direct development commit policy
 
-Create a draft PR early for non-trivial implementation so GitHub preserves:
-- the branch association,
-- task title/description,
-- changed files,
-- review discussion,
-- CI/check history,
-- durable URL/PR number.
+The default is to commit verified code, documentation and fixes directly to `dev`. No feature branch, draft PR or development PR is required. Record task identity, affected files, next step, current SHA, test results and blockers in an Issue/Current Handoff or other durable GitHub evidence. Check for recent `dev` commits before editing and serialize changes made by different agents.
 
-The PR template contains a task-continuity section. Keep it current enough that another agent can identify the task without reading a long transcript.
+An optional temporary branch/worktree or PR may still be used for a technically justified isolated effort or explicit user request. Never claim a PR was created if none exists.
 
 ## Parallel agents
 
-Default: one writer per task branch.
+Default: one modifying writer per task and no concurrent edits to the same `dev` files.
 
-Reviewers may work in parallel without write ownership. If two implementers are needed, give them separate branches/worktrees and integrate through explicit commits/PRs.
+Reviewers may work in parallel without write ownership. If two implementers are needed, give them separate temporary worktrees and integrate verified commits into `dev` one at a time; PRs are not required.
 
 A future AI Control Plane may add expiring write leases. A lease coordinates writers; it never overrides repository truth.
 
 ## Completion and cleanup
 
-When implementation is otherwise ready for final verification:
-1. reset the branch's `AGENT_TASK_STATE` block to the idle template state,
-2. make that reset part of the final merge-candidate revision,
-3. run/retrigger required checks for that exact head SHA,
-4. merge only if the current head is green/verified.
+Before finalizing a direct `dev` task, run applicable tests and inspect the exact changes to be committed. Commit with a descriptive message, verify the new `dev` SHA and available CI, and record any unverified checks. Reset the task-state block to idle when the work is complete; an unfinished task retains its next_step and writer assignment in handoff. Do not treat a previous SHA's checks as evidence for later edits.
 
-This ordering avoids a handoff-only commit invalidating an already-finished verification run. If a later repair/change is required, restore an active task state before continuing and treat the previous green checks as stale.
-
-The PR body/history remains the durable per-task record; `dev` must not inherit a stale active-task marker.
-
-After a PR merges into `dev`:
-- verify the merged SHA/check state,
-- let GitHub's native "Automatically delete head branches" remove the temporary branch,
-- keep `dev` and `prod` protected and permanent,
-- do not reuse completed temporary branch names,
-- retire stale/unmerged branches only after reviewing whether they contain unique work.
-
-Production promotion is only `dev → prod` with explicit production approval.
+If an optional temporary branch/PR was used, confirm its work reached `dev` before cleanup. Never delete unique unmerged work. Production promotion remains `dev → prod` with explicit production approval.
